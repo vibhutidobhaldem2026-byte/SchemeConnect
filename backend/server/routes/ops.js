@@ -701,8 +701,23 @@ router.get('/export.csv', async (req, res) => {
   res.send('﻿' + lines.join('\n'));
 });
 
+const LINK_LABEL = {
+  ok: 'Reachable',
+  redirected: 'Moved, still reachable',
+  missing: 'Page not found (4xx)',
+  unreachable: 'Not responding',
+  forbidden: 'Blocked to automated checks — usually fine in a browser',
+};
+
 router.get('/export', async (req, res) => {
   const { schemes, meta } = await exportPayload(true);
+  const byStatus = new Map();
+  for (const s of schemes.filter((x) => !x.retiredAt)) {
+    const k = s.applyUrlStatus ?? 'unchecked';
+    byStatus.set(k, (byStatus.get(k) ?? 0) + 1);
+  }
+  const linkHealth = [...byStatus].map(([status, n]) => ({ status, n }))
+    .sort((a, b) => b.n - a.n);
   const live = schemes.filter((s) => !s.retiredAt);
   const withCriteria = schemes.filter((s) => s.detailLevel === 'full');
 
@@ -726,6 +741,20 @@ router.get('/export', async (req, res) => {
             <div class="stat-card"><div class="stat-num">${live.length}</div><div class="stat-label">Still live</div></div>
             <div class="stat-card"><div class="stat-num">${withCriteria.length}</div><div class="stat-label">Criteria read</div></div>
             <div class="stat-card"><div class="stat-num">${schemes.length - live.length}</div><div class="stat-label">Retired</div></div>
+          </div>
+
+          <div class="section-label">Official links</div>
+          <div class="info-card">
+            <div class="hint" style="margin-bottom:12px;font-size:12.5px;color:var(--muted)">
+              "Every result links to the scheme's official government page" is the highest-rated need in the
+              feature list, so we check. A link that does not resolve is said to be broken on the scheme's page
+              rather than sitting behind a verified badge. Run <span class="mono">npm run check:links</span> to refresh.
+            </div>
+            ${raw(linkHealth.map((r) => html`
+              <div class="info-row">
+                <span class="k">${LINK_LABEL[r.status] ?? 'Never checked'}</span>
+                <span class="v">${r.n} scheme${r.n === 1 ? '' : 's'}</span>
+              </div>`).join(''))}
           </div>
 
           <div class="section-label">Download</div>

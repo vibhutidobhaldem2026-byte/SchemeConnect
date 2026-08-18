@@ -396,3 +396,11 @@ tr.clickable a.row-link {
 }
 tr.clickable:hover a.row-link { text-decoration: underline; }
 tr.clickable:focus-within { outline: 2px solid var(--accent, #0A2540); outline-offset: -2px; }
+
+/* A link we know is dead still gets offered, because a government page can come
+   back and a student may want to try — but it must not look like the confident
+   primary action. */
+.btn-primary.btn-muted {
+  background: var(--muted, #6B7C93);
+  border-color: var(--muted, #6B7C93);
+}

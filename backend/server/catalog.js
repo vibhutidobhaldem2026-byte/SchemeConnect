@@ -37,6 +37,7 @@ const SCHEME_COLUMNS = `
   s.benefit, s.benefit_text, s.eligibility, s.documents, s.deadline,
   s.apply_url, s.source, s.source_id, s.alternate_sources, s.warnings,
   s.detail_level, s.confidence, s.last_verified, s.content_hash, s.retired_at,
+  s.apply_url_status, s.apply_url_checked_at, s.apply_url_detail,
   (select coalesce(jsonb_agg(jsonb_build_object('field', e.field, 'quote', e.quote)
                              order by e.field), '[]'::jsonb)
      from scheme_criteria_evidence e where e.scheme_id = s.id) as evidence,
@@ -80,6 +81,11 @@ function shape(row, evidence = [], overrides = []) {
     confidence: row.confidence,
     lastVerified: row.last_verified,
     retiredAt: row.retired_at,
+    // What the official link actually does. Null means never checked, which is
+    // not the same as working and must not be shown as if it were.
+    applyUrlStatus: row.apply_url_status,
+    applyUrlCheckedAt: row.apply_url_checked_at,
+    applyUrlDetail: row.apply_url_detail,
     // Rendered as "corrected by our team" next to the field it applies to, so a
     // human edit never silently replaces what the government source said.
     corrections: corrected,

@@ -26,6 +26,21 @@ import * as store from '../store.js';
 export const router = express.Router();
 
 /**
+ * Link states that mean a student would hit a dead end. We say so rather than
+ * showing a verified badge beside a link that goes nowhere — a sample of the
+ * catalogue found roughly a quarter of official links unreachable.
+ */
+const LINK_BROKEN = new Set(['missing', 'unreachable']);
+
+const LINK_LABEL = {
+  ok: 'Reachable',
+  redirected: 'Moved, still reachable',
+  missing: 'Page not found',
+  unreachable: 'Not responding',
+  forbidden: 'Blocked to automated checks',
+};
+
+/**
  * This router sits at the root (its paths are top-level), so the guard is
  * scoped to the paths it owns rather than applied to every request that
  * reaches it — otherwise it would intercept /ops, static files and 404s.
@@ -360,12 +375,26 @@ router.get('/schemes/:id', async (req, res, next) => {
             <div class="info-row"><span class="k">Last verified</span><span class="v">${formatDate(scheme.lastVerified)}</span></div>
             <div class="info-row"><span class="k">Extraction confidence</span>
               <span class="v">${Math.round((scheme.confidence ?? 0) * 100)}%</span></div>
+            <div class="info-row"><span class="k">Official link</span>
+              <span class="v">${scheme.applyUrlStatus
+                ? `${LINK_LABEL[scheme.applyUrlStatus]} · checked ${formatDate(scheme.applyUrlCheckedAt)}`
+                : 'not checked yet'}</span></div>
           </div>
 
+          ${raw(LINK_BROKEN.has(scheme.applyUrlStatus) ? notice('danger', html`
+            <b>This scheme's official page is not responding.</b> We last checked on
+            ${formatDate(scheme.applyUrlCheckedAt)} and got: ${scheme.applyUrlDetail}. The scheme was
+            published by a government source, but the page has moved or been taken down. Search for it on the
+            <a href="https://scholarships.gov.in" target="_blank" rel="noopener noreferrer">National Scholarship Portal</a>
+            before assuming it is closed.`) : '')}
+
           <div class="cta-row">
-            <a class="btn-primary btn-inline" href="${scheme.applyUrl}" target="_blank" rel="noopener noreferrer"
+            <a class="btn-primary btn-inline ${LINK_BROKEN.has(scheme.applyUrlStatus) ? 'btn-muted' : ''}"
+               href="${scheme.applyUrl}" target="_blank" rel="noopener noreferrer"
                data-mark-applied="${isStudent ? scheme.id : ''}">
-              Continue to official application ↗</a>
+              ${LINK_BROKEN.has(scheme.applyUrlStatus)
+                ? 'Try the official page anyway ↗'
+                : 'Continue to official application ↗'}</a>
             ${raw(isStudent ? html`
               <form method="post" action="/saved/${scheme.id}">
                 <button class="btn-outline-sm" style="padding:14px 20px" type="submit">

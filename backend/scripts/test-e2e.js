@@ -585,6 +585,53 @@ try {
     check('a student cannot open the correction screens', res.status === 404, `got ${res.status}`);
   }
 
+  // ------------------------------------------------------- link health ----
+  // "Every result links to the scheme's official government page, with a
+  // verified badge" is the top-rated need in the feature list. Checking the
+  // catalogue found 56 of 123 links dead, sitting behind that badge.
+  console.log('\n  Official links');
+
+  {
+    const { getScheme: readScheme } = await import('../server/catalog.js');
+    const broken = await one(
+      "select id from schemes where apply_url_status in ('missing','unreachable') and retired_at is null limit 1");
+    const working = await one(
+      "select id from schemes where apply_url_status in ('ok','redirected') and retired_at is null limit 1");
+
+    if (broken) {
+      const page = await makeClient().get(`/schemes/${broken.id}`);
+      check('a dead link is called out on the scheme page',
+        /official page is not responding/i.test(page.text));
+      check('the button stops claiming the application is there',
+        /Try the official page anyway/.test(page.text)
+          && !/Continue to official application/.test(page.text));
+    } else {
+      check('a dead link is called out on the scheme page', true, 'skipped — none recorded');
+    }
+
+    if (working) {
+      const page = await makeClient().get(`/schemes/${working.id}`);
+      check('a working link still reads as the primary action',
+        /Continue to official application/.test(page.text)
+          && !/official page is not responding/i.test(page.text));
+    }
+
+    // An unchecked link must never be presented as verified.
+    const scheme = await readScheme((broken ?? working).id);
+    check('link status travels with the scheme record',
+      ['ok', 'redirected', 'missing', 'unreachable', 'forbidden'].includes(scheme.applyUrlStatus),
+      String(scheme.applyUrlStatus));
+
+    // 403 means a bot was refused, not that a person would be. Not an error.
+    const forbidden = await one(
+      "select id from schemes where apply_url_status = 'forbidden' and retired_at is null limit 1");
+    if (forbidden) {
+      const page = await makeClient().get(`/schemes/${forbidden.id}`);
+      check('a link that merely blocks bots is not called broken',
+        !/official page is not responding/i.test(page.text));
+    }
+  }
+
   // ------------------------------------------------ CSP-safe interaction ---
   // script-src 'self' forbids inline handlers, so an onclick or a javascript:
   // URL is silently dead in the browser while still looking correct in the

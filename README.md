@@ -524,6 +524,13 @@ render.yaml         one web service, migrations run before traffic
   deliberately *not* loosened to read those stray dates as deadlines; inventing
   one would be worse than having none. The engine refuses to match a scheme
   whose window has shut, so the guarantee is in place for when the data is.
+- **Only 17 of 123 official links are confirmed reachable.** Checking every one
+  found 28 returning 4xx and 28 whose host does not respond at all — one
+  ministry domain has no DNS record, taking seven scholarships with it. Those
+  schemes now say so on their page instead of sitting behind a verified badge.
+  A further 50 refuse automated checks with a 403; those are almost certainly
+  fine in a browser and are not called broken. `npm run check:links` refreshes
+  this, and `/ops/export` shows the breakdown.
 - **9 of 123 schemes have machine-readable criteria**, and coverage is central
   government plus one Assam entry. This is the real cap on the product's
   usefulness. The bottleneck is not the extractor — every page whose detail we
