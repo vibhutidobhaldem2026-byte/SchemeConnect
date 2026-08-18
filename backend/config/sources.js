@@ -46,6 +46,39 @@ export const SOURCES = [
       + 'every link worked.',
   },
   {
+    id: 'tribal-schemes-gov',
+    adapter: 'gov-html',
+    url: 'https://tribal.gov.in/Scholarship.aspx',
+    label: 'Ministry of Tribal Affairs — scholarships',
+    level: 'central',
+    maxLinks: 25,
+    enabled: true,
+    // Replaces tribal.nic.in, which is disabled below for an incomplete TLS
+    // chain. Same ministry, valid certificate, and it states income ceilings and
+    // class ranges inline rather than burying them in a circular.
+  },
+  {
+    id: 'aicte-schemes',
+    adapter: 'gov-html',
+    url: 'https://www.aicte.gov.in/schemes/students-development-schemes',
+    label: 'AICTE — student development schemes',
+    level: 'central',
+    maxLinks: 30,
+    enabled: true,
+    // aicte-india.org now redirects here; aicte.gov.in is the canonical host.
+  },
+  {
+    id: 'depwd-schemes',
+    adapter: 'gov-html',
+    url: 'https://depwd.gov.in/en/schemes/',
+    label: 'Dept. of Empowerment of Persons with Disabilities — schemes',
+    level: 'central',
+    maxLinks: 25,
+    enabled: true,
+    // Replaces disabilityaffairs.gov.in, whose certificate has expired. This is
+    // the same department, and its robots.txt permits everything but /wp-admin.
+  },
+  {
     id: 'nsp-home',
     adapter: 'nsp-html',
     url: 'https://scholarships.gov.in/',
@@ -105,8 +138,10 @@ export const SOURCES = [
     label: 'Ministry of Minority Affairs',
     level: 'central',
     maxLinks: 25,
-    enabled: false,
-    disabledReason: 'TLS: SELF_SIGNED_CERT_IN_CHAIN',
+    enabled: true,
+    // Re-enabled: the self-signed chain that disabled this has been fixed, and
+    // the host returns a clean 200 today. Re-testing disabled sources pays off —
+    // this is why they are kept in config with a reason rather than deleted.
   },
   {
     id: 'dst-inspire',

@@ -27,6 +27,7 @@ import { log } from './lib/log.js';
 import govHtml, { nspAdapter } from './adapters/govHtml.js';
 import govPdf from './adapters/govPdf.js';
 import * as myScheme from './adapters/myScheme.js';
+import * as nspIndex from './adapters/nspIndex.js';
 import { startRun, finishRun, publish, existingSchemeCount } from './publish.js';
 import { close as closeDb, isConfigured } from '../server/db.js';
 
@@ -39,6 +40,7 @@ try {
 
 const ADAPTERS = {
   'myscheme': myScheme,
+  'nsp-index': nspIndex,
   'gov-html': govHtml,
   'nsp-html': nspAdapter,
   'gov-pdf': govPdf,

@@ -24,7 +24,8 @@
     "test:all": "npm test && npm run check:matching && npm run test:e2e",
     "setup": "npm run migrate && npm run import:catalog",
     "check:links": "node scripts/check-links.js",
-    "scrape:review": "node scraper/run.js --no-publish --verbose"
+    "scrape:review": "node scraper/run.js --no-publish --verbose",
+    "sync:deadlines": "node scripts/sync-deadlines.js"
   },
   "dependencies": {
     "express": "^4.21.2",
