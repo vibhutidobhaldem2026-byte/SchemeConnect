@@ -9,7 +9,7 @@
 
 import express from 'express';
 import {
-  h, html, raw, layout, studentNav, logoMark, schemeCard, criteriaList, statedCriteria,
+  h, html, raw, layout, studentNav, publicNav, navIcon, schemeCard, criteriaList, statedCriteria,
   notice, emptyState, catalogBanner, freshnessLabel, formatDate,
 } from '../render.js';
 import {
@@ -203,7 +203,7 @@ router.get('/dashboard', async (req, res) => {
           ${raw(catalogBanner(meta, ageDays))}
 
           <form class="search-bar" method="get" action="/schemes">
-            <span class="ic">🔍</span>
+            ${raw(navIcon('browse'))}
             <input name="q" placeholder="Search all ${meta.total} schemes — e.g. 'SC scholarship' or 'post matric'">
             <button type="submit">Search</button>
           </form>
@@ -282,14 +282,7 @@ router.get('/schemes/:id', async (req, res, next) => {
     title: scheme.name,
     body: html`
       <div class="app-shell">
-        ${raw(isStudent ? studentNav('home') : html`
-          <nav class="side-nav">
-            ${raw(logoMark('/'))}
-            <a class="nav-item" href="/schemes"><span class="ic"></span>All schemes</a>
-            <a class="nav-item" href="/start"><span class="ic"></span>Log in</a>
-            <div class="nav-spacer"></div>
-            <a class="nav-item" href="/terms"><span class="ic"></span>Terms</a>
-          </nav>`)}
+        ${raw(isStudent ? studentNav('home') : publicNav('browse'))}
         <main class="main-area narrow">
           <a class="link-back" href="${isStudent ? '/dashboard' : '/schemes'}">← Back to ${isStudent ? 'matches' : 'all schemes'}</a>
 

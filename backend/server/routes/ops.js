@@ -8,7 +8,7 @@
  */
 
 import express from 'express';
-import { html, raw, layout, logoMark, notice, formatDate, emptyState } from '../render.js';
+import { html, raw, layout, logoMark, navItem, navIcon, notice, formatDate, emptyState } from '../render.js';
 import {
   allSchemes, catalogMeta, catalogAgeDays, searchSchemes, getScheme,
   setOverride, clearOverride, schemeRevisions, allSchemesForExport, listSources,
@@ -60,10 +60,9 @@ function requireOps(req, res, next) {
 router.use(requireOps);
 
 function opsNav(active) {
-  const item = (key, label, href) => html`
-    <a class="nav-item ${active === key ? 'active' : ''}" href="${href}"><span class="ic"></span>${label}</a>`;
+  const item = (key, label, href) => navItem({ key, label, href, active });
   return html`
-    <nav class="side-nav">
+    <nav class="side-nav" aria-label="Operations navigation">
       ${raw(logoMark('/'))}
       ${raw(item('catalog', 'Catalogue', '/ops'))}
       ${raw(item('edit', 'Correct a scheme', '/ops/schemes'))}
@@ -72,7 +71,7 @@ function opsNav(active) {
       ${raw(item('sources', 'Sources', '/ops/sources'))}
       ${raw(item('runs', 'Scrape runs', '/ops/runs'))}
       <div class="nav-spacer"></div>
-      <a class="nav-item" href="/"><span class="ic"></span>Back to site</a>
+      ${raw(navItem({ key: 'back', label: 'Back to site', href: '/' }))}
     </nav>`;
 }
 
@@ -402,7 +401,7 @@ router.get('/schemes', async (req, res) => {
           </div>
 
           <form class="search-bar" method="get" action="/ops/schemes">
-            <span class="ic">🔍</span>
+            ${raw(navIcon('browse'))}
             <input name="q" value="${q}" placeholder="Search by scheme name or ministry">
             <button type="submit">Search</button>
           </form>
@@ -759,9 +758,9 @@ router.get('/export', async (req, res) => {
 
           <div class="section-label">Download</div>
           <div class="cta-row">
-            <a class="btn-primary btn-inline" href="/ops/export.json">Full JSON ↓</a>
-            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.csv">Spreadsheet CSV ↓</a>
-            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.json?retired=false">Live schemes only ↓</a>
+            <a class="btn-primary btn-inline" href="/ops/export.json" download>Full JSON ↓</a>
+            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.csv" download>Spreadsheet CSV ↓</a>
+            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.json?retired=false" download>Live schemes only ↓</a>
           </div>
           <p class="foot-note">
             The JSON carries every field, including the sentence each criterion was read from and the

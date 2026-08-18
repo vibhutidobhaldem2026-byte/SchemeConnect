@@ -28,6 +28,7 @@ import govHtml, { nspAdapter } from './adapters/govHtml.js';
 import govPdf from './adapters/govPdf.js';
 import * as myScheme from './adapters/myScheme.js';
 import * as nspIndex from './adapters/nspIndex.js';
+import { closeBrowser, browserWasUsed } from './lib/browser.js';
 import { startRun, finishRun, publish, existingSchemeCount } from './publish.js';
 import { close as closeDb, isConfigured } from '../server/db.js';
 
@@ -385,5 +386,8 @@ main()
   })
   .finally(async () => {
     await myScheme.close();
+    // gov-html falls back to a browser for sites Node cannot read, so one may
+    // be open even when the myScheme source never ran.
+    if (browserWasUsed()) await closeBrowser();
     await closeDb();
   });

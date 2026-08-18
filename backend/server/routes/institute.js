@@ -9,7 +9,7 @@
 
 import express from 'express';
 import {
-  html, raw, layout, instituteNav, notice, emptyState, formatDate, catalogBanner,
+  html, raw, layout, instituteNav, navIcon, notice, emptyState, formatDate, catalogBanner,
 } from '../render.js';
 import { candidateSchemes, matchableSchemes, catalogMeta, catalogAgeDays } from '../catalog.js';
 import { matchProfile, INCOME_OPTIONS } from '../matcher.js';
@@ -85,7 +85,7 @@ router.get('/', async (req, res) => {
 
           <div class="section-label">Find a student</div>
           <form class="search-bar" method="get" action="/institute/students">
-            <span class="ic">🔍</span>
+            ${raw(navIcon('browse'))}
             <input name="q" placeholder="Search by name or student ID">
             <button type="submit">Search</button>
           </form>
@@ -394,7 +394,7 @@ router.get('/students', async (req, res) => {
           </div>
 
           <form class="search-bar" method="get" action="/institute/students">
-            <span class="ic">🔍</span>
+            ${raw(navIcon('browse'))}
             <input name="q" value="${q}" placeholder="Search by name or student ID">
             <button type="submit">Search</button>
           </form>

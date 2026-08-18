@@ -57,15 +57,69 @@ ${body}
 </html>`;
 }
 
+/**
+ * The wordmark, with the brand image beside it.
+ *
+ * The source file is the full logo lock-up (emblem above the words), so the
+ * emblem is cropped out of it in CSS rather than shipping a second asset —
+ * see `.logo-img-wrap` in app.css. The `<img>` keeps real alt text, so if the
+ * file is missing the mark still says what it is; app.js hides the frame
+ * entirely on a load error so a broken-image glyph never sits next to the
+ * wordmark.
+ */
 export const logoMark = (href = '/') => html`
-  <a class="logo-mark" href="${href}"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></a>`;
+  <a class="logo-mark" href="${href}">
+    <span class="logo-img-wrap"><img src="/img/logo.jpeg" alt="SchemeConnect logo" decoding="async" data-logo></span>
+    <span class="logo-word">SchemeConnect</span>
+  </a>`;
+
+/**
+ * Sidebar icons.
+ *
+ * Inline SVG, not an icon font and not a script: it costs no extra request,
+ * inherits `currentColor` so the active state colours itself, and stays sharp
+ * on the cheap high-density screens the PRD targets. Anything unrecognised
+ * falls back to a neutral dot rather than rendering an empty box.
+ */
+const NAV_ICONS = {
+  home: '<path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9.6V19a1.5 1.5 0 0 0 1.5 1.5h3v-5.2h4v5.2h3A1.5 1.5 0 0 0 18.5 19V9.6"/>',
+  browse: '<circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.4 15.4 4.1 4.1"/>',
+  saved: '<path d="M6.5 4.8A1.5 1.5 0 0 1 8 3.3h8a1.5 1.5 0 0 1 1.5 1.5v15.9L12 17l-5.5 3.7z"/>',
+  applied: '<path d="M9 4.8H7.5A1.5 1.5 0 0 0 6 6.3v13.4a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5V6.3a1.5 1.5 0 0 0-1.5-1.5H15"/><rect x="9" y="2.7" width="6" height="4.2" rx="1.3"/><path d="m9.6 13.6 1.9 1.9 3.4-3.9"/>',
+  profile: '<circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.5a7.2 7.2 0 0 1 14.4 0"/>',
+  terms: '<path d="M13.8 3.2H7.4A1.6 1.6 0 0 0 5.8 4.8v14.4a1.6 1.6 0 0 0 1.6 1.6h9.2a1.6 1.6 0 0 0 1.6-1.6V7.4z"/><path d="M13.8 3.2v4.2h4.4"/><path d="M9 12.8h6M9 16.2h4"/>',
+  logout: '<path d="M9.6 20.5H6.4a1.6 1.6 0 0 1-1.6-1.6V5.1a1.6 1.6 0 0 1 1.6-1.6h3.2"/><path d="m15.4 16.2 4.3-4.2-4.3-4.2"/><path d="M19.7 12H9.4"/>',
+  login: '<path d="M14.4 3.5h3.2a1.6 1.6 0 0 1 1.6 1.6v13.8a1.6 1.6 0 0 1-1.6 1.6h-3.2"/><path d="m8.6 16.2-4.3-4.2 4.3-4.2"/><path d="M4.3 12h10.3"/>',
+  overview: '<rect x="3.6" y="3.6" width="7" height="7" rx="1.6"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.6"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.6"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.6"/>',
+  batches: '<path d="m12 3.3 8.7 4.4L12 12.1 3.3 7.7z"/><path d="m3.3 12 8.7 4.4L20.7 12"/><path d="m3.3 16.3 8.7 4.4 8.7-4.4"/>',
+  students: '<circle cx="9.2" cy="8" r="3.5"/><path d="M2.8 20.4a6.4 6.4 0 0 1 12.8 0"/><path d="M16.2 4.9a3.5 3.5 0 0 1 0 6.2"/><path d="M17.6 14.7a6.4 6.4 0 0 1 3.6 5.7"/>',
+  upload: '<path d="M4.8 15.4v3.5a1.6 1.6 0 0 0 1.6 1.6h11.2a1.6 1.6 0 0 0 1.6-1.6v-3.5"/><path d="M12 15.2V3.6"/><path d="m7.6 8 4.4-4.4L16.4 8"/>',
+  catalog: '<path d="M8 5.5h11.5M8 12h11.5M8 18.5h11.5"/><path d="M4.3 5.5h.01M4.3 12h.01M4.3 18.5h.01"/>',
+  edit: '<path d="M4.5 19.5h4l10-10a2.1 2.1 0 0 0-3-3l-10 10z"/><path d="m14.2 6.8 3 3"/>',
+  export: '<path d="M12 3.6v11.2"/><path d="m7.6 10.4 4.4 4.4 4.4-4.4"/><path d="M4.8 17.2v1.7a1.6 1.6 0 0 0 1.6 1.6h11.2a1.6 1.6 0 0 0 1.6-1.6v-1.7"/>',
+  coverage: '<path d="m9 3.6 6 2.6 5.2-2.6v14L15 20.4l-6-2.6-5.2 2.6v-14z"/><path d="M9 3.6v14.2M15 6.2v14.2"/>',
+  sources: '<circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/><path d="M12 3.6a12.5 12.5 0 0 1 0 16.8 12.5 12.5 0 0 1 0-16.8z"/>',
+  runs: '<path d="M3.4 12.4h4l2.4-6.2 4 12.4 2.4-6.2h4.4"/>',
+  back: '<path d="M20 12H4.4"/><path d="m10 5.9-5.9 6.1 5.9 6.1"/>',
+};
+
+export function navIcon(name) {
+  const body = NAV_ICONS[name];
+  if (!body) return '<svg class="ic ic-dot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3.4"/></svg>';
+  return `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+}
+
+/** One sidebar row. `key` picks both the active state and the icon. */
+export function navItem({ key, label, href, icon = null, active = null }) {
+  return html`
+    <a class="nav-item ${active === key ? 'active' : ''}" href="${href}">${raw(navIcon(icon || key))}<span class="nav-label">${label}</span></a>`;
+}
 
 /** Student sidebar. */
 export function studentNav(active) {
-  const item = (key, label, href) => html`
-    <a class="nav-item ${active === key ? 'active' : ''}" href="${href}"><span class="ic"></span>${label}</a>`;
+  const item = (key, label, href) => navItem({ key, label, href, active });
   return html`
-    <nav class="side-nav">
+    <nav class="side-nav" aria-label="Student navigation">
       ${raw(logoMark('/dashboard'))}
       ${raw(item('home', 'Home', '/dashboard'))}
       ${raw(item('browse', 'All schemes', '/schemes'))}
@@ -74,16 +128,15 @@ export function studentNav(active) {
       ${raw(item('profile', 'My profile', '/profile'))}
       <div class="nav-spacer"></div>
       ${raw(item('terms', 'Terms', '/terms'))}
-      <a class="nav-item" href="/logout"><span class="ic"></span>Log out</a>
+      ${raw(navItem({ key: 'logout', label: 'Log out', href: '/logout' }))}
     </nav>`;
 }
 
 /** Institute sidebar. */
 export function instituteNav(active) {
-  const item = (key, label, href) => html`
-    <a class="nav-item ${active === key ? 'active' : ''}" href="${href}"><span class="ic"></span>${label}</a>`;
+  const item = (key, label, href) => navItem({ key, label, href, active });
   return html`
-    <nav class="side-nav">
+    <nav class="side-nav" aria-label="Institute navigation">
       ${raw(logoMark('/institute'))}
       ${raw(item('overview', 'Overview', '/institute'))}
       ${raw(item('batches', 'Batches', '/institute/batches'))}
@@ -91,7 +144,22 @@ export function instituteNav(active) {
       ${raw(item('upload', 'Upload batch', '/institute/upload'))}
       <div class="nav-spacer"></div>
       ${raw(item('terms', 'Terms', '/terms'))}
-      <a class="nav-item" href="/logout"><span class="ic"></span>Log out</a>
+      ${raw(navItem({ key: 'logout', label: 'Log out', href: '/logout' }))}
+    </nav>`;
+}
+
+/**
+ * The sidebar a signed-out visitor sees on public pages. Was duplicated,
+ * slightly differently, in two routes.
+ */
+export function publicNav(active) {
+  return html`
+    <nav class="side-nav" aria-label="Navigation">
+      ${raw(logoMark('/'))}
+      ${raw(navItem({ key: 'browse', label: 'All schemes', href: '/schemes', active }))}
+      ${raw(navItem({ key: 'login', label: 'Log in', href: '/start', active }))}
+      <div class="nav-spacer"></div>
+      ${raw(navItem({ key: 'terms', label: 'Terms', href: '/terms', active }))}
     </nav>`;
 }
 

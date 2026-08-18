@@ -20,7 +20,7 @@ export const SOURCES = [
     url: 'https://www.myscheme.gov.in/search',
     label: 'myScheme — Government of India scheme directory',
     level: 'central',
-    maxLinks: 300,
+    maxLinks: 220,
     enabled: true,
     // The ministry sites publish a scheme once and let the page rot; of 123
     // links harvested that way only 17 still resolved. This directory is
@@ -105,6 +105,93 @@ export const SOURCES = [
     maxLinks: 30,
     enabled: true,
   },
+  // ------------------------------------------------------------- states --
+  // The PRD wants pilot states. These were each verified with curl rather than
+  // assumed: a 200, a government domain, robots that permit it, and scheme
+  // names present in the raw HTML.
+  {
+    id: 'hp-epass-state',
+    adapter: 'gov-html',
+    url: 'https://hpepass.cgg.gov.in/NewHomePage.do?actionParameter=stateSchemes',
+    label: 'Himachal Pradesh ePASS — state schemes',
+    level: 'state',
+    state: 'Himachal Pradesh',
+    maxLinks: 25,
+    enabled: true,
+    // The strongest state source found: server-rendered, with per-scheme
+    // eligibility prose and amounts rather than a link to a circular.
+  },
+  {
+    id: 'hp-epass-central',
+    adapter: 'gov-html',
+    url: 'https://hpepass.cgg.gov.in/NewHomePage.do?actionParameter=centralSchemes',
+    label: 'Himachal Pradesh ePASS — centrally sponsored schemes',
+    level: 'state',
+    state: 'Himachal Pradesh',
+    maxLinks: 25,
+    enabled: true,
+  },
+  {
+    id: 'assam-state-schemes',
+    adapter: 'gov-html',
+    url: 'https://assam.gov.in/schemes-list-page',
+    label: 'Assam — state scheme list',
+    level: 'state',
+    state: 'Assam',
+    maxLinks: 30,
+    enabled: true,
+    // Replaces directorateofhighereducation.assam.gov.in, which is disabled
+    // below: it returns one scheme link, unchanged since 2018, while Assam is
+    // named in the PRD as a pilot state.
+  },
+  {
+    id: 'tn-bcmbcmw',
+    adapter: 'gov-html',
+    url: 'https://bcmbcmw.tn.gov.in/welfschemes.htm',
+    label: 'Tamil Nadu — BC/MBC and Minorities Welfare schemes',
+    level: 'state',
+    state: 'Tamil Nadu',
+    maxLinks: 25,
+    enabled: true,
+  },
+  {
+    id: 'rajasthan-sje-scholarship',
+    adapter: 'gov-html',
+    url: 'https://sjmsnew.rajasthan.gov.in/scholarship/',
+    label: 'Rajasthan Social Justice — scholarship portal',
+    level: 'state',
+    state: 'Rajasthan',
+    maxLinks: 25,
+    enabled: true,
+  },
+  {
+    id: 'kerala-egrantz',
+    adapter: 'gov-html',
+    url: 'https://egrantz.kerala.gov.in/',
+    label: 'Kerala e-grantz — scholarship notices',
+    level: 'state',
+    state: 'Kerala',
+    maxLinks: 25,
+    enabled: true,
+    // Renders its notice board client-side, so plain HTTP returns a shell.
+    // browser: true skips the futile HTTP attempt rather than paying for a
+    // round trip to learn what this comment already says.
+    browser: true,
+    // Replaces swd.kerala.gov.in, which stays disabled: its certificate does
+    // not cover its hostname, and Chromium refuses it exactly as Node does.
+    // The browser gets past a chain Node cannot build, not past a certificate
+    // that is genuinely wrong for the site.
+  },
+  {
+    id: 'wb-svmcm',
+    adapter: 'gov-html',
+    url: 'https://svmcm.wb.gov.in/page/about.php',
+    label: 'West Bengal — Swami Vivekananda Merit-cum-Means',
+    level: 'state',
+    state: 'West Bengal',
+    maxLinks: 15,
+    enabled: true,
+  },
   {
     id: 'assam-schemes',
     adapter: 'gov-html',
@@ -113,7 +200,11 @@ export const SOURCES = [
     level: 'state',
     state: 'Assam',
     maxLinks: 25,
-    enabled: true,
+    enabled: false,
+    disabledReason:
+      'Returns exactly one scheme link, unchanged since 2018. Assam is a named '
+      + 'pilot state in the PRD, so its coverage now comes from '
+      + 'assam.gov.in/schemes-list-page instead.',
   },
 
   // --------------------------------------------------------------- disabled --
@@ -128,8 +219,8 @@ export const SOURCES = [
     label: 'Ministry of Tribal Affairs — scholarships',
     level: 'central',
     maxLinks: 30,
-    enabled: false,
-    disabledReason: 'TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)',
+    enabled: true,
+    // Recovered by the browser fallback: the server omits its intermediate certificate. Node refuses that; Chromium fetches the missing certificate from the issuer named in the leaf, which is what every visitor's browser already does.
   },
   {
     id: 'minorityaffairs-schemes',
@@ -150,8 +241,8 @@ export const SOURCES = [
     label: 'DST — INSPIRE scholarship',
     level: 'central',
     maxLinks: 15,
-    enabled: false,
-    disabledReason: 'TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE',
+    enabled: true,
+    // Recovered by the browser fallback: the leaf signature cannot be verified by Node's trust store, but resolves in Chromium.
   },
   {
     id: 'up-scholarship',
@@ -161,8 +252,8 @@ export const SOURCES = [
     level: 'state',
     state: 'Uttar Pradesh',
     maxLinks: 20,
-    enabled: false,
-    disabledReason: 'TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED',
+    enabled: true,
+    // Recovered by the browser fallback: the server requires legacy TLS renegotiation, which Node refuses and Chromium permits.
   },
   {
     id: 'kerala-swd',

@@ -22,6 +22,7 @@
     if (!row) return;
     // Let real controls inside the row handle their own clicks.
     if (e.target.closest('a, button, input, select, label')) return;
+    pageLoaderArm();
     window.location.href = row.getAttribute('data-href');
   });
 
@@ -70,6 +71,10 @@
     var form = e.target;
     if (!form || form.hasAttribute('data-no-progress')) return;
     if (typeof form.checkValidity === 'function' && !form.checkValidity()) return;
+
+    // The page-level indicator as well as the button-level one: a post that
+    // takes seconds should not leave the rest of the page looking live.
+    pageLoaderArm({ skeleton: plFormRefinesThisPage(form) });
 
     var button = form.querySelector('button[type="submit"], button:not([type])');
     if (!button || button.disabled) return;
@@ -323,4 +328,267 @@
       });
     }
   }
+
+  // ------------------------------------------- full-page loading state ----
+  /**
+   * Navigations and posts take real time — a scheme search hits the catalogue,
+   * a batch import chews through a spreadsheet. Without a signal the browser
+   * just sits there and the app reads as broken.
+   *
+   * Everything here is built in JavaScript and appended to the body, so with
+   * scripting off the overlay does not exist at all and there is nothing that
+   * can be left stuck on screen. The button-level spinner above still handles
+   * the form it belongs to; this is the page-level companion to it.
+   */
+  var PL_SHOW_DELAY = 250;    // fast navigations finish before this and never flash
+  var PL_SLOW_AFTER = 15000;  // after this we admit something is wrong
+
+  var plRoot = null;
+  var plSlowNote = null;
+  var plActions = null;
+  var plShowTimer = null;
+  var plSlowTimer = null;
+  var plArmed = false;
+  var plHidden = [];    // real elements we hid behind skeletons
+  var plInserted = [];  // skeleton placeholders we added
+
+  function pageLoaderBuild() {
+    if (plRoot || !document.body) return;
+
+    plRoot = document.createElement('div');
+    plRoot.className = 'page-loader';
+    plRoot.id = 'pageLoader';
+    plRoot.hidden = true;
+    plRoot.setAttribute('aria-hidden', 'true');
+
+    var panel = document.createElement('div');
+    panel.className = 'pl-panel';
+    panel.setAttribute('role', 'status');
+    panel.setAttribute('aria-live', 'polite');
+
+    var badge = document.createElement('div');
+    badge.className = 'pl-badge';
+    var ring = document.createElement('span');
+    ring.className = 'pl-ring';
+    var logo = document.createElement('img');
+    logo.src = '/img/logo.jpeg';
+    logo.alt = '';           // decorative; the status text carries the meaning
+    logo.width = 56;
+    logo.height = 56;
+    badge.appendChild(ring);
+    badge.appendChild(logo);
+
+    var text = document.createElement('p');
+    text.className = 'pl-text';
+    text.textContent = 'Loading…';
+
+    plSlowNote = document.createElement('p');
+    plSlowNote.className = 'pl-slow';
+    plSlowNote.hidden = true;
+    plSlowNote.textContent = 'This is taking longer than usual. It may still arrive — '
+      + 'you can wait, reload, or carry on with the page underneath.';
+
+    plActions = document.createElement('div');
+    plActions.className = 'pl-actions';
+    plActions.hidden = true;
+
+    var reload = document.createElement('button');
+    reload.type = 'button';
+    reload.className = 'pl-btn pl-btn-primary';
+    reload.textContent = 'Reload';
+    reload.addEventListener('click', function () { window.location.reload(); });
+
+    var dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.className = 'pl-btn';
+    dismiss.textContent = 'Hide this';
+    dismiss.addEventListener('click', pageLoaderReset);
+
+    plActions.appendChild(reload);
+    plActions.appendChild(dismiss);
+
+    panel.appendChild(badge);
+    panel.appendChild(text);
+    panel.appendChild(plSlowNote);
+    panel.appendChild(plActions);
+    plRoot.appendChild(panel);
+    document.body.appendChild(plRoot);
+  }
+
+  /** Starts the clock. Nothing is shown yet — see PL_SHOW_DELAY. */
+  function pageLoaderArm(options) {
+    if (plArmed) return;
+    pageLoaderBuild();
+    if (!plRoot) return;
+    plArmed = true;
+    document.documentElement.classList.add('is-navigating');
+    plShowTimer = window.setTimeout(pageLoaderShow, PL_SHOW_DELAY);
+    if (options && options.skeleton) pageSkeletonShow();
+  }
+
+  function pageLoaderShow() {
+    plShowTimer = null;
+    if (!plRoot) return;
+    plRoot.hidden = false;
+    plRoot.setAttribute('aria-hidden', 'false');
+    var reveal = function () { plRoot.classList.add('is-visible'); };
+    if (window.requestAnimationFrame) window.requestAnimationFrame(reveal);
+    else reveal();
+    plSlowTimer = window.setTimeout(pageLoaderSlow, PL_SLOW_AFTER);
+  }
+
+  /** Never spin forever: say so, and offer a way out. */
+  function pageLoaderSlow() {
+    plSlowTimer = null;
+    if (plSlowNote) plSlowNote.hidden = false;
+    if (plActions) plActions.hidden = false;
+  }
+
+  /** Back to rest: timers cleared, overlay gone, skeletons swapped back. */
+  function pageLoaderReset() {
+    if (plShowTimer) window.clearTimeout(plShowTimer);
+    if (plSlowTimer) window.clearTimeout(plSlowTimer);
+    plShowTimer = plSlowTimer = null;
+    plArmed = false;
+    document.documentElement.classList.remove('is-navigating');
+    if (plRoot) {
+      plRoot.classList.remove('is-visible');
+      plRoot.hidden = true;
+      plRoot.setAttribute('aria-hidden', 'true');
+    }
+    if (plSlowNote) plSlowNote.hidden = true;
+    if (plActions) plActions.hidden = true;
+    pageSkeletonRestore();
+  }
+
+  // ------------------------------------------------------ skeleton rows ---
+  /**
+   * When a search or a filter reloads the same list, the results that are
+   * about to be replaced step aside for placeholders. Stale rows sitting under
+   * a loading overlay look like the answer; these do not.
+   *
+   * The originals are hidden, not removed, so dismissing the overlay puts the
+   * page back exactly as it was.
+   */
+  function plSkeletonCard() {
+    var card = document.createElement('div');
+    card.className = 'skeleton-card';
+    card.setAttribute('aria-hidden', 'true');
+    ['w-60', 'w-85', 'w-40'].forEach(function (width) {
+      var line = document.createElement('div');
+      line.className = 'skeleton-line ' + width;
+      card.appendChild(line);
+    });
+    return card;
+  }
+
+  function plSkeletonRow(cells) {
+    var row = document.createElement('tr');
+    row.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < cells; i++) {
+      var cell = document.createElement('td');
+      var line = document.createElement('div');
+      line.className = 'skeleton-line';
+      cell.appendChild(line);
+      row.appendChild(cell);
+    }
+    return row;
+  }
+
+  function pageSkeletonShow() {
+    var scope = document.querySelector('.main-area') || document.body;
+    var cards = Array.prototype.slice.call(scope.querySelectorAll('.scheme-card'));
+    var rows = cards.length
+      ? []
+      : Array.prototype.slice.call(scope.querySelectorAll('table tbody tr'));
+    var real = cards.length ? cards : rows;
+    if (!real.length) return;
+
+    var anchor = real[0];
+    var count = Math.min(real.length, 5);
+    for (var i = 0; i < count; i++) {
+      var placeholder = cards.length
+        ? plSkeletonCard()
+        : plSkeletonRow(anchor.children.length || 3);
+      anchor.parentNode.insertBefore(placeholder, anchor);
+      plInserted.push(placeholder);
+    }
+    real.forEach(function (el) {
+      el.classList.add('skeleton-hidden');
+      plHidden.push(el);
+    });
+  }
+
+  /** True for a GET form that reloads the list already on screen — search, filters. */
+  function plFormRefinesThisPage(form) {
+    var method = (form.getAttribute('method') || 'get').toLowerCase();
+    if (method !== 'get') return false;
+    try {
+      return new URL(form.action, window.location.href).pathname === window.location.pathname;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function pageSkeletonRestore() {
+    plInserted.forEach(function (el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+    plHidden.forEach(function (el) { el.classList.remove('skeleton-hidden'); });
+    plInserted = [];
+    plHidden = [];
+  }
+
+  // ---------------------------------------------------- link navigation ---
+  /**
+   * A same-origin link that really navigates gets the same indicator as a
+   * form post. Everything that does not replace this page is left alone:
+   * external hosts, new tabs, downloads, in-page anchors, and modified clicks
+   * (cmd/ctrl/shift/alt, middle button) which open elsewhere.
+   */
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (!e.target || !e.target.closest) return;
+
+    var link = e.target.closest('a[href]');
+    if (!link) return;
+    if (link.hasAttribute('download')) return;
+    if (link.hasAttribute('data-back')) return;          // history.back(), usually instant
+    if (link.hasAttribute('data-no-progress')) return;
+
+    var target = link.getAttribute('target');
+    if (target && target !== '_self') return;
+
+    var href = link.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#') return;
+    if (/^(mailto|tel|sms|javascript|blob|data):/i.test(href)) return;
+
+    var url;
+    try { url = new URL(link.href, window.location.href); } catch (err) { return; }
+    if (url.origin !== window.location.origin) return;
+    // Served as an attachment: the browser downloads it and this page stays put.
+    if (/\.(csv|json|xlsx|xls|pdf|zip)$/i.test(url.pathname)) return;
+
+    var samePage = url.pathname === window.location.pathname && url.search === window.location.search;
+    if (samePage && url.hash !== window.location.hash) return;  // jump within this page
+
+    pageLoaderArm({ skeleton: url.pathname === window.location.pathname });
+  });
+
+  // ----------------------------------------------------- escape hatches ---
+  // Whatever happens, the overlay is never a trap.
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && plArmed) pageLoaderReset();
+  });
+
+  /**
+   * Dismissed on arrival, and again when the browser hands back a cached page
+   * on back/forward — bfcache restores the DOM exactly as it was left, overlay
+   * included, so without this a "back" would land on a frozen loading screen.
+   */
+  window.addEventListener('pageshow', function () { pageLoaderReset(); });
+  window.addEventListener('load', function () { pageLoaderReset(); });
+
+  pageLoaderBuild();
 })();

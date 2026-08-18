@@ -21,8 +21,60 @@ import { extractAll } from '../lib/extract.js';
 import { toScheme, toListingScheme } from '../lib/normalize.js';
 import { SCHEME_LINK_HINTS, SCHEME_LINK_EXCLUDE } from '../../config/sources.js';
 import { log } from '../lib/log.js';
+import { renderPage, worthRetryingInBrowser } from '../lib/browser.js';
 
 export const id = 'gov-html';
+
+/**
+ * Fetches a page, falling back to a real browser when plain HTTP cannot.
+ *
+ * Several ministries serve a certificate without its intermediate, which Node
+ * refuses and Chromium resolves by fetching the missing certificate — the same
+ * thing every visitor's browser does. Others render their scheme list with
+ * JavaScript, so the HTML arrives empty. Both were being written off as
+ * unscrapeable; neither needs to be.
+ *
+ * A 403, a 404 or a dead host is NOT retried. The browser is not a way around a
+ * refusal, and a second load would only waste the site's bandwidth.
+ */
+async function fetchPage(url, { forceBrowser = false } = {}) {
+  // A source marked browser-only skips the HTTP attempt entirely. For a portal
+  // that renders its scheme list with JavaScript, the plain fetch can only ever
+  // return an empty shell — trying it first costs the site a request and us a
+  // round trip to learn what the config already knows.
+  if (forceBrowser) {
+    const rendered = await renderPage(url);
+    if (rendered.ok) return { res: rendered, via: 'browser' };
+    throw new Error(rendered.error || 'browser could not load the page');
+  }
+
+  let httpError = null;
+  try {
+    const res = await govFetch(url);
+    // A 200 that carries almost no text is a client-rendered shell.
+    if (res.ok && htmlToText(res.body).trim().length >= 400) return { res, via: 'http' };
+    if (res.ok) {
+      log.debug(`    ${url} returned an empty shell — trying a browser`);
+      const rendered = await renderPage(url);
+      if (rendered.ok) return { res: rendered, via: 'browser' };
+      return { res, via: 'http' }; // keep the thin original rather than nothing
+    }
+    httpError = new Error(`HTTP ${res.status}`);
+    httpError.status = res.status;
+  } catch (err) {
+    httpError = err;
+  }
+
+  if (worthRetryingInBrowser(httpError)) {
+    log.debug(`    ${url} failed TLS in Node — trying a browser`);
+    const rendered = await renderPage(url);
+    if (rendered.ok) {
+      log.info(`    recovered ${new URL(url).hostname} with a browser (TLS chain incomplete for Node)`);
+      return { res: rendered, via: 'browser' };
+    }
+  }
+  throw httpError;
+}
 
 function looksLikeScheme(link) {
   if (SCHEME_LINK_EXCLUDE.some((re) => re.test(link.href))) return false;
@@ -109,7 +161,7 @@ export async function discover(source) {
 
   let res;
   try {
-    res = await govFetch(source.url);
+    ({ res } = await fetchPage(source.url, { forceBrowser: source.browser === true }));
   } catch (err) {
     return { candidates: [], error: err.message };
   }
@@ -136,6 +188,8 @@ export async function discover(source) {
       level: source.level,
       state: source.state || null,
       sourceId: source.id,
+      // A portal that needs a browser for its index needs one for its pages.
+      browser: source.browser === true,
     });
   }
 
@@ -182,7 +236,7 @@ function collectSections(html) {
 export async function extract(candidate) {
   let res;
   try {
-    res = await govFetch(candidate.url);
+    ({ res } = await fetchPage(candidate.url, { forceBrowser: candidate.browser === true }));
   } catch (err) {
     return { scheme: null, error: err.message };
   }

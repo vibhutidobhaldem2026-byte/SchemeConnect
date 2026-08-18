@@ -146,7 +146,18 @@ export async function govFetch(rawUrl, options = {}) {
       }
     }
 
-    throw new Error(`Failed after ${MAX_ATTEMPTS} attempts: ${url.href} — ${lastError?.message}`);
+    // Keep the underlying cause code. Node reports a TLS chain problem as a
+    // bare "fetch failed" with the real reason on err.cause, and flattening it
+    // to the message lost the one detail that says whether a browser could get
+    // past it — so a recoverable site looked identical to a dead one.
+    const cause = lastError?.cause?.code ?? lastError?.code ?? null;
+    const failure = new Error(
+      `Failed after ${MAX_ATTEMPTS} attempts: ${url.href} — ${lastError?.message}`
+      + (cause ? ` (${cause})` : '')
+    );
+    failure.cause = lastError?.cause ?? lastError;
+    failure.code = cause;
+    throw failure;
   });
 }
 

@@ -107,7 +107,38 @@ export async function checkRobots(url, userAgent, { timeoutMs = 15000 } = {}) {
         entry = { groups: null, status: res.status, noRules: false, error: `robots.txt HTTP ${res.status} (server error — treating as disallow)` };
       }
     } catch (err) {
-      entry = { groups: null, status: 0, noRules: false, error: `robots.txt fetch failed: ${err.message}` };
+      /**
+       * A robots.txt we cannot fetch is still treated as a disallow — but a TLS
+       * chain Node refuses is not the same as a server refusing us. Several
+       * ministries omit their intermediate certificate, and rejecting their
+       * robots.txt on that basis blocked the whole site before the page was
+       * ever requested. Chromium resolves those chains the way any visitor's
+       * browser does, so the file is fetched again that way and its rules are
+       * applied normally. This reads robots.txt properly; it does not skip it.
+       */
+      const tlsProblem =
+        /UNABLE_TO_GET_ISSUER_CERT|UNABLE_TO_VERIFY_LEAF_SIGNATURE|SELF_SIGNED_CERT|ERR_SSL|LEGACY_RENEGOTIATION|DEPTH_ZERO_SELF_SIGNED/i
+          .test(err.cause?.code || err.message || '');
+
+      entry = null;
+      if (tlsProblem) {
+        try {
+          const { renderPage } = await import('./browser.js');
+          const rendered = await renderPage(robotsUrl, { timeoutMs: 20000 });
+          if (rendered.ok) {
+            // The browser returns the file wrapped in a generated HTML page.
+            const text = String(rendered.body)
+              .replace(/<[^>]+>/g, '')
+              .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+            entry = { groups: parseRobots(text), status: 200, noRules: false, viaBrowser: true };
+          } else if (/HTTP 4/.test(rendered.error ?? '')) {
+            // 4xx means no rules exist, which permits crawling (RFC 9309 2.3.1.3).
+            entry = { groups: [], status: 404, noRules: true, viaBrowser: true };
+          }
+        } catch { /* fall through to the disallow below */ }
+      }
+
+      entry ??= { groups: null, status: 0, noRules: false, error: `robots.txt fetch failed: ${err.message}` };
     }
     entry.fetchedAt = new Date().toISOString();
     cache.set(origin, entry);
