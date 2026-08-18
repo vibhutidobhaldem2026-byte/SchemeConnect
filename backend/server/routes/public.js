@@ -89,7 +89,6 @@ router.get('/', async (req, res) => {
       <header class="landing-header">
         ${raw(logoMark())}
         <nav class="landing-nav" aria-label="Site">
-          <a href="/schemes">Browse schemes</a>
           <a href="/terms">Terms</a>
           <a href="/start" class="landing-login-link">Log in</a>
         </nav>
@@ -108,7 +107,7 @@ router.get('/', async (req, res) => {
           </p>
           <div class="landing-cta-row">
             <a class="landing-cta" href="/start">Check my eligibility</a>
-            <a class="landing-cta-alt" href="/schemes">Browse all schemes</a>
+            <a class="landing-cta-alt" href="/terms">How we check our sources</a>
           </div>
           <p class="landing-subcta">
             Free, and always will be. No password — we send a one-time code. You can browse the whole
@@ -160,19 +159,21 @@ router.get('/', async (req, res) => {
                 which has not been run yet. Run <span class="mono">npm run scrape</span> to populate it. Nothing on
                 this site is hand-authored, so until then there is nothing to show.`)
             : html`
-              <h2 class="landing-h2">A few schemes in the catalogue</h2>
-              <p class="landing-sub">Open any of them to read the eligibility rules and the source they came from.</p>
+              <h2 class="landing-h2">A few of the schemes we cover</h2>
+              <p class="landing-sub">
+                The catalogue opens once you have answered the six questions, so every scheme arrives with
+                a plain assessment of whether you qualify rather than as a list to read through yourself.</p>
               <div class="teaser-grid">
                 ${raw(fallback.map((s) => html`
-                  <a class="teaser-card" href="/schemes/${s.id}">
+                  <div class="teaser-card teaser-card-static">
                     <div class="sc-name">${s.name}</div>
                     ${raw(s.benefitText
                       ? html`<span class="sc-amount">${s.benefitText}</span>`
                       : '<span class="sc-amount sc-amount-muted">See official page</span>')}
-                    <span class="teaser-lock">Read the criteria and their sources →</span>
-                  </a>`).join(''))}
+                  </div>`).join(''))}
               </div>
-              <p class="landing-more"><a href="/schemes">See all ${meta.total} schemes</a></p>`)}
+              <p class="landing-more">
+                <a class="btn-primary btn-inline" href="/start">Check what I qualify for</a></p>`)}
         </section>
 
         <section class="landing-section landing-section-alt">
@@ -223,7 +224,6 @@ router.get('/', async (req, res) => {
                with any government department.</p>
           </div>
           <nav class="lf-links" aria-label="Footer">
-            <a href="/schemes">All schemes</a>
             <a href="/start">Log in or sign up</a>
             <a href="/terms">Terms &amp; conditions</a>
             <a href="mailto:support@schemeconnect.com">support@schemeconnect.com</a>
@@ -285,6 +285,20 @@ router.get('/terms', (req, res) => {
 });
 
 // ----------------------------------------------------- public catalogue ----
+
+/**
+ * The catalogue requires an account.
+ *
+ * This reverses the progressive profiling in PRD 2.1, which had a student
+ * reaching results without signing up first. It is a deliberate product
+ * decision: scheme data is only useful alongside an eligibility assessment, and
+ * a list nobody is matched against invites exactly the misreading the two-tier
+ * catalogue exists to prevent — that an absent scheme means you do not qualify.
+ */
+router.get('/schemes', async (req, res, next) => {
+  if (!req.user) return res.redirect('/start');
+  next();
+});
 
 router.get('/schemes', async (req, res) => {
   const meta = await catalogMeta();

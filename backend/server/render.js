@@ -156,7 +156,6 @@ export function publicNav(active) {
   return html`
     <nav class="side-nav" aria-label="Navigation">
       ${raw(logoMark('/'))}
-      ${raw(navItem({ key: 'browse', label: 'All schemes', href: '/schemes', active }))}
       ${raw(navItem({ key: 'login', label: 'Log in', href: '/start', active }))}
       <div class="nav-spacer"></div>
       ${raw(navItem({ key: 'terms', label: 'Terms', href: '/terms', active }))}

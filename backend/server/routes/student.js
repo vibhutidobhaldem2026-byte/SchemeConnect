@@ -45,14 +45,24 @@ const LINK_LABEL = {
  * scoped to the paths it owns rather than applied to every request that
  * reaches it — otherwise it would intercept /ops, static files and 404s.
  *
- * /schemes/:id is deliberately absent: scheme detail is readable without an
- * account, per the PRD's progressive-profiling principle.
+ * /schemes/:id is guarded too. It was readable signed-out, per the PRD's
+ * progressive-profiling principle, but a scheme page without an assessment
+ * beside it is the thing most likely to be misread: a student sees criteria and
+ * decides for herself whether she qualifies, which is precisely the judgement
+ * the matcher exists to make explicit.
  */
-const STUDENT_ONLY = ['/onboarding', '/dashboard', '/saved', '/applied', '/profile', '/verify-documents'];
+const STUDENT_ONLY = [
+  '/onboarding', '/dashboard', '/saved', '/applied', '/profile',
+  '/verify-documents', '/schemes',
+];
 
 function requireStudent(req, res, next) {
   if (!req.user) return res.redirect('/start');
-  if (req.user.role !== 'student') return res.redirect('/institute');
+  // A coordinator opening a scheme link should see the scheme, not be bounced
+  // to their dashboard; only the student-specific screens are theirs alone.
+  if (req.user.role !== 'student' && !req.path.startsWith('/schemes')) {
+    return res.redirect('/institute');
+  }
   next();
 }
 router.use(STUDENT_ONLY, requireStudent);

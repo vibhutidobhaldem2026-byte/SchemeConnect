@@ -585,6 +585,29 @@ try {
     check('a student cannot open the correction screens', res.status === 404, `got ${res.status}`);
   }
 
+  {
+    // The catalogue requires an account. This reverses the progressive
+    // profiling in PRD 2.1, deliberately: a scheme page with no assessment
+    // beside it invites a student to judge her own eligibility, which is the
+    // judgement the matcher exists to make explicit.
+    const anon = makeClient();
+    const list = await anon.get('/schemes');
+    check('browsing the catalogue signed out redirects to sign-in',
+      list.status === 302 && list.location === '/start',
+      `${list.status} ${list.location ?? ''}`);
+
+    const someScheme = await one('select id from schemes where retired_at is null limit 1');
+    const detail = await anon.get(`/schemes/${someScheme.id}`);
+    check('a scheme page signed out redirects to sign-in',
+      detail.status === 302 && detail.location === '/start',
+      `${detail.status} ${detail.location ?? ''}`);
+
+    const landing = await anon.get('/');
+    check('the landing page no longer offers browsing',
+      !/href="\/schemes"/.test(landing.text));
+    check('the landing page still renders', landing.status === 200 && landing.text.length > 3000);
+  }
+
   // ------------------------------------------------------- link health ----
   // "Every result links to the scheme's official government page, with a
   // verified badge" is the top-rated need in the feature list. Checking the
@@ -599,7 +622,7 @@ try {
       "select id from schemes where apply_url_status in ('ok','redirected') and retired_at is null limit 1");
 
     if (broken) {
-      const page = await makeClient().get(`/schemes/${broken.id}`);
+      const page = await student.get(`/schemes/${broken.id}`);
       check('a dead link is called out on the scheme page',
         /official page is not responding/i.test(page.text));
       check('the button stops claiming the application is there',
@@ -610,7 +633,7 @@ try {
     }
 
     if (working) {
-      const page = await makeClient().get(`/schemes/${working.id}`);
+      const page = await student.get(`/schemes/${working.id}`);
       check('a working link still reads as the primary action',
         /Continue to official application/.test(page.text)
           && !/official page is not responding/i.test(page.text));
@@ -626,7 +649,7 @@ try {
     const forbidden = await one(
       "select id from schemes where apply_url_status = 'forbidden' and retired_at is null limit 1");
     if (forbidden) {
-      const page = await makeClient().get(`/schemes/${forbidden.id}`);
+      const page = await student.get(`/schemes/${forbidden.id}`);
       check('a link that merely blocks bots is not called broken',
         !/official page is not responding/i.test(page.text));
     }
@@ -640,10 +663,11 @@ try {
   console.log('\n  Interaction survives the CSP');
 
   {
-    const pages = ['/', '/start', '/login?role=student', '/schemes', '/terms'];
+    // /schemes needs an account now, so it is checked with a signed-in client.
+    const pages = ['/', '/start', '/login?role=student', '/terms'];
     const offenders = [];
-    for (const url of pages) {
-      const { text } = await makeClient().get(url);
+    for (const url of [...pages, '/schemes']) {
+      const { text } = await (url === '/schemes' ? student : makeClient()).get(url);
       if (/\son[a-z]+\s*=\s*["']/i.test(text)) offenders.push(`${url} (inline handler)`);
       if (/href\s*=\s*["']javascript:/i.test(text)) offenders.push(`${url} (javascript: URL)`);
     }
