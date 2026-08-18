@@ -23,11 +23,15 @@
     "test:e2e": "node scripts/test-e2e.js",
     "test:all": "npm test && npm run check:matching && npm run test:e2e",
     "setup": "npm run migrate && npm run import:catalog",
-    "check:links": "node scripts/check-links.js"
+    "check:links": "node scripts/check-links.js",
+    "scrape:review": "node scraper/run.js --no-publish --verbose"
   },
   "dependencies": {
     "express": "^4.21.2",
     "nodemailer": "^9.0.5",
     "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
   }
 }

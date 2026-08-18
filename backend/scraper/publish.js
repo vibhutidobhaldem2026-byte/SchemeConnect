@@ -18,6 +18,12 @@
 
 import { transaction, one, valuesList, chunk } from '../server/db.js';
 
+/**
+ * A run must find at least this share of what is currently live before it is
+ * allowed to retire anything. Below it, the run is treated as incomplete.
+ */
+const RETIREMENT_FLOOR = 0.6;
+
 /** Opens a run row. Everything a crawl writes is stamped with its id. */
 export async function startRun(note = null) {
   const row = await one(
@@ -57,6 +63,26 @@ function detailLevelFor(scheme) {
  */
 export async function publish({ runId, schemes, sources = [] }) {
   return transaction(async (client) => {
+    // Sources first. A scheme carries a foreign key to the source it came from,
+    // so a newly configured source has to exist before its schemes can land —
+    // otherwise the whole run rolls back on a constraint violation, which is
+    // exactly what happened the first time myScheme was added.
+    for (const src of sources) {
+      if (!src.id || !src.url) continue;
+      let domain = null;
+      try { domain = new URL(src.url).hostname; } catch { /* keep null */ }
+      await client.query(
+        `insert into sources (id, url, domain, adapter, level, state, enabled, note)
+         values ($1, $2, $3, $4, $5, $6, $7, $8)
+         on conflict (id) do update
+           set url = excluded.url, domain = excluded.domain, adapter = excluded.adapter,
+               level = excluded.level, state = excluded.state, enabled = excluded.enabled`,
+        [src.id, src.url, domain ?? 'unknown', src.adapter ?? 'unknown',
+         src.level === 'state' ? 'state' : 'central', src.state ?? null,
+         src.enabled !== false, src.label ?? null]
+      );
+    }
+
     let full = 0;
     let listing = 0;
 
@@ -146,17 +172,33 @@ export async function publish({ runId, schemes, sources = [] }) {
       );
     }
 
-    // Retired, not deleted — a student may have saved it, and stored batch
-    // matches reference its id. It stops being offered as current, and the
-    // detail page can say when we last saw it on a government site.
-    const { rows: retired } = await client.query(
-      `update schemes set retired_at = now()
-        where last_seen_run is distinct from $1 and retired_at is null
-        returning id`,
-      [runId]
-    );
+    /**
+     * Retire what this run no longer found — but only if the run looks complete.
+     *
+     * A crawl that dies halfway is indistinguishable, at this point, from one
+     * where every source genuinely emptied out. Trusting it cost us the
+     * catalogue once: an interrupted run published 33 schemes and retired 124
+     * good ones as "no longer found at their source". A run that returns a
+     * small fraction of what was live is far more likely to be broken than the
+     * government to have withdrawn most of its scholarships.
+     */
+    const { rows: [before] } = await client.query(
+      'select count(*)::int as n from schemes where retired_at is null');
+    const floor = Math.floor(before.n * RETIREMENT_FLOOR);
+    const complete = schemes.length >= floor;
+
+    let retired = [];
+    if (complete) {
+      ({ rows: retired } = await client.query(
+        `update schemes set retired_at = now()
+          where last_seen_run is distinct from $1 and retired_at is null
+          returning id`,
+        [runId]
+      ));
+    }
 
     for (const src of sources) {
+      if (!src.id) continue;
       await client.query(
         `update sources
             set last_status = $2, last_error = $3, last_fetch_at = now()
@@ -165,7 +207,13 @@ export async function publish({ runId, schemes, sources = [] }) {
       );
     }
 
-    return { full, listing, retired: retired.length };
+    return {
+      full,
+      listing,
+      retired: retired.length,
+      // The caller warns loudly rather than silently skipping the sweep.
+      retirementSkipped: complete ? null : { found: schemes.length, wasLive: before.n },
+    };
   });
 }
 

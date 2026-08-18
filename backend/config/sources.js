@@ -15,13 +15,35 @@
 export const SOURCES = [
   // ---------------------------------------------------------------- enabled --
   {
+    id: 'myscheme',
+    adapter: 'myscheme',
+    url: 'https://www.myscheme.gov.in/search',
+    label: 'myScheme — Government of India scheme directory',
+    level: 'central',
+    maxLinks: 300,
+    enabled: true,
+    // The ministry sites publish a scheme once and let the page rot; of 123
+    // links harvested that way only 17 still resolved. This directory is
+    // maintained, states eligibility as discrete sentences, and its pages stay
+    // up — so the link we hand a student keeps working. It renders client-side,
+    // so this source is read with a browser; robots.txt allows it outright.
+  },
+  {
     id: 'dbt-central-schemes',
     adapter: 'gov-html',
     url: 'https://dbtbharat.gov.in/central-scheme/list',
     label: 'DBT Bharat — central scheme list',
     level: 'central',
     maxLinks: 60,
-    enabled: true,
+    enabled: false,
+    disabledReason:
+      'An index of all 320 central DBT schemes across 56 ministries, most of them '
+      + 'nothing to do with students, and its links are not maintained. Of the schemes '
+      + 'it produced, 9 in 123 carried readable criteria and only 15 links still '
+      + 'resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one '
+      + 'having lost its DNS record entirely. myScheme covers the same central schemes '
+      + 'from a directory somebody maintains: every page it gave us had criteria, and '
+      + 'every link worked.',
   },
   {
     id: 'nsp-home',
@@ -129,7 +151,7 @@ export const SOURCES = [
     level: 'central',
     maxLinks: 30,
     enabled: false,
-    disabledReason: 'HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA',
+    disabledReason: 'HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it.',
   },
   {
     id: 'dsel-schemes',
@@ -139,7 +161,7 @@ export const SOURCES = [
     level: 'central',
     maxLinks: 25,
     enabled: false,
-    disabledReason: 'HTTP 403 — edge blocks non-browser agents',
+    disabledReason: 'HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block.',
   },
 
   // NOTE: AICTE (aicte-india.org) reachable and rich, but deliberately excluded:

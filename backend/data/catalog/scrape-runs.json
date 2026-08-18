@@ -1,5 +1,1245 @@
 [
   {
+    "startedAt": "2026-08-18T21:35:27.190Z",
+    "finishedAt": "2026-08-18T21:43:23.016Z",
+    "durationSec": 476,
+    "sourcesCrawled": [
+      "myscheme",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "assam-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 261,
+    "schemesKept": 33,
+    "rejectedCount": 249,
+    "rejected": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dssmp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Divyangjan Scholarship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ef",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/afs-sc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/senior-fellowship",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/serbpowerf",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ai-rtf",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jcbs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/k-biref",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tgarfs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pdf",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nssfp",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssst-pts",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hssm",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/slg",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bhsstg",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sspftdp",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssscsitipcsvs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/steu",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sspftsc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/wcbpls",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gsjas",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mhvs-hte",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vep",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aaelss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aejkbocwwb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/issoel",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pfjkbocwwb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fae-gbocwwb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sejkbocwwb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/easukbocwwb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sipocagi",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/saesc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bsccs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sr",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/spuac",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sak-dip",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sak-deg",
+        "reason": "page text too short (0 chars)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sws",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/wbsccs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mukhopadhyaystudentfunduk",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsstpmss-2",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/oecp-mea",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tukpmsst",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsscpgeuho",
+        "reason": "page text too short (0 chars)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmrs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmyasasvipmsobcebcdnts",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsbcpmss-3",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pre-sc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssobcd",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tukpmsfst",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsbcpmss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/apmsscs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsstpmss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsvs-maharashtra",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/postmsobcandebc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nsms",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/smsuggs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/css-umscs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/macuk",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmms",
+        "reason": "render failed: browserContext.close: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> /Users/kunalll/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-dev-shm-usage --user-data-dir=/var/folders/hb/1r89j_gj6zn7g9pc3h2c649c0000gn/T/playwright_chromiumdev_profile-7G04pq --remote-debugging-pipe --no-startup-window\n<launched> pid=73098\n[pid=73098][err] [0819/030528.856846:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030530.426149:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030530.426201:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030540.727349:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030541.290745:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030544.366562:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030550.291050:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030550.649082:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030553.811358:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030559.706084:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030600.031011:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030603.137893:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030609.037525:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030609.357047:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030612.465454:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030618.386785:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030618.629916:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030621.778724:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030627.750851:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030627.997008:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030631.107908:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030637.005742:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030637.306776:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030640.420099:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030646.392412:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030646.694565:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030649.825970:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030655.726786:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030656.029681:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030659.140494:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030705.053436:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030705.327031:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030708.454533:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030714.415193:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030714.678595:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030717.876184:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030723.855840:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030724.095509:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030727.317223:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030733.284816:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030733.541546:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030736.748786:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030742.723406:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030742.978164:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030746.091244:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030751.986397:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030752.294772:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030755.420531:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030801.339668:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030801.677897:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030804.784168:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030810.701238:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030811.001886:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030814.109492:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030820.017083:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030820.280816:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030823.413699:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030829.387108:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030829.626717:INFO:CONSOLE:9] \"Uncaught Error: Minified React error #329; visit https://reactjs.org/docs/error-decoder.html?invariant=329 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030832.753594:INFO:CONSOLE:0] \"The resource https://www.googletagmanager.com/gtag/js?id=G-7FQS7HXV04 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.\", source: https://aistore.myscheme.in/6t4rIofAaIAEgu2P9lmtD?isEmbed=true (0)\n[pid=73098][err] [0819/030839.403765:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030839.949471:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030839.949508:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030844.049986:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030844.473400:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030844.473437:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030845.333335:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/shs?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030845.335157:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/shs?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030848.858253:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030849.282548:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030849.282581:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030849.948148:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/des-sdspdpgc?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030849.952511:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/des-sdspdpgc?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030853.428221:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030853.848631:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030853.848672:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030854.696189:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/nsych?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030854.698242:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/nsych?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030858.226038:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030858.621562:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030858.621598:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030859.575533:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/dssmp?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030859.577601:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/dssmp?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030903.068588:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030903.501428:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030903.501465:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030907.570093:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030907.977664:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030907.977700:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030911.806322:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030912.219681:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030912.219719:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030913.090528:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/sfgcs?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030913.092187:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/sfgcs?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/030916.627492:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030917.050092:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030917.050136:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030921.070538:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/030921.514106:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/030921.514142:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031040.673900:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031041.360706:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031041.360747:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031042.125873:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/fesg?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031042.128243:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/fesg?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031135.092722:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031135.194185:INFO:CONSOLE:0] \"Access to XMLHttpRequest at 'https://api.myscheme.gov.in/schemes/v6/public/schemes?slug=sak-deg&lang=en' from origin 'https://www.myscheme.gov.in' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.\", source: https://www.myscheme.gov.in/schemes/sak-deg (0)\n[pid=73098][err] [0819/031135.194570:INFO:CONSOLE:1] \"Error fetching scheme data: Error: Network Error\", source: https://cdn.myscheme.in/_next/static/chunks/pages/schemes/%5Bslug%5D-e3ed95a1bb1f9ccc.js (1)\n[pid=73098][err] [0819/031135.649079:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031135.649122:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031153.460480:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031153.973394:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031153.973433:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031154.956869:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/jsscpmss-1?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031154.960447:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/jsscpmss-1?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031205.626180:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031205.749389:INFO:CONSOLE:0] \"Access to XMLHttpRequest at 'https://api.myscheme.gov.in/schemes/v6/public/schemes?slug=pmsscpgeuho&lang=en' from origin 'https://www.myscheme.gov.in' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.\", source: https://www.myscheme.gov.in/schemes/pmsscpgeuho (0)\n[pid=73098][err] [0819/031205.749586:INFO:CONSOLE:1] \"Error fetching scheme data: Error: Network Error\", source: https://cdn.myscheme.in/_next/static/chunks/pages/schemes/%5Bslug%5D-e3ed95a1bb1f9ccc.js (1)\n[pid=73098][err] [0819/031206.240574:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031206.240629:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031245.362508:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031245.932184:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031245.932222:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031246.749462:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/jscpmss?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031246.752992:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/jscpmss?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031257.488802:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031258.042114:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031258.042155:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031258.911945:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/post-dis?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031258.914121:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/post-dis?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031320.042461:INFO:CONSOLE:1] \"[Language Font] Using default font for language: en\", source: https://cdn.myscheme.in/_next/static/chunks/pages/_app-4f2569eaca7d749f.js (1)\n[pid=73098][err] [0819/031320.562142:INFO:CONSOLE:9] \"Error: <svg> attribute height: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031320.562194:INFO:CONSOLE:9] \"Error: <svg> attribute width: Expected length, \"undefined\".\", source: https://cdngovai.myscheme.in/_next/static/chunks/fd9d1056-b517228ed4e0da70.js (9)\n[pid=73098][err] [0819/031321.385053:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/pmms?source=myscheme&theme=light (0)\n[pid=73098][err] [0819/031321.388340:INFO:CONSOLE:0] \"The Content-Security-Policy directive name ''unsafe-inline'' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.\", source: https://rules.myscheme.gov.in/en/check-eligibility/pmms?source=myscheme&theme=light (0)\n[pid=73098] <gracefully close start>"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mbssds",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ma-maha",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ascrncaeaonima",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mbarhpbe",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/cmgcpsii",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sjpfsgc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pg-igssgc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/edssgc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fagcaha18",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/svsgcfrss",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fimdgc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/msssgc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/stgca",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/scgca",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssfm",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hpms",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssmc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/msesu",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hmcms",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/cmossm",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/seloanwomen",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tlscl2mc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmcup",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsfssd",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ais-sc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sgscs",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gbsysc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/premsc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsscstb",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsfss",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pgspcscstc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/stssts",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/css-nos-st",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rphdsscsts",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/edsc-st-wistem",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/smssssictpi",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/smstomsssfc",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sgsts",
+        "reason": "render failed: browser.newContext: Target page, context or browser has been closed"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:43:22.271Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-18T21:18:28.984Z",
+    "finishedAt": "2026-08-18T21:27:51.167Z",
+    "durationSec": 562,
+    "sourcesCrawled": [
+      "myscheme",
+      "dbt-central-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "assam-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 211,
+    "schemesKept": 155,
+    "rejectedCount": 235,
+    "rejected": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dssmp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Divyangjan Scholarship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ef",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Emeritus Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/serbpowerf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "SERB - POWER Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ai-rtf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "ASEAN-India Research Training Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jcbs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "J.C. Bose Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tgarfs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "The Goa Archaeological Research Fellowship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nssfp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Solar Science Fellowship Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssst-pts",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Scheduled Tribes - Poultry Training Stipend"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hssm",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Handicapped Students Stipend Mizoram"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/steu",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend to Educated Unemployed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sspftsc",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Poultry Farming Training For Schedule Caste"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mhvs-hte",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Mukhyamantri Hunar Vikas Yojana- Higher Education/Technical Education"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vep",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Vocational Education Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aaelss",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Assam Abhinandan Education Loan Subsidy Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aejkbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Academic Education (JKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pfjkbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Professional Education (PEJKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fae-gbocwwb",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Financial Assistance for Education (GBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sejkbocwwb",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Schooling Education (JKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/easukbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Son/Daughter Education Assistance (UKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sipocagi",
+        "reason": "name does not look like a scheme",
+        "name": "Student Internship Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/saesc",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "State Art Exhibition (Student Category)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bsccs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Bihar Student Credit Card Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/spuac",
+        "reason": "name does not look like a scheme",
+        "name": "Student Program Under AcSIR"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mukhopadhyaystudentfunduk",
+        "reason": "name does not look like a scheme",
+        "name": "Dr. A.N. Mukhopadhyay Needy Student Fund (B.Sc. Agriculture - Final Year Student)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/oecp-mea",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tukpmsst",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsscpgeuho",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmrs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmyasasvipmsobcebcdnts",
+        "reason": "page text too short (0 chars)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsbcpmss-3",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pre-sc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssobcd",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tukpmsfst",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsbcpmss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/apmsscs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jsstpmss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmssb",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jscpmss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsvs-maharashtra",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/post-dis",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/smsuggs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/css-umscs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/macuk",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmms",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mbssds",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ma-maha",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ascrncaeaonima",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "DBT Schemes",
+        "reason": "listing: looks like a navigation page, not a scheme; not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "[ 320 Schemes from 56 Ministries ]",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Krishi Unnati Yojana (KUY)-MOVCDNER",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "MODIFIED INTEREST SUBVENTION SCHEME",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Deen Dayal Disabled Rehabilitation Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Fertilizer Subsidy Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Atal Pension Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Varishtha Pension Bima Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Vaya Vandana Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Matsya Sampada Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Janani suraksha yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Family Planning Compensation schemes",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB-PMJAY)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Swatantrata sainik samman pension scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Central Scheme for Assistance to Civilian Victims (CSACV)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pardhan Mantri Bhartiya Jan Aushadhi Pariyojana (PMBJP)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Indira Gandhi National Old Age Pension Scheme- IGNOAPS",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Indira Gandhi National Widow Pension Scheme-IGNWPS",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Indira Gandhi National Disability Pension Scheme-IGNDPS",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "National Family Benefit Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Atal Vayo Abhyuday Yojana (AVYAY)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "PM DAKSH Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme for Economic Empowerment of DNTs (SEED)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme for Human Resource Development in Sports",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Coal Mines Pension Scheme-1998",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Prime Minister Internship Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme for Financial Assistance for Veteran Artist",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Visvesvaraya PhD Scheme for Electronics and IT Phase II",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Demand Incentive Delivery Mechanism under FAME India Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Deendayal Jan Aajeevika Yojana-Shehari",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Journalist Welfare Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Employees Pension Scheme for EPF Pensioners",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Rehabilitation Assistance under the Scheme of Rehabilitation of Bonded Labour",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Revised Integrated Housing Scheme (RIHS)-2016 for Beedi, IOMC,LSDM,CINE Workes",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Family Pension-cum-Life Assurance and Deposit Linked Insurance Schemes for the Plantation Workers in Assam",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Employees Pension Scheme for EPF Members",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "National Pension Scheme for Traders and Self Employed Persons [erstwhile Pradhan Mantri Laghu Vyapari Maan-dhan (PM-LVM) Yojana]",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "PM Viksit Bharat Rozgar Yojana - Part A",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "PM Viksit Bharat Rozgar Yojana - Part B",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "IC Schemes",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Coir Vikas Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme for containing population decline of small minority community",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "PM-SURYA GHAR MUFT BIJLI YOJANA",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Ujjwala Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Kaushal Vikas Yojana",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Powerloom Group Workshed Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme for Development of Silk Industry",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Samarth Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Raw Material Supply Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Pradhan Mantri Credit Scheme for Powerloom Weavers",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme of Development of Particularly Vulnerable Tribal Groups",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "Scheme of Grant in Aid to Voluntary Organizations working for welfare of STs",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://tribal.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:25:41.753Z"
+      },
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:25:41.851Z"
+      },
+      {
+        "origin": "https://csacv.mha.gov.in",
+        "status": 500,
+        "hasRules": false,
+        "error": "robots.txt HTTP 500 (server error — treating as disallow)",
+        "fetchedAt": "2026-08-18T21:25:42.091Z"
+      },
+      {
+        "origin": "https://nhm.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:25:52.455Z"
+      },
+      {
+        "origin": "https://labour.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:25:52.926Z"
+      },
+      {
+        "origin": "https://cdn.ayush.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:25:55.383Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:25:55.908Z"
+      },
+      {
+        "origin": "https://overseas.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:25:59.967Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:00.104Z"
+      },
+      {
+        "origin": "https://www.pmjay.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:10.600Z"
+      },
+      {
+        "origin": "https://main.icmr.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:10.785Z"
+      },
+      {
+        "origin": "https://samagra.education.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:21.138Z"
+      },
+      {
+        "origin": "https://online-inspire.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:21.370Z"
+      },
+      {
+        "origin": "https://portal.mhrdnats.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:31.678Z"
+      },
+      {
+        "origin": "https://www.pmsuryaghar.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:26:31.811Z"
+      },
+      {
+        "origin": "https://pmuy.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:32.804Z"
+      },
+      {
+        "origin": "https://fellowship.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:33.043Z"
+      },
+      {
+        "origin": "https://pmmvy-cas.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:33.227Z"
+      },
+      {
+        "origin": "https://fert.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:33.376Z"
+      },
+      {
+        "origin": "https://www.mha.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:26:33.537Z"
+      },
+      {
+        "origin": "https://nsap.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:33.756Z"
+      },
+      {
+        "origin": "https://pmdaksh.dosje.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:43.801Z"
+      },
+      {
+        "origin": "https://dbtyas-sports.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:44.199Z"
+      },
+      {
+        "origin": "https://dbtbharat.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:26:44.735Z"
+      },
+      {
+        "origin": "https://fame2.heavyindustries.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:26:55.311Z"
+      },
+      {
+        "origin": "https://ic.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:05.860Z"
+      },
+      {
+        "origin": "https://ati.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:16.392Z"
+      },
+      {
+        "origin": "https://grants.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:26.933Z"
+      },
+      {
+        "origin": "https://www.sag-rrs.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:27.034Z"
+      },
+      {
+        "origin": "https://dahd.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:27.207Z"
+      },
+      {
+        "origin": "https://nskfdc.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:37.439Z"
+      },
+      {
+        "origin": "https://www.dbtyas-youth.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T21:27:47.996Z"
+      },
+      {
+        "origin": "https://www.moes.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T21:27:48.256Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
     "startedAt": "2026-08-18T18:23:51.760Z",
     "finishedAt": "2026-08-18T18:26:00.300Z",
     "durationSec": 129,

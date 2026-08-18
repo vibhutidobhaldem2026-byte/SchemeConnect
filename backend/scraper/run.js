@@ -26,6 +26,7 @@ import { STATES } from './lib/extract.js';
 import { log } from './lib/log.js';
 import govHtml, { nspAdapter } from './adapters/govHtml.js';
 import govPdf from './adapters/govPdf.js';
+import * as myScheme from './adapters/myScheme.js';
 import { startRun, finishRun, publish, existingSchemeCount } from './publish.js';
 import { close as closeDb, isConfigured } from '../server/db.js';
 
@@ -37,6 +38,7 @@ try {
 }
 
 const ADAPTERS = {
+  'myscheme': myScheme,
   'gov-html': govHtml,
   'nsp-html': nspAdapter,
   'gov-pdf': govPdf,
@@ -48,6 +50,7 @@ function parseArgs(argv) {
     const a = argv[i];
     if (a === '--dry-run') args.dryRun = true;
     else if (a === '--report-only') args.reportOnly = true;
+    else if (a === '--no-publish') args.noPublish = true;
     else if (a === '--no-cache') args.useCache = false;
     else if (a === '--source') args.source = argv[++i];
     else if (a === '--limit') args.limit = Number(argv[++i]);
@@ -278,7 +281,16 @@ async function main() {
       log.blank();
       log.warn(`Crawl produced 0 schemes — keeping the published catalogue of ${inDb}.`);
       log.warn('The site will show these as stale rather than showing nothing.');
-      const runId = (await startRun('scrape')).id;
+      if (args.noPublish) {
+    log.blank();
+    log.warn('--no-publish: the database was NOT touched.');
+    log.warn('The crawl is in data/catalog/schemes.json. Review it, then load it with:');
+    log.warn('  npm run import:catalog');
+    log.blank();
+    return;
+  }
+
+  const runId = (await startRun('scrape')).id;
       await finishRun(runId, { ok: false, stats: runEntry, rejections: [{ error: 'crawl produced 0 schemes' }] });
       await appendRunLog({ ...runEntry, outcome: 'kept-previous-catalog' });
       return;
@@ -324,13 +336,22 @@ async function main() {
     return;
   }
 
+  if (args.noPublish) {
+    log.blank();
+    log.warn('--no-publish: the database was NOT touched.');
+    log.warn('The crawl is in data/catalog/schemes.json. Review it, then load it with:');
+    log.warn('  npm run import:catalog');
+    log.blank();
+    return;
+  }
+
   const runId = (await startRun('scrape')).id;
   try {
     const published = await publish({
       runId,
       schemes,
       sources: sources.map((src) => ({
-        id: src.id,
+        ...src,
         status: src.error ? 'error' : 'ok',
         error: src.error ?? null,
       })),
@@ -341,6 +362,12 @@ async function main() {
       + `(${published.full} matchable, ${published.listing} listing-only)`);
     if (published.retired) {
       log.warn(`${published.retired} scheme(s) no longer found at their source — retired, not deleted.`);
+    }
+    if (published.retirementSkipped) {
+      const { found, wasLive } = published.retirementSkipped;
+      log.warn(`Retirement sweep SKIPPED: this run found ${found} schemes against ${wasLive} live.`);
+      log.warn('That looks like an interrupted or broken crawl rather than schemes being');
+      log.warn('withdrawn, so nothing was retired. Fix the run and scrape again.');
     }
   } catch (err) {
     await finishRun(runId, { ok: false, stats: runEntry, rejections: [{ error: err.message }] });
@@ -354,4 +381,7 @@ main()
     log.error(err.stack || err.message);
     process.exitCode = 1;
   })
-  .finally(() => closeDb());
+  .finally(async () => {
+    await myScheme.close();
+    await closeDb();
+  });
