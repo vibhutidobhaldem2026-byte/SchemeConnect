@@ -11,6 +11,7 @@
 import express from 'express';
 import { html, raw, layout, logoMark, notice } from '../render.js';
 import * as store from '../store.js';
+import { MIN_PASSWORD_LENGTH } from '../store.js';
 import { TERMS_VERSION } from '../terms.js';
 import { sendOtpEmail, isEmailConfigured, senderAddress } from '../mailer.js';
 import { rateLimited, clientIp, sessionCookie } from '../security.js';
@@ -18,6 +19,43 @@ import { rateLimited, clientIp, sessionCookie } from '../security.js';
 export const router = express.Router();
 
 const cookieOptions = (req) => sessionCookie({ production: req.app.get('production') });
+
+/**
+ * How people sign in.
+ *
+ * 'otp' is what the PRD and the approved wireframes specify and stays the
+ * default. It needs a deployment that can actually send mail, which not every
+ * host allows — Render blocks outbound SMTP on free instances, and an email API
+ * will only send to arbitrary recipients from a verified domain. 'password'
+ * exists so the product still works where neither is available.
+ */
+export const authMode = () =>
+  process.env.AUTH_MODE === 'password' ? 'password' : 'otp';
+
+/**
+ * Repeated wrong passwords are throttled the same way OTP issuance is.
+ *
+ * Only in password mode. This middleware sits on the first matching /login
+ * route, so without the guard it also ran for OTP sign-in — where its lower
+ * limit quietly became the effective cap instead of the OTP one.
+ */
+const passwordThrottle = rateLimited({
+  name: 'login',
+  limit: 10,
+  windowMinutes: 15,
+  keys: (req) => [
+    `id:${normaliseIdentifier(req.body?.role, req.body?.identifier) ?? 'invalid'}`,
+    `ip:${clientIp(req)}`,
+  ],
+  onBlocked: (req, res) => {
+    const role = req.body?.role === 'institute' ? 'institute' : 'student';
+    res.redirect(429, `/login?role=${role}&error=${encodeURIComponent(
+      'Too many sign-in attempts. Wait a few minutes and try again.')}`);
+  },
+});
+
+const throttleLogin = (req, res, next) =>
+  (authMode() === 'password' ? passwordThrottle(req, res, next) : next());
 
 /**
  * OTP issuance is throttled per contact and per IP.
@@ -173,6 +211,7 @@ router.get('/login', (req, res) => {
   const role = req.query.role === 'institute' ? 'institute' : 'student';
   const error = req.query.error;
   const student = role === 'student';
+  const passwordMode = authMode() === 'password';
 
   res.send(layout({
     title: 'Log in or sign up',
@@ -183,20 +222,24 @@ router.get('/login', (req, res) => {
           ${raw(logoMark())}
           <div class="eyebrow">${student ? 'For students' : 'For institutions'}</div>
           <h1 class="headline">Log in or sign up</h1>
-          <p class="subtext">${student
-            ? "Enter your email or mobile number — we'll send you a 6-digit code. Works whether you're new here or already have an account."
-            : "Enter your work email — we'll send you a code. Works whether your institute is new here or already partnered with us."}</p>
+          <p class="subtext">${passwordMode
+            ? (student
+                ? "Enter your email and password. Works whether you're new here or already have an account."
+                : "Enter your work email and password. Works whether your institute is new here or already partnered with us.")
+            : student
+              ? "Enter your email or mobile number — we'll send you a 6-digit code. Works whether you're new here or already have an account."
+              : "Enter your work email — we'll send you a code. Works whether your institute is new here or already partnered with us."}</p>
 
           ${raw(error ? notice('danger', html`${error}`) : '')}
 
           <form method="post" action="/login">
             <input type="hidden" name="role" value="${role}">
             <div class="field">
-              <label for="identifier">${student ? 'Email or mobile number' : 'POC work email'}</label>
+              <label for="identifier">${student ? (passwordMode ? 'Email address' : 'Email or mobile number') : 'POC work email'}</label>
               <input id="identifier" name="identifier" type="text" required inputmode="email"
                      autocomplete="${student ? 'email' : 'email'}" autocapitalize="off" spellcheck="false"
-                     placeholder="${student ? 'you@example.com or 98765 43210' : 'you@institute.edu.in'}">
-              ${raw(student ? html`
+                     placeholder="${student ? (passwordMode ? 'you@example.com' : 'you@example.com or 98765 43210') : 'you@institute.edu.in'}">
+              ${raw(passwordMode ? '' : student ? html`
                 <div class="hint">
                   Use an email address to get the code by email. Mobile works too, but SMS delivery
                   isn't configured yet — the code is shown on screen instead.
@@ -206,6 +249,18 @@ router.get('/login', (req, res) => {
                   Resend account is registered with — for any other address the code is shown on screen.
                 </div>`)}
             </div>
+
+            ${raw(passwordMode ? html`
+              <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" required
+                       autocomplete="current-password" minlength="${MIN_PASSWORD_LENGTH}"
+                       placeholder="At least ${MIN_PASSWORD_LENGTH} characters">
+                <div class="hint">
+                  New here? Enter the password you'd like and we'll create your account.
+                </div>
+              </div>` : '')}
+
             <button class="btn-primary" type="submit">Continue</button>
           </form>
 
@@ -215,6 +270,63 @@ router.get('/login', (req, res) => {
         </div>
       </div>`,
   }));
+});
+
+/**
+ * Password sign-in and sign-up in one step.
+ *
+ * A known address with the right password signs in. An unknown one carries the
+ * password forward to the details screen, where the Terms gate still applies —
+ * consent is recorded before an account exists, exactly as in the OTP flow.
+ *
+ * What this does NOT do is prove the address belongs to the person using it.
+ * There is no verification step, so anyone can register any address. That is
+ * the trade for working without email, and it is why OTP remains the default.
+ */
+router.post('/login', throttleLogin, async (req, res, next) => {
+  if (authMode() !== 'password') return next();
+
+  const role = req.body.role === 'institute' ? 'institute' : 'student';
+  const identifier = normaliseIdentifier(role, req.body.identifier);
+  const password = String(req.body.password ?? '');
+  const fail = (msg) => res.redirect(`/login?role=${role}&error=${encodeURIComponent(msg)}`);
+
+  if (!identifier || !identifierIsEmail(identifier)) {
+    return fail('Enter a valid email address.');
+  }
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    return fail(`Your password must be at least ${MIN_PASSWORD_LENGTH} characters.`);
+  }
+
+  const existing = await store.findUser(identifier);
+  if (existing) {
+    const user = await store.verifyLogin(identifier, password);
+    // Deliberately one message for both "no such account" and "wrong
+    // password": saying which would confirm whether an address is registered.
+    if (!user) return fail('That email and password do not match.');
+
+    const token = await store.createSession(user.id, {
+      ip: clientIp(req), userAgent: req.get('user-agent'),
+    });
+    await store.touchLogin(user.id);
+    res.cookie('sc_session', token, cookieOptions(req));
+    return res.redirect(user.role === 'institute' ? '/institute' : '/dashboard');
+  }
+
+  // New address — collect name and consent before creating anything. The
+  // password rides in a short-lived cookie the same way the identifier does;
+  // neither authorises anything on its own, because sign-up creates the account
+  // and consent record together in one transaction.
+  const cookie = {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: req.app.get('production'),
+    maxAge: 30 * 60 * 1000,
+    path: '/',
+  };
+  res.cookie('sc_pending', identifier, cookie);
+  res.cookie('sc_pending_pw', password, cookie);
+  res.redirect(`/signup?role=${role}`);
 });
 
 router.post('/login', throttleOtp, async (req, res) => {
@@ -361,6 +473,12 @@ router.post('/verify', async (req, res) => {
   res.redirect(`/signup?role=${role}`);
 });
 
+/** Clears both sign-up cookies. The password one must never outlive the flow. */
+function clearPending(res) {
+  res.clearCookie('sc_pending', { path: '/' });
+  res.clearCookie('sc_pending_pw', { path: '/' });
+}
+
 /**
  * The identifier a sign-up may use, or null.
  *
@@ -370,6 +488,14 @@ router.post('/verify', async (req, res) => {
 async function pendingIdentifier(req) {
   const claimed = req.cookies?.sc_pending;
   if (!claimed) return null;
+
+  // In password mode there is no code to have consumed, so the cookie is all
+  // there is. That is the honest cost of signing in without email: the address
+  // is never proven to belong to the person registering it.
+  if (authMode() === 'password') {
+    return req.cookies?.sc_pending_pw ? claimed : null;
+  }
+
   return (await store.identifierAwaitingSignup(claimed)) ? claimed : null;
 }
 
@@ -487,9 +613,11 @@ router.post('/signup', async (req, res) => {
   if (!identifier) {
     // Either the window expired, or the cookie was never backed by a verified
     // code. Send them back through the real flow rather than saying which.
-    res.clearCookie('sc_pending', { path: '/' });
+    clearPending(res);
     return res.redirect(`/login?role=${role}&error=${encodeURIComponent(
-      'Please verify your contact again before creating your account.')}`);
+      authMode() === 'password'
+        ? 'That took too long. Enter your email and password again.'
+        : 'Please verify your contact again before creating your account.')}`);
   }
 
   const fail = (msg) => res.redirect(`/signup?role=${role}&error=${encodeURIComponent(msg)}`);
@@ -534,6 +662,7 @@ router.post('/signup', async (req, res) => {
       instituteName: role === 'institute'
         ? String(req.body.institute || '').trim()
         : null,
+      password: authMode() === 'password' ? req.cookies?.sc_pending_pw : null,
     }));
   } catch (err) {
     // Unique violation: the contact was registered between verification and
@@ -544,7 +673,7 @@ router.post('/signup', async (req, res) => {
         const token = await store.createSession(existing.id, {
           ip: clientIp(req), userAgent: req.get('user-agent'),
         });
-        res.clearCookie('sc_pending', { path: '/' });
+        clearPending(res);
         res.cookie('sc_session', token, cookieOptions(req));
         return res.redirect(existing.role === 'institute' ? '/institute' : '/dashboard');
       }
@@ -555,7 +684,7 @@ router.post('/signup', async (req, res) => {
   const token = await store.createSession(user.id, {
     ip: clientIp(req), userAgent: req.get('user-agent'),
   });
-  res.clearCookie('sc_pending', { path: '/' });
+  clearPending(res);
   res.cookie('sc_session', token, cookieOptions(req));
   res.redirect(role === 'institute' ? '/institute/welcome' : '/onboarding');
 });

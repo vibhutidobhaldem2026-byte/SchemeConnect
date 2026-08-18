@@ -91,6 +91,17 @@ services:
       - key: PGSSL_CA_FILE
         value: certs/prod-ca-2021.crt
 
-      # Never true in production: it prints sign-in codes on screen.
+      # How people sign in. 'otp' is what the PRD and wireframes specify and is
+      # the default, but it needs a deployment that can actually send mail —
+      # and free Render instances block outbound SMTP on ports 25, 465 and 587,
+      # while an email API will only reach arbitrary recipients from a verified
+      # domain. 'password' keeps the product usable until one of those is
+      # solved. It does NOT verify that an address belongs to the person
+      # registering it; switch back once mail works.
+      - key: AUTH_MODE
+        value: password
+
+      # Never true in production: it prints sign-in codes on screen. Only
+      # relevant in OTP mode.
       - key: SHOW_DEV_OTP
         value: "false"

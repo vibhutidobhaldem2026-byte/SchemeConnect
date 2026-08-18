@@ -12,7 +12,7 @@ import { networkInterfaces } from 'node:os';
 import { PUBLIC_DIR, ROOT } from '../config/paths.js';
 import { layout, html, raw, logoMark } from './render.js';
 import { router as publicRouter } from './routes/public.js';
-import { router as authRouter } from './routes/auth.js';
+import { router as authRouter, authMode } from './routes/auth.js';
 import { router as studentRouter } from './routes/student.js';
 import { router as instituteRouter } from './routes/institute.js';
 import { router as opsRouter } from './routes/ops.js';
@@ -286,6 +286,14 @@ const server = app.listen(PORT, HOST, async () => {
     console.log(`  Verified:  ${meta.generatedAt}`);
   } else {
     console.log('  Catalogue: EMPTY — run "npm run import:catalog" or "npm run scrape".');
+  }
+
+  if (authMode() === 'password') {
+    console.log('\n  Sign-in:   email + password (AUTH_MODE=password)');
+    console.log('             No address verification — anyone can register any email.');
+    console.log('             Unset AUTH_MODE to return to the emailed one-time code.');
+  } else {
+    console.log('\n  Sign-in:   emailed one-time code');
   }
 
   if (isEmailConfigured()) {

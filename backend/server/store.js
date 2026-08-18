@@ -12,7 +12,8 @@
  * a batch of students together with their matches.
  */
 
-import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, randomInt, scrypt, timingSafeEqual } from 'node:crypto';
+import { promisify } from 'node:util';
 import { query, rows, one, transaction, valuesList, chunk } from './db.js';
 
 /** Rows come back snake_case; routes and templates expect camelCase. */
@@ -209,6 +210,72 @@ export async function sweepOtps() {
   return rowCount;
 }
 
+// ------------------------------------------------------------ passwords ----
+
+const scryptAsync = promisify(scrypt);
+const SCRYPT_KEYLEN = 64;
+
+/** Shortest password we will store. Long enough to matter, short enough to type. */
+export const MIN_PASSWORD_LENGTH = 8;
+
+/**
+ * scrypt, from Node's own crypto — no native dependency, and memory-hard in a
+ * way a plain hash is not. The salt is per-password and stored alongside the
+ * key, so two people choosing the same password produce different rows.
+ */
+export async function hashPassword(password) {
+  const salt = randomBytes(16);
+  const key = await scryptAsync(String(password), salt, SCRYPT_KEYLEN);
+  return `scrypt$${salt.toString('base64')}$${key.toString('base64')}`;
+}
+
+/** Constant-time check. Returns false for an account with no password set. */
+export async function passwordMatches(stored, password) {
+  if (!stored) return false;
+  const [scheme, saltB64, keyB64] = String(stored).split('$');
+  if (scheme !== 'scrypt' || !saltB64 || !keyB64) return false;
+
+  const expected = Buffer.from(keyB64, 'base64');
+  const derived = await scryptAsync(
+    String(password), Buffer.from(saltB64, 'base64'), expected.length);
+  return derived.length === expected.length && timingSafeEqual(derived, expected);
+}
+
+/**
+ * Verifies a sign-in.
+ *
+ * A missing account still pays the cost of a hash comparison, so the response
+ * time does not reveal which addresses are registered.
+ */
+export async function verifyLogin(identifier, password) {
+  const row = await one(
+    'select id, password_hash from users where identifier = $1', [identifier]);
+
+  const ok = await passwordMatches(
+    row?.password_hash ?? DUMMY_HASH, password);
+
+  if (!row || !ok) return null;
+  return getUser(row.id);
+}
+
+// A real scrypt hash of a value nobody will guess, compared against when the
+// account does not exist so that both paths take the same time.
+const DUMMY_HASH = 'scrypt$AAAAAAAAAAAAAAAAAAAAAA==$'
+  + Buffer.alloc(SCRYPT_KEYLEN).toString('base64');
+
+export async function setPassword(userId, password) {
+  await query('update users set password_hash = $2 where id = $1',
+    [userId, await hashPassword(password)]);
+}
+
+/** Whether this account can sign in with a password at all. */
+export async function hasPassword(identifier) {
+  const row = await one(
+    'select password_hash is not null as has from users where identifier = $1',
+    [identifier]);
+  return row?.has ?? false;
+}
+
 // --------------------------------------------------------- rate limiting ---
 
 /**
@@ -282,14 +349,15 @@ export async function getUser(userId) {
 export async function createAccount({
   identifier, role, name = null, email = null, ip = null,
   termsVersion, isMinor = false, guardianName = null, guardianContact = null,
-  instituteName = null,
+  instituteName = null, password = null,
 }) {
+  const passwordHash = password ? await hashPassword(password) : null;
   return transaction(async (client) => {
     const { rows: [user] } = await client.query(
-      `insert into users (identifier, role, name, email, last_login_at)
-       values ($1, $2, $3, $4, now())
+      `insert into users (identifier, role, name, email, password_hash, last_login_at)
+       values ($1, $2, $3, $4, $5, now())
        returning ${USER_COLUMNS.replaceAll('u.', '')}`,
-      [identifier, role, name, email]
+      [identifier, role, name, email, passwordHash]
     );
 
     await client.query(

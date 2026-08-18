@@ -95,11 +95,11 @@ function makeClient() {
 
 // ----------------------------------------------------------------- boot ----
 
-async function waitForServer(proc) {
+async function waitForServer(proc, base = BASE) {
   const deadline = Date.now() + 20000;
   while (Date.now() < deadline) {
     try {
-      const res = await fetch(`${BASE}/healthz`);
+      const res = await fetch(`${base}/healthz`);
       if (res.ok) return;
     } catch {
       // not up yet
@@ -110,11 +110,12 @@ async function waitForServer(proc) {
   throw new Error('server did not start within 20s');
 }
 
-function startServer() {
+function startServer(extraEnv = {}, port = PORT) {
   const proc = spawn(process.execPath, [path.join(ROOT, 'server', 'index.js')], {
     env: {
       ...process.env,
-      PORT: String(PORT),
+      ...extraEnv,
+      PORT: String(port),
       HOST: '127.0.0.1',
       NODE_ENV: 'development',
       SHOW_DEV_OTP: 'true',
@@ -570,6 +571,96 @@ try {
     const leftovers = Object.entries(after).filter(([, n]) => n > 0);
     check('deleting an account erases every trace of it',
       leftovers.length === 0, leftovers.map(([k, n]) => `${k}=${n}`).join(', '));
+  }
+
+  // --------------------------------------------------- password sign-in ---
+  // AUTH_MODE=password exists for deployments that cannot send mail — a host
+  // blocking outbound SMTP, or an email account with no verified domain.
+  console.log('\n  Password sign-in (AUTH_MODE=password)');
+
+  {
+    const PW_PORT = PORT + 1;
+    const PW_BASE = `http://127.0.0.1:${PW_PORT}`;
+    const pw = startServer({ AUTH_MODE: 'password', SHOW_DEV_OTP: 'false' }, PW_PORT);
+    try {
+      await waitForServer(pw, PW_BASE);
+
+      const req = async (method, url, form, jar) => {
+        const res = await fetch(PW_BASE + url, {
+          method, redirect: 'manual',
+          headers: {
+            ...(jar.size ? { cookie: [...jar].map(([k, v]) => `${k}=${v}`).join('; ') } : {}),
+            ...(form ? { 'content-type': 'application/x-www-form-urlencoded' } : {}),
+          },
+          body: form ? new URLSearchParams(form).toString() : undefined,
+        });
+        for (const raw of res.headers.getSetCookie?.() ?? []) {
+          const [pair] = raw.split(';');
+          const i = pair.indexOf('=');
+          const v = pair.slice(i + 1).trim();
+          if (v === '') jar.delete(pair.slice(0, i).trim());
+          else jar.set(pair.slice(0, i).trim(), v);
+        }
+        return { status: res.status, location: res.headers.get('location'), text: await res.text() };
+      };
+      const csrf = async (url, jar) =>
+        (await req('GET', url, null, jar)).text.match(/name="_csrf" value="([^"]+)"/)?.[1];
+
+      const email = 'pw@e2e.test';
+      await query('delete from users where identifier = $1', [email]);
+
+      const jar = new Map();
+      const page = await req('GET', '/login?role=student', null, jar);
+      check('the login page asks for a password', /name="password"/.test(page.text));
+      check('it does not mention a 6-digit code', !/6-digit code/.test(page.text));
+
+      let token = page.text.match(/name="_csrf" value="([^"]+)"/)[1];
+      const signup = await req('POST', '/login',
+        { _csrf: token, role: 'student', identifier: email, password: 'hunter2hunter2' }, jar);
+      check('an unknown address goes to sign-up', signup.location?.startsWith('/signup'), signup.location ?? '');
+
+      token = await csrf('/signup?role=student', jar);
+      const created = await req('POST', '/signup',
+        { _csrf: token, role: 'student', name: 'Pat Kaur', email, consent: 'yes' }, jar);
+      check('the account is created', created.location === '/onboarding', created.location ?? '');
+
+      const stored = await one(
+        'select password_hash, (select count(*)::int from consents c where c.user_id = u.id) as consents'
+        + ' from users u where identifier = $1', [email]);
+      check('the password is hashed with scrypt, not stored raw',
+        stored?.password_hash?.startsWith('scrypt$') && !stored.password_hash.includes('hunter2'),
+        String(stored?.password_hash).slice(0, 20));
+      check('consent was still recorded', stored?.consents === 1);
+
+      // Sign out, then back in.
+      await req('GET', '/logout', null, jar);
+      const fresh = new Map();
+      token = await csrf('/login?role=student', fresh);
+      const wrong = await req('POST', '/login',
+        { _csrf: token, role: 'student', identifier: email, password: 'wrongwrongwrong' }, fresh);
+      check('a wrong password is refused', wrong.location?.includes('error='), wrong.location ?? '');
+      check('the error does not reveal whether the account exists',
+        decodeURIComponent(wrong.location ?? '').includes('do not match'),
+        decodeURIComponent(wrong.location ?? ''));
+
+      token = await csrf('/login?role=student', fresh);
+      const right = await req('POST', '/login',
+        { _csrf: token, role: 'student', identifier: email, password: 'hunter2hunter2' }, fresh);
+      check('the right password signs in', right.location === '/dashboard', right.location ?? '');
+
+      const dash = await req('GET', '/dashboard', null, fresh);
+      check('the session works', dash.status === 200 && !dash.location, `status ${dash.status}`);
+
+      const shortJar = new Map();
+      token = await csrf('/login?role=student', shortJar);
+      const short = await req('POST', '/login',
+        { _csrf: token, role: 'student', identifier: 'x@e2e.test', password: 'short' }, shortJar);
+      check('a too-short password is refused', short.location?.includes('error='), short.location ?? '');
+
+      await query('delete from users where identifier = $1', [email]);
+    } finally {
+      pw.kill('SIGTERM');
+    }
   }
 
   // ------------------------------------------------------ rate limiting ---
