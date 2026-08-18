@@ -1,0 +1,114 @@
+# Test on every push, and deploy only if the tests pass.
+#
+# Render can auto-deploy on push by itself, but it does that blindly: a commit
+# that breaks sign-in ships as readily as one that fixes it. This runs the whole
+# suite against a real PostgreSQL first and calls Render's deploy hook only when
+# it is green, so a bad commit stops here instead of in front of a student.
+#
+# One secret is needed:
+#   RENDER_DEPLOY_HOOK  Render dashboard -> your service -> Settings -> Deploy Hook
+#                       Add it under GitHub -> Settings -> Secrets and variables
+#                       -> Actions.
+#
+# With that in place, turn Auto-Deploy OFF in Render so deploys come through
+# here and cannot bypass the tests.
+
+name: Test and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # So a deploy can be re-run from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+concurrency:
+  # A newer push supersedes an in-flight run; no point deploying an old commit.
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: schemeconnect_ci
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      # Local to the runner, so no TLS and no CA to verify.
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/schemeconnect_ci
+      DIRECT_URL: postgres://postgres:postgres@localhost:5432/schemeconnect_ci
+      PGSSL: disable
+      SESSION_SECRET: ci-secret-that-is-long-enough-to-satisfy-the-check
+      NODE_ENV: development
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install
+        working-directory: backend
+        run: npm ci
+
+      - name: Apply migrations
+        working-directory: backend
+        run: npm run migrate
+
+      - name: Load the bundled catalogue
+        working-directory: backend
+        # The committed export seeds the database, so the suite has real schemes
+        # to match against without anybody crawling a government site from CI.
+        run: npm run import:catalog
+
+      - name: Extraction tests
+        working-directory: backend
+        run: npm test
+
+      - name: End-to-end tests
+        working-directory: backend
+        run: npm run test:e2e
+
+  deploy:
+    name: Deploy to Render
+    needs: test
+    # Never deploy a pull request, and never a branch other than main.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger the Render deploy
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::RENDER_DEPLOY_HOOK is not set."
+            echo "Render -> your service -> Settings -> Deploy Hook, then add it"
+            echo "under GitHub -> Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          status=$(curl -sS -o /tmp/render.out -w '%{http_code}' -X POST "$HOOK")
+          echo "Render responded $status"
+          cat /tmp/render.out
+          # Render answers 2xx with the queued deploy; anything else is a failure
+          # we want to see in the run, not discover on the site.
+          case "$status" in
+            2*) echo "Deploy queued." ;;
+            *)  echo "::error::Render refused the deploy (HTTP $status)"; exit 1 ;;
+          esac

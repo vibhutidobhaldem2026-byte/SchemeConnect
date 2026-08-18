@@ -117,6 +117,25 @@ retried once. Writes are never retried: a reset after an insert leaves us unable
 to tell whether it committed, and a duplicate consent record is worse than an
 error.
 
+### Deploys
+
+`.github/workflows/deploy.yml` runs the full suite against a real PostgreSQL on
+every push to `main`, and calls Render's deploy hook only if it passes. Render
+can auto-deploy by itself, but it does that blindly — a commit that breaks
+sign-in ships as readily as one that fixes it.
+
+To wire it up:
+
+1. Render → your service → **Settings → Deploy Hook** → copy the URL
+2. GitHub → **Settings → Secrets and variables → Actions** → add it as
+   `RENDER_DEPLOY_HOOK`
+3. Render → **Settings → Auto-Deploy → No**, so deploys come through the
+   workflow and cannot bypass the tests
+
+`autoDeployTrigger: commit` in `render.yaml` only applies to services created
+from the blueprint. A service created through the dashboard ignores it, which is
+why pushes appeared to do nothing.
+
 ### Migrations
 
 Plain `.sql` files in `migrations/`, applied in filename order, each in its own
