@@ -357,3 +357,42 @@ tr.clickable:hover td{ background:var(--bg); }
   .info-row{ flex-direction:column; align-items:flex-start; gap:4px; }
   .info-row .v{ text-align:left; }
 }
+
+/* ---------------------------------------------------- busy buttons ------ */
+/* A form that takes a moment — importing a batch, sending a code — needs to
+   say so. Without this the page looked frozen, which reads as failure. */
+button.is-busy {
+  position: relative;
+  opacity: .85;
+  cursor: progress;
+}
+
+button.is-busy::before {
+  content: "";
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 9px;
+  vertical-align: -2px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: sc-spin .6s linear infinite;
+}
+
+@keyframes sc-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  button.is-busy::before { animation-duration: 2.4s; }
+}
+
+/* Rows that act as links. The anchor inside the first cell carries the
+   destination; this just makes the whole row feel clickable. */
+tr.clickable { cursor: pointer; }
+tr.clickable:hover { background: var(--bg, #F4F8FA); }
+tr.clickable a.row-link {
+  color: inherit;
+  text-decoration: none;
+}
+tr.clickable:hover a.row-link { text-decoration: underline; }
+tr.clickable:focus-within { outline: 2px solid var(--accent, #0A2540); outline-offset: -2px; }

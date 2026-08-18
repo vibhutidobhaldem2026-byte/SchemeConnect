@@ -549,6 +549,41 @@ try {
     check('a student cannot open the correction screens', res.status === 404, `got ${res.status}`);
   }
 
+  // ------------------------------------------------ CSP-safe interaction ---
+  // script-src 'self' forbids inline handlers, so an onclick or a javascript:
+  // URL is silently dead in the browser while still looking correct in the
+  // source. That took out row navigation, the Terms back link and — worst — the
+  // confirmation on account deletion.
+  console.log('\n  Interaction survives the CSP');
+
+  {
+    const pages = ['/', '/start', '/login?role=student', '/schemes', '/terms'];
+    const offenders = [];
+    for (const url of pages) {
+      const { text } = await makeClient().get(url);
+      if (/\son[a-z]+\s*=\s*["']/i.test(text)) offenders.push(`${url} (inline handler)`);
+      if (/href\s*=\s*["']javascript:/i.test(text)) offenders.push(`${url} (javascript: URL)`);
+    }
+    check('public pages carry no inline handlers or javascript: URLs',
+      offenders.length === 0, offenders.join(', '));
+
+    const terms = await makeClient().get('/terms');
+    check('the Terms back link is a real href', /class="link-back" href="\/"/.test(terms.text));
+
+    const profile = await student.get('/profile');
+    check('account deletion still asks for confirmation',
+      /data-confirm="[^"]*permanently deletes/.test(profile.text));
+  }
+
+  {
+    // Rows are reachable without JavaScript at all.
+    const list = await institute.get('/institute/students');
+    check('student rows contain a real link, not just a data-href',
+      /<a class="row-link" href="\/institute\/students\/[0-9a-f-]{36}"/.test(list.text));
+    check('rows still carry data-href for the whole-row click',
+      /<tr class="clickable" data-href="\/institute\/students\//.test(list.text));
+  }
+
   // -------------------------------------------------------- erasure -------
   console.log('\n  Erasure');
 

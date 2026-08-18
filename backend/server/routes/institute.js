@@ -98,8 +98,8 @@ router.get('/', async (req, res) => {
                 ${raw(batches.map((b) => {
                   const n = b.studentCount;
                   const m = b.matchedCount;
-                  return html`<tr class="clickable" onclick="location.href='/institute/students'">
-                    <td class="b">${b.label}</td>
+                  return html`<tr class="clickable" data-href="/institute/students">
+                    <td class="b"><a class="row-link" href="/institute/students">${b.label}</a></td>
                     <td>${n}</td>
                     <td>${n ? Math.round((m / n) * 100) : 0}%</td>
                     <td>${formatDate(b.createdAt)}</td>
@@ -304,7 +304,8 @@ router.get('/preview/:id', async (req, res, next) => {
               Importing records these students against your institute. Their eligibility answers stay private to
               them — your dashboard will show match counts only.`))}
 
-            <button class="btn-primary btn-inline" type="submit">Confirm &amp; import ${batch.rows.length} students</button>
+            <button class="btn-primary btn-inline" type="submit"
+                    data-busy-label="Importing ${batch.rows.length} students…">Confirm &amp; import ${batch.rows.length} students</button>
           </form>
         </main>
       </div>`,
@@ -408,8 +409,8 @@ router.get('/students', async (req, res) => {
               <table>
                 <tr><th>Name</th><th>Student ID</th><th>Batch</th><th>Matches</th><th>Top match</th><th>Status</th></tr>
                 ${raw(students.map((s) => html`
-                  <tr class="clickable" onclick="location.href='/institute/students/${s.id}'">
-                    <td class="b">${s.name}</td>
+                  <tr class="clickable" data-href="/institute/students/${s.id}">
+                    <td class="b"><a class="row-link" href="/institute/students/${s.id}">${s.name}</a></td>
                     <td>${s.externalId || '—'}</td>
                     <td>${s.batchLabel}</td>
                     <td>${s.matchCount ?? 0}</td>

@@ -7,6 +7,96 @@
 (function () {
   'use strict';
 
+  // ------------------------------------------------- clickable rows -------
+  /**
+   * Table rows that behave like links.
+   *
+   * These used to be inline onclick attributes, which the Content Security
+   * Policy blocks — script-src 'self' does not permit inline handlers, so
+   * clicking a batch or a student silently did nothing. Every such row also
+   * carries a real <a> in its first cell, so the destination is reachable,
+   * keyboard-focusable and openable in a new tab even without this script.
+   */
+  document.addEventListener('click', function (e) {
+    var row = e.target.closest('[data-href]');
+    if (!row) return;
+    // Let real controls inside the row handle their own clicks.
+    if (e.target.closest('a, button, input, select, label')) return;
+    window.location.href = row.getAttribute('data-href');
+  });
+
+  // ------------------------------------------------------ confirmations ---
+  /**
+   * Destructive actions confirm first. This was an inline onsubmit, so the CSP
+   * silently removed the confirmation from account deletion — the account went
+   * without a prompt.
+   *
+   * Capture phase, so it runs before the progress handler below and a cancelled
+   * submit never leaves the button stuck in a busy state.
+   */
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-confirm]');
+    if (form && !window.confirm(form.getAttribute('data-confirm'))) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
+  // -------------------------------------------------------- back links ----
+  // A real href to the fallback destination, upgraded to history.back() when
+  // there is somewhere to go back to. Previously a javascript: URL, which the
+  // CSP blocks.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-back]'), function (link) {
+    link.addEventListener('click', function (e) {
+      if (window.history.length > 1) {
+        e.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+
+  // ---------------------------------------------------- submit progress ---
+  /**
+   * Tells the user something is happening.
+   *
+   * Importing a batch of students takes a few seconds, and with no feedback the
+   * page looked frozen — indistinguishable from a failure. The button is
+   * disabled on the way out so the work cannot be submitted twice.
+   *
+   * Disabling happens on the next tick, after the browser has already begun
+   * submitting, so the form still posts normally.
+   */
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || form.hasAttribute('data-no-progress')) return;
+    if (typeof form.checkValidity === 'function' && !form.checkValidity()) return;
+
+    var button = form.querySelector('button[type="submit"], button:not([type])');
+    if (!button || button.disabled) return;
+
+    window.setTimeout(function () {
+      button.disabled = true;
+      button.setAttribute('aria-busy', 'true');
+      button.classList.add('is-busy');
+      button.dataset.idleLabel = button.textContent.trim();
+      button.textContent = button.getAttribute('data-busy-label') || 'Working…';
+    }, 0);
+  });
+
+  /**
+   * Restores the page when the browser returns to it from history — bfcache
+   * serves the old DOM, which would otherwise show a permanently busy button.
+   */
+  window.addEventListener('pageshow', function (event) {
+    if (!event.persisted) return;
+    Array.prototype.forEach.call(document.querySelectorAll('button.is-busy'), function (button) {
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      button.classList.remove('is-busy');
+      if (button.dataset.idleLabel) button.textContent = button.dataset.idleLabel;
+    });
+  });
+
   // ---------------------------------------------------------- OTP inputs ---
   var otpGroup = document.getElementById('otpGroup');
   if (otpGroup) {

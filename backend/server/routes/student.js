@@ -123,7 +123,8 @@ router.get('/onboarding', async (req, res) => {
           <form method="post" action="/onboarding">
             <input type="hidden" name="step" value="${stepIndex}">
             <div class="field">${raw(step.field(profile[step.key]))}</div>
-            <button class="btn-primary" type="submit">
+            <button class="btn-primary" type="submit"
+                    data-busy-label="${stepIndex === STEPS.length - 1 ? 'Finding your matches…' : 'Saving…'}">
               ${stepIndex === STEPS.length - 1 ? 'See my matches' : 'Continue'}
             </button>
           </form>
@@ -533,7 +534,7 @@ router.get('/profile', async (req, res) => {
 
           <a class="btn-ghost" href="/onboarding?step=0">Edit my details</a>
           <form method="post" action="/profile/delete"
-                onsubmit="return confirm('This permanently deletes your profile, saved schemes and consent record. Continue?')">
+                data-confirm="This permanently deletes your profile, saved schemes and consent record. Continue?">
             <button class="btn-ghost" type="submit" style="color:var(--danger);border-color:#F5C2C2">Delete my account and data</button>
           </form>
         </main>

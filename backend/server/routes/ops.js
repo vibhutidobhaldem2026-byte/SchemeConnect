@@ -412,8 +412,8 @@ router.get('/schemes', async (req, res) => {
             <table>
               <tr><th>Scheme</th><th>Level</th><th>Tier</th><th>Last verified</th><th>Corrections</th></tr>
               ${raw(schemes.map((s) => html`
-                <tr class="clickable" onclick="location.href='/ops/schemes/${s.id}'">
-                  <td class="b">${s.name}</td>
+                <tr class="clickable" data-href="/ops/schemes/${s.id}">
+                  <td class="b"><a class="row-link" href="/ops/schemes/${s.id}">${s.name}</a></td>
                   <td>${s.level === 'state' ? s.state || 'State' : 'Central'}</td>
                   <td><span class="pill ${s.detailLevel === 'full' ? 'pill-active' : 'pill-none'}">
                     ${s.detailLevel === 'full' ? 'Matchable' : 'Listing only'}</span></td>

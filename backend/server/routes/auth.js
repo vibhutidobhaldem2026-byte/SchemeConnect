@@ -597,7 +597,7 @@ router.get('/signup', async (req, res) => {
             <input type="hidden" name="role" value="${role}">
             ${raw(role === 'student' ? studentFields : instituteFields)}
             ${raw(role === 'student' ? studentConsent : instituteConsent)}
-            <button class="btn-primary" type="submit" id="signupSubmit" disabled>Continue</button>
+            <button class="btn-primary" type="submit" id="signupSubmit" data-busy-label="Creating your account…" disabled>Continue</button>
           </form>
 
           <p class="foot-note">Your details are used only to match you with government schemes.

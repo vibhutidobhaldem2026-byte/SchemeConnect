@@ -68,7 +68,7 @@ router.get('/terms', (req, res) => {
     title: 'Terms & Conditions',
     body: html`
       <div class="terms-page">
-        <a class="link-back" href="javascript:history.length>1?history.back():location.href='/'">← Back</a>
+        <a class="link-back" href="/" data-back>← Back</a>
 
         <div class="terms-head">
           ${raw(logoMark())}
