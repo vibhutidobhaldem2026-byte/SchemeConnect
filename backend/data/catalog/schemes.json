@@ -1,0 +1,5352 @@
+{
+  "generatedAt": "2026-08-18T18:26:00.300Z",
+  "generatedBy": "schemeconnect-scraper/0.1",
+  "policy": "https only, host must end in .gov.in or .nic.in, minus an explicit host/path denylist",
+  "sourceCount": 5,
+  "schemeCount": 123,
+  "schemes": [
+    {
+      "id": "pre-matric-scholarships-scheme-for-scheduled-castes-others-f2083c",
+      "slug": "pre-matric-scholarships-scheme-for-scheduled-castes-others",
+      "name": "Pre- Matric Scholarships Scheme for Scheduled Castes & Others",
+      "summary": "Pre- Matric Scholarships Scheme for Scheduled Castes & Others, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": {
+        "min": 250000,
+        "max": 250000,
+        "period": "year"
+      },
+      "benefitText": "₹2,50,000/year",
+      "eligibility": {
+        "maxFamilyIncome": 250000,
+        "categories": [
+          "SC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "Class 9-10",
+          "Class 11-12"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "maxFamilyIncome",
+          "text": "Their Parent/Guardian's income should not exceed Rs. 2.50 lakh per annum."
+        },
+        {
+          "field": "categories",
+          "text": "Pre Matric Scholarship for SC students"
+        },
+        {
+          "field": "courseLevels",
+          "text": "Pre-Matric Scholarship Scheme for Scheduled Castes & Others is a Centrally Sponsored Scheme and implemented through State Governments and UT administrations."
+        },
+        {
+          "field": "benefit",
+          "text": "Their Parent/Guardian's income should not exceed Rs. 2.50 lakh per annum."
+        }
+      ],
+      "documents": [
+        "Domicile / bonafide certificate"
+      ],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/23",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/23",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:00.734Z",
+        "contentHash": "5a8bf6d542552803",
+        "textLength": 5923
+      },
+      "lastVerified": "2026-08-18T16:13:00.734Z",
+      "confidence": 0.83,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "pradhan-mantri-dakshta-aur-kushalta-sampann-hitgrahi-pm-daksh-yojana-6aa2f1",
+      "slug": "pradhan-mantri-dakshta-aur-kushalta-sampann-hitgrahi-pm-daksh-yojana",
+      "name": "Pradhan Mantri Dakshta Aur Kushalta Sampann Hitgrahi (PM-DAKSH) Yojana",
+      "summary": "Pradhan Mantri Dakshta Aur Kushalta Sampann Hitgrahi (PM-DAKSH) Yojana, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": {
+        "min": 500,
+        "max": 300000,
+        "period": "year"
+      },
+      "benefitText": "₹500 – ₹3,00,000/year",
+      "eligibility": {
+        "maxFamilyIncome": 300000,
+        "categories": [
+          "SC",
+          "OBC",
+          "EWS"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "maxFamilyIncome",
+          "text": "Annual income family below Rs.3 lakh."
+        },
+        {
+          "field": "categories",
+          "text": "a) For non-residential training programmes, the trainees will be paid stipend @ Rs.1,500/- per month for SC candidates, Rs.1,000/- per month to OBCs/EWSs/DNTs and Rs.1,500/- per month to Sanitation Workers including waste pickers and their dependents."
+        },
+        {
+          "field": "benefit",
+          "text": "Annual income family below Rs.3 lakh."
+        }
+      ],
+      "documents": [
+        "Caste / community certificate",
+        "Income certificate"
+      ],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/100",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/100",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:26.282Z",
+        "contentHash": "d33a9c1ddad3b90a",
+        "textLength": 12872
+      },
+      "lastVerified": "2026-08-18T16:13:26.282Z",
+      "confidence": 0.67,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes"
+    },
+    {
+      "id": "national-fellowship-for-obc-students-nf-obc-ed4787",
+      "slug": "national-fellowship-for-obc-students-nf-obc",
+      "name": "National Fellowship for OBC Students (NF-OBC)",
+      "summary": "National Fellowship for OBC Students (NF-OBC), Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": {
+        "min": 25000,
+        "max": 28000,
+        "period": "month"
+      },
+      "benefitText": "₹25,000 – ₹28,000/month",
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "OBC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "PhD"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "National Fellowship for OBC Students (NF-OBC) | Department of Social Justice and Empowerment - Government of India"
+        },
+        {
+          "field": "courseLevels",
+          "text": "The scheme aims at providing financial assistance to the OBC students in obtaining quality higher education leading to degrees such as M.Phil and Ph.D in universities, research institutions and scientific institutions."
+        },
+        {
+          "field": "benefit",
+          "text": "The rate of fellowship for JRF level is Rs. 25000 per month and for SRF level, it is Rs. 28000 per month."
+        }
+      ],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/7",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/7",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:12.839Z",
+        "contentHash": "66831c7947b278ec",
+        "textLength": 4533
+      },
+      "lastVerified": "2026-08-18T16:13:12.839Z",
+      "confidence": 0.5,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "national-overseas-scholarship-nos-for-sc-etc-candidates-e853f4",
+      "slug": "national-overseas-scholarship-nos-for-sc-etc-candidates",
+      "name": "National Overseas Scholarship (NOS) for SC etc. Candidates",
+      "summary": "National Overseas Scholarship (NOS) for SC etc. Candidates, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "SC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "Postgraduate",
+          "PhD"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "Under NOS, financial assistance is provided to facilitate the low income meritorious students belonging to the Scheduled Castes, De-notified Nomadic and Semi-Nomadic Tribes, Landless Agricultural Labourers and Traditional Artisans category to obtain higher education viz., master's degree or Ph.D courses by studying abroad thereby improving their Economic and Social status."
+        },
+        {
+          "field": "courseLevels",
+          "text": "Under NOS, financial assistance is provided to facilitate the low income meritorious students belonging to the Scheduled Castes, De-notified Nomadic and Semi-Nomadic Tribes, Landless Agricultural Labourers and Traditional Artisans category to obtain higher education viz., master's degree or Ph.D courses by studying abroad thereby improving their Economic and Social status."
+        }
+      ],
+      "documents": [
+        "Fee receipt"
+      ],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/28",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/28",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:17.278Z",
+        "contentHash": "033d7815ac116300",
+        "textLength": 4409
+      },
+      "lastVerified": "2026-08-18T16:13:17.278Z",
+      "confidence": 0.5,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "post-matric-scholarship-for-sc-students-2ca855",
+      "slug": "post-matric-scholarship-for-sc-students",
+      "name": "Post-Matric Scholarship for SC students",
+      "summary": "Post-Matric Scholarship for SC students, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "SC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "Class 11-12"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "Post-Matric Scholarship for SC students | Department of Social Justice and Empowerment - Government of India"
+        },
+        {
+          "field": "courseLevels",
+          "text": "Post-Matric Scholarship for SC students | Department of Social Justice and Empowerment - Government of India"
+        }
+      ],
+      "documents": [
+        "Domicile / bonafide certificate"
+      ],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/25",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/25",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:19.534Z",
+        "contentHash": "d4d45aafad06fc32",
+        "textLength": 3905
+      },
+      "lastVerified": "2026-08-18T16:13:19.534Z",
+      "confidence": 0.5,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "national-fellowship-for-scheduled-caste-students-91015a",
+      "slug": "national-fellowship-for-scheduled-caste-students",
+      "name": "National Fellowship for Scheduled Caste Students",
+      "summary": "National Fellowship for Scheduled Caste Students, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "SC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "PhD"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "National Fellowship for SC students (NFSC) Scheme Guidelines"
+        },
+        {
+          "field": "courseLevels",
+          "text": "The objective of the scheme is to provide fellowships in the form of financial assistance to students belonging to SC category to pursue higher studies leading to M.Phil/Ph.D in Science, Humanities, Social Science, in Indian Universities/Institutions/Colleges recognized by University Grants Commission (UGC)."
+        }
+      ],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/29",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/29",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:15.053Z",
+        "contentHash": "0dc74a9e9c6cfc67",
+        "textLength": 5034
+      },
+      "lastVerified": "2026-08-18T16:13:15.053Z",
+      "confidence": 0.33,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "pm-young-achievers-scholarship-award-scheme-for-vibrant-india-for-obcs-and-other-05efa7",
+      "slug": "pm-young-achievers-scholarship-award-scheme-for-vibrant-india-for-obcs-and-other",
+      "name": "PM YOUNG ACHIEVERS SCHOLARSHIP AWARD SCHEME FOR VIBRANT INDIA FOR OBCs AND OTHERS (PM -YASASVI)",
+      "summary": "PM YOUNG ACHIEVERS SCHOLARSHIP AWARD SCHEME FOR VIBRANT INDIA FOR OBCs AND OTHERS (PM -YASASVI), Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "OBC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "Class 9-10",
+          "Class 11-12"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "This is an umbrella Scheme formulated for OBC, EBC and DNT Students by clubbing the existing Scholarship Schemes and Hostel Scheme."
+        },
+        {
+          "field": "courseLevels",
+          "text": "• Pre-Matric Scholarship for OBC, EBC and DNT Students"
+        }
+      ],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/101",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/101",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:06.129Z",
+        "contentHash": "452835d0b2b41ec9",
+        "textLength": 3754
+      },
+      "lastVerified": "2026-08-18T16:13:06.129Z",
+      "confidence": 0.33,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "pre-matric-scholarship-for-obc-students-af2db9",
+      "slug": "pre-matric-scholarship-for-obc-students",
+      "name": "Pre-Matric Scholarship for OBC Students",
+      "summary": "Pre-Matric Scholarship for OBC Students, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "OBC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [
+          "Class 9-10"
+        ],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "Pre-Matric Scholarship for OBC Students | Department of Social Justice and Empowerment - Government of India"
+        },
+        {
+          "field": "courseLevels",
+          "text": "Pre-Matric Scholarship for OBC Students | Department of Social Justice and Empowerment - Government of India"
+        }
+      ],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/92",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/92",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:21.756Z",
+        "contentHash": "b6f7fc5506a55de3",
+        "textLength": 2942
+      },
+      "lastVerified": "2026-08-18T16:13:21.756Z",
+      "confidence": 0.33,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "central-sector-scholarship-of-top-class-education-for-sc-students-4bc836",
+      "slug": "central-sector-scholarship-of-top-class-education-for-sc-students",
+      "name": "Central Sector Scholarship of Top Class Education for SC Students",
+      "summary": "Central Sector Scholarship of Top Class Education for SC Students, Department of Social Justice and Empowerment, Ministry of Social Justice and Empowerment, GOI",
+      "ministry": "Department of Social Justice and Empowerment",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [
+          "SC"
+        ],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [
+        {
+          "field": "categories",
+          "text": "Central Sector Scholarship of Top Class Education for SC Students | Department of Social Justice and Empowerment - Government of India"
+        }
+      ],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes/27",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes/27",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html",
+        "fetchedAt": "2026-08-18T16:13:10.654Z",
+        "contentHash": "b442921597ae0b76",
+        "textLength": 3739
+      },
+      "lastVerified": "2026-08-18T16:13:10.654Z",
+      "confidence": 0.17,
+      "detailLevel": "full",
+      "warnings": [],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://socialjustice.gov.in/schemes",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "agedn-icar-junior-research-fellowship-fbd096",
+      "slug": "agedn-icar-junior-research-fellowship",
+      "name": "AgEdn - ICAR Junior Research Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "d127c4bdd83d7564",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-icar-senior-research-fellowship-fbd096",
+      "slug": "agedn-icar-senior-research-fellowship",
+      "name": "AgEdn - ICAR Senior Research Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "2d8989a027dc0508",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-merit-cum-means-scholarship-fbd096",
+      "slug": "agedn-merit-cum-means-scholarship",
+      "name": "AgEdn - Merit Cum Means scholarship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "cdbb2d0ebb6673e1",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-national-talent-scholarship-pg-fbd096",
+      "slug": "agedn-national-talent-scholarship-pg",
+      "name": "AgEdn - National Talent Scholarship PG",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=UG&amp;SchemeCode=NTSU",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "7433a7edf1e2b2f6",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=UG&amp;SchemeCode=NTSU"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-national-talent-scholarship-ug-fbd096",
+      "slug": "agedn-national-talent-scholarship-ug",
+      "name": "AgEdn - National Talent Scholarship UG",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=UG&amp;SchemeCode=NTSU",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "4904b4d9295ac3e1",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=UG&amp;SchemeCode=NTSU"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-netaji-subhas-icar-international-fellowship-fbd096",
+      "slug": "agedn-netaji-subhas-icar-international-fellowship",
+      "name": "AgEdn - Netaji Subhas ICAR International Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/NetajiSubhasNotification",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "15737975444dd756",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/NetajiSubhasNotification"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "agedn-post-matric-scholarship-fbd096",
+      "slug": "agedn-post-matric-scholarship",
+      "name": "AgEdn - Post Matric Scholarship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=PMS&amp;SchemeCode=PMS",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "347a1cf4ff671c4a",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://education.icar.gov.in/Event_details.aspx?component=NTS&amp;DegProg=PMS&amp;SchemeCode=PMS"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "aicte-swanath-scholarship-scheme-degree-fbd096",
+      "slug": "aicte-swanath-scholarship-scheme-degree",
+      "name": "AICTE - Swanath Scholarship Scheme - Degree",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0644b2b51ddc2a0d",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "aicte-swanath-scholarship-scheme-diploma-fbd096",
+      "slug": "aicte-swanath-scholarship-scheme-diploma",
+      "name": "AICTE - Swanath Scholarship Scheme - Diploma",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1c8f85c363b82c2b",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "apply-for-scholarship-f66f8a",
+      "slug": "apply-for-scholarship",
+      "name": "Apply For Scholarship",
+      "summary": "Listed by National Scholarship Portal.",
+      "ministry": "National Scholarship Portal",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/ApplicationForm/",
+      "source": {
+        "url": "https://scholarships.gov.in/",
+        "domain": "scholarships.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:49.657Z",
+        "contentHash": "d6649d8d34c42fdb",
+        "textLength": 0,
+        "listedOn": "https://scholarships.gov.in/",
+        "officialUrl": "https://scholarships.gov.in/ApplicationForm/"
+      },
+      "lastVerified": "2026-08-18T16:09:49.657Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "nsp-home"
+    },
+    {
+      "id": "as-ivri-institute-scholarship-for-m-v-sc-and-ph-d-fbd096",
+      "slug": "as-ivri-institute-scholarship-for-m-v-sc-and-ph-d",
+      "name": "AS_IVRI_Institute Scholarship for M.V.Sc. and Ph.D.",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "05a54742530aba36",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "as-ndri-institute-scholarship-for-m-sc-and-ph-d-fbd096",
+      "slug": "as-ndri-institute-scholarship-for-m-sc-and-ph-d",
+      "name": "AS_NDRI_Institute Scholarship for M.Sc. and Ph.D.",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "5e150b1844dea580",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "ati-scheme-training-component-fbd096",
+      "slug": "ati-scheme-training-component",
+      "name": "ATI Scheme (Training Component)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://ati.msme.gov.in/ATI/home.aspx",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "7c57dba6086c6b09",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://ati.msme.gov.in/ATI/home.aspx"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "award-of-junior-fellowship-to-outstanding-artistes-persons-in-the-field-of-cultu-fbd096",
+      "slug": "award-of-junior-fellowship-to-outstanding-artistes-persons-in-the-field-of-cultu",
+      "name": "Award of Junior Fellowship to Outstanding Artistes/Persons in the Field of Culture",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a27aa97bcd916bd5",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "award-of-scholarships-to-young-artists-in-different-cultural-fields-fbd096",
+      "slug": "award-of-scholarships-to-young-artists-in-different-cultural-fields",
+      "name": "Award of Scholarships to Young Artists in different cultural fields",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1d716f31db7d30d6",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "award-of-senior-fellowship-to-outstanding-artistes-persons-in-the-field-of-cultu-fbd096",
+      "slug": "award-of-senior-fellowship-to-outstanding-artistes-persons-in-the-field-of-cultu",
+      "name": "Award of Senior Fellowship to Outstanding Artistes/Persons in the field of Culture",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "c00e769353216bc7",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "award-of-tagore-national-fellowship-for-cultural-research-fbd096",
+      "slug": "award-of-tagore-national-fellowship-for-cultural-research",
+      "name": "Award of Tagore National Fellowship for Cultural Research",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "dd0f4852b99fa42c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "begum-hazrat-mahal-national-scholarship-scheme-fbd096",
+      "slug": "begum-hazrat-mahal-national-scholarship-scheme",
+      "name": "Begum Hazrat Mahal National Scholarship Scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "7f1a9514691abe7d",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "bsr-faculty-fellowship-fbd096",
+      "slug": "bsr-faculty-fellowship",
+      "name": "BSR Faculty Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "434cb38ac2b4de70",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "bsr-fellowship-fbd096",
+      "slug": "bsr-fellowship",
+      "name": "BSR Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "555cd26f90f32f8c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "cs-iari-scholarship-fbd096",
+      "slug": "cs-iari-scholarship",
+      "name": "CS- IARI Scholarship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1bf4a9ca03906214",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "dr-d-s-kothari-post-doctoral-fellowship-fbd096",
+      "slug": "dr-d-s-kothari-post-doctoral-fellowship",
+      "name": "Dr D S Kothari Post Doctoral Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9ebc6e7212202d73",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "dr-s-radhakrishnan-postdoctoral-fellowship-in-humanities-and-social-science-fbd096",
+      "slug": "dr-s-radhakrishnan-postdoctoral-fellowship-in-humanities-and-social-science",
+      "name": "Dr S Radhakrishnan Postdoctoral Fellowship in Humanities and Social Science",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "6355e0ff5ff06c30",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "dr-ambedkar-scheme-of-interest-subsidy-on-educational-loan-for-overseas-studies--0eebd8",
+      "slug": "dr-ambedkar-scheme-of-interest-subsidy-on-educational-loan-for-overseas-studies-",
+      "name": "Dr. Ambedkar Scheme of Interest Subsidy on Educational Loan for Overseas Studies for OBCs & EBCs",
+      "summary": "Listed by Ministry of Social Justice & Empowerment — schemes.",
+      "ministry": "Ministry of Social Justice & Empowerment — schemes",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:12:58.500Z",
+        "contentHash": "cb9fc03b4523d713",
+        "textLength": 0,
+        "listedOn": "https://socialjustice.gov.in/schemes",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:12:58.500Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "socialjustice-schemes"
+    },
+    {
+      "id": "emeritus-fellowship-fbd096",
+      "slug": "emeritus-fellowship",
+      "name": "Emeritus Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "d45ef724602c1986",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "fellowship-component-of-r-and-d-projects-sponsored-by-the-ministry-fbd096",
+      "slug": "fellowship-component-of-r-and-d-projects-sponsored-by-the-ministry",
+      "name": "Fellowship component of R and D projects sponsored by the Ministry",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://serviceonline.gov.in/dbt/viewServiceApplicationForm.do?serviceId=14950006&amp;tempId=5253&amp;templS",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "b897d68c479965f7",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://serviceonline.gov.in/dbt/viewServiceApplicationForm.do?serviceId=14950006&amp;tempId=5253&amp;templS"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "fellowship-programmes-under-the-human-resource-development-for-health-research-fbd096",
+      "slug": "fellowship-programmes-under-the-human-resource-development-for-health-research",
+      "name": "Fellowship Programmes Under The Human Resource Development For Health Research",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1252efe93a92e828",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "fellowship-to-research-scholars-in-indian-statistical-institute-fbd096",
+      "slug": "fellowship-to-research-scholars-in-indian-statistical-institute",
+      "name": "Fellowship to research scholars in Indian Statistical Institute",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "85b7f3e97702cd53",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "free-coaching-for-scs-obcs-and-beneficiaries-of-pm-cares-children-scheme-0eebd8",
+      "slug": "free-coaching-for-scs-obcs-and-beneficiaries-of-pm-cares-children-scheme",
+      "name": "Free Coaching for SCs, OBCs and beneficiaries of PM CARES Children Scheme",
+      "summary": "Listed by Ministry of Social Justice & Empowerment — schemes.",
+      "ministry": "Ministry of Social Justice & Empowerment — schemes",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:12:58.500Z",
+        "contentHash": "17cadc1a94f884c4",
+        "textLength": 0,
+        "listedOn": "https://socialjustice.gov.in/schemes",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:12:58.500Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "socialjustice-schemes"
+    },
+    {
+      "id": "fs-cife-institutional-fellowship-fbd096",
+      "slug": "fs-cife-institutional-fellowship",
+      "name": "FS - CIFE - Institutional Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1b493e11090f04ad",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "iasri-scholarship-for-msc-and-phd-fbd096",
+      "slug": "iasri-scholarship-for-msc-and-phd",
+      "name": "IASRI Scholarship for MSc and PhD",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://iasri.icar.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9c0d37a9a1a1dc46",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://iasri.icar.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "iccr-scholarship-fbd096",
+      "slug": "iccr-scholarship",
+      "name": "ICCR Scholarship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "22a7d80afd0939f0",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "icmr-junior-research-fellowship-fbd096",
+      "slug": "icmr-junior-research-fellowship",
+      "name": "ICMR-Junior Research Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "227cd3edb3dba85c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "icmr-post-doctoral-fellowship-fbd096",
+      "slug": "icmr-post-doctoral-fellowship",
+      "name": "ICMR-Post Doctoral Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://main.icmr.nic.in/content/post-doctoral-research",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "e8d023ed25c40de1",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://main.icmr.nic.in/content/post-doctoral-research"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "indian-institute-of-remote-sensing-scholarships-and-stipends-fbd096",
+      "slug": "indian-institute-of-remote-sensing-scholarships-and-stipends",
+      "name": "Indian Institute of Remote Sensing - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0005c84ed7c92234",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "indian-institute-of-space-science-and-technology-assistanceship-and-fellowships-fbd096",
+      "slug": "indian-institute-of-space-science-and-technology-assistanceship-and-fellowships",
+      "name": "Indian Institute of Space Science and Technology - Assistanceship and Fellowships",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "c464072c6ecd72a6",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "indian-space-research-organization-headquarters-scholarships-and-stipends-fbd096",
+      "slug": "indian-space-research-organization-headquarters-scholarships-and-stipends",
+      "name": "Indian Space Research Organization Headquarters - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "8b0481a5059953f3",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "ishan-uday-special-scholarship-scheme-for-north-eastern-region-fbd096",
+      "slug": "ishan-uday-special-scholarship-scheme-for-north-eastern-region",
+      "name": "Ishan Uday Special Scholarship Scheme for North Eastern Region",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "77495f47b7dd131e",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "isro-propulsion-complex-scholarships-and-stipends-fbd096",
+      "slug": "isro-propulsion-complex-scholarships-and-stipends",
+      "name": "ISRO Propulsion Complex - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "22b09d4c2e8c349b",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "isro-telemetry-tracking-and-command-network-scholarships-and-stipends-fbd096",
+      "slug": "isro-telemetry-tracking-and-command-network-scholarships-and-stipends",
+      "name": "ISRO Telemetry, Tracking and Command Network - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "2de88bfd91898706",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "junior-research-fellowship-fbd096",
+      "slug": "junior-research-fellowship",
+      "name": "Junior Research Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "d58157a28728e14e",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "junior-research-fellowship-in-science-humanities-and-social-sciences-fbd096",
+      "slug": "junior-research-fellowship-in-science-humanities-and-social-sciences",
+      "name": "Junior Research Fellowship in Science, Humanities and Social Sciences",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0289f34732f7e261",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "liquid-propulsion-systems-centre-scholarships-and-stipends-fbd096",
+      "slug": "liquid-propulsion-systems-centre-scholarships-and-stipends",
+      "name": "Liquid Propulsion Systems Centre - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9f737ce6e1ec1388",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "list-of-applicants-processed-for-scholarships-f66f8a",
+      "slug": "list-of-applicants-processed-for-scholarships",
+      "name": "List of Applicants Processed for Scholarships",
+      "summary": "Listed by National Scholarship Portal.",
+      "ministry": "National Scholarship Portal",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/onlineSanctionedList",
+      "source": {
+        "url": "https://scholarships.gov.in/",
+        "domain": "scholarships.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:49.657Z",
+        "contentHash": "fe533611fbe4a39b",
+        "textLength": 0,
+        "listedOn": "https://scholarships.gov.in/",
+        "officialUrl": "https://scholarships.gov.in/onlineSanctionedList"
+      },
+      "lastVerified": "2026-08-18T16:09:49.657Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "nsp-home"
+    },
+    {
+      "id": "master-control-facility-scholarships-and-stipends-fbd096",
+      "slug": "master-control-facility-scholarships-and-stipends",
+      "name": "Master Control Facility - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0b68507ca81f8807",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "maulana-azad-national-fellowship-for-minority-student-fbd096",
+      "slug": "maulana-azad-national-fellowship-for-minority-student",
+      "name": "Maulana Azad National Fellowship for Minority Student",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "61933db1295b9f6c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "merit-cum-means-based-scholarship-for-professional-and-technical-course-for-mino-fbd096",
+      "slug": "merit-cum-means-based-scholarship-for-professional-and-technical-course-for-mino",
+      "name": "Merit-cum- Means based Scholarship for professional and Technical course for minorities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "08cf9b6f3a5a36ea",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-apprenticeship-promotion-scheme-fbd096",
+      "slug": "national-apprenticeship-promotion-scheme",
+      "name": "National Apprenticeship Promotion Scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "d3f06526dff88249",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-doctoral-fellowship-ndf-fbd096",
+      "slug": "national-doctoral-fellowship-ndf",
+      "name": "National Doctoral Fellowship (NDF)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "5ab0ec320caead8f",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-fellowship-and-scholarship-for-higher-education-for-st-students-for-fel-fbd096",
+      "slug": "national-fellowship-and-scholarship-for-higher-education-for-st-students-for-fel",
+      "name": "National Fellowship and Scholarship for Higher education for ST students (for FELLOWSHIP)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "12463340be77493e",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-fellowship-and-scholarship-for-higher-education-for-st-students-for-sch-fbd096",
+      "slug": "national-fellowship-and-scholarship-for-higher-education-for-st-students-for-sch",
+      "name": "National Fellowship and Scholarship for higher education for ST students (for SCHOLARSHIP)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "5e66d294856d5f47",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-fellowship-for-scheduled-caste-students-nfsc-fbd096",
+      "slug": "national-fellowship-for-scheduled-caste-students-nfsc",
+      "name": "National Fellowship for Scheduled Caste Students (NFSC)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9d88603ba183e46a",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-fellowship-for-students-with-disabilities-fbd096",
+      "slug": "national-fellowship-for-students-with-disabilities",
+      "name": "National Fellowship for Students with Disabilities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a5d92f504e825500",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-means-cum-merit-scholarship-scheme-fbd096",
+      "slug": "national-means-cum-merit-scholarship-scheme",
+      "name": "National Means-cum-Merit Scholarship Scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "cb99a6085ef19576",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-overseas-scholarship-nos-fbd096",
+      "slug": "national-overseas-scholarship-nos",
+      "name": "National Overseas Scholarship (NOS)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "c7b6365eb3115b88",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-overseas-scholarship-for-students-with-disabilities-fbd096",
+      "slug": "national-overseas-scholarship-for-students-with-disabilities",
+      "name": "National Overseas Scholarship for students with disabilities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://disabilityaffairs.gov.in/content/page/scholarship.php",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "16bfac082a87d5ba",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://disabilityaffairs.gov.in/content/page/scholarship.php"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-overseas-scholarship-scheme-fbd096",
+      "slug": "national-overseas-scholarship-scheme",
+      "name": "National Overseas Scholarship Scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://overseas.tribal.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "bc22c5a705b883b5",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://overseas.tribal.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-remote-sensing-centre-scholarships-and-stipends-fbd096",
+      "slug": "national-remote-sensing-centre-scholarships-and-stipends",
+      "name": "National Remote Sensing Centre - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "319bba37d52b7036",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-renewable-energy-fellowship-programme-and-national-solar-science-fellow-fbd096",
+      "slug": "national-renewable-energy-fellowship-programme-and-national-solar-science-fellow",
+      "name": "National Renewable Energy Fellowship Programme and National Solar Science Fellowship Programme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a042acc5e0f6251b",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "national-scholarship-for-post-graduate-studies-fbd096",
+      "slug": "national-scholarship-for-post-graduate-studies",
+      "name": "National Scholarship for Post-Graduate Studies",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "bd135ca602f490d8",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "nodal-officers-scheme-wise-f66f8a",
+      "slug": "nodal-officers-scheme-wise",
+      "name": "Nodal Officers (Scheme-wise)",
+      "summary": "Listed by National Scholarship Portal.",
+      "ministry": "National Scholarship Portal",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/nodalofficerList",
+      "source": {
+        "url": "https://scholarships.gov.in/",
+        "domain": "scholarships.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:49.657Z",
+        "contentHash": "8617aefce8472755",
+        "textLength": 0,
+        "listedOn": "https://scholarships.gov.in/",
+        "officialUrl": "https://scholarships.gov.in/nodalofficerList"
+      },
+      "lastVerified": "2026-08-18T16:09:49.657Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "nsp-home"
+    },
+    {
+      "id": "p-g-scholarship-for-professional-courses-for-sc-st-candidates-fbd096",
+      "slug": "p-g-scholarship-for-professional-courses-for-sc-st-candidates",
+      "name": "P. G. Scholarship for Professional Courses for SC/ST candidates",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a8e90816698bd639",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "p-g-indira-gandhi-scholarship-for-single-girl-child-fbd096",
+      "slug": "p-g-indira-gandhi-scholarship-for-single-girl-child",
+      "name": "P.G. Indira Gandhi Scholarship For Single Girl Child",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "7bfb53c29966e3b4",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "p-g-scholarship-for-gate-gpat-qualified-students-for-pursuing-m-tech-m-e-m-pharm-fbd096",
+      "slug": "p-g-scholarship-for-gate-gpat-qualified-students-for-pursuing-m-tech-m-e-m-pharm",
+      "name": "P.G. Scholarship For GATE/GPAT Qualified Students For Pursuing M.Tech/ M.E./M.Pharma - AICTE",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "60a70ed1a3be08eb",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes",
+      "alternateSources": [
+        {
+          "url": "https://dbtbharat.gov.in/central-scheme/list",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "p-g-scholarship-for-university-rank-holders-fbd096",
+      "slug": "p-g-scholarship-for-university-rank-holders",
+      "name": "P.G. Scholarship for University Rank Holders",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a9506e6133146f33",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pm-yasasvi-post-matric-scholarship-to-obc-ebc-and-dnt-fbd096",
+      "slug": "pm-yasasvi-post-matric-scholarship-to-obc-ebc-and-dnt",
+      "name": "PM YASASVI - Post-Matric Scholarship to OBC, EBC and DNT",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9207413080134f0a",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pm-yasasvi-pre-matric-scholarship-to-obc-ebc-and-dnt-fbd096",
+      "slug": "pm-yasasvi-pre-matric-scholarship-to-obc-ebc-and-dnt",
+      "name": "PM YASASVI - Pre-Matric Scholarship to OBC, EBC and DNT",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "069d1ab8fe21dfbf",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-doctoral-fellowship-for-women-fbd096",
+      "slug": "post-doctoral-fellowship-for-women",
+      "name": "Post Doctoral Fellowship for Women",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "85bc09a16651e686",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-doctoral-fellowship-for-sc-st-candidates-fbd096",
+      "slug": "post-doctoral-fellowship-for-sc-st-candidates",
+      "name": "Post-Doctoral Fellowship for SC/ST Candidates",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0035d5d3f7bb66cb",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-matric-scholarship-for-minorities-fbd096",
+      "slug": "post-matric-scholarship-for-minorities",
+      "name": "Post-Matric Scholarship for Minorities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "e2661c770a5e85ca",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-matric-scholarship-for-persons-with-disabilities-fbd096",
+      "slug": "post-matric-scholarship-for-persons-with-disabilities",
+      "name": "Post-matric Scholarship for Persons with Disabilities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "097b461a96aac431",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-matric-scholarship-scheme-for-st-students-fbd096",
+      "slug": "post-matric-scholarship-scheme-for-st-students",
+      "name": "Post-Matric Scholarship Scheme for ST students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "da52d60edbf259d4",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "post-matric-scholarships-for-scheduled-caste-students-fbd096",
+      "slug": "post-matric-scholarships-for-scheduled-caste-students",
+      "name": "Post-Matric Scholarships for Scheduled Caste Students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "49abbf1029812364",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-central-sector-interest-subsid-fbd096",
+      "slug": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-central-sector-interest-subsid",
+      "name": "Pradhan Mantri Uchchatar Shiksha Protsahan (PM -USP) Central Sector Interest Subsidy Scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "77e89195cd77a635",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-central-sector-scheme-of-schol-fbd096",
+      "slug": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-central-sector-scheme-of-schol",
+      "name": "Pradhan Mantri Uchchatar Shiksha Protsahan (PM -USP) Central Sector Scheme of Scholarship for College and University students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1b737ec69bda20f6",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-special-scholarship-scheme-for-fbd096",
+      "slug": "pradhan-mantri-uchchatar-shiksha-protsahan-pm-usp-special-scholarship-scheme-for",
+      "name": "Pradhan Mantri Uchchatar Shiksha Protsahan (PM -USP) Special Scholarship Scheme for Jammu & Kashmir and Ladakh",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "f05626417fc2beb4",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pradhan-mantri-vidyalaxmi-pm-vidyalaxmi-scheme-fbd096",
+      "slug": "pradhan-mantri-vidyalaxmi-pm-vidyalaxmi-scheme",
+      "name": "PRADHAN MANTRI VIDYALAXMI (PM-Vidyalaxmi) SCHEME",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "cb1f477d8836ed0e",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pragati-scholarship-for-girls-diploma-institutes-fbd096",
+      "slug": "pragati-scholarship-for-girls-diploma-institutes",
+      "name": "Pragati Scholarship for girls Diploma Institutes",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "f4c90a42fdb8214c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pragati-scholarship-for-girls-in-degree-colleges-fbd096",
+      "slug": "pragati-scholarship-for-girls-in-degree-colleges",
+      "name": "Pragati Scholarship for girls in Degree Colleges",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "6c9681036105b943",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pre-matric-scholarship-for-minorities-fbd096",
+      "slug": "pre-matric-scholarship-for-minorities",
+      "name": "Pre- Matric Scholarship for Minorities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "ac04e62421468732",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pre-matric-scholarship-for-persons-with-disabilities-fbd096",
+      "slug": "pre-matric-scholarship-for-persons-with-disabilities",
+      "name": "Pre-matric scholarship for Persons with disabilities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0761ccc51d7769ac",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pre-matric-scholarship-scheme-for-scheduled-castes-and-others-fbd096",
+      "slug": "pre-matric-scholarship-scheme-for-scheduled-castes-and-others",
+      "name": "Pre-Matric Scholarship Scheme for Scheduled Castes and Others",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "593b540f4e02737f",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "pre-matric-scholarship-scheme-for-st-students-fbd096",
+      "slug": "pre-matric-scholarship-scheme-for-st-students",
+      "name": "Pre-Matric Scholarship Scheme for ST students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "6d7a46772cc0ec0a",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "prime-minister-scholarship-scheme-fbd096",
+      "slug": "prime-minister-scholarship-scheme",
+      "name": "Prime Minister scholarship scheme",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "89ef62fabe696fae",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "prime-minister-s-scholarship-scheme-for-railway-protection-force-rpf-fbd096",
+      "slug": "prime-minister-s-scholarship-scheme-for-railway-protection-force-rpf",
+      "name": "Prime Minister's Scholarship Scheme for Railway Protection Force (RPF)",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "2441a4b8a645ec28",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "prime-ministers-scholarship-scheme-pmss-fbd096",
+      "slug": "prime-ministers-scholarship-scheme-pmss",
+      "name": "Prime Ministers Scholarship Scheme PMSS",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "21fdb89486983d83",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "rgniyd-scholarships-to-students-fbd096",
+      "slug": "rgniyd-scholarships-to-students",
+      "name": "RGNIYD-Scholarships to Students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://www.dbtyas-youth.gov.in/scheme/commonform.php",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "bd6673e1a33f9c6f",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://www.dbtyas-youth.gov.in/scheme/commonform.php"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "saksham-scholarship-for-differently-abled-students-of-degree-colleges-fbd096",
+      "slug": "saksham-scholarship-for-differently-abled-students-of-degree-colleges",
+      "name": "Saksham scholarship for differently abled students of Degree Colleges",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "97e9b065d2843fad",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "saksham-scholarship-for-differently-abled-students-of-diploma-institutes-fbd096",
+      "slug": "saksham-scholarship-for-differently-abled-students-of-diploma-institutes",
+      "name": "Saksham scholarship for differently abled students of Diploma Institutes",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "86b092b42e7bc790",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "satish-dhawan-space-centre-shar-scholarships-and-stipends-fbd096",
+      "slug": "satish-dhawan-space-centre-shar-scholarships-and-stipends",
+      "name": "Satish Dhawan Space Centre-SHAR - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "b5d569cc46988ad2",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "savitribai-jyotirao-phule-fellowship-for-single-girl-child-fbd096",
+      "slug": "savitribai-jyotirao-phule-fellowship-for-single-girl-child",
+      "name": "Savitribai Jyotirao Phule Fellowship for Single Girl Child",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "394111c9226ccc19",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "scheme-for-residential-education-for-students-in-high-schools-in-targeted-areas--0eebd8",
+      "slug": "scheme-for-residential-education-for-students-in-high-schools-in-targeted-areas-",
+      "name": "Scheme For Residential Education For Students in High Schools in Targeted Areas (SHRESHTA)",
+      "summary": "Listed by Ministry of Social Justice & Empowerment — schemes.",
+      "ministry": "Ministry of Social Justice & Empowerment — schemes",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://grants-msje.gov.in",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:12:58.500Z",
+        "contentHash": "8aa366e0980b3877",
+        "textLength": 0,
+        "listedOn": "https://socialjustice.gov.in/schemes",
+        "officialUrl": "https://grants-msje.gov.in"
+      },
+      "lastVerified": "2026-08-18T16:12:58.500Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "socialjustice-schemes",
+      "alternateSources": [
+        {
+          "url": "https://dbtbharat.gov.in/central-scheme/list",
+          "adapter": "gov-html"
+        }
+      ]
+    },
+    {
+      "id": "scheme-of-north-eastern-council-of-financial-support-to-the-student-of-north-eas-fbd096",
+      "slug": "scheme-of-north-eastern-council-of-financial-support-to-the-student-of-north-eas",
+      "name": "Scheme of North Eastern Council of Financial Support to the Student of North East Region",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "374613409637ed84",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "scheme-of-research-development-consultancies-and-reorientation-fbd096",
+      "slug": "scheme-of-research-development-consultancies-and-reorientation",
+      "name": "Scheme of Research, Development, Consultancies and Reorientation",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://otns.dpe.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "1df6eee7a10b3d1f",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://otns.dpe.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "schemes-schemes-for-the-final-year-2016-2017-and-2017-2018-8dcdb7",
+      "slug": "schemes-schemes-for-the-final-year-2016-2017-and-2017-2018",
+      "name": "Schemes • Schemes for the Final Year 2016-2017 and 2017-2018",
+      "summary": "Listed by Assam — Directorate of Higher Education.",
+      "ministry": "Assam — Directorate of Higher Education",
+      "level": "state",
+      "state": "Assam",
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": [
+          "Assam"
+        ]
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://directorateofhighereducation.assam.gov.in/",
+      "source": {
+        "url": "https://directorateofhighereducation.assam.gov.in/schemes",
+        "domain": "directorateofhighereducation.assam.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:14:16.680Z",
+        "contentHash": "e13d8651e4bd0784",
+        "textLength": 0,
+        "listedOn": "https://directorateofhighereducation.assam.gov.in/schemes",
+        "officialUrl": "https://directorateofhighereducation.assam.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:14:16.680Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "assam-schemes"
+    },
+    {
+      "id": "scholarship-eligibility-f66f8a",
+      "slug": "scholarship-eligibility",
+      "name": "Scholarship Eligibility",
+      "summary": "Listed by National Scholarship Portal.",
+      "ministry": "National Scholarship Portal",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/scholarshipEligibility",
+      "source": {
+        "url": "https://scholarships.gov.in/",
+        "domain": "scholarships.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:49.657Z",
+        "contentHash": "1fa6820ed7fc7a55",
+        "textLength": 0,
+        "listedOn": "https://scholarships.gov.in/",
+        "officialUrl": "https://scholarships.gov.in/scholarshipEligibility"
+      },
+      "lastVerified": "2026-08-18T16:09:49.657Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "nsp-home"
+    },
+    {
+      "id": "scholarship-for-pm-cares-children-0eebd8",
+      "slug": "scholarship-for-pm-cares-children",
+      "name": "SCHOLARSHIP FOR PM CARES CHILDREN",
+      "summary": "Listed by Ministry of Social Justice & Empowerment — schemes.",
+      "ministry": "Ministry of Social Justice & Empowerment — schemes",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:12:58.500Z",
+        "contentHash": "8c82f809f5f95c7c",
+        "textLength": 0,
+        "listedOn": "https://socialjustice.gov.in/schemes",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:12:58.500Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "socialjustice-schemes"
+    },
+    {
+      "id": "scholarship-for-top-class-education-for-students-with-disabilities-fbd096",
+      "slug": "scholarship-for-top-class-education-for-students-with-disabilities",
+      "name": "Scholarship for Top Class Education for students with disabilities",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://scholarships.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "b5e7b26bc46bb5d3",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://scholarships.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "scholarship-scheme-of-satyajit-ray-film-and-television-institute-kolkata-fbd096",
+      "slug": "scholarship-scheme-of-satyajit-ray-film-and-television-institute-kolkata",
+      "name": "Scholarship Scheme Of Satyajit Ray Film And Television Institute Kolkata",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9c960d22f76eed26",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "scholarship-to-niper-students-fbd096",
+      "slug": "scholarship-to-niper-students",
+      "name": "Scholarship to NIPER Students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "9e0fef5526675808",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "scholarships-for-higher-education-for-young-achievers-scheme-shreyas-obc-others--0eebd8",
+      "slug": "scholarships-for-higher-education-for-young-achievers-scheme-shreyas-obc-others-",
+      "name": "Scholarships for Higher Education for Young Achievers Scheme (SHREYAS) (OBC &Others) - 2021-22 to 2025-26.",
+      "summary": "Listed by Ministry of Social Justice & Empowerment — schemes.",
+      "ministry": "Ministry of Social Justice & Empowerment — schemes",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://socialjustice.gov.in/schemes",
+      "source": {
+        "url": "https://socialjustice.gov.in/schemes",
+        "domain": "socialjustice.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:12:58.500Z",
+        "contentHash": "6da3ea07427383fa",
+        "textLength": 0,
+        "listedOn": "https://socialjustice.gov.in/schemes",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:12:58.500Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "socialjustice-schemes"
+    },
+    {
+      "id": "shreyas-obc-national-fellowship-for-obc-students-fbd096",
+      "slug": "shreyas-obc-national-fellowship-for-obc-students",
+      "name": "SHREYAS (OBC) - National Fellowship for OBC Students",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "6878da9eef9e8032",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "space-applications-centre-scholarships-and-stipends-fbd096",
+      "slug": "space-applications-centre-scholarships-and-stipends",
+      "name": "Space Applications Centre - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "2c55343ec631c758",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "special-scholarship-scheme-under-pm-cares-for-children-scheme-fbd096",
+      "slug": "special-scholarship-scheme-under-pm-cares-for-children-scheme",
+      "name": "Special Scholarship Scheme under 'PM CARES for Children Scheme'",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "a5854e5239855c26",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "stipend-for-disabled-girls-under-iedss-component-of-samagra-shiksha-fbd096",
+      "slug": "stipend-for-disabled-girls-under-iedss-component-of-samagra-shiksha",
+      "name": "Stipend for Disabled girls under IEDSS component of Samagra Shiksha",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://samagra.education.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "0e2ea86654ef45dd",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://samagra.education.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "stipend-to-differently-abled-candidates-under-the-scheme-of-vocational-rehabilit-fbd096",
+      "slug": "stipend-to-differently-abled-candidates-under-the-scheme-of-vocational-rehabilit",
+      "name": "Stipend to Differently Abled Candidates under the Scheme of Vocational Rehabilitation Centres for Handicapped",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://labour.gov.in/vrc",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "96cef497c8e6ff43",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://labour.gov.in/vrc"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "stipend-to-students-in-indian-statistical-institute-fbd096",
+      "slug": "stipend-to-students-in-indian-statistical-institute",
+      "name": "Stipend to students in Indian Statistical Institute",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "449a8bb24d4fc569",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "stipend-to-trainees-under-the-scheme-of-welfare-of-sc-st-job-seekers-through-coa-fbd096",
+      "slug": "stipend-to-trainees-under-the-scheme-of-welfare-of-sc-st-job-seekers-through-coa",
+      "name": "Stipend to Trainees under the Scheme of Welfare of SC ST Job-Seekers through Coaching, Guidance and Vocational Training",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://labour.gov.in/cgc",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "937d75fdaaaf51eb",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://labour.gov.in/cgc"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "swami-vivekananda-single-girl-child-fellowship-for-research-in-social-sciences-fbd096",
+      "slug": "swami-vivekananda-single-girl-child-fellowship-for-research-in-social-sciences",
+      "name": "Swami Vivekananda Single Girl Child Fellowship for Research in Social Sciences",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "e58e829834f1a538",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "ur-rao-satellite-centre-scholarships-and-stipends-fbd096",
+      "slug": "ur-rao-satellite-centre-scholarships-and-stipends",
+      "name": "UR Rao Satellite Centre-Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://dbtbharat.gov.in/central-scheme/list",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "29143dd7647c9d16",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "vigyan-dhara-inspire-fellowship-fbd096",
+      "slug": "vigyan-dhara-inspire-fellowship",
+      "name": "Vigyan Dhara - INSPIRE Fellowship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://online-inspire.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "c73305f329f97f47",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://online-inspire.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "vigyan-dhara-inspire-scholarship-fbd096",
+      "slug": "vigyan-dhara-inspire-scholarship",
+      "name": "Vigyan Dhara - INSPIRE Scholarship",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://online-inspire.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "8f2bfbf9ffeb22cb",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://online-inspire.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "vikram-sarabhai-space-centre-scholarships-and-stipends-fbd096",
+      "slug": "vikram-sarabhai-space-centre-scholarships-and-stipends",
+      "name": "Vikram Sarabhai Space Centre - Scholarships and Stipends",
+      "summary": "Listed by DBT Bharat — central scheme list.",
+      "ministry": "DBT Bharat — central scheme list",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://portal.mhrdnats.gov.in/",
+      "source": {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "domain": "dbtbharat.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:09:29.262Z",
+        "contentHash": "711eac01c75f5d8c",
+        "textLength": 0,
+        "listedOn": "https://dbtbharat.gov.in/central-scheme/list",
+        "officialUrl": "https://portal.mhrdnats.gov.in/"
+      },
+      "lastVerified": "2026-08-18T16:09:29.262Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "dbt-central-schemes"
+    },
+    {
+      "id": "web-portal-for-fellowship-scholarship-legacy-cases-c2b183",
+      "slug": "web-portal-for-fellowship-scholarship-legacy-cases",
+      "name": "Web portal for Fellowship/Scholarship Legacy Cases",
+      "summary": "Listed by UGC — scholarships and fellowships.",
+      "ministry": "UGC — scholarships and fellowships",
+      "level": "central",
+      "state": null,
+      "benefit": null,
+      "benefitText": null,
+      "eligibility": {
+        "maxFamilyIncome": null,
+        "categories": [],
+        "gender": [],
+        "disabilityRequired": false,
+        "courseLevels": [],
+        "minMarksPercent": null,
+        "states": []
+      },
+      "criteriaEvidence": [],
+      "documents": [],
+      "deadline": null,
+      "applyUrl": "https://www.ugc.gov.in/Scholarship",
+      "source": {
+        "url": "https://www.ugc.gov.in/Scholarship",
+        "domain": "www.ugc.gov.in",
+        "adapter": "gov-html",
+        "docType": "html-listing",
+        "fetchedAt": "2026-08-18T16:14:13.668Z",
+        "contentHash": "6e457ecce98383ea",
+        "textLength": 0,
+        "listedOn": "https://www.ugc.gov.in/Scholarship",
+        "officialUrl": null
+      },
+      "lastVerified": "2026-08-18T16:14:13.668Z",
+      "confidence": 0,
+      "detailLevel": "listing",
+      "warnings": [
+        "Eligibility criteria not yet extracted — check the official page."
+      ],
+      "sourceId": "ugc-schemes"
+    }
+  ]
+}

@@ -6,14 +6,166 @@ the bundled scraper** — nothing in the catalogue is hand-authored. If the
 scraper has never run, the site says so rather than showing invented content.
 
 ```bash
+cd backend
 npm install
-cp .env.example .env   # then fill in RESEND_API_KEY
-npm run scrape         # populate the catalogue from government sources
-npm start              # http://localhost:3000
+cp .env.example .env      # set DATABASE_URL, DIRECT_URL and SESSION_SECRET
+npm run setup             # migrate, then load the bundled catalogue
+npm start                 # http://localhost:3000
 ```
+
+The repository is in three parts:
+
+```
+backend/     the Express app, eligibility engine, scraper and schema  → Render
+frontend/    the CSS, JS and favicon the backend serves                 (no build)
+docs/        the PRD, MVP feature list and approved wireframes
+```
+
+`frontend/` is **not** deployed separately. Pages are rendered on the server, so
+the assets belong on the same origin as the HTML that references them — a second
+host would cost an extra DNS lookup and TLS handshake for 20 KB and buy nothing
+on the 2G/3G connections PRD §4 targets. `render.yaml` deploys the whole thing as
+one service.
 
 The server also binds to your LAN, so it prints a second URL
 (`http://192.168.x.x:3000`) you can open on a phone on the same wifi.
+
+`npm run setup` is `npm run migrate && npm run import:catalog`. Run
+`npm run scrape` when you want fresh data from the government sources; it
+publishes straight to the database.
+
+---
+
+## Storage
+
+Everything persists in **PostgreSQL** — accounts, consent records, sessions,
+institute batches, and the scheme catalogue itself.
+
+Earlier versions kept application data in a single JSON file and the catalogue
+in a committed JSON file. That could not be deployed: two instances overwrote
+each other, a failed write was logged and swallowed while the caller was told
+it had succeeded, and on any ephemeral filesystem — Render, Railway, Fly, Cloud
+Run — every deploy wiped every account. The server now refuses to start without
+`DATABASE_URL` rather than falling back to something that silently forgets.
+
+Three guarantees are enforced by the schema rather than by application code,
+because code is where they were being missed:
+
+- **Erasure is complete.** Every table referencing a user cascades, so "delete
+  my account and data" is one statement. The hand-written version missed the
+  user's sessions and their institute rows.
+- **Consent cannot be orphaned.** An account and its consent record are written
+  in one transaction, and a self-declared minor without guardian details is
+  rejected by a check constraint.
+- **An unread criterion is never a pass.** A scheme may only be marked
+  matchable if it actually carries eligibility criteria.
+
+### Hosted PostgreSQL
+
+Runs on **Supabase, `ap-south-1` (Mumbai)** — the closest region to the students
+this is for. Managed providers give you two endpoints; point `DATABASE_URL` at
+the pooled one and `DIRECT_URL` at the session/direct one. Migrations and the
+catalogue import prefer `DIRECT_URL`, because DDL and bulk loads want a real
+session rather than a transaction-mode pooler.
+
+```
+DATABASE_URL=postgresql://…@aws-0-ap-south-1.pooler.supabase.com:6543/postgres
+DIRECT_URL=postgresql://…@aws-0-ap-south-1.pooler.supabase.com:5432/postgres
+```
+
+Two things to know about connecting to Supabase specifically:
+
+- **Its direct host (`db.*.supabase.co`) is IPv6-only.** It publishes an AAAA
+  record and no A record, so it is unreachable from an IPv4-only network. Use
+  the **session pooler** on port 5432 as the direct endpoint instead — same
+  thing, over IPv4, no paid add-on needed.
+- **Its certificates come from Supabase's own CA**, not a publicly trusted one,
+  so Node rejects them by default. Download the certificate from Project
+  Settings → Database → SSL Configuration and set `PGSSL_CA_FILE=certs/prod-ca-2021.crt`.
+  `PGSSL_NO_VERIFY=true` gets you running without it — encrypted but unverified
+  — and the server prints a warning on every boot while it is set.
+
+TLS is configured entirely in `db.js`. Any `sslmode` in the connection string is
+stripped before it reaches the driver, because node-postgres derives its own ssl
+settings from `sslmode` and those silently win over a pinned CA.
+
+**Region matters more than it looks.** Every page is a small number of database
+round trips, so the distance between app server and database sets the floor on
+page latency, and PRD §4 asks for results within two seconds on 3G. Measured
+from India, rendering `/schemes`:
+
+| Database region | Round trip | `/schemes` | Catalogue load |
+| --- | --- | --- | --- |
+| `us-east-2` (Ohio) | 250 ms | 268 ms | 9 s |
+| `ap-southeast-1` (Singapore) | 62 ms | 123 ms | 4.6 s |
+| `ap-south-1` (Mumbai) | 37 ms | **47 ms** | **2.9 s** |
+
+Put the app server in the same region as the database; then only one user→server
+hop is left.
+
+**On scale-to-zero.** Neon suspends an idle compute after five minutes on every
+plan, including paid — measured cold start was 468 ms on the first query, which
+on a low-traffic pilot is most visitors. Its free tier caps compute at 100
+CU-hours a month against the ~730 a month contains, so keeping one awake is not
+an option there. Supabase instead pauses a free project only after a **week** of
+inactivity, with no compute-hour meter, which is why it is the better fit here.
+`KEEPWARM_MINUTES` exists for providers that need it and is off by default.
+
+The pool assumes the database may vanish underneath it. Idle connections are
+recycled after ten seconds, and a **read** that fails on a dropped connection is
+retried once. Writes are never retried: a reset after an insert leaves us unable
+to tell whether it committed, and a duplicate consent record is worse than an
+error.
+
+### Migrations
+
+Plain `.sql` files in `migrations/`, applied in filename order, each in its own
+transaction and recorded in `schema_migrations`. Editing an already-applied
+migration is an error rather than a silent no-op — that is how two environments
+quietly stop matching.
+
+```bash
+npm run migrate          # apply everything outstanding
+npm run migrate:status   # what is applied, what is pending
+```
+
+### Ops can correct a scheme
+
+PRD §2.1 asks for an ops member to update a changed income limit before an
+application window opens. `/ops/schemes` does that now; it used to mean editing
+a JSON file, committing and redeploying.
+
+A correction is an **overlay**, never an overwrite. The scraped row and its
+provenance stay intact underneath, the change carries a reason and a timestamp,
+every edit is audited in `scheme_revisions`, and any correction can be reverted.
+
+---
+
+## Security
+
+Four defects were fixed alongside the migration. Each has an end-to-end test
+that fails if the fix is reverted.
+
+- **Sign-up bypassed OTP verification.** The verified identifier was carried to
+  the sign-up screen in an unsigned `sc_pending` cookie which the server took at
+  face value. A hand-written `Cookie` header created a fully verified account on
+  any address without ever receiving a code. Verification now opens a
+  time-limited window on the OTP row, and sign-up reads that.
+- **`/ops` had no authentication.** Anyone could read user counts, minor-consent
+  counts and the source configuration. Access now needs the `ops` role or an
+  `OPS_EMAILS` entry, and a non-ops visitor gets a 404, not a 403.
+- **No CSRF protection.** Every mutation was a cookie-authenticated form POST
+  with no token, so a page a student visited could submit `POST /profile/delete`.
+  Signed double-submit tokens are now injected into every rendered form
+  centrally, so a new form cannot be forgotten — it fails closed instead.
+- **OTP issuance was unthrottled**, and codes were stored in plaintext. Codes
+  are hashed now, and issuance is limited per contact and — much more loosely —
+  per IP, since a school computer room is many legitimate students behind one
+  address.
+
+Cookies are marked `Secure` when `NODE_ENV=production`, sessions expire
+server-side rather than trusting the cookie's max-age, and expired OTPs,
+sessions and rate-limit windows are swept hourly.
 
 ---
 
@@ -287,6 +439,17 @@ that the product does not enforce.
 ## Tests
 
 ```bash
+npm run test:all      # extraction heuristics, matcher sanity, full journeys
+npm test              # extraction heuristics only (no database needed)
+npm run test:e2e      # boots the app and drives it over real HTTP
+```
+
+`test:e2e` covers both journeys end to end, persistence across a server
+restart, complete erasure on account deletion, the ops correction overlay, and
+a regression test for each security defect listed above.
+
+
+```bash
 node scripts/test-extract.js     # 27 unit tests for the extraction heuristics
 node scripts/check-matching.js   # matcher sanity check against the real catalogue
 ```
@@ -308,27 +471,37 @@ these tests during development:
 ## Layout
 
 ```
-config/
-  sources.js        government sources, incl. disabled ones with reasons
-  paths.js
-scraper/
-  run.js            CLI orchestrator
-  verify-sources.js static allowlist check
-  probe.js          reachability report
-  inspect.js        single-page debugger
-  adapters/         govHtml (listings + detail), govPdf (circulars)
-  lib/              allowlist, robots, httpClient, cache, html, pdf,
+backend/
+  config/           sources (incl. disabled ones, with reasons), paths
+  migrations/       001_catalog.sql, 002_app.sql
+  certs/            the provider's public CA, so TLS is verified not just encrypted
+  data/catalog/     scraper export — seeds a fresh database, not read at runtime
+  scraper/
+    run.js          CLI orchestrator
+    publish.js      writes a crawl into PostgreSQL
+    adapters/       govHtml (listings + detail), govPdf (circulars)
+    lib/            allowlist, robots, httpClient, cache, html, pdf,
                     extract (heuristics), normalize (schema + validation)
-server/
-  index.js          app wiring
-  catalog.js        reads scraper output — the only source of scheme data
-  matcher.js        eligibility engine, reason codes
-  csv.js            RFC-4180 CSV parser + column mapping
-  terms.js          versioned Terms content
-  render.js         escaping-by-default templating
-  routes/           public, auth, student, institute, ops
-public/             css + progressive-enhancement JS
-data/               catalog output, app store, response cache
+  server/
+    index.js        app wiring, preflight checks, /healthz
+    db.js           pool, transactions, TLS, batched inserts
+    store.js        accounts, consent, activity, batches
+    catalog.js      the scheme catalogue, plus ops corrections
+    security.js     CSRF, rate limiting, headers
+    matcher.js      eligibility engine, reason codes
+    csv.js / xlsx.js  batch parsing + column mapping
+    terms.js        versioned Terms content
+    render.js       escaping-by-default templating
+    routes/         public, auth, student, institute, ops
+  scripts/
+    migrate.js      SQL migration runner
+    import-catalog.js  seeds the catalogue from the export
+    test-e2e.js     full journeys + security regressions
+frontend/
+  css/app.css       served by the backend, same origin
+  js/app.js         progressive enhancement only
+docs/               PRD v2.1, MVP feature list, wireframes
+render.yaml         one web service, migrations run before traffic
 ```
 
 ---
@@ -339,11 +512,38 @@ data/               catalog output, app store, response cache
   screen. Wire up an SMS provider (MSG91, Twilio) before a mobile-first pilot.
 - **Resend needs a verified domain** to email anyone other than the Resend
   account owner. Until then use `delivered@resend.dev` for testing.
-- **Document upload does not store files.** The flow records verification state
-  only. Real handling needs encrypted storage and a retention policy.
-- **The app store is a JSON file.** Fine for a pilot, not for production
-  concurrency.
-- **10 of 183 schemes have machine-readable criteria.** The bottleneck is
-  source reachability, not the parser — the rejection list at `/ops/runs` shows
-  exactly what failed and why.
+- **Document upload does not store files.** The flow records that a document
+  was submitted and says so — it no longer claims "Verified" for a file nobody
+  looked at. Real handling needs object storage, encryption and a retention
+  policy; the `document_verifications` table already carries `storage_key` and
+  `purge_after` for it.
+- **No scheme publishes an application deadline.** Checked directly: the
+  central guideline pages carry dates, but never deadline wording — these
+  documents describe a scheme, while the application window lives on the
+  National Scholarship Portal and changes each academic year. The extractor is
+  deliberately *not* loosened to read those stray dates as deadlines; inventing
+  one would be worse than having none. The engine refuses to match a scheme
+  whose window has shut, so the guarantee is in place for when the data is.
+- **9 of 123 schemes have machine-readable criteria**, and coverage is central
+  government plus one Assam entry. This is the real cap on the product's
+  usefulness. The bottleneck is not the extractor — every page whose detail we
+  could actually fetch produced criteria. It is source reachability: of 132
+  candidate links, 34 sit behind a robots.txt we cannot read (host down, TLS
+  chain incomplete, or timing out), 11 return 4xx, and most of the rest are
+  ministry homepages rather than scheme pages. `/ops/runs` lists every rejection
+  with its reason.
+- **DBT Bharat is a poor source for this product** and should be replaced. It
+  indexes all 320 central DBT schemes across 56 ministries — pensions, crop
+  subsidies, vehicle incentives — of which only a fraction are scholarships, and
+  its links usually point at a ministry homepage. The National Scholarship
+  Portal's own per-scheme guideline PDFs are the better target.
+  182 central to 1 state. This is the real cap on the product's usefulness and
+  it is a scraper-coverage problem, not a storage one. The rejection list at
+  `/ops/runs` shows exactly what failed and why.
+- **No Hindi or regional languages.** PRD §3.1 makes language the first screen;
+  there is no i18n layer yet.
+- **No deadline reminders.** The next feature the database unlocks: a
+  `reminders` table and a worker, reusing the existing Resend integration.
+- **The guided form still requires an account.** PRD §2.1 wants a first
+  eligibility check without one.
 - **Terms are drafted for a pilot** and need legal review before launch.

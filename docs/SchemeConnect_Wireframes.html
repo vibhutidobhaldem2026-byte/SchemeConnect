@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SchemeConnect — Wireframes v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2540; --slate:#3B82F6; --bg:#F4F8FA; --charcoal:#1E293B; --white:#FFFFFF;
+    --line:#E1E9EF; --muted:#64748B; --good:#16A34A; --amber:#C2660A; --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', -apple-system, sans-serif; background:var(--bg); color:var(--charcoal); min-height:100vh; }
+  h1,h2,h3,.display{ font-family:'Manrope', sans-serif; color:var(--navy); }
+
+  .proto-nav{ position:fixed; top:0; left:0; right:0; z-index:999; background:var(--navy); color:#CBD9E8;
+    display:flex; align-items:center; gap:6px; padding:10px 18px; font-size:12px; overflow-x:auto; font-family:'Inter',sans-serif; }
+  .proto-nav .grp-label{ color:#7C93AC; font-weight:600; margin-right:2px; white-space:nowrap;}
+  .proto-nav button{ background:transparent; border:1px solid #23456B; color:#CBD9E8; padding:6px 11px; border-radius:20px;
+    font-size:11.5px; cursor:pointer; white-space:nowrap; font-family:'Inter',sans-serif; transition:.15s; }
+  .proto-nav button:hover{ border-color:var(--slate); color:#fff; }
+  .proto-nav button.active{ background:var(--slate); border-color:var(--slate); color:#fff; font-weight:600;}
+  .proto-nav .sep{ width:1px; height:20px; background:#23456B; margin:0 4px; flex-shrink:0;}
+
+  .screen{ display:none; min-height:100vh; padding-top:52px; }
+  .screen.active{ display:block; }
+
+  .center-wrap{ min-height:calc(100vh - 52px); display:flex; align-items:center; justify-content:center; padding:32px 20px; }
+  .auth-card{ width:100%; max-width:420px; background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:40px 36px 32px; box-shadow:0 2px 24px rgba(10,37,64,0.06); }
+  .wide-card{ max-width:560px; }
+  .logo-mark{ display:flex; align-items:center; gap:8px; justify-content:center; }
+  .logo-dot{ width:10px; height:10px; border-radius:3px; background:var(--slate);}
+  .logo-word{ font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; color:var(--navy); letter-spacing:-0.2px;}
+  .auth-card > .logo-mark{ margin-bottom:28px; }
+
+  .eyebrow{ font-size:12px; font-weight:700; color:var(--slate); text-transform:uppercase; letter-spacing:.06em; text-align:center; margin-bottom:8px;}
+  .headline{ font-size:24px; font-weight:800; text-align:center; line-height:1.3; margin-bottom:6px;}
+  .subtext{ font-size:14px; color:var(--muted); text-align:center; margin-bottom:30px; line-height:1.5;}
+
+  .field{ margin-bottom:20px; }
+  .field label{ display:block; font-family:'Manrope',sans-serif; font-weight:700; font-size:14px; color:var(--navy); margin-bottom:8px;}
+  .field .why{ font-size:11.5px; color:var(--muted); font-weight:500; margin-left:6px; }
+  .field input, .field select{ width:100%; padding:14px 16px; font-size:16px; font-family:'Inter',sans-serif;
+    border:1.5px solid var(--line); border-radius:10px; color:var(--charcoal); background:var(--white); outline:none; transition:.15s; }
+  .field input:focus, .field select:focus{ border-color:var(--slate); box-shadow:0 0 0 3px rgba(59,130,246,0.12); }
+  .field .hint{ font-size:12px; color:var(--muted); margin-top:6px; }
+  .field select{ appearance:none; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2364748B" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>'); background-repeat:no-repeat; background-position:right 14px center; }
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+  .btn-primary{ width:100%; padding:15px; background:var(--navy); color:#fff; border:none; border-radius:10px;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; cursor:pointer; transition:.15s; margin-top:6px; }
+  .btn-primary:hover{ background:#0d2f52; }
+  .btn-ghost{ width:100%; padding:14px; background:transparent; color:var(--slate); border:1.5px solid var(--line);
+    border-radius:10px; font-family:'Manrope',sans-serif; font-weight:700; font-size:14px; cursor:pointer; margin-top:10px; }
+  .btn-outline-sm{ padding:9px 16px; background:transparent; color:var(--navy); border:1.5px solid var(--line); border-radius:8px;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:12.5px; cursor:pointer; }
+  .link-back{ display:inline-block; font-size:13px; color:var(--muted); text-decoration:none; margin-bottom:18px; font-weight:600; }
+  .link-back:hover{ color:var(--slate); }
+  .foot-note{ text-align:center; font-size:12px; color:var(--muted); margin-top:22px; line-height:1.6;}
+  .foot-note a{ color:var(--slate); text-decoration:none; font-weight:600;}
+
+  /* ---- Terms consent ---- */
+  .consent-row{ display:flex; align-items:flex-start; gap:11px; background:var(--bg); border:1px solid var(--line);
+    border-radius:10px; padding:14px 16px; margin:4px 0 6px; }
+  .consent-row input[type="checkbox"]{ width:18px; height:18px; margin-top:1px; accent-color:var(--slate); flex-shrink:0; cursor:pointer; }
+  .consent-row label{ font-size:13px; color:var(--charcoal); line-height:1.55; cursor:pointer; }
+  .consent-row a{ color:var(--slate); font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+  .consent-error{ display:none; font-size:12px; color:#C2410C; font-weight:600; margin:8px 2px 0; }
+  .consent-error.show{ display:block; }
+  .btn-primary:disabled{ background:#C3CFDB; cursor:not-allowed; }
+  .btn-primary:disabled:hover{ background:#C3CFDB; }
+
+  /* ---- Terms & Conditions page ---- */
+  .terms-page{ max-width:760px; margin:0 auto; padding:32px 24px 64px; }
+  .terms-head{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:30px 32px; margin-bottom:18px; }
+  .terms-head h1{ font-size:26px; font-weight:800; margin:12px 0 8px; }
+  .terms-updated{ font-size:12.5px; color:var(--muted); font-weight:600; }
+  .terms-intro{ font-size:14px; color:var(--muted); line-height:1.65; margin-top:14px; }
+  .terms-toc{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:20px 24px; margin-bottom:18px; }
+  .terms-toc ol{ margin:10px 0 0 18px; }
+  .terms-toc li{ font-size:13.5px; padding:4px 0; }
+  .terms-toc a{ color:var(--slate); text-decoration:none; font-weight:600; }
+  .terms-toc a:hover{ text-decoration:underline; }
+  .terms-body{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:8px 32px 32px; }
+  .terms-body section{ padding-top:26px; scroll-margin-top:64px; }
+  .terms-body h2{ font-size:16px; font-weight:800; margin-bottom:10px; }
+  .terms-body p{ font-size:14px; color:var(--charcoal); line-height:1.7; margin-bottom:10px; }
+  .terms-body ul{ margin:4px 0 12px 20px; }
+  .terms-body li{ font-size:14px; line-height:1.7; padding:3px 0; }
+  .terms-callout{ background:var(--bg); border-left:3px solid var(--slate); border-radius:0 10px 10px 0; padding:14px 18px; margin:12px 0; font-size:13.5px; line-height:1.65; }
+  .terms-callout b{ font-family:'Manrope',sans-serif; color:var(--navy); }
+  .terms-foot{ text-align:center; font-size:12.5px; color:var(--muted); margin-top:22px; line-height:1.7; }
+  .terms-accept-bar{ display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--white);
+    border:1px solid var(--line); border-radius:12px; padding:18px 24px; margin-top:18px; }
+  .terms-accept-bar .tb-text{ font-size:13.5px; color:var(--muted); line-height:1.55; }
+  .terms-accept-bar button{ width:auto; margin-top:0; padding:13px 22px; white-space:nowrap; }
+
+  .otp-row{ display:flex; gap:10px; justify-content:center; margin-bottom:22px;}
+  .otp-row input{ width:46px; height:54px; text-align:center; font-size:22px; font-weight:700; border:1.5px solid var(--line);
+    border-radius:10px; color:var(--navy); font-family:'Manrope',sans-serif; }
+  .otp-row input:focus{ border-color:var(--slate); outline:none; box-shadow:0 0 0 3px rgba(59,130,246,0.12);}
+  .resend{ text-align:center; font-size:13px; color:var(--muted); margin-bottom:6px;}
+  .resend a{ color:var(--slate); font-weight:600; text-decoration:none; }
+  .contact-chip{ display:flex; align-items:center; justify-content:center; gap:8px; background:var(--bg); border:1px solid var(--line);
+    border-radius:10px; padding:10px 14px; font-size:14px; font-weight:600; color:var(--navy); margin-bottom:26px; }
+  .contact-chip .edit{ color:var(--slate); font-weight:700; font-size:12px; cursor:pointer; }
+
+  .loader-wrap{ min-height:calc(100vh - 52px); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }
+  .spinner{ width:64px; height:64px; border-radius:50%; border:4px solid #DCE7F0; border-top-color:var(--slate); animation:spin 0.9s linear infinite; margin-bottom:28px; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .loader-title{ font-family:'Manrope',sans-serif; font-weight:800; font-size:19px; color:var(--navy); margin-bottom:8px;}
+  .loader-sub{ font-size:14px; color:var(--muted); max-width:300px; }
+  .loader-steps{ display:flex; gap:8px; margin-top:22px; }
+  .loader-steps span{ width:7px; height:7px; border-radius:50%; background:var(--line); transition:background .3s; }
+  .loader-steps span.done{ background:var(--good); }
+  .loader-steps span.now{ background:var(--slate); }
+
+  .app-shell{ display:flex; min-height:calc(100vh - 52px); }
+  .side-nav{ width:220px; background:var(--white); border-right:1px solid var(--line); padding:26px 18px; flex-shrink:0; }
+  .side-nav .logo-mark{ justify-content:flex-start; margin-bottom:32px; padding-left:6px;}
+  .nav-item{ display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:9px; font-size:14px; font-weight:600; color:var(--muted); margin-bottom:4px; cursor:pointer; }
+  .nav-item.active{ background:var(--bg); color:var(--navy); }
+  .nav-item .ic{ width:8px; height:8px; border-radius:2px; background:currentColor; opacity:.5;}
+  .main-area{ flex:1; padding:36px 44px; max-width:920px; }
+  .main-area.narrow{ max-width:680px; }
+
+  .greeting{ font-family:'Manrope',sans-serif; font-weight:800; font-size:26px; color:var(--navy); margin-bottom:4px;}
+  .greeting-sub{ font-size:14px; color:var(--muted); margin-bottom:28px;}
+
+  .search-bar{ display:flex; align-items:center; gap:10px; background:var(--white); border:1.5px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:22px; }
+  .search-bar input{ border:none; outline:none; font-size:15px; flex:1; font-family:'Inter',sans-serif; color:var(--charcoal); background:transparent;}
+  .search-bar .ic{ color:var(--muted); font-size:16px; }
+  .search-bar button{ background:var(--navy); color:#fff; border:none; padding:9px 16px; border-radius:8px; font-weight:700; font-size:12.5px; font-family:'Manrope',sans-serif; cursor:pointer; }
+
+  .progress-banner{ display:flex; align-items:center; justify-content:space-between; gap:16px; background:linear-gradient(90deg,#0A2540,#123A63);
+    color:#fff; border-radius:12px; padding:16px 20px; margin-bottom:26px; cursor:pointer; }
+  .progress-banner .pb-text{ font-size:13px; line-height:1.5; }
+  .progress-banner .pb-text b{ font-family:'Manrope',sans-serif; }
+  .progress-banner button{ background:#fff; color:var(--navy); border:none; padding:9px 16px; border-radius:8px; font-weight:700; font-size:13px; font-family:'Manrope',sans-serif; cursor:pointer; white-space:nowrap; }
+  .bar-track{ height:4px; background:rgba(255,255,255,0.2); border-radius:4px; margin-top:8px; width:160px;}
+  .bar-fill{ height:100%; width:35%; background:var(--slate); border-radius:4px;}
+
+  .section-label{ font-family:'Manrope',sans-serif; font-weight:700; font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin:26px 0 14px; }
+
+  .scheme-card{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-bottom:12px; transition:.15s; cursor:pointer; }
+  .scheme-card:hover{ border-color:var(--slate); box-shadow:0 2px 14px rgba(10,37,64,0.05); }
+  .sc-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px;}
+  .sc-name{ font-family:'Manrope',sans-serif; font-weight:700; font-size:15.5px; color:var(--navy); }
+  .sc-amount{ font-family:'Manrope',sans-serif; font-weight:800; font-size:15px; color:var(--good); white-space:nowrap;}
+  .sc-tags{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{ font-size:11.5px; font-weight:600; padding:5px 10px; border-radius:20px; }
+  .tag-verified{ background:#EAF7EE; color:var(--good); }
+  .tag-deadline{ background:#FEF3E8; color:var(--amber); }
+  .tag-match{ background:#EAF1FE; color:var(--slate); }
+  .tag-self{ background:#F1F0FA; color:#6D5FCB; }
+  .tag-locked{ background:#F1F5F9; color:var(--muted); }
+
+  .stat-row{ display:flex; gap:14px; margin-bottom:8px; }
+  .stat-card{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .stat-num{ font-family:'Manrope',sans-serif; font-weight:800; font-size:26px; color:var(--navy); }
+  .stat-label{ font-size:12.5px; color:var(--muted); margin-top:4px; }
+
+  .profile-header{ display:flex; align-items:center; gap:16px; margin-bottom:28px; }
+  .avatar{ width:56px; height:56px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:20px; flex-shrink:0; }
+  .info-card{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:24px 26px; margin-bottom:16px; }
+  .info-card h3{ font-size:14px; margin-bottom:16px; }
+  .info-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px; }
+  .info-row:last-child{ border-bottom:none; }
+  .info-row .k{ color:var(--muted); }
+  .info-row .v{ font-weight:600; color:var(--charcoal); display:flex; align-items:center; gap:8px; }
+
+  .verify-card{ background:linear-gradient(135deg,#0A2540,#153F6B); color:#fff; border-radius:12px; padding:24px 26px; margin-bottom:16px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .verify-card .vt{ font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; margin-bottom:6px;}
+  .verify-card .vs{ font-size:13px; color:#BFD3E8; line-height:1.5; max-width:340px;}
+  .verify-card button{ background:#fff; color:var(--navy); border:none; padding:11px 18px; border-radius:8px; font-weight:700; font-size:13px; font-family:'Manrope',sans-serif; cursor:pointer; white-space:nowrap; }
+
+  .verify-item{ display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--white); border:1px solid var(--line);
+    border-radius:12px; padding:18px 22px; margin-bottom:12px; }
+  .verify-item .vi-left{ display:flex; align-items:center; gap:14px; }
+  .verify-item .vi-icon{ width:38px; height:38px; border-radius:10px; background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0;}
+  .verify-item .vi-title{ font-family:'Manrope',sans-serif; font-weight:700; font-size:14px; color:var(--navy);}
+  .verify-item .vi-sub{ font-size:12.5px; color:var(--muted); margin-top:2px;}
+  .status-dot{ width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:2px;}
+  .status-dot.pending{ background:var(--line); border:1.5px solid var(--muted);}
+  .status-dot.done{ background:var(--good);}
+
+  .detail-hero{ background:var(--white); border:1px solid var(--line); border-radius:14px; padding:28px 30px; margin-bottom:20px; }
+  .detail-ministry{ font-size:12px; color:var(--muted); font-weight:600; margin-bottom:6px;}
+  .detail-title{ font-family:'Manrope',sans-serif; font-weight:800; font-size:22px; color:var(--navy); margin-bottom:14px; }
+  .detail-meta{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;}
+  .detail-amount{ font-family:'Manrope',sans-serif; font-weight:800; font-size:24px; color:var(--good); margin-bottom:4px;}
+  .criteria-list{ list-style:none; }
+  .criteria-list li{ display:flex; align-items:flex-start; gap:10px; font-size:14px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .criteria-list li:last-child{ border-bottom:none; }
+  .crit-yes{ color:var(--good); font-weight:800; flex-shrink:0; }
+  .doc-list{ list-style:none; }
+  .doc-list li{ display:flex; align-items:center; gap:10px; font-size:14px; padding:9px 0; }
+  .doc-list li input{ width:16px; height:16px; accent-color:var(--slate); }
+  .cta-row{ display:flex; gap:12px; margin-top:20px; }
+  .cta-row .btn-primary{ margin-top:0; }
+  .apply-note{ font-size:12px; color:var(--muted); text-align:center; margin-top:10px; }
+
+  .table-wrap{ background:var(--white); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  table{ width:100%; border-collapse:collapse; }
+  th{ text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; padding:14px 20px; background:var(--bg); }
+  td{ padding:16px 20px; font-size:14px; color:var(--charcoal); border-top:1px solid var(--line); }
+  td.b{ font-weight:700; color:var(--navy); font-family:'Manrope',sans-serif; }
+  tr.clickable{ cursor:pointer; }
+  tr.clickable:hover td{ background:var(--bg); }
+  .pill{ font-size:11.5px; font-weight:600; padding:5px 10px; border-radius:20px; }
+  .pill-active{ background:#EAF7EE; color:var(--good); }
+  .pill-pending{ background:#FEF3E8; color:var(--amber); }
+  .pill-none{ background:#F1F5F9; color:var(--muted); }
+
+  .locked-card{ background:var(--bg); border:1.5px dashed #C9D6E0; border-radius:12px; padding:26px; text-align:center; margin-bottom:16px;}
+  .locked-icon{ width:44px; height:44px; border-radius:50%; background:var(--white); border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:18px; margin:0 auto 14px; }
+  .locked-title{ font-family:'Manrope',sans-serif; font-weight:700; font-size:14.5px; color:var(--navy); margin-bottom:6px;}
+  .locked-sub{ font-size:13px; color:var(--muted); max-width:340px; margin:0 auto 16px; line-height:1.5;}
+
+  .confirm-icon{ width:64px; height:64px; border-radius:50%; background:#EAF7EE; color:var(--good); display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 22px; }
+  .checklist{ text-align:left; background:var(--bg); border-radius:10px; padding:18px 20px; margin-top:24px;}
+  .checklist .ci{ display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--charcoal); margin-bottom:12px; line-height:1.5;}
+  .checklist .ci:last-child{ margin-bottom:0; }
+  .checklist .ci .num{ width:20px; height:20px; border-radius:50%; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;}
+
+  /* ---- Landing page ---- */
+  .landing-header{ display:flex; align-items:center; justify-content:space-between; padding:22px 44px; max-width:1080px; margin:0 auto; }
+  .landing-header .logo-mark{ justify-content:flex-start; }
+  .landing-login-link{ font-size:14px; font-weight:700; color:var(--navy); text-decoration:none; padding:9px 18px; border:1.5px solid var(--line); border-radius:8px; }
+  .landing-login-link:hover{ border-color:var(--slate); color:var(--slate); }
+  .landing-hero{ text-align:center; max-width:640px; margin:40px auto 8px; padding:0 24px; }
+  .landing-hero h1{ font-size:34px; font-weight:800; line-height:1.25; margin-bottom:14px; }
+  .landing-hero p{ font-size:15.5px; color:var(--muted); line-height:1.6; margin-bottom:26px; }
+  .landing-cta{ display:inline-block; background:var(--navy); color:#fff; font-family:'Manrope',sans-serif; font-weight:700;
+    font-size:15px; padding:15px 30px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; }
+  .landing-cta:hover{ background:#0d2f52; }
+  .landing-subcta{ font-size:12.5px; color:var(--muted); margin-top:12px; }
+  .landing-subcta a{ color:var(--slate); font-weight:600; text-decoration:none; }
+
+  .teaser-wrap{ max-width:900px; margin:52px auto 60px; padding:0 24px; }
+  .teaser-label{ text-align:center; font-family:'Manrope',sans-serif; font-weight:700; font-size:13px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.05em; margin-bottom:20px; }
+  .teaser-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .teaser-card{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:22px; }
+  .teaser-card .sc-name{ font-size:14.5px; margin-bottom:6px; }
+  .teaser-card .sc-amount{ display:block; margin-bottom:14px; }
+  .teaser-lock{ display:flex; align-items:center; gap:8px; background:var(--bg); border-radius:8px; padding:10px 12px;
+    font-size:12.5px; color:var(--muted); font-weight:600; }
+
+  /* ---- Role select ---- */
+  .role-grid{ display:flex; flex-direction:column; gap:14px; }
+  .role-card{ display:flex; align-items:center; gap:16px; padding:22px; border:1.5px solid var(--line); border-radius:12px;
+    cursor:pointer; transition:.15s; background:var(--white); }
+  .role-card:hover{ border-color:var(--slate); box-shadow:0 2px 14px rgba(10,37,64,0.06); }
+  .role-emoji{ width:46px; height:46px; border-radius:10px; background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:21px; flex-shrink:0;}
+  .role-title{ font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; color:var(--navy); margin-bottom:2px;}
+  .role-sub{ font-size:12.5px; color:var(--muted); }
+
+  /* ---- Upload flows ---- */
+  .dropzone{ border:2px dashed var(--line); border-radius:12px; padding:40px 24px; text-align:center; background:var(--white); cursor:pointer; transition:.15s; }
+  .dropzone:hover, .dropzone.drag{ border-color:var(--slate); background:#F5F9FF; }
+  .dropzone .dz-icon{ font-size:30px; margin-bottom:10px; }
+  .dropzone .dz-title{ font-family:'Manrope',sans-serif; font-weight:700; font-size:14.5px; color:var(--navy); margin-bottom:4px;}
+  .dropzone .dz-sub{ font-size:12.5px; color:var(--muted); }
+  .file-chip{ display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--white); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px; margin-top:14px; font-size:13.5px; }
+  .file-chip .fc-left{ display:flex; align-items:center; gap:10px; }
+  .file-chip .fc-icon{ width:32px; height:32px; border-radius:8px; background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:14px;}
+  .file-chip .fc-remove{ color:var(--muted); cursor:pointer; font-size:12px; font-weight:600; }
+  .scan-row{ display:flex; align-items:center; gap:12px; background:var(--bg); border-radius:10px; padding:14px 16px; margin-top:16px; font-size:13.5px; color:var(--navy); font-weight:600;}
+  .mini-spinner{ width:16px; height:16px; border-radius:50%; border:2.5px solid #DCE7F0; border-top-color:var(--slate); animation:spin .8s linear infinite; flex-shrink:0;}
+  .extract-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+  .extract-row:last-child{ border-bottom:none;}
+  .req-list{ list-style:none; margin:14px 0 22px; }
+  .req-list li{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--charcoal); padding:5px 0; }
+  .req-list li .req-dot{ width:5px; height:5px; border-radius:50%; background:var(--slate); flex-shrink:0;}
+  .req-list li .opt{ color:var(--muted); font-weight:500; }
+  .template-link{ display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--slate); font-weight:600; text-decoration:none; margin-bottom:18px;}
+
+  .map-table-wrap{ background:var(--white); border:1px solid var(--line); border-radius:12px; overflow-x:auto; margin-bottom:18px;}
+  .map-table{ width:100%; border-collapse:collapse; min-width:640px;}
+  .map-table th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; padding:12px 16px; background:var(--bg); white-space:nowrap;}
+  .map-table td{ padding:11px 16px; font-size:13px; color:var(--charcoal); border-top:1px solid var(--line); white-space:nowrap;}
+  .map-table select{ font-size:12.5px; padding:7px 10px; border:1.5px solid var(--line); border-radius:7px; font-family:'Inter',sans-serif; background:var(--white); }
+  .map-table select.warn{ border-color:var(--amber); }
+  .import-summary{ display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--bg); border-radius:10px; padding:14px 18px; margin-bottom:18px; font-size:13.5px;}
+  .import-summary b{ color:var(--navy); font-family:'Manrope',sans-serif;}
+  .flag-note{ color:var(--amber); font-weight:600;}
+
+  @media(max-width:720px){
+    .app-shell{ flex-direction:column; }
+    .side-nav{ width:100%; display:flex; align-items:center; padding:14px 18px; gap:16px; overflow-x:auto;}
+    .side-nav .logo-mark{ margin-bottom:0; }
+    .nav-item{ margin-bottom:0; padding:8px 10px; white-space:nowrap;}
+    .main-area{ padding:24px 20px; }
+    .stat-row{ flex-direction:column; }
+    .two-col{ grid-template-columns:1fr; }
+    .verify-card{ flex-direction:column; align-items:flex-start; }
+    .teaser-grid{ grid-template-columns:1fr; }
+    .landing-header{ padding:18px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="proto-nav">
+  <span class="grp-label">Start</span>
+  <button data-screen="landing" class="active">Landing</button>
+  <button data-screen="role-select">Who are you?</button>
+  <div class="sep"></div>
+  <span class="grp-label">B2C</span>
+  <button data-screen="c-entry">Log in / Sign up</button>
+  <button data-screen="c-verify">Verify OTP</button>
+  <button data-screen="c-new-details">New user details</button>
+  <button data-screen="c-loading">Loading</button>
+  <button data-screen="c-dashboard">Dashboard</button>
+  <button data-screen="c-complete-profile">Complete profile</button>
+  <button data-screen="c-profile">My profile</button>
+  <button data-screen="c-verify-docs">Verify (later)</button>
+  <button data-screen="c-doc-upload">Document upload</button>
+  <button data-screen="c-scheme-detail">Scheme detail</button>
+  <div class="sep"></div>
+  <span class="grp-label">B2B</span>
+  <button data-screen="b-entry">Log in / Sign up</button>
+  <button data-screen="b-verify">Verify OTP</button>
+  <button data-screen="b-new-details">New user details</button>
+  <button data-screen="b-confirm">Confirmation</button>
+  <button data-screen="b-dashboard">Dashboard</button>
+  <button data-screen="b-student-list">Student search</button>
+  <button data-screen="b-student-detail">Student detail</button>
+  <button data-screen="b-batch-upload">Batch upload</button>
+  <button data-screen="b-batch-preview">Batch preview</button>
+  <div class="sep"></div>
+  <span class="grp-label">Legal</span>
+  <button data-screen="terms">Terms &amp; Conditions</button>
+</div>
+
+<!-- ============ LANDING (public) ============ -->
+<section class="screen active" id="landing">
+  <div class="landing-header">
+    <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+    <a href="#" class="landing-login-link" onclick="go('role-select'); return false;">Log in</a>
+  </div>
+
+  <div class="landing-hero">
+    <h1>Find every scholarship you actually qualify for.</h1>
+    <p>One place to check eligibility across 65+ central and state government schemes — verified, up to date, and free for students.</p>
+    <button class="landing-cta" onclick="go('role-select')">Get started — it's free</button>
+    <div class="landing-subcta">No password needed. Takes under a minute.</div>
+  </div>
+
+  <div class="teaser-wrap">
+    <div class="teaser-label">A few schemes students are matching with</div>
+    <div class="teaser-grid">
+      <div class="teaser-card">
+        <div class="sc-name">National Means-cum-Merit Scholarship</div>
+        <span class="sc-amount">₹12,000/yr</span>
+        <div class="teaser-lock">🔒 Log in to see if you qualify</div>
+      </div>
+      <div class="teaser-card">
+        <div class="sc-name">INSPIRE Scholarship for Higher Education</div>
+        <span class="sc-amount">₹80,000/yr</span>
+        <div class="teaser-lock">🔒 Log in to see if you qualify</div>
+      </div>
+      <div class="teaser-card">
+        <div class="sc-name">Post-Matric Scholarship (SC/ST/OBC)</div>
+        <span class="sc-amount">Full tuition</span>
+        <div class="teaser-lock">🔒 Log in to see if you qualify</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROLE SELECT ============ -->
+<section class="screen" id="role-select">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <a class="link-back" href="#" onclick="go('landing'); return false;">← Back</a>
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="eyebrow">One quick thing</div>
+      <h1 class="headline">Who are you?</h1>
+      <p class="subtext">This just shows you the right experience — you won't need to answer this again.</p>
+
+      <div class="role-grid">
+        <div class="role-card" onclick="go('c-entry')">
+          <div class="role-emoji">🎓</div>
+          <div><div class="role-title">I'm a student</div><div class="role-sub">Find scholarships and schemes for yourself</div></div>
+        </div>
+        <div class="role-card" onclick="go('b-entry')">
+          <div class="role-emoji">🏫</div>
+          <div><div class="role-title">I'm an institute</div><div class="role-sub">Help your students find schemes, every batch, every year</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: LOG IN / SIGN UP ENTRY ============ -->
+<section class="screen" id="c-entry">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <a class="link-back" href="#" onclick="go('role-select'); return false;">← Back</a>
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="eyebrow">For students</div>
+      <h1 class="headline">Log in or sign up</h1>
+      <p class="subtext">Enter your mobile number — we'll text you a code. Works whether you're new here or already have an account.</p>
+
+      <div class="field"><label>Mobile number</label><input type="tel" placeholder="+91 00000 00000"></div>
+
+      <button class="btn-primary" onclick="go('c-verify')">Continue</button>
+      <p class="foot-note">Institute instead? <a href="#" onclick="go('b-entry')">Switch to institute log in</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: VERIFY (auto-advance OTP, branches new vs returning) ============ -->
+<section class="screen" id="c-verify">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <h1 class="headline">Verify it's you</h1>
+      <p class="subtext">Enter the 6-digit code we texted you.</p>
+      <div class="contact-chip">+91 98765 43210 <span class="edit">Edit</span></div>
+      <div class="otp-row" id="otpGroupC">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+      </div>
+      <p class="resend">Didn't get it? <a href="#">Resend code</a></p>
+      <button class="btn-primary" style="margin-top:18px" onclick="go('c-new-details')">Verify &amp; continue</button>
+      <button class="btn-ghost" onclick="go('c-dashboard')">Already set up — skip to dashboard</button>
+      <p class="foot-note" style="margin-top:14px;">(Demo: top button simulates a new number, bottom simulates a returning user.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: NEW USER DETAILS (only shown to first-time numbers) ============ -->
+<section class="screen" id="c-new-details">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="eyebrow">New here — welcome</div>
+      <h1 class="headline">Just two more details</h1>
+      <p class="subtext">So we know who you are and where to send updates.</p>
+
+      <div class="field"><label>Your name</label><input type="text" placeholder="e.g. Ananya Sharma"></div>
+      <div class="field"><label>Email address</label><input type="email" placeholder="you@example.com">
+        <div class="hint">We'll send your scheme deadlines here.</div></div>
+
+      <div class="consent-row">
+        <input type="checkbox" id="consentC" onchange="syncConsent('consentC','continueC','consentErrC')">
+        <label for="consentC">I have read and agree to the
+          <a href="#" onclick="openTerms('c-new-details'); return false;">Terms &amp; Conditions</a> and
+          <a href="#" onclick="openTerms('c-new-details'); return false;">Privacy Policy</a>.
+          <span style="display:block; color:var(--muted); font-size:12px; margin-top:5px;">Under 18? Please tick this together with a parent or guardian — they need to consent too.</span></label>
+      </div>
+      <div class="consent-error" id="consentErrC">Please accept the Terms &amp; Conditions to continue.</div>
+
+      <button class="btn-primary" id="continueC" disabled>Continue</button>
+      <p class="foot-note">Your details are used only to match you with government schemes. <a href="#" onclick="openTerms('c-new-details'); return false;">Read the full terms</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: LOADING (fixed — auto-advances) ============ -->
+<section class="screen" id="c-loading">
+  <div class="loader-wrap">
+    <div class="spinner"></div>
+    <div class="loader-title" id="loadTitleC">Creating your profile…</div>
+    <div class="loader-sub" id="loadSubC">Hang tight, we're already checking central government schemes you may qualify for.</div>
+    <div class="loader-steps" id="loadStepsC"><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<!-- ============ B2C: DASHBOARD ============ -->
+<section class="screen" id="c-dashboard">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item active"><span class="ic"></span>Home</div>
+      <div class="nav-item"><span class="ic"></span>Saved</div>
+      <div class="nav-item"><span class="ic"></span>Applied</div>
+      <div class="nav-item" onclick="go('c-profile')"><span class="ic"></span>My profile</div>
+    </nav>
+    <main class="main-area">
+      <div class="greeting">Hi Ananya 👋</div>
+      <div class="greeting-sub">Here's what you may already qualify for.</div>
+
+      <div class="search-bar"><span class="ic">🔍</span><input placeholder="Search schemes — e.g. 'SC scholarship' or 'engineering'"></div>
+
+      <div class="progress-banner" onclick="go('c-complete-profile')">
+        <div class="pb-text"><b>3 quick questions</b> away from 9 more matches.<div class="bar-track"><div class="bar-fill"></div></div></div>
+        <button onclick="event.stopPropagation(); go('c-complete-profile')">Complete profile</button>
+      </div>
+
+      <div class="section-label">Matched for you so far</div>
+
+      <div class="scheme-card" onclick="go('c-scheme-detail')">
+        <div class="sc-top"><div class="sc-name">National Means-cum-Merit Scholarship</div><div class="sc-amount">₹12,000/yr</div></div>
+        <div class="sc-tags"><span class="tag tag-verified">✓ Verified 3d ago</span><span class="tag tag-deadline">Closes in 18d</span><span class="tag tag-match">Matched on class &amp; income</span></div>
+      </div>
+      <div class="scheme-card" onclick="go('c-scheme-detail')">
+        <div class="sc-top"><div class="sc-name">Central Sector Scheme of Scholarship</div><div class="sc-amount">up to ₹20,000/yr</div></div>
+        <div class="sc-tags"><span class="tag tag-verified">✓ Verified 5d ago</span><span class="tag tag-deadline">Closes in 34d</span><span class="tag tag-match">Matched on class</span></div>
+      </div>
+      <div class="scheme-card" onclick="go('c-scheme-detail')">
+        <div class="sc-top"><div class="sc-name">INSPIRE Scholarship for Higher Education</div><div class="sc-amount">₹80,000/yr</div></div>
+        <div class="sc-tags"><span class="tag tag-verified">✓ Verified 6d ago</span><span class="tag tag-deadline">Closes in 12d</span><span class="tag tag-match">Matched on class</span></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2C: COMPLETE PROFILE (self-declared, no documents) ============ -->
+<section class="screen" id="c-complete-profile">
+  <div class="center-wrap">
+    <div class="auth-card wide-card">
+      <a class="link-back" href="#" onclick="go('c-dashboard'); return false;">← Back to dashboard</a>
+      <div class="eyebrow">Takes ~1 minute</div>
+      <h1 class="headline">A few quick details</h1>
+      <p class="subtext">Self-reported answers unlock more accurate matches. No documents needed — you can verify later if you'd like.</p>
+
+      <div class="two-col">
+        <div class="field"><label>Date of birth</label><input type="date"></div>
+        <div class="field"><label>Gender</label>
+          <select><option>Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label>State</label>
+          <select><option>Select state</option><option>Assam</option><option>Rajasthan</option><option>Maharashtra</option><option>Delhi</option></select></div>
+        <div class="field"><label>Category <span class="why">why we ask ⓘ</span></label>
+          <select><option>General</option><option>SC</option><option>ST</option><option>OBC</option><option>Minority</option></select></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label>Annual family income <span class="why">why we ask ⓘ</span></label>
+          <select><option>Below ₹1 lakh</option><option>₹1–2.5 lakh</option><option>₹2.5–4.5 lakh</option><option>₹4.5–8 lakh</option><option>Above ₹8 lakh</option></select></div>
+        <div class="field"><label>Education level</label>
+          <select><option>Class 11–12</option><option>Diploma</option><option>Undergraduate</option><option>Postgraduate</option><option>PhD</option></select></div>
+      </div>
+      <div class="hint" style="margin-bottom:18px;">These are self-reported and shown as "Self-reported" on your profile. You can verify them anytime from your profile — it's optional and never required to browse schemes.</div>
+
+      <button class="btn-primary" onclick="go('c-dashboard')">Save &amp; see my matches</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: MY PROFILE ============ -->
+<section class="screen" id="c-profile">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('c-dashboard')"><span class="ic"></span>Home</div>
+      <div class="nav-item"><span class="ic"></span>Saved</div>
+      <div class="nav-item"><span class="ic"></span>Applied</div>
+      <div class="nav-item active"><span class="ic"></span>My profile</div>
+    </nav>
+    <main class="main-area narrow">
+      <div class="profile-header">
+        <div class="avatar">AS</div>
+        <div><div class="greeting" style="font-size:20px; margin-bottom:2px;">Ananya Sharma</div><div class="greeting-sub" style="margin-bottom:0;">Member since Aug 2026</div></div>
+      </div>
+
+      <div class="verify-card">
+        <div><div class="vt">Verify your profile</div><div class="vs">Confirm your ID, income and education to unlock higher-accuracy matches and a verified badge. Optional, do it anytime.</div></div>
+        <button onclick="go('c-verify-docs')">Verify now</button>
+      </div>
+
+      <div class="info-card">
+        <h3>Contact details</h3>
+        <div class="info-row"><span class="k">Mobile number</span><span class="v">+91 98765 43210 <span class="tag tag-verified" style="padding:3px 8px;">✓ Verified</span></span></div>
+        <div class="info-row"><span class="k">Email</span><span class="v">ananya.sharma@email.com <span class="tag tag-verified" style="padding:3px 8px;">✓ Verified</span></span></div>
+      </div>
+
+      <div class="info-card">
+        <h3>Eligibility details <span class="tag tag-self">Self-reported</span></h3>
+        <div class="info-row"><span class="k">Date of birth</span><span class="v">14 Mar 2007</span></div>
+        <div class="info-row"><span class="k">Gender</span><span class="v">Female</span></div>
+        <div class="info-row"><span class="k">State</span><span class="v">Assam</span></div>
+        <div class="info-row"><span class="k">Category</span><span class="v">ST</span></div>
+        <div class="info-row"><span class="k">Annual family income</span><span class="v">₹1–2.5 lakh</span></div>
+        <div class="info-row"><span class="k">Education level</span><span class="v">Class 11–12</span></div>
+      </div>
+      <button class="btn-ghost" onclick="go('c-complete-profile')">Edit details</button>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2C: VERIFY DOCS ============ -->
+<section class="screen" id="c-verify-docs">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('c-dashboard')"><span class="ic"></span>Home</div>
+      <div class="nav-item"><span class="ic"></span>Saved</div>
+      <div class="nav-item"><span class="ic"></span>Applied</div>
+      <div class="nav-item active" onclick="go('c-profile')"><span class="ic"></span>My profile</div>
+    </nav>
+    <main class="main-area narrow">
+      <a class="link-back" href="#" onclick="go('c-profile'); return false;">← Back to profile</a>
+      <div class="greeting" style="font-size:22px;">Verify your profile</div>
+      <div class="greeting-sub">Completely optional. Verifying just improves match accuracy — you can keep browsing without it. Everything here is encrypted and never shared without your consent.</div>
+
+      <div class="verify-item">
+        <div class="vi-left"><div class="vi-icon">🪪</div><div><div class="vi-title">Identity — Aadhaar / DigiLocker</div><div class="vi-sub">Confirms your date of birth and address</div></div></div>
+        <button class="btn-outline-sm" id="btnDocIdentity" onclick="openDocUpload('identity')"><span class="status-dot pending"></span>Verify</button>
+      </div>
+      <div class="verify-item">
+        <div class="vi-left"><div class="vi-icon">💳</div><div><div class="vi-title">Income — Income certificate / PAN</div><div class="vi-sub">Confirms your family income bracket</div></div></div>
+        <button class="btn-outline-sm" id="btnDocIncome" onclick="openDocUpload('income')"><span class="status-dot pending"></span>Verify</button>
+      </div>
+      <div class="verify-item">
+        <div class="vi-left"><div class="vi-icon">🎓</div><div><div class="vi-title">Education — Marksheet</div><div class="vi-sub">Confirms your current education level</div></div></div>
+        <button class="btn-outline-sm" id="btnDocEducation"><span class="status-dot done"></span>Verified</button>
+      </div>
+
+      <div class="hint" style="margin-top:16px;">Verification is used only to raise your match accuracy. It's never required to search or view schemes.</div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2C: DOCUMENT UPLOAD ============ -->
+<section class="screen" id="c-doc-upload">
+  <div class="center-wrap">
+    <div class="auth-card wide-card">
+      <a class="link-back" href="#" onclick="go('c-verify-docs'); return false;">← Back to verification</a>
+      <div class="eyebrow" id="docEyebrow">Identity verification</div>
+      <h1 class="headline" id="docTitle">Upload your Aadhaar</h1>
+      <p class="subtext" id="docSubtext">A clear photo or scan is fine. We only use this to confirm your details — it's encrypted and never shared without consent.</p>
+
+      <div id="docIdle">
+        <div class="dropzone" id="docDropzone" onclick="document.getElementById('docFileInput').click();">
+          <div class="dz-icon">📄</div>
+          <div class="dz-title">Drag a file here, or click to browse</div>
+          <div class="dz-sub">JPG, PNG or PDF · up to 10 MB</div>
+        </div>
+        <input type="file" id="docFileInput" accept="image/*,application/pdf" style="display:none" onchange="handleDocFile(this.files)">
+      </div>
+
+      <div id="docChosen" style="display:none;">
+        <div class="file-chip">
+          <div class="fc-left"><div class="fc-icon">📄</div><span id="docFileName">document.jpg</span></div>
+          <span class="fc-remove" onclick="resetDocUpload()">Remove</span>
+        </div>
+        <div class="scan-row" id="docScanRow"><div class="mini-spinner"></div><span>Scanning document…</span></div>
+
+        <div class="info-card" id="docExtracted" style="display:none; margin-top:16px;">
+          <h3>We found these details</h3>
+          <div class="extract-row"><span class="k">Name</span><span><b>Ananya Sharma</b></span></div>
+          <div class="extract-row"><span class="k">Date of birth</span><span><b>14 Mar 2007</b></span></div>
+          <div class="extract-row" id="docExtraLine"><span class="k">Address</span><span><b>Guwahati, Assam</b></span></div>
+        </div>
+
+        <button class="btn-primary" id="docConfirmBtn" style="display:none;" onclick="confirmDocUpload()">Confirm &amp; verify</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2C: SCHEME DETAIL ============ -->
+<section class="screen" id="c-scheme-detail">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('c-dashboard')"><span class="ic"></span>Home</div>
+      <div class="nav-item"><span class="ic"></span>Saved</div>
+      <div class="nav-item"><span class="ic"></span>Applied</div>
+      <div class="nav-item" onclick="go('c-profile')"><span class="ic"></span>My profile</div>
+    </nav>
+    <main class="main-area narrow">
+      <a class="link-back" href="#" onclick="go('c-dashboard'); return false;">← Back to matches</a>
+
+      <div class="detail-hero">
+        <div class="detail-ministry">Dept. of School Education &amp; Literacy · Central Sector Scheme</div>
+        <div class="detail-title">National Means-cum-Merit Scholarship</div>
+        <div class="detail-meta">
+          <span class="tag tag-verified">✓ Verified 3 days ago</span>
+          <span class="tag tag-deadline">Closes in 18 days · 15 Oct 2026</span>
+        </div>
+        <div class="detail-amount">₹12,000 / year</div>
+        <div style="font-size:14px; color:var(--muted); line-height:1.6;">Merit scholarship for economically weaker students continuing into Class 11–12. Renewable each year on maintained marks.</div>
+      </div>
+
+      <div class="info-card">
+        <h3>Why you matched</h3>
+        <ul class="criteria-list">
+          <li><span class="crit-yes">✓</span> Currently in Class 11–12</li>
+          <li><span class="crit-yes">✓</span> Family income under ₹3,50,000/year</li>
+          <li><span class="crit-yes">✓</span> Studying at a government or government-aided school</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Documents you'll need</h3>
+        <ul class="doc-list">
+          <li><input type="checkbox" checked disabled> Aadhaar card</li>
+          <li><input type="checkbox" checked disabled> Latest marksheet</li>
+          <li><input type="checkbox"> Income certificate</li>
+          <li><input type="checkbox"> Bank passbook (student, IFSC)</li>
+          <li><input type="checkbox"> Passport-size photo</li>
+        </ul>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn-primary" onclick="alert('Would open scholarships.gov.in in a new tab, pre-filled where possible')">Continue to official application ↗</button>
+      </div>
+      <div class="apply-note">You'll complete and submit your application directly on the official government portal.</div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2B: LOG IN / SIGN UP ENTRY ============ -->
+<section class="screen" id="b-entry">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <a class="link-back" href="#" onclick="go('role-select'); return false;">← Back</a>
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="eyebrow">For institutions</div>
+      <h1 class="headline">Log in or sign up</h1>
+      <p class="subtext">Enter your work email — we'll send you a code. Works whether your institute is new here or already partnered with us.</p>
+
+      <div class="field"><label>POC work email</label><input type="email" placeholder="you@institute.edu.in"></div>
+
+      <button class="btn-primary" onclick="go('b-verify')">Continue</button>
+      <p class="foot-note">Looking for the student app? <a href="#" onclick="go('c-entry')">Switch to student log in</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2B: VERIFY (auto-advance OTP, branches new vs returning) ============ -->
+<section class="screen" id="b-verify">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <h1 class="headline">Verify your details</h1>
+      <p class="subtext">Enter the 6-digit code sent to your work email.</p>
+      <div class="contact-chip">rohan.verma@institute.edu.in <span class="edit">Edit</span></div>
+      <div class="otp-row" id="otpGroupB">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+      </div>
+      <p class="resend">Didn't get it? <a href="#">Resend code</a></p>
+      <button class="btn-primary" style="margin-top:18px" onclick="go('b-new-details')">Verify &amp; continue</button>
+      <button class="btn-ghost" onclick="go('b-dashboard')">Already registered — skip to dashboard</button>
+      <p class="foot-note" style="margin-top:14px;">(Demo: top button simulates a new institute, bottom simulates a returning POC.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2B: NEW USER DETAILS ============ -->
+<section class="screen" id="b-new-details">
+  <div class="center-wrap">
+    <div class="auth-card">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="eyebrow">New institute — welcome</div>
+      <h1 class="headline">Just a couple more details</h1>
+      <p class="subtext">So we can set up the right dashboard for your institute.</p>
+
+      <div class="field"><label>Institute name</label>
+        <select><option>Select your institute</option><option>St. Xavier's College, Mumbai</option><option>IIT Jodhpur</option><option>Lady Shri Ram College, Delhi</option><option>Can't find it — I'll type it</option></select></div>
+      <div class="field"><label>POC name</label><input type="text" placeholder="e.g. Rohan Verma"></div>
+
+      <div class="consent-row">
+        <input type="checkbox" id="consentB" onchange="syncConsent('consentB','continueB','consentErrB')">
+        <label for="consentB">I am authorised to accept on behalf of my institute, and I agree to the
+          <a href="#" onclick="openTerms('b-new-details'); return false;">Terms &amp; Conditions</a>, including the
+          <a href="#" onclick="openTerms('b-new-details'); return false;">institute data obligations</a>.
+          <span style="display:block; color:var(--muted); font-size:12px; margin-top:5px;">Includes obtaining verifiable parental consent under the DPDP Act 2023 before uploading data for any student under 18.</span></label>
+      </div>
+      <div class="consent-error" id="consentErrB">Please accept the Terms &amp; Conditions to continue.</div>
+
+      <button class="btn-primary" id="continueB" disabled>Continue</button>
+      <p class="foot-note">A SchemeConnect team member will call you after this step.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2B: CONFIRMATION ============ -->
+<section class="screen" id="b-confirm">
+  <div class="center-wrap">
+    <div class="auth-card" style="text-align:center;">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="confirm-icon">✓</div>
+      <h1 class="headline">You're verified, Rohan</h1>
+      <p class="subtext">Our team will call you within 1 business day to set up St. Xavier's College on SchemeConnect.</p>
+      <div class="checklist">
+        <div class="ci"><span class="num">1</span>We'll walk you through uploading your student batch.</div>
+        <div class="ci"><span class="num">2</span>You'll get a coordinator dashboard to track matches across your batch.</div>
+        <div class="ci"><span class="num">3</span>Your students start seeing matched schemes the same day.</div>
+      </div>
+      <button class="btn-ghost" onclick="go('b-dashboard')">Preview dashboard (demo)</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2B: DASHBOARD ============ -->
+<section class="screen" id="b-dashboard">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item active"><span class="ic"></span>Overview</div>
+      <div class="nav-item"><span class="ic"></span>Batches</div>
+      <div class="nav-item" onclick="go('b-student-list')"><span class="ic"></span>Students</div>
+      <div class="nav-item"><span class="ic"></span>Reports</div>
+      <div class="nav-item"><span class="ic"></span>Settings</div>
+    </nav>
+    <main class="main-area">
+      <div class="greeting">St. Xavier's College</div>
+      <div class="greeting-sub">Welcome back, Rohan.</div>
+
+      <div class="stat-row">
+        <div class="stat-card"><div class="stat-num">642</div><div class="stat-label">Students onboarded</div></div>
+        <div class="stat-card"><div class="stat-num">88%</div><div class="stat-label">Matched to 1+ scheme</div></div>
+        <div class="stat-card"><div class="stat-num">₹1.2Cr</div><div class="stat-label">Potential aid identified</div></div>
+      </div>
+
+      <div class="section-label">Find a student</div>
+      <div class="search-bar">
+        <span class="ic">🔍</span>
+        <input placeholder="Search by name or student ID">
+        <button onclick="go('b-student-list')">Search</button>
+      </div>
+
+      <div class="section-label">Batches</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Batch</th><th>Students</th><th>Matched</th><th>Status</th></tr>
+          <tr><td class="b">2026 · Final Year</td><td>310</td><td>91%</td><td><span class="pill pill-active">Active</span></td></tr>
+          <tr><td class="b">2026 · Second Year</td><td>332</td><td>85%</td><td><span class="pill pill-active">Active</span></td></tr>
+          <tr><td class="b">2027 · Incoming batch</td><td>—</td><td>—</td><td><span class="pill pill-pending">Upload pending</span></td></tr>
+        </table>
+      </div>
+
+      <div class="section-label">Next step</div>
+      <div class="scheme-card" style="display:flex; align-items:center; justify-content:space-between; cursor:default;">
+        <div><div class="sc-name" style="margin-bottom:4px;">Upload your 2027 incoming batch</div><div style="font-size:13px; color:var(--muted);">A simple CSV — name, class, state, category, income.</div></div>
+        <button class="btn-primary" style="width:auto; padding:12px 20px; margin:0;" onclick="go('b-batch-upload')">Upload CSV</button>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2B: STUDENT SEARCH RESULTS ============ -->
+<section class="screen" id="b-student-list">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('b-dashboard')"><span class="ic"></span>Overview</div>
+      <div class="nav-item"><span class="ic"></span>Batches</div>
+      <div class="nav-item active"><span class="ic"></span>Students</div>
+      <div class="nav-item"><span class="ic"></span>Reports</div>
+      <div class="nav-item"><span class="ic"></span>Settings</div>
+    </nav>
+    <main class="main-area">
+      <a class="link-back" href="#" onclick="go('b-dashboard'); return false;">← Back to overview</a>
+      <div class="greeting" style="font-size:22px;">Students</div>
+      <div class="greeting-sub">Search by name or student ID. Only match status is shown — full profiles stay private unless a student shares them.</div>
+
+      <div class="search-bar"><span class="ic">🔍</span><input value="pat" placeholder="Search by name or student ID"></div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Name</th><th>Student ID</th><th>Batch</th><th>Matches</th><th>Status</th></tr>
+          <tr class="clickable" onclick="go('b-student-detail')"><td class="b">Priya Patil</td><td>SXC-2026-0142</td><td>Final Year</td><td>4</td><td><span class="pill pill-active">Matched</span></td></tr>
+          <tr class="clickable" onclick="go('b-student-detail')"><td class="b">Aarav Patel</td><td>SXC-2026-0289</td><td>Second Year</td><td>1</td><td><span class="pill pill-active">Matched</span></td></tr>
+          <tr class="clickable" onclick="go('b-student-detail')"><td class="b">Simran Pathania</td><td>SXC-2026-0311</td><td>Final Year</td><td>0</td><td><span class="pill pill-none">No match yet</span></td></tr>
+        </table>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2B: STUDENT DETAIL (consent-gated) ============ -->
+<section class="screen" id="b-student-detail">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('b-dashboard')"><span class="ic"></span>Overview</div>
+      <div class="nav-item"><span class="ic"></span>Batches</div>
+      <div class="nav-item active" onclick="go('b-student-list')"><span class="ic"></span>Students</div>
+      <div class="nav-item"><span class="ic"></span>Reports</div>
+      <div class="nav-item"><span class="ic"></span>Settings</div>
+    </nav>
+    <main class="main-area narrow">
+      <a class="link-back" href="#" onclick="go('b-student-list'); return false;">← Back to students</a>
+
+      <div class="profile-header">
+        <div class="avatar">PP</div>
+        <div><div class="greeting" style="font-size:20px; margin-bottom:2px;">Priya Patil</div><div class="greeting-sub" style="margin-bottom:0;">SXC-2026-0142 · Final Year</div></div>
+      </div>
+
+      <div class="info-card">
+        <h3>Match &amp; application status</h3>
+        <div class="info-row"><span class="k">Schemes matched</span><span class="v">4</span></div>
+        <div class="info-row"><span class="k">Applied</span><span class="v">1 of 4</span></div>
+        <div class="info-row"><span class="k">Nearest deadline</span><span class="v">12 days — INSPIRE Scholarship</span></div>
+        <div class="info-row"><span class="k">Profile completed</span><span class="v">Yes</span></div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-icon">🔒</div>
+        <div class="locked-title">Personal &amp; eligibility details are private</div>
+        <div class="locked-sub">Income, category, date of birth and documents aren't shared with St. Xavier's College unless Priya chooses to share them.</div>
+        <button class="btn-outline-sm" onclick="alert('Would send Priya a request to share her full profile with St. Xavier\'s College')">Request access</button>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2B: BATCH UPLOAD ============ -->
+<section class="screen" id="b-batch-upload">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('b-dashboard')"><span class="ic"></span>Overview</div>
+      <div class="nav-item active"><span class="ic"></span>Batches</div>
+      <div class="nav-item" onclick="go('b-student-list')"><span class="ic"></span>Students</div>
+      <div class="nav-item"><span class="ic"></span>Reports</div>
+      <div class="nav-item"><span class="ic"></span>Settings</div>
+    </nav>
+    <main class="main-area narrow">
+      <a class="link-back" href="#" onclick="go('b-dashboard'); return false;">← Back to overview</a>
+      <div class="greeting" style="font-size:22px;">Upload a student batch</div>
+      <div class="greeting-sub">Add every incoming student in one file — we'll match each of them to schemes automatically.</div>
+
+      <a href="#" class="template-link" onclick="alert('Would download a sample CSV template'); return false;">⬇ Download CSV template</a>
+
+      <div class="info-card">
+        <h3>Columns we look for</h3>
+        <ul class="req-list">
+          <li><span class="req-dot"></span>Student name <b>(required)</b></li>
+          <li><span class="req-dot"></span>Student ID / roll number <b>(required)</b></li>
+          <li><span class="req-dot"></span>Class / year <b>(required)</b></li>
+          <li><span class="req-dot"></span>State <b>(required)</b></li>
+          <li><span class="req-dot"></span>Category — General/SC/ST/OBC/Minority <span class="opt">(optional, improves matches)</span></li>
+          <li><span class="req-dot"></span>Annual family income <span class="opt">(optional, improves matches)</span></li>
+          <li><span class="req-dot"></span>Mobile number <span class="opt">(optional, lets students claim their profile)</span></li>
+          <li><span class="req-dot"></span>Email address <span class="opt">(optional)</span></li>
+        </ul>
+        <div class="hint">Column names don't need to match exactly — we'll auto-detect and let you fix any mismatches before importing.</div>
+      </div>
+
+      <div id="batchIdle">
+        <div class="dropzone" id="batchDropzone" onclick="document.getElementById('batchFileInput').click();"
+             ondragover="event.preventDefault(); this.classList.add('drag');"
+             ondragleave="this.classList.remove('drag');"
+             ondrop="event.preventDefault(); this.classList.remove('drag'); handleBatchFile(event.dataTransfer.files);">
+          <div class="dz-icon">📊</div>
+          <div class="dz-title">Drag your CSV here, or click to browse</div>
+          <div class="dz-sub">.csv up to 5,000 rows</div>
+        </div>
+        <input type="file" id="batchFileInput" accept=".csv" style="display:none" onchange="handleBatchFile(this.files)">
+      </div>
+
+      <div id="batchChosen" style="display:none;">
+        <div class="file-chip">
+          <div class="fc-left"><div class="fc-icon">📊</div><span id="batchFileName">2027_incoming_batch.csv</span></div>
+          <span class="fc-remove" onclick="resetBatchUpload()">Remove</span>
+        </div>
+        <div class="scan-row"><div class="mini-spinner"></div><span>Reading file &amp; detecting columns…</span></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ B2B: BATCH PREVIEW & MAPPING ============ -->
+<section class="screen" id="b-batch-preview">
+  <div class="app-shell">
+    <nav class="side-nav">
+      <div class="logo-mark"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <div class="nav-item" onclick="go('b-dashboard')"><span class="ic"></span>Overview</div>
+      <div class="nav-item active"><span class="ic"></span>Batches</div>
+      <div class="nav-item" onclick="go('b-student-list')"><span class="ic"></span>Students</div>
+      <div class="nav-item"><span class="ic"></span>Reports</div>
+      <div class="nav-item"><span class="ic"></span>Settings</div>
+    </nav>
+    <main class="main-area">
+      <a class="link-back" href="#" onclick="go('b-batch-upload'); return false;">← Choose a different file</a>
+      <div class="greeting" style="font-size:22px;">Review before importing</div>
+      <div class="greeting-sub">Check that each column mapped correctly. You can fix any of them below.</div>
+
+      <div class="import-summary">
+        <span id="batchSummaryText"><b>—</b> students detected</span>
+        <span class="flag-note" id="batchFlagText"></span>
+      </div>
+
+      <div class="section-label">Column mapping</div>
+      <div id="mapTableWrap"></div>
+
+      <div class="section-label">Preview (first rows)</div>
+      <div class="table-wrap" id="previewTableWrap" style="margin-bottom:24px; overflow-x:auto;"></div>
+
+      <button class="btn-primary" style="max-width:260px;" onclick="alert('Would import all rows and start matching'); go('b-dashboard');">Confirm &amp; import batch</button>
+    </main>
+  </div>
+</section>
+
+<!-- ============ TERMS & CONDITIONS ============ -->
+<section class="screen" id="terms">
+  <div class="terms-page">
+    <a class="link-back" href="#" id="termsBackLink" onclick="closeTerms(); return false;">← Back</a>
+
+    <div class="terms-head">
+      <div class="logo-mark" style="justify-content:flex-start;"><span class="logo-dot"></span><span class="logo-word">SchemeConnect</span></div>
+      <h1>Terms &amp; Conditions</h1>
+      <div class="terms-updated">Last updated 18 August 2026 · Public beta · Applies to students, parents and institutes</div>
+      <p class="terms-intro">SchemeConnect is a discovery and trust layer for government scholarships and schemes. We help you find schemes you may qualify for, show you where each one came from and when it was last verified, and tell you what documents you'll need. We are not a government body, and we do not receive, process, approve or disburse any application or payment. By creating an account you agree to the terms below.</p>
+      <div class="terms-callout" style="margin-top:16px;"><b>The short version:</b> we tell you what you may qualify for and send you to the official government portal to apply. A match is not an approval. Our catalogue covers a limited set of states so far, and no result for your state means we have no verified data yet — not that you're ineligible. Checking your eligibility is free, and always will be. If you're under 18, a parent or guardian needs to agree to these terms with you.</div>
+    </div>
+
+    <div class="terms-toc">
+      <div class="section-label" style="margin:0;">On this page</div>
+      <ol>
+        <li><a href="#t1" onclick="jumpTerms('t1'); return false;">What SchemeConnect is — and is not</a></li>
+        <li><a href="#t2" onclick="jumpTerms('t2'); return false;">Beta service and where we have coverage</a></li>
+        <li><a href="#t3" onclick="jumpTerms('t3'); return false;">Who can use SchemeConnect</a></li>
+        <li><a href="#t4" onclick="jumpTerms('t4'); return false;">Users under 18 and parental consent</a></li>
+        <li><a href="#t5" onclick="jumpTerms('t5'); return false;">Your account and OTP verification</a></li>
+        <li><a href="#t6" onclick="jumpTerms('t6'); return false;">Self-reported details and match accuracy</a></li>
+        <li><a href="#t7" onclick="jumpTerms('t7'); return false;">Optional document verification</a></li>
+        <li><a href="#t8" onclick="jumpTerms('t8'); return false;">Scheme information, freshness and official sources</a></li>
+        <li><a href="#t9" onclick="jumpTerms('t9'); return false;">Applying on government portals</a></li>
+        <li><a href="#t10" onclick="jumpTerms('t10'); return false;">Terms for institutes and coordinators</a></li>
+        <li><a href="#t11" onclick="jumpTerms('t11'); return false;">Privacy, consent and data sharing</a></li>
+        <li><a href="#t12" onclick="jumpTerms('t12'); return false;">Free to use, fees, fraud and scam warnings</a></li>
+        <li><a href="#t13" onclick="jumpTerms('t13'); return false;">Acceptable use</a></li>
+        <li><a href="#t14" onclick="jumpTerms('t14'); return false;">Service availability and limitation of liability</a></li>
+        <li><a href="#t15" onclick="jumpTerms('t15'); return false;">Changes to these terms</a></li>
+        <li><a href="#t16" onclick="jumpTerms('t16'); return false;">Closing your account</a></li>
+        <li><a href="#t17" onclick="jumpTerms('t17'); return false;">Accessibility, support and contact</a></li>
+      </ol>
+    </div>
+
+    <div class="terms-body">
+      <section id="t1">
+        <h2>1. What SchemeConnect is — and is not</h2>
+        <p>SchemeConnect lists central and state government scholarships and schemes, checks the details you give us against their published eligibility rules, and explains in plain language why you matched. Every scheme we show links back to its official government page or circular.</p>
+        <div class="terms-callout"><b>Important:</b> SchemeConnect is an independent, privately operated platform. We are not affiliated with, endorsed by, or acting on behalf of any ministry, department, the National Scholarship Portal (NSP), or any state government. We hold no data-sharing agreement or API access with NSP or any state portal — our scheme catalogue is compiled and verified manually from publicly published guideline documents. Applications are always submitted by you on the official government portal, never through us.</div>
+      </section>
+
+      <section id="t2">
+        <h2>2. Beta service and where we have coverage</h2>
+        <p>SchemeConnect is a new service running as a public beta in a limited set of pilot states. Features may change, be withdrawn, or behave imperfectly while we are in beta.</p>
+        <p>Our catalogue does not yet cover every state and union territory. Where we have not yet verified any scheme guideline for your state, we will tell you so and show you no results, rather than show you a list we cannot stand behind.</p>
+        <div class="terms-callout"><b>What "no results" means:</b> an empty or unavailable result for your state means we have no verified scheme data for it yet — <b>not</b> that no scheme exists, and not that you are ineligible. Schemes you qualify for may well be open. Check the National Scholarship Portal and your state's own portal directly.</div>
+      </section>
+
+      <section id="t3">
+        <h2>3. Who can use SchemeConnect</h2>
+        <p>SchemeConnect is intended for students in India, and for the parents, guardians, teachers and institute coordinators who help them. You may use it if you are at least 18 years old, or if you are under 18 and the conditions in section 4 are met.</p>
+        <p>If you sign up on behalf of an institute, you confirm that you are authorised by that institute to accept these terms on its behalf and to bind it to the obligations in section 10.</p>
+      </section>
+
+      <section id="t4">
+        <h2>4. Users under 18 and parental consent</h2>
+        <p>Many of the students SchemeConnect is built for are school students under the age of 18. We process children's personal data in line with the <b>Digital Personal Data Protection Act, 2023 (DPDP Act)</b>.</p>
+        <ul>
+          <li>If you are under 18, a parent or legal guardian must review these terms and give verifiable consent before your profile is created. Your institute may facilitate this, but it does not replace it.</li>
+          <li>A parent or guardian may at any time review, correct, restrict or delete the data held about their child, and may withdraw consent — after which we stop processing that child's data and close the profile.</li>
+          <li>We do not carry out behavioural tracking or monitoring of children, and we never serve targeted or behavioural advertising to a user we know or believe to be a child.</li>
+          <li>We do not process a child's data in any way likely to cause a detrimental effect on their wellbeing.</li>
+        </ul>
+        <p>If we learn that a profile for a user under 18 was created without the required consent, we will suspend it until consent is provided, and delete it if it is not.</p>
+      </section>
+
+      <section id="t5">
+        <h2>5. Your account and OTP verification</h2>
+        <p>You do not need an account to run your first eligibility check — you can complete the guided form and see your matches without signing up. An account is what lets you save schemes, get deadline reminders and return to your results later.</p>
+        <p>Accounts are created and accessed using a one-time code (OTP) sent to your mobile number (students) or work email (institutes). There is no password. You are responsible for keeping access to that number or inbox secure, and for everything done through your account.</p>
+        <ul>
+          <li>Never share your one-time code with anyone. We will never ask you for it by phone, SMS or email.</li>
+          <li>Use a mobile number or email address that belongs to you or, for a student under 18, to their parent or guardian.</li>
+          <li>Tell us promptly if you believe someone else has accessed your account.</li>
+          <li>If you leave the guided form part-way through, we save your partial answers on the device you are using so you can resume. Clearing your browser data removes them.</li>
+        </ul>
+      </section>
+
+      <section id="t6">
+        <h2>6. Self-reported details and match accuracy</h2>
+        <p>The details you enter — state, class or course, category, family income, gender, disability status, date of birth and education level — are self-reported. They are shown as "Self-reported" on your profile and are used only to compare you against published scheme criteria. You agree to give accurate information and to keep it up to date; an inaccurate answer produces an inaccurate match.</p>
+        <p>Where you do not match a scheme, we show you which criterion was not met, so an absence from your list is explained rather than unexplained. Where a scheme is a renewal or continuation, we check the renewal criteria rather than the fresh-applicant criteria — these differ, and the scheme's own guideline is authoritative.</p>
+        <div class="terms-callout"><b>A match is an indication, not a decision.</b> It means your self-reported details appear to meet a scheme's published criteria. Only the issuing government authority can determine whether you actually qualify, verify your documents, or approve and disburse an award. Its decision is final and we have no part in it.</div>
+      </section>
+
+      <section id="t7">
+        <h2>7. Optional document verification</h2>
+        <p>You may optionally upload documents — identity, income or education proof — to raise the accuracy of your matches and earn a verified badge. Verification is never required to search, view or match with schemes.</p>
+        <ul>
+          <li>Documents are used only to confirm the details on your profile.</li>
+          <li>Uploaded documents are encrypted and are not shared with any institute, third party or government body without your explicit consent.</li>
+          <li>You may withdraw a verification or ask us to delete an uploaded document at any time.</li>
+          <li>Uploading forged, altered or someone else's documents is a serious breach of these terms and will result in your account being closed.</li>
+        </ul>
+      </section>
+
+      <section id="t8">
+        <h2>8. Scheme information, freshness and official sources</h2>
+        <p>Scheme details — amounts, deadlines, criteria and document checklists — are compiled by hand from official government guideline documents. Each scheme carries a "last verified" date so you can judge for yourself how current it is.</p>
+        <p>Because we have no data feed from NSP or state portals, our catalogue is reviewed on a manual cycle and is intended to be no more than one academic year out of date. Government schemes can change, close, reopen or revise their rules at any time, and a change may reach us after it reaches the official portal.</p>
+        <div class="terms-callout"><b>Always confirm on the official page.</b> Check the scheme's status, deadline and requirements on the government page linked from the scheme before you rely on it or plan around it. Where our listing and the official source differ, <b>the official source governs</b>.</div>
+      </section>
+
+      <section id="t9">
+        <h2>9. Applying on government portals</h2>
+        <p>When you choose to apply, we open the scheme's official application page on the National Scholarship Portal or the relevant state portal in a new browser tab, pre-filling details where that is possible. From that point your application is governed entirely by that portal's own terms and privacy policy.</p>
+        <p>We do not submit applications for you, cannot see or influence their outcome, and cannot recover a missed deadline on your behalf. Deadline reminders are a convenience, not a guarantee — a reminder may be delayed or fail to arrive, and it remains your responsibility to track the deadlines that matter to you.</p>
+      </section>
+
+      <section id="t10">
+        <h2>10. Terms for institutes and coordinators</h2>
+        <p>If you register as an institute, these additional terms apply to you and to every coordinator acting under your account.</p>
+        <ul>
+          <li>You may upload student data only for students enrolled with your institute, and only where you have a lawful basis under the DPDP Act and the necessary consent to do so.</li>
+          <li><b>Where a student is under 18, you must have obtained verifiable consent from that student's parent or legal guardian before uploading their data.</b> By uploading a batch you confirm you have done so and can evidence it on request. This obligation is yours, not ours.</li>
+          <li>You must inform students (and their parents or guardians, where they are minors) that their details are being shared with SchemeConnect for the purpose of scheme matching, and tell them how to withdraw.</li>
+          <li>Your dashboard shows match and application status only. Personal and eligibility details — income, category, date of birth and documents — stay private to the student and become visible to you only if that student explicitly approves a request to share them.</li>
+          <li>Keep uploaded data accurate, tell us about students who leave, and use it only to help those students find and apply for schemes — never for marketing, profiling, resale or any unrelated purpose.</li>
+          <li>You are responsible for who you grant coordinator access to and for what they do with it.</li>
+          <li>You may not charge students a fee for access to information SchemeConnect provides to them free.</li>
+        </ul>
+      </section>
+
+      <section id="t11">
+        <h2>11. Privacy, consent and data sharing</h2>
+        <p>We collect only what we need to match you with schemes and to send you the reminders you ask for. <b>Your data is not sold.</b> It is not shared with an institute, a lender, an agent or any other third party without your explicit, revocable consent.</p>
+        <ul>
+          <li>Students control what is shared. An institute must request access; you may approve or decline it, and withdraw it later.</li>
+          <li>We use a small number of service providers to operate the product — for example to send OTP messages and push notifications. They process your data only on our instructions and only for that purpose.</li>
+          <li>We do not use your data for behavioural advertising, and we do not profile children (see section 4).</li>
+          <li>You can view, correct, export or delete your details at any time from your profile.</li>
+          <li>Deleting your account removes your profile and uploaded documents from our systems, subject to any records we are required to retain by law.</li>
+        </ul>
+        <p>Our Privacy Policy explains all of this in full and forms part of these terms.</p>
+      </section>
+
+      <section id="t12">
+        <h2>12. Free to use, fees, fraud and scam warnings</h2>
+        <p>Checking your eligibility on SchemeConnect is free for students and will remain so. We do not put eligibility checking, your matches, or the official apply links behind a paid tier. If we ever introduce optional paid features, they will never gate the core eligibility check.</p>
+        <p>We will never ask you to pay a fee, a deposit or a "processing charge" to be matched with a scheme — and no legitimate government scholarship requires you to pay to apply.</p>
+        <div class="terms-callout"><b>Watch out:</b> messages promising guaranteed scholarships in exchange for a fee, an OTP or your bank details are fraudulent. We flag known scam schemes where we can, but we cannot catch every one. Report anything suspicious to us, and never share your one-time code, bank details or documents with anyone who contacts you claiming to be from SchemeConnect.</div>
+      </section>
+
+      <section id="t13">
+        <h2>13. Acceptable use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Create an account using someone else's identity, number or documents.</li>
+          <li>Submit false, forged or misleading information.</li>
+          <li>Scrape, copy, republish or resell our scheme listings, verification data or match results.</li>
+          <li>Attempt to gain access to another user's profile or to any part of our systems.</li>
+          <li>Use the service to charge students for access to information we provide free.</li>
+          <li>Present SchemeConnect as an official government service, or as a route to a guaranteed award.</li>
+        </ul>
+        <p>We may suspend or close accounts that breach these rules.</p>
+      </section>
+
+      <section id="t14">
+        <h2>14. Service availability and limitation of liability</h2>
+        <p>We aim to keep SchemeConnect available and responsive, with particular care during the application-deadline months when demand is highest. We cannot promise uninterrupted service: maintenance, outages and dependencies outside our control will sometimes interrupt it, and this is a beta service.</p>
+        <p>SchemeConnect is provided on an "as is" and "as available" basis. We do not guarantee that a scheme will be available, that you will be found eligible, that you will be awarded any amount, that your state is covered, or that our listing of a deadline or criterion is free of error. To the fullest extent permitted by law, we are not liable for a missed deadline, a rejected or unsuccessful application, an out-of-date or incorrect scheme detail, a reminder that did not arrive, or any loss arising from your use of a government portal.</p>
+        <p>Nothing in these terms limits any liability that cannot be limited under applicable law, including under the DPDP Act.</p>
+      </section>
+
+      <section id="t15">
+        <h2>15. Changes to these terms</h2>
+        <p>We may update these terms as the service grows and as our state coverage expands. If a change materially affects your rights, we will tell you in the app or by email before it takes effect and ask you to accept the updated terms. Continuing to use SchemeConnect after that point means you accept them.</p>
+      </section>
+
+      <section id="t16">
+        <h2>16. Closing your account</h2>
+        <p>You may close your account at any time from your profile, and a parent or guardian may close a child's account on their behalf. Institutes may close their account by contacting us; student profiles that students have claimed themselves remain theirs and are not deleted when an institute leaves.</p>
+      </section>
+
+      <section id="t17">
+        <h2>17. Accessibility, support and contact</h2>
+        <p>We build SchemeConnect to meet WCAG 2.1 AA and to work with a screen reader, on a budget Android phone, and over a slow or intermittent connection. If any part of the product is not usable for you, tell us — we treat that as a defect, not a feature request.</p>
+        <p>For questions about these terms, a privacy or parental-consent request, an accessibility problem, or a suspected scam, write to <a href="#" style="color:var(--slate); font-weight:600; text-decoration:none;">support@schemeconnect.in</a>. We aim to respond within 3 business days.</p>
+      </section>
+    </div>
+
+    <div class="terms-accept-bar" id="termsAcceptBar" style="display:none;">
+      <div class="tb-text">Ready to continue? Accepting takes you back to sign-up with the box ticked.</div>
+      <button class="btn-primary" onclick="acceptTerms()">I agree — continue</button>
+    </div>
+
+    <p class="terms-foot">These wireframe terms are placeholder copy for design review. Final wording must be reviewed by legal counsel before launch.</p>
+  </div>
+</section>
+
+<script>
+  function go(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.proto-nav button').forEach(b=>b.classList.remove('active'));
+    var navBtn = document.querySelector('.proto-nav button[data-screen="'+id+'"]');
+    if(navBtn) navBtn.classList.add('active');
+    window.scrollTo(0,0);
+    if(id === 'c-loading'){ runLoader(); }
+  }
+  document.querySelectorAll('.proto-nav button').forEach(b=>{
+    /* Terms reached from the nav has no sign-up screen to return to. */
+    b.addEventListener('click', ()=> b.dataset.screen === 'terms' ? openTerms(null) : go(b.dataset.screen));
+  });
+
+  /* ---------------- Terms & Conditions gate ---------------- */
+  /* Maps each sign-up screen to its checkbox, Continue button and error line. */
+  var consentScreens = {
+    'c-new-details': { cb:'consentC', btn:'continueC', err:'consentErrC', next:'c-loading', back:'← Back to sign-up' },
+    'b-new-details': { cb:'consentB', btn:'continueB', err:'consentErrB', next:'b-confirm', back:'← Back to sign-up' }
+  };
+  var termsReturnTo = null;
+
+  function syncConsent(cbId, btnId, errId){
+    var checked = document.getElementById(cbId).checked;
+    document.getElementById(btnId).disabled = !checked;
+    if(checked) document.getElementById(errId).classList.remove('show');
+  }
+
+  function openTerms(fromScreen){
+    termsReturnTo = fromScreen || null;
+    var cfg = termsReturnTo ? consentScreens[termsReturnTo] : null;
+    document.getElementById('termsBackLink').textContent = cfg ? cfg.back : '← Back';
+    document.getElementById('termsAcceptBar').style.display = cfg ? 'flex' : 'none';
+    go('terms');
+  }
+
+  function closeTerms(){
+    go(termsReturnTo || 'landing');
+  }
+
+  /* Ticks the box on the originating sign-up screen, then returns to it. */
+  function acceptTerms(){
+    var cfg = termsReturnTo ? consentScreens[termsReturnTo] : null;
+    if(cfg){
+      document.getElementById(cfg.cb).checked = true;
+      syncConsent(cfg.cb, cfg.btn, cfg.err);
+    }
+    closeTerms();
+  }
+
+  function jumpTerms(id){
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  /* Continue only advances once the box is ticked — the disabled state is the
+     visible cue, this check is the actual gate. */
+  Object.keys(consentScreens).forEach(function(screen){
+    var cfg = consentScreens[screen];
+    document.getElementById(cfg.btn).addEventListener('click', function(){
+      if(!document.getElementById(cfg.cb).checked){
+        document.getElementById(cfg.err).classList.add('show');
+        return;
+      }
+      document.getElementById(cfg.err).classList.remove('show');
+      go(cfg.next);
+    });
+  });
+
+  function wireOtpGroup(groupId){
+    var inputs = document.querySelectorAll('#'+groupId+' input');
+    inputs.forEach(function(input, idx){
+      input.addEventListener('input', function(){
+        this.value = this.value.replace(/[^0-9]/g,'').slice(0,1);
+        if(this.value.length === 1 && idx < inputs.length - 1){
+          inputs[idx+1].focus();
+        }
+      });
+      input.addEventListener('keydown', function(e){
+        if(e.key === 'Backspace' && this.value === '' && idx > 0){
+          inputs[idx-1].focus();
+        }
+      });
+    });
+  }
+  wireOtpGroup('otpGroupC');
+  wireOtpGroup('otpGroupB');
+
+  var loaderTimers = [];
+  function runLoader(){
+    loaderTimers.forEach(t => clearTimeout(t));
+    loaderTimers = [];
+    var dots = document.querySelectorAll('#loadStepsC span');
+    var title = document.getElementById('loadTitleC');
+    var sub = document.getElementById('loadSubC');
+    dots.forEach(d => d.className = '');
+
+    var steps = [
+      {t:0,    title:'Creating your profile…', sub:"Hang tight, we're already checking central government schemes you may qualify for.", dot:0},
+      {t:1000, title:'Matching schemes for you…', sub:'Comparing your details against 65+ central and state schemes.', dotDone:0, dot:1},
+      {t:2000, title:'Almost there…', sub:'Putting together your first set of matches.', dotDone:1, dot:2}
+    ];
+    steps.forEach(function(s){
+      loaderTimers.push(setTimeout(function(){
+        title.textContent = s.title;
+        sub.textContent = s.sub;
+        if(s.dotDone !== undefined) dots[s.dotDone].className = 'done';
+        dots[s.dot].className = 'now';
+      }, s.t));
+    });
+    loaderTimers.push(setTimeout(function(){ dots.forEach(d => d.className = 'done'); }, 2900));
+    loaderTimers.push(setTimeout(function(){ go('c-dashboard'); }, 3300));
+  }
+
+  /* ---------------- B2C Document Upload ---------------- */
+  var docConfig = {
+    identity: { eyebrow:'Identity verification', title:'Upload your Aadhaar', extraLabel:'Address', extraValue:'Guwahati, Assam', btnId:'btnDocIdentity' },
+    income:   { eyebrow:'Income verification', title:'Upload your income certificate or PAN', extraLabel:'Annual income', extraValue:'₹1.8 lakh', btnId:'btnDocIncome' }
+  };
+  var currentDocType = null;
+
+  function openDocUpload(type){
+    currentDocType = type;
+    var cfg = docConfig[type];
+    document.getElementById('docEyebrow').textContent = cfg.eyebrow;
+    document.getElementById('docTitle').textContent = cfg.title;
+    document.getElementById('docExtraLine').innerHTML = '<span class="k">'+cfg.extraLabel+'</span><span><b>'+cfg.extraValue+'</b></span>';
+    resetDocUpload();
+    go('c-doc-upload');
+  }
+
+  function resetDocUpload(){
+    document.getElementById('docIdle').style.display = 'block';
+    document.getElementById('docChosen').style.display = 'none';
+    document.getElementById('docScanRow').style.display = 'flex';
+    document.getElementById('docExtracted').style.display = 'none';
+    document.getElementById('docConfirmBtn').style.display = 'none';
+    document.getElementById('docFileInput').value = '';
+  }
+
+  function handleDocFile(files){
+    if(!files || !files.length) return;
+    document.getElementById('docFileName').textContent = files[0].name;
+    document.getElementById('docIdle').style.display = 'none';
+    document.getElementById('docChosen').style.display = 'block';
+    document.getElementById('docScanRow').style.display = 'flex';
+    document.getElementById('docExtracted').style.display = 'none';
+    document.getElementById('docConfirmBtn').style.display = 'none';
+    setTimeout(function(){
+      document.getElementById('docScanRow').style.display = 'none';
+      document.getElementById('docExtracted').style.display = 'block';
+      document.getElementById('docConfirmBtn').style.display = 'block';
+    }, 1400);
+  }
+
+  function confirmDocUpload(){
+    if(currentDocType){
+      var btn = document.getElementById(docConfig[currentDocType].btnId);
+      btn.innerHTML = '<span class="status-dot done"></span>Verified';
+    }
+    go('c-verify-docs');
+  }
+
+  /* ---------------- B2B Batch Upload (real CSV parsing) ---------------- */
+  var fieldOptions = ['Ignore column','Student name','Student ID','Class / year','State','Category','Annual income','Mobile number','Email address'];
+  var fieldGuesses = {
+    'name':'Student name','student name':'Student name','full name':'Student name',
+    'id':'Student ID','student id':'Student ID','roll no':'Student ID','roll number':'Student ID','rollno':'Student ID',
+    'class':'Class / year','year':'Class / year','batch':'Class / year','grade':'Class / year',
+    'state':'State',
+    'category':'Category','caste':'Category',
+    'income':'Annual income','family income':'Annual income','annual income':'Annual income',
+    'mobile':'Mobile number','phone':'Mobile number','contact':'Mobile number',
+    'email':'Email address','email address':'Email address'
+  };
+
+  function resetBatchUpload(){
+    document.getElementById('batchIdle').style.display = 'block';
+    document.getElementById('batchChosen').style.display = 'none';
+    document.getElementById('batchFileInput').value = '';
+  }
+
+  function handleBatchFile(files){
+    if(!files || !files.length) return;
+    var file = files[0];
+    document.getElementById('batchFileName').textContent = file.name;
+    document.getElementById('batchIdle').style.display = 'none';
+    document.getElementById('batchChosen').style.display = 'block';
+
+    var reader = new FileReader();
+    reader.onload = function(e){
+      var text = e.target.result;
+      var rows = text.split(/\r?\n/).filter(r => r.trim().length);
+      var headers = rows[0].split(',').map(h => h.trim());
+      var dataRows = rows.slice(1, 6).map(r => r.split(','));
+      setTimeout(function(){ renderBatchPreview(headers, dataRows, rows.length - 1); go('b-batch-preview'); }, 1000);
+    };
+    reader.onerror = function(){
+      // Fall back to a sample preview if the file can't be read as text
+      setTimeout(function(){
+        renderBatchPreview(['Name','Roll No','Class','State','Category','Income'],
+          [['Aarav Mehta','SXC-2027-001','11','Rajasthan','General','320000'],
+           ['Diya Kulkarni','SXC-2027-002','11','Maharashtra','OBC','180000']], 612);
+        go('b-batch-preview');
+      }, 1000);
+    };
+    reader.readAsText(file);
+  }
+
+  function guessField(header){
+    var h = header.toLowerCase().trim();
+    return fieldGuesses[h] || 'Ignore column';
+  }
+
+  function renderBatchPreview(headers, dataRows, totalCount){
+    var flagged = 0;
+    var mapHtml = '<div class="map-table-wrap"><table class="map-table"><tr><th>Your column</th><th>Maps to</th></tr>';
+    headers.forEach(function(h, i){
+      var guess = guessField(h);
+      if(guess === 'Ignore column') flagged++;
+      mapHtml += '<tr><td class="b">'+h+'</td><td><select class="'+(guess==='Ignore column'?'warn':'')+'">';
+      fieldOptions.forEach(function(opt){
+        mapHtml += '<option'+(opt===guess?' selected':'')+'>'+opt+'</option>';
+      });
+      mapHtml += '</select></td></tr>';
+    });
+    mapHtml += '</table></div>';
+    document.getElementById('mapTableWrap').innerHTML = mapHtml;
+
+    var prevHtml = '<table><tr>' + headers.map(h=>'<th>'+h+'</th>').join('') + '</tr>';
+    dataRows.forEach(function(row){
+      prevHtml += '<tr>' + row.map(c=>'<td>'+(c||'').trim()+'</td>').join('') + '</tr>';
+    });
+    prevHtml += '</table>';
+    document.getElementById('previewTableWrap').innerHTML = prevHtml;
+
+    document.getElementById('batchSummaryText').innerHTML = '<b>'+totalCount+'</b> students detected';
+    document.getElementById('batchFlagText').textContent = flagged > 0 ? flagged+' column(s) need review' : 'All columns mapped';
+  }
+</script>
+
+</body>
+</html>

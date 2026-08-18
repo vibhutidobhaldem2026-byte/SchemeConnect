@@ -1,0 +1,86 @@
+# Render blueprint. Deploy with: Render dashboard → New → Blueprint → this repo.
+#
+# The whole app is one service. Pages are rendered on the server, so there is no
+# separate frontend to host — frontend/ holds the CSS and JS, and the backend
+# serves them from the same origin as the HTML that references them.
+#
+# The database is NOT defined here. It lives on Supabase in ap-south-1 (Mumbai),
+# because Render's own Postgres has no Indian region and the distance between
+# the app and its database sets the floor on every page load.
+
+services:
+  - type: web
+    name: schemeconnect
+    runtime: node
+    # Free instances spin down after 15 minutes of inactivity and take 30-60
+    # seconds to wake. An external pinger (UptimeRobot, every 5 minutes at
+    # /healthz) keeps it up — see the deployment notes in the README.
+    #
+    # The budget is tight and worth knowing: a workspace gets 750 free instance
+    # hours per calendar month, and a 31-day month is 744 hours. One service
+    # kept awake around the clock fits with about six hours to spare, and only
+    # if it is the only free service in the workspace. A second one exhausts the
+    # allowance and both are suspended until the month rolls over.
+    plan: free
+    # Same region as the database. Singapore is Render's closest to India;
+    # every extra hop between here and Supabase is paid on every page.
+    region: singapore
+    rootDir: backend
+    # Migrations run here rather than in preDeployCommand, which is a paid
+    # feature — as is Shell access, so there is no way to run them by hand on a
+    # free instance. The build has the environment and network it needs, and an
+    # already-applied migration is a no-op, so a redeploy with no schema change
+    # costs one query. A failing migration fails the build, which is what you
+    # want: the old instance keeps serving.
+    buildCommand: npm ci && npm run migrate
+    # On a paid plan, move migrations out of the build and into this hook, so
+    # they run once per deploy rather than once per build:
+    # preDeployCommand: npm run migrate
+    startCommand: npm start
+    # Also the endpoint the uptime pinger hits. It touches the database, so a
+    # green check means the whole stack is up, not just the process — and the
+    # traffic doubles as what keeps the Supabase project from pausing.
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # Render supplies PORT; the app reads it. HOST must be 0.0.0.0 for the
+      # health check to reach the process.
+      - key: HOST
+        value: 0.0.0.0
+
+      # Signs CSRF tokens. Generated once by Render and kept across deploys.
+      # Every instance must share it, or one instance rejects another's forms.
+      - key: SESSION_SECRET
+        generateValue: true
+
+      # Set these in the Render dashboard — they are secrets or per-environment.
+      #   DATABASE_URL   Supabase transaction pooler, port 6543
+      #   DIRECT_URL     Supabase session pooler, port 5432 (migrations use this)
+      #   OPS_EMAILS     comma-separated addresses allowed into /ops
+      #   RESEND_API_KEY email OTP delivery
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: OPS_EMAILS
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        sync: false
+      - key: RESEND_REPLY_TO
+        sync: false
+
+      # Supabase issues its certificates from its own CA, which Node does not
+      # trust by default. This is the committed public certificate that lets us
+      # verify the connection rather than merely encrypt it.
+      - key: PGSSL_CA_FILE
+        value: certs/prod-ca-2021.crt
+
+      # Never true in production: it prints sign-in codes on screen.
+      - key: SHOW_DEV_OTP
+        value: "false"

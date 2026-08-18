@@ -1,20 +1,28 @@
 node_modules/
 
-# Application data (user accounts, sessions, batches) — never commit.
-data/store.json
-data/.store.*.tmp
+# The old file-based application store. Accounts, sessions and batches live in
+# PostgreSQL now; this pattern stays so an old checkout never commits one.
+backend/data/store.json
+backend/data/.store.*.tmp
 
 # Scraper HTTP response cache — large, regenerable.
-data/.cache/
+backend/data/.cache/
 
-# The catalogue IS committed: it is the scraper's output and the site's only
-# source of scheme data, so a checkout runs without an immediate crawl.
-# data/catalog/
+# The catalogue IS committed, but it is now an export rather than the live
+# store: the site reads schemes from PostgreSQL. Keeping the files means a
+# fresh checkout can run "npm run import:catalog" instead of a two-hour crawl.
+# backend/data/catalog/
+
+# The provider's public CA certificate IS committed. It is not a secret — it is
+# what lets us verify the database's certificate instead of trusting it blindly,
+# and a deploy needs it present.
+!backend/certs/*.crt
 
 # Secrets. .env.example is committed as the template; .env never is.
 .env
 .env.local
 .env.*.local
+backend/.env
 
 *.log
 *.err
