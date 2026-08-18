@@ -1,5 +1,665 @@
 [
   {
+    "startedAt": "2026-08-18T22:33:51.410Z",
+    "finishedAt": "2026-08-18T23:25:49.823Z",
+    "durationSec": 3118,
+    "sourcesCrawled": [
+      "myscheme",
+      "tribal-schemes-gov",
+      "aicte-schemes",
+      "depwd-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "hp-epass-state",
+      "hp-epass-central",
+      "assam-state-schemes",
+      "tn-bcmbcmw",
+      "rajasthan-sje-scholarship",
+      "wb-svmcm",
+      "tribal-schemes",
+      "minorityaffairs-schemes",
+      "dst-inspire",
+      "up-scholarship"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 436,
+    "schemesKept": 208,
+    "rejectedCount": 321,
+    "rejected": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dssmp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Divyangjan Scholarship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ef",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Emeritus Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/afs-sc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/serbpowerf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "SERB - POWER Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ai-rtf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "ASEAN-India Research Training Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jcbs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "J.C. Bose Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tgarfs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "The Goa Archaeological Research Fellowship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nssfp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Solar Science Fellowship Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssst-pts",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Scheduled Tribes - Poultry Training Stipend"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hssm",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Handicapped Students Stipend Mizoram"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/steu",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend to Educated Unemployed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sspftsc",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Poultry Farming Training For Schedule Caste"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mhvs-hte",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Mukhyamantri Hunar Vikas Yojana- Higher Education/Technical Education"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vep",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Vocational Education Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aaelss",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Assam Abhinandan Education Loan Subsidy Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aejkbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Academic Education (JKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pfjkbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Professional Education (PEJKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fae-gbocwwb",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Financial Assistance for Education (GBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sejkbocwwb",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Schooling Education (JKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/easukbocwwb",
+        "reason": "name does not look like a scheme",
+        "name": "Son/Daughter Education Assistance (UKBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sipocagi",
+        "reason": "name does not look like a scheme",
+        "name": "Student Internship Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/saesc",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "State Art Exhibition (Student Category)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bsccs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Bihar Student Credit Card Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/spuac",
+        "reason": "name does not look like a scheme",
+        "name": "Student Program Under AcSIR"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mukhopadhyaystudentfunduk",
+        "reason": "name does not look like a scheme",
+        "name": "Dr. A.N. Mukhopadhyay Needy Student Fund (B.Sc. Agriculture - Final Year Student)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/oecp-mea",
+        "reason": "name does not look like a scheme",
+        "name": "OEC Pre-matric Educational Assistance"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/smsuggs",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ascrncaeaonima",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Award of Scholarship to the Children who are Recipients of National Child Award for Exceptional Achievements and Other National / International Merit Awards"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fagcaha18",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Financial Assistance for Girl Child Attend Her Age of 18"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fimdgc",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Financial Incentives To Mothers Who Deliver A Girl Child (Mamta)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/stgca",
+        "reason": "name does not look like a scheme",
+        "name": "ST Girl Child Literacy Incentive Amount - Class 11th"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/scgca",
+        "reason": "name does not look like a scheme",
+        "name": "SC Girl Child Literacy Incentive Amount - Class 11th"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/msesu",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Self-Employment Scheme for Unemployed Minority Communities"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/seloanwomen",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Self-Employment loan scheme for Minority Widows, Divorcees / Abandoned Women"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tlscl2mc",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Term Loan Scheme- Credit Line 2 for Minority Community"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/edsc-st-wistem",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Entrepreneurship Development by SC & ST Women in Science Technology Engineering Mathematics"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/csspremsobcsi",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sevtgi",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Special Education And Vocational Training Through Government Institutions"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/da-60ada",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "60% and above Disability Allowances"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dpbbocwwb",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Disability Pension (BBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dp-gbocwwb",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Disability Pension (GBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dphpbocwwb",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Disability Pension (HPBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dpmbocwwb",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Disability Pension (MBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/udid",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Unique Disability Identity - DNH & DD"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/elpd",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Education Loan for Persons with Disabilities- Haryana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fat75opd",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Financial Assistance to 75% or Permanent Disability"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dprw-hbocwwb",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Disability Pension For Registered Worker (HBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rau",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dttrw",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Documentation of Tiatr through Research Work"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sire",
+        "reason": "name does not look like a scheme",
+        "name": "SERB International Research Experience"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/randd",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Research and Development Grant"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rttsc",
+        "reason": "name does not look like a scheme",
+        "name": "Reimbursement of Tuition Fee and Transport Facility to Scheduled Castes Students Studying in Technical Institutions in Haryana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tfrosps",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Tuition Fee Reimbursement of Sainik/Public Schools"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/freeshipuk",
+        "reason": "name does not look like a scheme",
+        "name": "Freeship Less than ₹1,00,000/- (UG Students Only)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fsw",
+        "reason": "name does not look like a scheme",
+        "name": "Freeship Staff Ward"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tfefvs",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Tuition Fees And Examination Fees To Vjnt Students"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/yhs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Youth Hostel Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hfshpbocwwb",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Hostel Facility Scheme (HPBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gwwh",
+        "reason": "name does not look like a scheme",
+        "name": "Government Working Women’s Hostel"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jhst",
+        "reason": "name does not look like a scheme",
+        "name": "Junior Hostel (Scheduled Tribes)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/snwwh",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Sakhi Niwas - Working Women's Hostel"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/oossh",
+        "reason": "name does not look like a scheme",
+        "name": "Operation of SC Senior Hostel"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aipmh",
+        "reason": "name does not look like a scheme",
+        "name": "Admission in Post Matric Hostel"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/cec",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Competitive Exam Coaching"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vcsgbocwwb",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Vishist Coaching Scheme (GBOCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/njcfts",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "NEET/JEE Coaching For Tribal Students"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/chs-assam",
+        "reason": "name does not look like a scheme",
+        "name": "Coaching For Higher Studies"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bpsaec",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Biju Patnaik Sports Award for Excellence in Coaching"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ehttg",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Economic Help To Tribal Girls For Higher Education (College Level)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ehftg",
+        "reason": "name does not look like a scheme",
+        "name": "Economic Help To Tribal Girls For Higher Education (Class 11 & 12)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssstss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ohss",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Observation Home and Special School"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dlssg",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "District Level Sports School"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rsb",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Residential School For Blinds"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sbvcydpsc",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Samekit Baal Vikas Chhtra Yojana: Dress for Pre-school Children"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/patsc",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Promotion of Acting in Tiatr for School Children"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rofpsssisspi",
+        "reason": "name does not look like a scheme",
+        "name": "Reimbursement of Fees of ST Students Studying in Sainik School Private Institutions"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gssvhhi",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Government Special School for the Visually Handicapped and the Hearing Impaired"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/Top-Class/246RevisedInstitutesListj18.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/Top-Class/246RevisedInstitutesListj18.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/NOS/Amendment_NOS-2627.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/NOS/Amendment_NOS-2627.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/pre-matric/IncreaseincholarshipamtunderPrenPMS20Dec2019.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/pre-matric/IncreaseincholarshipamtunderPrenPMS20Dec2019.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/NFS/AmendmentGuidelinesNFS4highereducaton4STstudents_7July2023.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/NFS/AmendmentGuidelinesNFS4highereducaton4STstudents_7July2023.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/Top-Class/GuidelinesFellowshipandScholarship2022.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/Top-Class/GuidelinesFellowshipandScholarship2022.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/NFS/GuidelinesFellowshipandScholarship2022.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/NFS/GuidelinesFellowshipandScholarship2022.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/circulars/NETJRFCISREligibilityamendmentNotice01072024.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/circulars/NETJRFCISREligibilityamendmentNotice01072024.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/NFS/AmendmentGuidelinesNationalfellowsipscholarhsip4highereducaton4STstudents_7July2023.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/NFS/AmendmentGuidelinesNationalfellowsipscholarhsip4highereducaton4STstudents_7July2023.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/circulars/RevisionOfFellowshipAmountNFS4HESTStudentsScheme01012023.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/circulars/RevisionOfFellowshipAmountNFS4HESTStudentsScheme01012023.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/circulars/Aadhar%20Notification%20for%208%20schemes%209.6.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/circulars/Aadhar%20Notification%20for%208%20schemes%209.6.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/pre-matric/guidelines-Pre-matric-17-Oct-2022.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/pre-matric/guidelines-Pre-matric-17-Oct-2022.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/pre-matric/EDUProformaAnnex.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/pre-matric/EDUProformaAnnex.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/pre-matric/upward%20revision%20of%20annual%20parantal%20income%20Pre-Matric.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/pre-matric/upward%20revision%20of%20annual%20parantal%20income%20Pre-Matric.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/scholarship/NFS/AnnexureII-FundReleasenBeneficiaries4CSSScholarship4FY2023-14to2025-26.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/scholarship/NFS/AnnexureII-FundReleasenBeneficiaries4CSSScholarship4FY2023-14to2025-26.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/Top-Class/Revised265TopClassInstitutesList2023-24till15032024.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/Top-Class/Revised265TopClassInstitutesList2023-24till15032024.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/writereaddata/News/2023062412302469279012ndmeritlist61candidates-2021-22.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/writereaddata/News/2023062412302469279012ndmeritlist61candidates-2021-22.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/guidelines/NOS/RevisedGuidelinesNOS07102022.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/guidelines/NOS/RevisedGuidelinesNOS07102022.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/scholarship/NOS/Listof22CandidatesProvisionallySelectedfor202526NOSScheme.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/scholarship/NOS/Listof22CandidatesProvisionallySelectedfor202526NOSScheme.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/scholarship/NOS/202505150247488056377Advertisement.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/scholarship/NOS/202505150247488056377Advertisement.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/scholarship/NOS/NOSMeritList-17-Candidates-Selectionyear2023-24.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/scholarship/NOS/NOSMeritList-17-Candidates-Selectionyear2023-24.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      },
+      {
+        "url": "https://tribal.gov.in/downloads/circulars/UIDAI_Guidelines_on_use_of_Aadhaar__25Nov_19.pdf",
+        "reason": "Failed after 3 attempts: https://tribal.gov.in/downloads/circulars/UIDAI_Guidelines_on_use_of_Aadhaar__25Nov_19.pdf — fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://tribal.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T22:55:58.488Z"
+      },
+      {
+        "origin": "https://www.aicte.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:02:17.323Z"
+      },
+      {
+        "origin": "https://aicte.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:02:17.763Z"
+      },
+      {
+        "origin": "https://pdf.aicte.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:02:37.150Z"
+      },
+      {
+        "origin": "https://yukti.mic.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:02:39.825Z"
+      },
+      {
+        "origin": "https://pgscholarship.aicte.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:02:42.782Z"
+      },
+      {
+        "origin": "https://depwd.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:03:06.843Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:03:24.122Z"
+      },
+      {
+        "origin": "https://hpepass.cgg.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:04:11.623Z"
+      },
+      {
+        "origin": "https://assam.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:04:16.168Z"
+      },
+      {
+        "origin": "https://bcmbcmw.tn.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:05:00.391Z"
+      },
+      {
+        "origin": "https://sjmsnew.rajasthan.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:07:21.988Z"
+      },
+      {
+        "origin": "https://svmcm.wb.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:08:17.582Z"
+      },
+      {
+        "origin": "https://wbhed.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T23:08:43.131Z"
+      },
+      {
+        "origin": "https://tribal.nic.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:08:45.285Z"
+      },
+      {
+        "origin": "https://www.minorityaffairs.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:16:12.319Z"
+      },
+      {
+        "origin": "https://online-inspire.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:16:42.599Z"
+      },
+      {
+        "origin": "https://scholarship.up.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T23:20:38.005Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
     "startedAt": "2026-08-18T21:35:27.190Z",
     "finishedAt": "2026-08-18T21:43:23.016Z",
     "durationSec": 476,

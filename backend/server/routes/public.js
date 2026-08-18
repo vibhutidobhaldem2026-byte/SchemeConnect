@@ -114,8 +114,8 @@ router.get('/', async (req, res) => {
             <a class="landing-cta-alt" href="/terms">How we check our sources</a>
           </div>
           <p class="landing-subcta">
-            Free, and always will be. No password — we send a one-time code. You can browse the whole
-            catalogue without an account.
+            Free, and always will be. Six questions, about two minutes, and you can delete
+            everything we hold on you at any time.
           </p>
           </div>
           <div class="lh-art">${raw(illustration('hero', { lazy: false }))}</div>

@@ -836,3 +836,57 @@ html.is-navigating { cursor: progress; }
   .lh-art .illus{ max-height:126px; }
   .es-illus .illus{ max-height:112px; }
 }
+
+/* ---- split cards: sign-in and role choice -------------------------------
+   These were a narrow centred column with an emoji at the top of each option.
+   Landscape reads better here: the choice sits on the left where the eye
+   starts, and the illustration takes the space to its right rather than
+   pushing the buttons down the page. Below 860px it stacks and the art goes,
+   because on a phone the only thing that matters is the two buttons. */
+.center-wrap-wide{ max-width:none; padding:32px 20px; }
+
+.split-card{
+  display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:0; width:100%; max-width:920px; margin:0 auto;
+  background:var(--white); border:1px solid var(--line); border-radius:18px;
+  box-shadow:var(--shadow-md); overflow:hidden;
+}
+.split-main{ padding:36px 38px 34px; }
+.split-aside{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:18px; padding:34px 32px; background:var(--navy-050);
+  border-left:1px solid var(--line);
+}
+.illus-aside{ width:100%; max-width:232px; height:auto; }
+.split-note{
+  margin:0; font-size:13px; line-height:1.6; color:var(--slate); text-align:center; max-width:30ch;
+}
+
+/* Role choice: a row, not a stacked tile with a picture on top. */
+.split-main .role-grid{ display:flex; flex-direction:column; gap:12px; margin-top:22px; }
+.split-main .role-card{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px;
+  padding:18px 20px; border:1px solid var(--line); border-radius:12px;
+  background:var(--white); text-decoration:none; color:inherit;
+  transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.split-main .role-card:hover{
+  border-color:var(--navy); box-shadow:var(--shadow-md); transform:translateY(-1px);
+}
+.role-mark{
+  display:grid; place-items:center; width:42px; height:42px; flex:none;
+  border-radius:11px; background:var(--navy-050); color:var(--navy);
+}
+.role-mark .spot{ width:22px; height:22px; }
+.role-body{ display:block; min-width:0; }
+.split-main .role-title{ display:block; font-weight:700; font-size:15px; margin-bottom:2px; }
+.split-main .role-sub{ display:block; font-size:13px; color:var(--slate); line-height:1.5; }
+.role-go{ color:var(--slate); font-size:17px; transition:transform .15s ease, color .15s ease; }
+.split-main .role-card:hover .role-go{ color:var(--navy); transform:translateX(2px); }
+
+@media (max-width: 860px){
+  .split-card{ grid-template-columns:1fr; max-width:520px; }
+  /* The art is decoration; on a phone the buttons are the page. */
+  .split-aside{ display:none; }
+  .split-main{ padding:28px 22px 26px; }
+}

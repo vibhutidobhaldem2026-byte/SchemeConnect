@@ -9,7 +9,7 @@
  */
 
 import express from 'express';
-import { html, raw, layout, logoMark, notice } from '../render.js';
+import { html, raw, layout, logoMark, notice, spotArt, illustration } from '../render.js';
 import * as store from '../store.js';
 import { MIN_PASSWORD_LENGTH } from '../store.js';
 import { TERMS_VERSION } from '../terms.js';
@@ -183,23 +183,40 @@ router.get('/start', (req, res) => {
   res.send(layout({
     title: 'Who are you?',
     body: html`
-      <div class="center-wrap">
-        <div class="auth-card">
-          <a class="link-back" href="/">← Back</a>
-          ${raw(logoMark())}
-          <div class="eyebrow">One quick thing</div>
-          <h1 class="headline">Who are you?</h1>
-          <p class="subtext">This just shows you the right experience — you won't need to answer this again.</p>
-          <div class="role-grid">
-            <a class="role-card" href="/login?role=student">
-              <div class="role-emoji">🎓</div>
-              <div><div class="role-title">I'm a student</div><div class="role-sub">Find scholarships and schemes for yourself</div></div>
-            </a>
-            <a class="role-card" href="/login?role=institute">
-              <div class="role-emoji">🏫</div>
-              <div><div class="role-title">I'm an institute</div><div class="role-sub">Help your students find schemes, every batch, every year</div></div>
-            </a>
+      <div class="center-wrap center-wrap-wide">
+        <div class="split-card">
+          <div class="split-main">
+            <a class="link-back" href="/">← Back</a>
+            ${raw(logoMark())}
+            <div class="eyebrow">One quick thing</div>
+            <h1 class="headline">Who are you?</h1>
+            <p class="subtext">This just shows you the right experience — you won't need to answer this again.</p>
+            <div class="role-grid">
+              <a class="role-card" href="/login?role=student">
+                <span class="role-mark">${raw(spotArt('step-ask'))}</span>
+                <span class="role-body">
+                  <span class="role-title">I'm a student</span>
+                  <span class="role-sub">Find scholarships and schemes for yourself</span>
+                </span>
+                <span class="role-go" aria-hidden="true">→</span>
+              </a>
+              <a class="role-card" href="/login?role=institute">
+                <span class="role-mark">${raw(spotArt('students'))}</span>
+                <span class="role-body">
+                  <span class="role-title">I'm an institute</span>
+                  <span class="role-sub">Check a whole batch of students at once, every year</span>
+                </span>
+                <span class="role-go" aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
+          <aside class="split-aside">
+            ${raw(illustration('researching', { cls: 'illus-aside' }))}
+            <p class="split-note">
+              Every scheme here was read from an official government page, and every rule shows the
+              sentence it came from.
+            </p>
+          </aside>
         </div>
       </div>`,
   }));
@@ -216,8 +233,9 @@ router.get('/login', (req, res) => {
   res.send(layout({
     title: 'Log in or sign up',
     body: html`
-      <div class="center-wrap">
-        <div class="auth-card">
+      <div class="center-wrap center-wrap-wide">
+        <div class="split-card">
+          <div class="split-main">
           <a class="link-back" href="/start">← Back</a>
           ${raw(logoMark())}
           <div class="eyebrow">${student ? 'For students' : 'For institutions'}</div>
@@ -267,6 +285,15 @@ router.get('/login', (req, res) => {
           <p class="foot-note">${student
             ? raw(html`Institute instead? <a href="/login?role=institute">Switch to institute log in</a>`)
             : raw(html`Looking for the student app? <a href="/login?role=student">Switch to student log in</a>`)}</p>
+          </div>
+          <aside class="split-aside">
+            ${raw(illustration('certificate', { cls: 'illus-aside' }))}
+            <p class="split-note">
+              ${student
+                ? 'Answer six questions and we will tell you which schemes you match, and which rule ruled you out of the rest.'
+                : 'Upload a batch once and every student in it is checked against the catalogue, with their details staying private to them.'}
+            </p>
+          </aside>
         </div>
       </div>`,
   }));
