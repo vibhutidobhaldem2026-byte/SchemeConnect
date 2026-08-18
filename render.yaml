@@ -68,11 +68,21 @@ services:
         sync: false
       - key: OPS_EMAILS
         sync: false
-      - key: RESEND_API_KEY
+      #
+      # Email goes out over SMTP. That is the transport that works without
+      # owning a domain: every API provider requires domain verification to
+      # reach arbitrary recipients, whereas a provider's own SMTP signs the
+      # message as itself. Gmail needs an App Password, not the account
+      # password, and 2-Step Verification must be on to create one.
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
         sync: false
-      - key: RESEND_FROM
+      - key: SMTP_PASS
         sync: false
-      - key: RESEND_REPLY_TO
+      - key: SMTP_FROM
         sync: false
 
       # Supabase issues its certificates from its own CA, which Node does not
