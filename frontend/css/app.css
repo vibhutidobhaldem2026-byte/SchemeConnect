@@ -890,3 +890,46 @@ html.is-navigating { cursor: progress; }
   .split-aside{ display:none; }
   .split-main{ padding:28px 22px 26px; }
 }
+
+/* ---- split card, second pass -------------------------------------------
+   The first version stacked the logo, the eyebrow and the heading tight in the
+   middle of a narrow card, which read as cramped rather than considered. The
+   logo now sits in its own top bar with the back link opposite it, the heading
+   block is left-aligned where the eye starts, and everything gets room. */
+.split-card{ max-width:1060px; border-radius:20px; }
+.split-main{ padding:34px 44px 42px; text-align:left; }
+
+.split-head{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding-bottom:26px; margin-bottom:30px; border-bottom:1px solid var(--line);
+}
+.split-head .logo-mark{ margin:0; }
+.split-head .link-back{ margin:0; font-size:13.5px; }
+
+/* The heading block: left-aligned, with air between each line. */
+.split-intro{ margin-bottom:32px; }
+.split-main .eyebrow{ margin:0 0 10px; text-align:left; }
+.split-main .headline{ margin:0 0 12px; text-align:left; font-size:30px; line-height:1.16; }
+.split-main .subtext{ margin:0; text-align:left; max-width:46ch; font-size:14.5px; line-height:1.65; }
+
+/* Fields on the sign-in card follow the same left rhythm. */
+.split-main .field{ text-align:left; }
+.split-main form{ margin-top:4px; }
+.split-main .foot-note{ text-align:left; margin-top:22px; }
+.split-main .contact-chip{ margin-left:0; }
+
+.split-main .role-grid{ gap:14px; margin-top:0; }
+.split-main .role-card{ padding:20px 22px; }
+
+/* The panel grows with the card, and the drawing with it. */
+.split-aside{ padding:40px 38px; gap:22px; }
+.illus-aside{ max-width:272px; }
+.split-note{ font-size:13.5px; max-width:32ch; }
+
+@media (max-width: 860px){
+  .split-card{ max-width:520px; }
+  .split-main{ padding:26px 24px 30px; }
+  .split-head{ padding-bottom:20px; margin-bottom:24px; }
+  .split-intro{ margin-bottom:26px; }
+  .split-main .headline{ font-size:25px; }
+}

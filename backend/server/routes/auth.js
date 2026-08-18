@@ -186,11 +186,15 @@ router.get('/start', (req, res) => {
       <div class="center-wrap center-wrap-wide">
         <div class="split-card">
           <div class="split-main">
-            <a class="link-back" href="/">← Back</a>
-            ${raw(logoMark())}
-            <div class="eyebrow">One quick thing</div>
-            <h1 class="headline">Who are you?</h1>
-            <p class="subtext">This just shows you the right experience — you won't need to answer this again.</p>
+            <div class="split-head">
+              ${raw(logoMark())}
+              <a class="link-back" href="/">← Back</a>
+            </div>
+            <div class="split-intro">
+              <div class="eyebrow">One quick thing</div>
+              <h1 class="headline">Who are you?</h1>
+              <p class="subtext">This just shows you the right experience — you won't need to answer this again.</p>
+            </div>
             <div class="role-grid">
               <a class="role-card" href="/login?role=student">
                 <span class="role-mark">${raw(spotArt('step-ask'))}</span>
@@ -236,8 +240,11 @@ router.get('/login', (req, res) => {
       <div class="center-wrap center-wrap-wide">
         <div class="split-card">
           <div class="split-main">
-          <a class="link-back" href="/start">← Back</a>
-          ${raw(logoMark())}
+          <div class="split-head">
+            ${raw(logoMark())}
+            <a class="link-back" href="/start">← Back</a>
+          </div>
+          <div class="split-intro">
           <div class="eyebrow">${student ? 'For students' : 'For institutions'}</div>
           <h1 class="headline">Log in or sign up</h1>
           <p class="subtext">${passwordMode
@@ -247,6 +254,7 @@ router.get('/login', (req, res) => {
             : student
               ? "Enter your email or mobile number — we'll send you a 6-digit code. Works whether you're new here or already have an account."
               : "Enter your work email — we'll send you a code. Works whether your institute is new here or already partnered with us."}</p>
+          </div>
 
           ${raw(error ? notice('danger', html`${error}`) : '')}
 
@@ -400,15 +408,21 @@ router.get('/verify', async (req, res) => {
   res.send(layout({
     title: 'Verify',
     body: html`
-      <div class="center-wrap">
-        <div class="auth-card">
-          ${raw(logoMark())}
+      <div class="center-wrap center-wrap-wide">
+        <div class="split-card">
+          <div class="split-main">
+          <div class="split-head">
+            ${raw(logoMark())}
+            <a class="link-back" href="/login?role=${role}">← Back</a>
+          </div>
+          <div class="split-intro">
           <h1 class="headline">${role === 'student' ? "Verify it's you" : 'Verify your details'}</h1>
           <p class="subtext">${delivered
             ? html`We've emailed a 6-digit code. It expires in ${store.OTP_TTL_MINUTES} minutes.`
             : byEmail
               ? 'Enter the 6-digit code below.'
               : 'Enter the 6-digit code below.'}</p>
+          </div>
           <div class="contact-chip">${identifier} <a class="edit" href="/login?role=${role}">Edit</a></div>
 
           ${raw(delivered ? notice('good', html`
@@ -449,6 +463,13 @@ router.get('/verify', async (req, res) => {
 
           <p class="resend" style="margin-top:16px">Didn't get it?
             <a href="/resend?role=${role}&id=${encodeURIComponent(identifier)}">Resend code</a></p>
+          </div>
+          <aside class="split-aside">
+            ${raw(illustration('certification', { cls: 'illus-aside' }))}
+            <p class="split-note">
+              The code confirms this contact is yours. Nobody can reach your profile without it.
+            </p>
+          </aside>
         </div>
       </div>`,
   }));
@@ -609,14 +630,21 @@ router.get('/signup', async (req, res) => {
   res.send(layout({
     title: 'Create your account',
     body: html`
-      <div class="center-wrap">
-        <div class="auth-card">
-          ${raw(logoMark())}
+      <div class="center-wrap center-wrap-wide">
+        <div class="split-card">
+          <div class="split-main">
+          <div class="split-head">
+            ${raw(logoMark())}
+            <a class="link-back" href="/login?role=${role}">← Back</a>
+          </div>
+          <div class="split-intro">
           <div class="eyebrow">${role === 'student' ? 'New here — welcome' : 'New institute — welcome'}</div>
           <h1 class="headline">${role === 'student' ? 'Just two more details' : 'Just a couple more details'}</h1>
           <p class="subtext">${role === 'student'
             ? 'So we know who you are and where to send updates.'
             : 'So we can set up the right dashboard for your institute.'}</p>
+
+          </div>
 
           ${raw(error ? notice('danger', html`${error}`) : '')}
 
@@ -629,6 +657,14 @@ router.get('/signup', async (req, res) => {
 
           <p class="foot-note">Your details are used only to match you with government schemes.
             <a href="/terms" target="_blank" rel="noopener">Read the full terms</a></p>
+          </div>
+          <aside class="split-aside">
+            ${raw(illustration('certificate', { cls: 'illus-aside' }))}
+            <p class="split-note">
+              Your answers are self-reported and used only for matching. You can delete the lot at any
+              time from your profile.
+            </p>
+          </aside>
         </div>
       </div>`,
   }));
