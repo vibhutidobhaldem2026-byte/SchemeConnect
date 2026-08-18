@@ -544,6 +544,42 @@ try {
   }
 
   {
+    // The full collection record, including what could not be read and what has
+    // since vanished from its source.
+    const page = await ops.get('/ops/export');
+    check('the export page renders', page.status === 200 && /Total collected/.test(page.text));
+
+    const dump = await ops.get('/ops/export.json');
+    check('export.json is served as JSON', /application\/json/.test(dump.headers.get('content-type') ?? ''));
+    const data = JSON.parse(dump.text);
+    check('the dump includes retired schemes, not just live ones',
+      data.counts.exported > data.counts.live, JSON.stringify(data.counts));
+    check('every scheme carries its government source',
+      data.schemes.every((x) => x.source?.url), 'a scheme had no source URL');
+    check('criteria still quote the sentence they were read from',
+      data.schemes.some((x) => (x.criteriaEvidence ?? []).length > 0));
+    check('the source configuration is included', data.sources.length > 0);
+
+    const live = JSON.parse((await ops.get('/ops/export.json?retired=false')).text);
+    check('retired entries can be excluded',
+      live.counts.retired === 0 && live.counts.exported === data.counts.live,
+      JSON.stringify(live.counts));
+
+    const csv = await ops.get('/ops/export.csv');
+    check('export.csv is served as CSV', /text\/csv/.test(csv.headers.get('content-type') ?? ''));
+    check('the CSV has one row per scheme plus a header',
+      csv.text.trim().split('\n').length === data.counts.exported + 1,
+      `${csv.text.trim().split('\n').length} lines vs ${data.counts.exported} schemes`);
+  }
+
+  {
+    // The export is behind the ops guard — it carries confidence scores and
+    // extractor internals, not just the public scheme information.
+    const asStudent = await student.get('/ops/export.json');
+    check('a student cannot download the export', asStudent.status === 404, `got ${asStudent.status}`);
+  }
+
+  {
     // A student must not reach the correction screens either.
     const res = await student.get('/ops/schemes');
     check('a student cannot open the correction screens', res.status === 404, `got ${res.status}`);

@@ -210,6 +210,21 @@ export async function searchSchemes({ q = '', level = 'all', limit = 200 } = {})
   };
 }
 
+/**
+ * Everything the scraper has ever produced, retired entries included.
+ *
+ * The browsing queries all hide retired schemes, which is right for a student
+ * but wrong for an export: a scheme that vanished from its source is still part
+ * of what was collected, and dropping it silently would misrepresent the
+ * record. Each row says whether it is still live.
+ */
+export async function allSchemesForExport({ includeRetired = true } = {}) {
+  return hydrate(await rows(
+    `select ${SCHEME_COLUMNS} from schemes s
+      ${includeRetired ? '' : 'where s.retired_at is null'}
+      order by s.level, s.state nulls first, s.name`));
+}
+
 // ------------------------------------------------------------- metadata ----
 
 /**

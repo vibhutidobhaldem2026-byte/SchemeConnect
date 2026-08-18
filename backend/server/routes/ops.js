@@ -11,7 +11,7 @@ import express from 'express';
 import { html, raw, layout, logoMark, notice, formatDate, emptyState } from '../render.js';
 import {
   allSchemes, catalogMeta, catalogAgeDays, searchSchemes, getScheme,
-  setOverride, clearOverride, schemeRevisions,
+  setOverride, clearOverride, schemeRevisions, allSchemesForExport, listSources,
 } from '../catalog.js';
 import { SOURCES } from '../../config/sources.js';
 import { ALLOWLIST_DESCRIPTION } from '../../scraper/lib/allowlist.js';
@@ -67,6 +67,7 @@ function opsNav(active) {
       ${raw(logoMark('/'))}
       ${raw(item('catalog', 'Catalogue', '/ops'))}
       ${raw(item('edit', 'Correct a scheme', '/ops/schemes'))}
+      ${raw(item('export', 'Export', '/ops/export'))}
       ${raw(item('coverage', 'Coverage', '/ops/coverage'))}
       ${raw(item('sources', 'Sources', '/ops/sources'))}
       ${raw(item('runs', 'Scrape runs', '/ops/runs'))}
@@ -599,4 +600,161 @@ router.post('/schemes/:id/revert', async (req, res, next) => {
     await clearOverride(scheme.id, field, { reason, editedBy: req.user.id });
   }
   res.redirect(`/ops/schemes/${scheme.id}?saved=1`);
+});
+
+// ------------------------------------------------------------- export ------
+
+/**
+ * The whole scraped record, in one place.
+ *
+ * Everything the crawler collected, including what it could not read and what
+ * has since disappeared from its source. The browsing pages deliberately hide
+ * retired schemes and never show extraction internals; this does the opposite,
+ * because the point is to inspect the collection rather than to shop in it.
+ *
+ * Behind the ops guard: the schemes themselves are public government
+ * information, but the export also carries confidence scores, adapter names,
+ * warnings and run ids, which describe how well we are doing rather than what
+ * a student is entitled to.
+ */
+
+/** One flat row per scheme, for a spreadsheet. */
+const CSV_COLUMNS = [
+  ['id', (s) => s.id],
+  ['name', (s) => s.name],
+  ['level', (s) => s.level],
+  ['state', (s) => s.state],
+  ['ministry', (s) => s.ministry],
+  ['tier', (s) => s.detailLevel],
+  ['status', (s) => (s.retiredAt ? 'retired' : 'live')],
+  ['benefit', (s) => s.benefitText],
+  ['deadline', (s) => s.deadline],
+  ['max_family_income', (s) => s.eligibility?.maxFamilyIncome ?? ''],
+  ['categories', (s) => (s.eligibility?.categories ?? []).join(' | ')],
+  ['course_levels', (s) => (s.eligibility?.courseLevels ?? []).join(' | ')],
+  ['gender', (s) => (s.eligibility?.gender ?? []).join(' | ')],
+  ['disability_required', (s) => (s.eligibility?.disabilityRequired ? 'yes' : '')],
+  ['min_marks_percent', (s) => s.eligibility?.minMarksPercent ?? ''],
+  ['documents', (s) => (s.documents ?? []).join(' | ')],
+  ['confidence', (s) => s.confidence ?? ''],
+  ['last_verified', (s) => s.lastVerified],
+  ['source_domain', (s) => s.source?.domain ?? ''],
+  ['source_url', (s) => s.source?.url ?? ''],
+  ['apply_url', (s) => s.applyUrl],
+  ['corrected_fields', (s) => Object.keys(s.corrections ?? {}).join(' | ')],
+];
+
+/** RFC 4180: quote anything containing a comma, quote or newline. */
+function csvCell(value) {
+  const text = value === null || value === undefined ? '' : String(value);
+  return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+async function exportPayload(includeRetired) {
+  const [schemes, meta, sources] = await Promise.all([
+    allSchemesForExport({ includeRetired }),
+    catalogMeta(),
+    listSources(),
+  ]);
+  return { schemes, meta, sources };
+}
+
+router.get('/export.json', async (req, res) => {
+  const includeRetired = req.query.retired !== 'false';
+  const { schemes, meta, sources } = await exportPayload(includeRetired);
+
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Disposition', 'attachment; filename="schemeconnect-catalogue.json"');
+  res.send(JSON.stringify({
+    exportedAt: new Date().toISOString(),
+    generatedBy: 'schemeconnect-scraper',
+    policy: ALLOWLIST_DESCRIPTION,
+    counts: {
+      exported: schemes.length,
+      live: schemes.filter((s) => !s.retiredAt).length,
+      retired: schemes.filter((s) => s.retiredAt).length,
+      withCriteria: schemes.filter((s) => s.detailLevel === 'full').length,
+      listingOnly: schemes.filter((s) => s.detailLevel === 'listing').length,
+    },
+    lastScrapeRun: meta.lastRun ?? null,
+    sources: sources.map((s) => ({
+      id: s.id, url: s.url, domain: s.domain, adapter: s.adapter,
+      level: s.level, state: s.state, enabled: s.enabled,
+      lastStatus: s.last_status, lastError: s.last_error, note: s.note,
+    })),
+    schemes,
+  }, null, 2));
+});
+
+router.get('/export.csv', async (req, res) => {
+  const includeRetired = req.query.retired !== 'false';
+  const { schemes } = await exportPayload(includeRetired);
+
+  const lines = [CSV_COLUMNS.map(([name]) => name).join(',')];
+  for (const scheme of schemes) {
+    lines.push(CSV_COLUMNS.map(([, read]) => csvCell(read(scheme))).join(','));
+  }
+
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', 'attachment; filename="schemeconnect-catalogue.csv"');
+  // A BOM so Excel opens the scheme names as UTF-8 rather than mojibake.
+  res.send('﻿' + lines.join('\n'));
+});
+
+router.get('/export', async (req, res) => {
+  const { schemes, meta } = await exportPayload(true);
+  const live = schemes.filter((s) => !s.retiredAt);
+  const withCriteria = schemes.filter((s) => s.detailLevel === 'full');
+
+  const preview = JSON.stringify(withCriteria[0] ?? schemes[0] ?? {}, null, 2);
+
+  res.send(layout({
+    title: 'Export the catalogue',
+    body: html`
+      <div class="app-shell">
+        ${raw(opsNav('export'))}
+        <main class="main-area">
+          <div class="greeting">Export</div>
+          <div class="greeting-sub">
+            Everything the scraper has collected, including schemes whose criteria it could not read
+            and schemes that have since disappeared from their source. This is the collection record,
+            not the student-facing catalogue — those pages hide retired entries and extraction internals.
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-card"><div class="stat-num">${schemes.length}</div><div class="stat-label">Total collected</div></div>
+            <div class="stat-card"><div class="stat-num">${live.length}</div><div class="stat-label">Still live</div></div>
+            <div class="stat-card"><div class="stat-num">${withCriteria.length}</div><div class="stat-label">Criteria read</div></div>
+            <div class="stat-card"><div class="stat-num">${schemes.length - live.length}</div><div class="stat-label">Retired</div></div>
+          </div>
+
+          <div class="section-label">Download</div>
+          <div class="cta-row">
+            <a class="btn-primary btn-inline" href="/ops/export.json">Full JSON ↓</a>
+            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.csv">Spreadsheet CSV ↓</a>
+            <a class="btn-outline-sm" style="padding:14px 20px" href="/ops/export.json?retired=false">Live schemes only ↓</a>
+          </div>
+          <p class="foot-note">
+            The JSON carries every field, including the sentence each criterion was read from and the
+            government URL it came from. The CSV flattens one row per scheme for a spreadsheet.
+            Add <span class="mono">?retired=false</span> to either to omit retired entries.
+          </p>
+
+          ${raw(meta.lastRun ? html`
+            <div class="section-label">Last scrape run</div>
+            <div class="info-card">
+              <div class="info-row"><span class="k">Started</span><span class="v">${formatDate(meta.lastRun.startedAt)}</span></div>
+              <div class="info-row"><span class="k">Schemes kept</span><span class="v">${meta.lastRun.schemesKept ?? '—'}</span></div>
+              <div class="info-row"><span class="k">Rejected</span><span class="v">${meta.lastRun.rejections?.length ?? 0}</span></div>
+              <div class="info-row"><span class="k">Full detail</span>
+                <span class="v"><a href="/ops/runs">See the run history</a></span></div>
+            </div>` : '')}
+
+          <div class="section-label">What one record looks like</div>
+          <div class="table-wrap">
+            <pre class="mono" style="margin:0;padding:16px;font-size:11.5px;line-height:1.6;white-space:pre-wrap;overflow-x:auto">${preview}</pre>
+          </div>
+        </main>
+      </div>`,
+  }));
 });
