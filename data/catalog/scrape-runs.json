@@ -1,0 +1,1932 @@
+[
+  {
+    "startedAt": "2026-08-18T12:16:14.372Z",
+    "finishedAt": "2026-08-18T12:18:29.830Z",
+    "durationSec": 135,
+    "sourcesCrawled": [
+      "dbt-central-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "assam-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 132,
+    "schemesKept": 183,
+    "rejectedCount": 124,
+    "rejected": [
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "DBT Schemes",
+        "reason": "listing: looks like a navigation page, not a scheme"
+      },
+      {
+        "url": "https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf",
+        "reason": "Fetch blocked for https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf",
+        "reason": "Fetch blocked for https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://csacv.mha.gov.in/ReadWriteData/Guidelines.pdf",
+        "reason": "Fetch blocked for https://csacv.mha.gov.in/ReadWriteData/Guidelines.pdf: robots.txt disallows it (robots.txt HTTP 500 (server error — treating as disallow))"
+      },
+      {
+        "url": "https://nhm.gov.in/images/pdf/communitisation/task-group-reports/guidelines-on-asha.pdf",
+        "reason": "Fetch blocked for https://nhm.gov.in/images/pdf/communitisation/task-group-reports/guidelines-on-asha.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/NetajiSubhasNotification",
+        "reason": "Fetch blocked for https://education.icar.gov.in/NetajiSubhasNotification: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nhm.gov.in/images/pdf/programmes/family-planing/schemes/FP_Indemnity_Scheme_2013.pdf",
+        "reason": "Fetch blocked for https://nhm.gov.in/images/pdf/programmes/family-planing/schemes/FP_Indemnity_Scheme_2013.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://labour.gov.in/sites/default/files/20220208154105_compressed.pdf",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://labour.gov.in/sites/default/files/RIHS_2016_1.pdf",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://cdn.ayush.gov.in/wp-content/uploads/2021/07/Revised-IC-Scheme-as-on-22nd-June-2021.pdf",
+        "reason": "Fetch blocked for https://cdn.ayush.gov.in/wp-content/uploads/2021/07/Revised-IC-Scheme-as-on-22nd-June-2021.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://labour.gov.in/vrc",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://labour.gov.in/cgc",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://overseas.tribal.gov.in/",
+        "reason": "Fetch blocked for https://overseas.tribal.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://iasri.icar.gov.in/",
+        "reason": "Fetch blocked for https://iasri.icar.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://disabilityaffairs.gov.in/content/page/scholarship.php",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Overseas Scholarship for students with disabilities"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarship for Top Class Education for students with disabilities"
+      },
+      {
+        "url": "https://pmmsy.dof.gov.in/",
+        "reason": "page text too short (74 chars)"
+      },
+      {
+        "url": "https://www.pmjay.gov.in/",
+        "reason": "Fetch blocked for https://www.pmjay.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20",
+        "reason": "Fetch blocked for https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://main.icmr.nic.in/content/post-doctoral-research",
+        "reason": "Fetch blocked for https://main.icmr.nic.in/content/post-doctoral-research: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://samagra.education.gov.in/",
+        "reason": "Fetch blocked for https://samagra.education.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://online-inspire.gov.in/",
+        "reason": "Fetch blocked for https://online-inspire.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://portal.mhrdnats.gov.in/",
+        "reason": "Fetch blocked for https://portal.mhrdnats.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nulm.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Deendayal Jan Aajeevika Yojana-Shehari"
+      },
+      {
+        "url": "https://serviceonline.gov.in/dbt/viewServiceApplicationForm.do?serviceId=14950006&tempId=5253&templS",
+        "reason": "page text too short (172 chars)"
+      },
+      {
+        "url": "https://www.pmsuryaghar.gov.in/",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://pmuy.gov.in/",
+        "reason": "Fetch blocked for https://pmuy.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.skillindia.gov.in/",
+        "reason": "page text too short (52 chars)"
+      },
+      {
+        "url": "https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx",
+        "reason": "Fetch blocked for https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmmvy-cas.nic.in/",
+        "reason": "Fetch blocked for https://pmmvy-cas.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "reason": "looks like a navigation page, not a scheme",
+        "name": "DBT Schemes"
+      },
+      {
+        "url": "https://fasalrin.gov.in/",
+        "reason": "page text too short (16 chars)"
+      },
+      {
+        "url": "https://fert.nic.in/dbt",
+        "reason": "Fetch blocked for https://fert.nic.in/dbt: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.mha.gov.in/division_of_mha/freedom-fighters-rehabilitation-division",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://otns.dpe.gov.in/",
+        "reason": "Fetch blocked for https://otns.dpe.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nsap.nic.in/",
+        "reason": "Fetch blocked for https://nsap.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmdaksh.dosje.gov.in/",
+        "reason": "Fetch blocked for https://pmdaksh.dosje.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dbtyas-sports.gov.in/Registration",
+        "reason": "Fetch blocked for https://dbtyas-sports.gov.in/Registration: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://cmpfo.gov.in/cmps_act1.html",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Coal Mines Pension Scheme-1998"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/pminternship.mca.gov.in",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://fame2.heavyindustries.gov.in/",
+        "reason": "Fetch blocked for https://fame2.heavyindustries.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://accreditation.pib.gov.in/jws/default.aspx",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Journalist Welfare Scheme"
+      },
+      {
+        "url": "https://unifiedportal-mem.epfindia.gov.in/memberinterface/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Employees Pension Scheme for EPF Pensioners"
+      },
+      {
+        "url": "https://ic.msme.gov.in/",
+        "reason": "Fetch blocked for https://ic.msme.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://ati.msme.gov.in/ATI/home.aspx",
+        "reason": "Fetch blocked for https://ati.msme.gov.in/ATI/home.aspx: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmkusum.mnre.gov.in/",
+        "reason": "page text too short (28 chars)"
+      },
+      {
+        "url": "https://csb.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme for Development of Silk Industry"
+      },
+      {
+        "url": "https://samarth-textiles.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Samarth Scheme"
+      },
+      {
+        "url": "https://grants.tribal.gov.in/adigram",
+        "reason": "Fetch blocked for https://grants.tribal.gov.in/adigram: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.sag-rrs.nic.in/",
+        "reason": "Fetch blocked for https://www.sag-rrs.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dahd.nic.in/schemes/programmes/nadcp",
+        "reason": "Fetch blocked for https://dahd.nic.in/schemes/programmes/nadcp: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nskfdc.nic.in/en/content/revised-srms/self-employment-scheme-rehabilitation-manual-scavengers-srms",
+        "reason": "Fetch blocked for https://nskfdc.nic.in/en/content/revised-srms/self-employment-scheme-rehabilitation-manual-scavengers-srms: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.dbtyas-youth.gov.in/scheme/Nyc_scheme.php",
+        "reason": "Fetch blocked for https://www.dbtyas-youth.gov.in/scheme/Nyc_scheme.php: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.dbtyas-youth.gov.in/scheme/commonform.php",
+        "reason": "Fetch blocked for https://www.dbtyas-youth.gov.in/scheme/commonform.php: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.moes.gov.in/schemes/polar-science-cryosphere",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://www.moes.gov.in/schemes/research-education-training-outreach",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "name": "Schemes on NSP",
+        "reason": "listing: looks like a navigation page, not a scheme"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/schemeGuidelines/npci_base.pdf",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "click here"
+      },
+      {
+        "url": "https://scholarships.gov.in/scholarshipEligibility",
+        "reason": "page text too short (29 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/userManual/NSPInstituteKYCRegistrationUserManualV1.2.pdf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Scholarship Portal"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/nodalOfficersList/grievance_redressal_officer1.pdf",
+        "reason": "name looks like a flattened table header row",
+        "name": "Sl. Scheme Scheme State Officer Designa Lev Telephon Email"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/FAQ/DNO_SNO_FAQs_21122023_updated.pdf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme Owner Ministry. In-case the SNO / DNO profile is not"
+      },
+      {
+        "url": "https://scholarships.gov.in/ApplicationForm/",
+        "reason": "page text too short (27 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/onlineSanctionedList",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "List of Applicants Processed for Scholarships"
+      },
+      {
+        "url": "https://scholarships.gov.in/Fellowship",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Candidate Candidate"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "looks like a navigation page, not a scheme",
+        "name": "Schemes on NSP"
+      },
+      {
+        "url": "https://scholarships.gov.in/nodalofficerList",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Nodal Officers (Scheme-wise)"
+      },
+      {
+        "url": "https://scholarships.gov.in/nodelOfficerDetails",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Nodal Officers (Scheme-wise)"
+      },
+      {
+        "url": "https://scholarships.gov.in/home",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Students",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Institutes",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://scholarships.gov.in/Officers",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Public",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/onlineInstituteSearchIndex",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Find Institutes on NSP"
+      },
+      {
+        "url": "https://scholarships.gov.in/districtNodelOfficerDetails",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Nodal Officers (District-wise )"
+      },
+      {
+        "url": "https://scholarships.gov.in/nsphelpdesk",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "NSP Helpdesk"
+      },
+      {
+        "url": "https://scholarships.gov.in/pfmshelpdesk",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "PFMS Helpdesk"
+      },
+      {
+        "url": "https://scholarships.gov.in/CSCURL",
+        "reason": "page text too short (0 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/aboutUs",
+        "reason": "name does not look like a scheme",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/studentFAQs",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/InstituteFAQs",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/student-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/institute-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/officer-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Institute",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Institutions"
+      },
+      {
+        "url": "https://scholarships.gov.in/ViewMoreAnnouncement",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/copyright-policy",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Copyright Policy"
+      },
+      {
+        "url": "https://scholarships.gov.in/privacy-policy",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Privacy Policy"
+      },
+      {
+        "url": "https://scholarships.gov.in/terms-conditions",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Terms and Conditions"
+      },
+      {
+        "url": "https://scholarships.gov.in/disclaimer_New",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/hyperlinkPolicy_New",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/97",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarships for Higher Education for Young Achievers Scheme (SHREYAS) (OBC &Others) - 2021-22 to 2025-26."
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "https://scholarships.gov.in/"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/102",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "SCHOLARSHIP FOR PM CARES CHILDREN"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes",
+        "reason": "name does not look like a scheme; name is an organisation or landing page, not a scheme",
+        "name": "Department of Social Justice and Empowerment"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://tribal.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:14.791Z"
+      },
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:14.892Z"
+      },
+      {
+        "origin": "https://csacv.mha.gov.in",
+        "status": 500,
+        "hasRules": false,
+        "error": "robots.txt HTTP 500 (server error — treating as disallow)",
+        "fetchedAt": "2026-08-18T12:16:15.073Z"
+      },
+      {
+        "origin": "https://nhm.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:27.291Z"
+      },
+      {
+        "origin": "https://labour.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:16:27.692Z"
+      },
+      {
+        "origin": "https://cdn.ayush.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:30.274Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:16:30.489Z"
+      },
+      {
+        "origin": "https://overseas.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:34.876Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:35.024Z"
+      },
+      {
+        "origin": "https://www.pmjay.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:45.686Z"
+      },
+      {
+        "origin": "https://main.icmr.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:45.805Z"
+      },
+      {
+        "origin": "https://samagra.education.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:56.334Z"
+      },
+      {
+        "origin": "https://online-inspire.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:16:56.420Z"
+      },
+      {
+        "origin": "https://portal.mhrdnats.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:07.001Z"
+      },
+      {
+        "origin": "https://www.pmsuryaghar.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:17:07.173Z"
+      },
+      {
+        "origin": "https://pmuy.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:08.319Z"
+      },
+      {
+        "origin": "https://fellowship.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:08.772Z"
+      },
+      {
+        "origin": "https://pmmvy-cas.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:08.837Z"
+      },
+      {
+        "origin": "https://fert.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:08.979Z"
+      },
+      {
+        "origin": "https://www.mha.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:17:09.157Z"
+      },
+      {
+        "origin": "https://otns.dpe.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:09.420Z"
+      },
+      {
+        "origin": "https://nsap.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:09.495Z"
+      },
+      {
+        "origin": "https://pmdaksh.dosje.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:19.741Z"
+      },
+      {
+        "origin": "https://dbtyas-sports.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:19.911Z"
+      },
+      {
+        "origin": "https://cmpfo.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:17:20.061Z"
+      },
+      {
+        "origin": "https://dbtbharat.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:17:20.512Z"
+      },
+      {
+        "origin": "https://fame2.heavyindustries.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:30.920Z"
+      },
+      {
+        "origin": "https://ic.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:41.604Z"
+      },
+      {
+        "origin": "https://ati.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:17:52.315Z"
+      },
+      {
+        "origin": "https://grants.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:18:03.067Z"
+      },
+      {
+        "origin": "https://www.sag-rrs.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:18:03.144Z"
+      },
+      {
+        "origin": "https://dahd.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:18:03.235Z"
+      },
+      {
+        "origin": "https://nskfdc.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:18:13.734Z"
+      },
+      {
+        "origin": "https://www.dbtyas-youth.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T12:18:24.409Z"
+      },
+      {
+        "origin": "https://www.moes.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T12:18:24.634Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-18T11:49:38.648Z",
+    "finishedAt": "2026-08-18T11:54:10.339Z",
+    "durationSec": 272,
+    "sourcesCrawled": [
+      "dbt-central-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "assam-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 132,
+    "schemesKept": 184,
+    "rejectedCount": 123,
+    "rejected": [
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "DBT Schemes",
+        "reason": "listing: looks like a navigation page, not a scheme"
+      },
+      {
+        "url": "https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf",
+        "reason": "Fetch blocked for https://tribal.nic.in/downloads/guidelines/pre-matric/EDUGuidelines.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf",
+        "reason": "Fetch blocked for https://tribal.nic.in/downloads/guidelines/post-matric/EDUPostMatricScholarshipPMSforSTstudents230513.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://csacv.mha.gov.in/ReadWriteData/Guidelines.pdf",
+        "reason": "Fetch blocked for https://csacv.mha.gov.in/ReadWriteData/Guidelines.pdf: robots.txt disallows it (robots.txt HTTP 500 (server error — treating as disallow))"
+      },
+      {
+        "url": "https://nhm.gov.in/images/pdf/communitisation/task-group-reports/guidelines-on-asha.pdf",
+        "reason": "Fetch blocked for https://nhm.gov.in/images/pdf/communitisation/task-group-reports/guidelines-on-asha.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/NetajiSubhasNotification",
+        "reason": "Fetch blocked for https://education.icar.gov.in/NetajiSubhasNotification: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nhm.gov.in/images/pdf/programmes/family-planing/schemes/FP_Indemnity_Scheme_2013.pdf",
+        "reason": "Fetch blocked for https://nhm.gov.in/images/pdf/programmes/family-planing/schemes/FP_Indemnity_Scheme_2013.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://labour.gov.in/sites/default/files/20220208154105_compressed.pdf",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://labour.gov.in/sites/default/files/RIHS_2016_1.pdf",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://cdn.ayush.gov.in/wp-content/uploads/2021/07/Revised-IC-Scheme-as-on-22nd-June-2021.pdf",
+        "reason": "Fetch blocked for https://cdn.ayush.gov.in/wp-content/uploads/2021/07/Revised-IC-Scheme-as-on-22nd-June-2021.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://scholarships.gov.in/fresh/newstdRegfrmInstruction",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://labour.gov.in/vrc",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://labour.gov.in/cgc",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://overseas.tribal.gov.in/",
+        "reason": "Fetch blocked for https://overseas.tribal.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://iasri.icar.gov.in/",
+        "reason": "Fetch blocked for https://iasri.icar.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://disabilityaffairs.gov.in/content/page/scholarship.php",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Overseas Scholarship for students with disabilities"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarship for Top Class Education for students with disabilities"
+      },
+      {
+        "url": "https://pmmsy.dof.gov.in/",
+        "reason": "page text too short (74 chars)"
+      },
+      {
+        "url": "https://www.pmjay.gov.in/",
+        "reason": "Fetch blocked for https://www.pmjay.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20",
+        "reason": "Fetch blocked for https://main.icmr.nic.in/content/junior-research-fellowships-jrf#:~:text=ICMR%20JRF%20Examination%20: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://main.icmr.nic.in/content/post-doctoral-research",
+        "reason": "Fetch blocked for https://main.icmr.nic.in/content/post-doctoral-research: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://samagra.education.gov.in/",
+        "reason": "Fetch blocked for https://samagra.education.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://online-inspire.gov.in/",
+        "reason": "Fetch blocked for https://online-inspire.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://portal.mhrdnats.gov.in/",
+        "reason": "Fetch blocked for https://portal.mhrdnats.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nulm.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Deendayal Jan Aajeevika Yojana-Shehari"
+      },
+      {
+        "url": "https://serviceonline.gov.in/dbt/viewServiceApplicationForm.do?serviceId=14950006&tempId=5253&templS",
+        "reason": "page text too short (172 chars)"
+      },
+      {
+        "url": "https://www.pmsuryaghar.gov.in/",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://pmuy.gov.in/",
+        "reason": "Fetch blocked for https://pmuy.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.skillindia.gov.in/",
+        "reason": "page text too short (52 chars)"
+      },
+      {
+        "url": "https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx",
+        "reason": "Fetch blocked for https://fellowship.tribal.gov.in/StudentsRegistrationForm.aspx: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmmvy-cas.nic.in/",
+        "reason": "Fetch blocked for https://pmmvy-cas.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "reason": "looks like a navigation page, not a scheme",
+        "name": "DBT Schemes"
+      },
+      {
+        "url": "https://fasalrin.gov.in/",
+        "reason": "page text too short (16 chars)"
+      },
+      {
+        "url": "https://fert.nic.in/dbt",
+        "reason": "Fetch blocked for https://fert.nic.in/dbt: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.mha.gov.in/division_of_mha/freedom-fighters-rehabilitation-division",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://otns.dpe.gov.in/",
+        "reason": "Fetch blocked for https://otns.dpe.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nsap.nic.in/",
+        "reason": "Fetch blocked for https://nsap.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmdaksh.dosje.gov.in/",
+        "reason": "Fetch blocked for https://pmdaksh.dosje.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dbtyas-sports.gov.in/Registration",
+        "reason": "Fetch blocked for https://dbtyas-sports.gov.in/Registration: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://cmpfo.gov.in/cmps_act1.html",
+        "reason": "Fetch blocked for https://cmpfo.gov.in/cmps_act1.html: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/pminternship.mca.gov.in",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://fame2.heavyindustries.gov.in/",
+        "reason": "Fetch blocked for https://fame2.heavyindustries.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://accreditation.pib.gov.in/jws/default.aspx",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Journalist Welfare Scheme"
+      },
+      {
+        "url": "https://unifiedportal-mem.epfindia.gov.in/memberinterface/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Employees Pension Scheme for EPF Pensioners"
+      },
+      {
+        "url": "https://ic.msme.gov.in/",
+        "reason": "Fetch blocked for https://ic.msme.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://ati.msme.gov.in/ATI/home.aspx",
+        "reason": "Fetch blocked for https://ati.msme.gov.in/ATI/home.aspx: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://pmkusum.mnre.gov.in/",
+        "reason": "page text too short (28 chars)"
+      },
+      {
+        "url": "https://csb.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme for Development of Silk Industry"
+      },
+      {
+        "url": "https://samarth-textiles.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Samarth Scheme"
+      },
+      {
+        "url": "https://grants.tribal.gov.in/adigram",
+        "reason": "Fetch blocked for https://grants.tribal.gov.in/adigram: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.sag-rrs.nic.in/",
+        "reason": "Fetch blocked for https://www.sag-rrs.nic.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://dahd.nic.in/schemes/programmes/nadcp",
+        "reason": "Fetch blocked for https://dahd.nic.in/schemes/programmes/nadcp: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://nskfdc.nic.in/en/content/revised-srms/self-employment-scheme-rehabilitation-manual-scavengers-srms",
+        "reason": "Fetch blocked for https://nskfdc.nic.in/en/content/revised-srms/self-employment-scheme-rehabilitation-manual-scavengers-srms: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.dbtyas-youth.gov.in/scheme/Nyc_scheme.php",
+        "reason": "Fetch blocked for https://www.dbtyas-youth.gov.in/scheme/Nyc_scheme.php: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.dbtyas-youth.gov.in/scheme/commonform.php",
+        "reason": "Fetch blocked for https://www.dbtyas-youth.gov.in/scheme/commonform.php: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://www.moes.gov.in/schemes/polar-science-cryosphere",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://www.moes.gov.in/schemes/research-education-training-outreach",
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "name": "Schemes on NSP",
+        "reason": "listing: looks like a navigation page, not a scheme"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/schemeGuidelines/npci_base.pdf",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "click here"
+      },
+      {
+        "url": "https://scholarships.gov.in/scholarshipEligibility",
+        "reason": "page text too short (29 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/userManual/NSPInstituteKYCRegistrationUserManualV1.2.pdf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Scholarship Portal"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/FAQ/DNO_SNO_FAQs_21122023_updated.pdf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme Owner Ministry. In-case the SNO / DNO profile is not"
+      },
+      {
+        "url": "https://scholarships.gov.in/ApplicationForm/",
+        "reason": "page text too short (27 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/onlineSanctionedList",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "List of Applicants Processed for Scholarships"
+      },
+      {
+        "url": "https://scholarships.gov.in/Fellowship",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Candidate Candidate"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "looks like a navigation page, not a scheme",
+        "name": "Schemes on NSP"
+      },
+      {
+        "url": "https://scholarships.gov.in/nodalofficerList",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Nodal Officers (Scheme-wise)"
+      },
+      {
+        "url": "https://scholarships.gov.in/nodelOfficerDetails",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Nodal Officers (Scheme-wise)"
+      },
+      {
+        "url": "https://scholarships.gov.in/home",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Students",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Institutes",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://scholarships.gov.in/Officers",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Public",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/onlineInstituteSearchIndex",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Find Institutes on NSP"
+      },
+      {
+        "url": "https://scholarships.gov.in/districtNodelOfficerDetails",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Nodal Officers (District-wise )"
+      },
+      {
+        "url": "https://scholarships.gov.in/nsphelpdesk",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "NSP Helpdesk"
+      },
+      {
+        "url": "https://scholarships.gov.in/pfmshelpdesk",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "PFMS Helpdesk"
+      },
+      {
+        "url": "https://scholarships.gov.in/CSCURL",
+        "reason": "page text too short (0 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/aboutUs",
+        "reason": "name does not look like a scheme",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/studentFAQs",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/InstituteFAQs",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/student-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/institute-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/officer-announcements",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Institute",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Institutions"
+      },
+      {
+        "url": "https://scholarships.gov.in/ViewMoreAnnouncement",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/copyright-policy",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Copyright Policy"
+      },
+      {
+        "url": "https://scholarships.gov.in/privacy-policy",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Privacy Policy"
+      },
+      {
+        "url": "https://scholarships.gov.in/terms-conditions",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Terms and Conditions"
+      },
+      {
+        "url": "https://scholarships.gov.in/disclaimer_New",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/hyperlinkPolicy_New",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/97",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarships for Higher Education for Young Achievers Scheme (SHREYAS) (OBC &Others) - 2021-22 to 2025-26."
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "https://scholarships.gov.in/"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/102",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "SCHOLARSHIP FOR PM CARES CHILDREN"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes",
+        "reason": "name does not look like a scheme; name is an organisation or landing page, not a scheme",
+        "name": "Department of Social Justice and Empowerment"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/41",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme For Residential Education For Students in High Schools in Targeted Areas (SHRESHTA)"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://tribal.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:38.901Z"
+      },
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:38.914Z"
+      },
+      {
+        "origin": "https://csacv.mha.gov.in",
+        "status": 500,
+        "hasRules": false,
+        "error": "robots.txt HTTP 500 (server error — treating as disallow)",
+        "fetchedAt": "2026-08-18T11:49:39.179Z"
+      },
+      {
+        "origin": "https://nhm.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:49.904Z"
+      },
+      {
+        "origin": "https://labour.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:49:50.389Z"
+      },
+      {
+        "origin": "https://cdn.ayush.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:52.945Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:49:53.216Z"
+      },
+      {
+        "origin": "https://overseas.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:58.622Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:49:58.635Z"
+      },
+      {
+        "origin": "https://pmmsy.dof.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:49:59.658Z"
+      },
+      {
+        "origin": "https://www.pmjay.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:10.596Z"
+      },
+      {
+        "origin": "https://main.icmr.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:10.696Z"
+      },
+      {
+        "origin": "https://samagra.education.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:21.258Z"
+      },
+      {
+        "origin": "https://online-inspire.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:21.362Z"
+      },
+      {
+        "origin": "https://portal.mhrdnats.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:31.908Z"
+      },
+      {
+        "origin": "https://nulm.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:50:32.154Z"
+      },
+      {
+        "origin": "https://serviceonline.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:50:32.721Z"
+      },
+      {
+        "origin": "https://www.pmsuryaghar.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:50:33.239Z"
+      },
+      {
+        "origin": "https://pmuy.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:38.035Z"
+      },
+      {
+        "origin": "https://www.skillindia.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:50:38.605Z"
+      },
+      {
+        "origin": "https://fellowship.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:39.061Z"
+      },
+      {
+        "origin": "https://pmmvy-cas.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:39.133Z"
+      },
+      {
+        "origin": "https://fert.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:39.267Z"
+      },
+      {
+        "origin": "https://www.mha.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:50:39.472Z"
+      },
+      {
+        "origin": "https://otns.dpe.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:39.925Z"
+      },
+      {
+        "origin": "https://nsap.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:39.995Z"
+      },
+      {
+        "origin": "https://pmdaksh.dosje.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:50.413Z"
+      },
+      {
+        "origin": "https://dbtyas-sports.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:50:50.715Z"
+      },
+      {
+        "origin": "https://cmpfo.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:01.074Z"
+      },
+      {
+        "origin": "https://dbtbharat.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:01.272Z"
+      },
+      {
+        "origin": "https://fame2.heavyindustries.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:11.730Z"
+      },
+      {
+        "origin": "https://accreditation.pib.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:12.006Z"
+      },
+      {
+        "origin": "https://unifiedportal-mem.epfindia.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:12.576Z"
+      },
+      {
+        "origin": "https://ic.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:23.437Z"
+      },
+      {
+        "origin": "https://ati.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:34.133Z"
+      },
+      {
+        "origin": "https://pmkusum.mnre.gov.in",
+        "status": 406,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:34.484Z"
+      },
+      {
+        "origin": "https://csb.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:34.849Z"
+      },
+      {
+        "origin": "https://samarth-textiles.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:51:35.506Z"
+      },
+      {
+        "origin": "https://grants.tribal.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:46.995Z"
+      },
+      {
+        "origin": "https://www.sag-rrs.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:47.092Z"
+      },
+      {
+        "origin": "https://dahd.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:47.117Z"
+      },
+      {
+        "origin": "https://nskfdc.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:51:57.629Z"
+      },
+      {
+        "origin": "https://www.dbtyas-youth.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:52:08.331Z"
+      },
+      {
+        "origin": "https://www.moes.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:52:08.582Z"
+      },
+      {
+        "origin": "https://socialjustice.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:53:09.745Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-18T11:47:58.985Z",
+    "finishedAt": "2026-08-18T11:48:55.458Z",
+    "durationSec": 56,
+    "sourcesCrawled": [
+      "dbt-central-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "assam-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 27,
+    "schemesKept": 186,
+    "rejectedCount": 23,
+    "rejected": [
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "name": "DBT Schemes",
+        "reason": "listing: looks like a navigation page, not a scheme"
+      },
+      {
+        "url": "https://dbtbharat.gov.in/central-scheme/list",
+        "reason": "looks like a navigation page, not a scheme",
+        "name": "DBT Schemes"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/NetajiSubhasNotification",
+        "reason": "Fetch blocked for https://education.icar.gov.in/NetajiSubhasNotification: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://iasri.icar.gov.in/",
+        "reason": "Fetch blocked for https://iasri.icar.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://fasalrin.gov.in/",
+        "reason": "page text too short (16 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/home",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/Students",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://scholarships.gov.in/ApplicationForm/",
+        "reason": "page text too short (27 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/scholarshipEligibility",
+        "reason": "page text too short (29 chars)"
+      },
+      {
+        "url": "https://scholarships.gov.in/Institutes",
+        "reason": "HTTP 404"
+      },
+      {
+        "url": "https://scholarships.gov.in/public/userManual/NSPInstituteKYCRegistrationUserManualV1.2.pdf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Scholarship Portal"
+      },
+      {
+        "url": "https://scholarships.gov.in/Officers",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Students Students"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/42",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Action Plan for Drug Demand Reduction"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/41",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme For Residential Education For Students in High Schools in Targeted Areas (SHRESHTA)"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/90",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scheme of National Awards for Outstanding Services in the field of Prevention of Alcoholism and Substance (Drug) Abuse"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "https://scholarships.gov.in/"
+      },
+      {
+        "url": "https://socialjustice.gov.in/schemes/9",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Construction of Hostels for OBC Boys and Girls"
+      },
+      {
+        "url": "https://directorateofhighereducation.assam.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Government Of Assam Higher Education DIRECTORATE OF HIGHER EDUCATION"
+      },
+      {
+        "url": "https://directorateofhighereducation.assam.gov.in/schemes/schemes-for-the-final-year-2016-2017-and-2017-2018",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Schemes for the Final Year 2016-2017 and 2017-2018"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:47:59.144Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:47:59.353Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:47:59.610Z"
+      },
+      {
+        "origin": "https://socialjustice.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:48:27.645Z"
+      },
+      {
+        "origin": "https://www.ugc.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:48:42.553Z"
+      },
+      {
+        "origin": "https://directorateofhighereducation.assam.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:48:50.013Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-18T11:43:19.142Z",
+    "finishedAt": "2026-08-18T11:43:25.428Z",
+    "durationSec": 6,
+    "sourcesCrawled": [
+      "dbt-central-schemes"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "tribal-schemes",
+        "label": "Ministry of Tribal Affairs — scholarships",
+        "reason": "TLS: UNABLE_TO_GET_ISSUER_CERT_LOCALLY (server omits its intermediate certificate)"
+      },
+      {
+        "id": "minorityaffairs-schemes",
+        "label": "Ministry of Minority Affairs",
+        "reason": "TLS: SELF_SIGNED_CERT_IN_CHAIN"
+      },
+      {
+        "id": "dst-inspire",
+        "label": "DST — INSPIRE scholarship",
+        "reason": "TLS: UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      {
+        "id": "up-scholarship",
+        "label": "Uttar Pradesh — scholarship portal",
+        "reason": "TLS: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED"
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — edge blocks non-browser agents; we do not spoof a browser UA"
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — edge blocks non-browser agents"
+      }
+    ],
+    "candidatesExamined": 12,
+    "schemesKept": 1,
+    "rejectedCount": 11,
+    "rejected": [
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=UG&SchemeCode=NTSU: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Files/Guidelines/mcmscholarship-04012016.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS",
+        "reason": "Fetch blocked for https://education.icar.gov.in/Event_details.aspx?component=NTS&DegProg=PMS&SchemeCode=PMS: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/NetajiSubhasNotification",
+        "reason": "Fetch blocked for https://education.icar.gov.in/NetajiSubhasNotification: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf",
+        "reason": "Fetch blocked for https://education.icar.gov.in/pdf/GuidelinesforICAR-JRFSRFandICAR-PGScholarship.pdf: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://iasri.icar.gov.in/",
+        "reason": "Fetch blocked for https://iasri.icar.gov.in/: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://fasalrin.gov.in/",
+        "reason": "page text too short (16 chars)"
+      },
+      {
+        "url": "https://dahd.nic.in/schemes/programmes/nadcp",
+        "reason": "Fetch blocked for https://dahd.nic.in/schemes/programmes/nadcp: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      },
+      {
+        "url": "https://disabilityaffairs.gov.in/content/page/scholarship.php",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "National Overseas Scholarship for students with disabilities"
+      },
+      {
+        "url": "https://scholarships.gov.in/",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarship for Top Class Education for students with disabilities"
+      },
+      {
+        "url": "https://fert.nic.in/dbt",
+        "reason": "Fetch blocked for https://fert.nic.in/dbt: robots.txt disallows it (robots.txt fetch failed: fetch failed)"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://dbtbharat.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:43:19.412Z"
+      },
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:43:22.725Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:43:22.875Z"
+      },
+      {
+        "origin": "https://fasalrin.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:43:23.042Z"
+      },
+      {
+        "origin": "https://dahd.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:43:23.180Z"
+      },
+      {
+        "origin": "https://disabilityaffairs.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:43:24.233Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-18T11:43:24.758Z"
+      },
+      {
+        "origin": "https://fert.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-18T11:43:25.425Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  }
+]

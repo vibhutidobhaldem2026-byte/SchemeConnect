@@ -1,0 +1,22 @@
+node_modules/
+
+# Application data (user accounts, sessions, batches) — never commit.
+data/store.json
+data/.store.*.tmp
+
+# Scraper HTTP response cache — large, regenerable.
+data/.cache/
+
+# The catalogue IS committed: it is the scraper's output and the site's only
+# source of scheme data, so a checkout runs without an immediate crawl.
+# data/catalog/
+
+# Secrets. .env.example is committed as the template; .env never is.
+.env
+.env.local
+.env.*.local
+
+*.log
+*.err
+.DS_Store
+Thumbs.db

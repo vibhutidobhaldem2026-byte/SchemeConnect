@@ -1,0 +1,24 @@
+{
+  "name": "schemeconnect",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SchemeConnect — a discovery and trust layer for Indian government scholarships. All scheme data is produced by the bundled government-only scraper.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "scrape": "node scraper/run.js",
+    "scrape:dry": "node scraper/run.js --dry-run",
+    "scrape:report": "node scraper/run.js --report-only",
+    "verify:sources": "node scraper/verify-sources.js",
+    "test": "node scripts/test-extract.js",
+    "test:email": "node scripts/test-email.js",
+    "check:matching": "node scripts/check-matching.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

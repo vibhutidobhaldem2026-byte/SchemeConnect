@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="SchemeConnect">
+  <!--
+    The SchemeConnect mark from the wireframe: the blue rounded square that sits
+    beside the wordmark. The wireframe draws it at 10x10 with a 3px radius, so
+    the corner radius here keeps that same 0.3 ratio at 22x22.
+  -->
+  <rect x="5" y="5" width="22" height="22" rx="6.6" fill="#3B82F6"/>
+</svg>
