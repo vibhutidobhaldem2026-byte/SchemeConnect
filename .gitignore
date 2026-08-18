@@ -28,3 +28,6 @@ backend/.env
 *.err
 .DS_Store
 Thumbs.db
+
+# Scraper run log — regenerated on every crawl.
+backend/scrape.log

@@ -7,6 +7,22 @@
 (function () {
   'use strict';
 
+  // ------------------------------------------------------- brand mark ----
+  /**
+   * The logo image is cropped by a frame with overflow:hidden, so if the file
+   * ever 404s the alt text would be clipped to a 30px circle. Hide the frame
+   * instead and let the "SchemeConnect" wordmark beside it stand alone.
+   *
+   * Capture phase: `error` does not bubble, and this cannot be an onerror
+   * attribute — the Content Security Policy blocks inline handlers.
+   */
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG' || !img.hasAttribute('data-logo')) return;
+    var frame = img.parentNode;
+    if (frame && frame.classList) frame.classList.add('is-broken');
+  }, true);
+
   // ------------------------------------------------- clickable rows -------
   /**
    * Table rows that behave like links.
@@ -375,6 +391,9 @@
     logo.alt = '';           // decorative; the status text carries the meaning
     logo.width = 56;
     logo.height = 56;
+    // If the logo file ever goes missing, the framed ring stands on its own
+    // rather than showing a broken-image glyph.
+    logo.addEventListener('error', function () { badge.classList.add('is-broken'); });
     badge.appendChild(ring);
     badge.appendChild(logo);
 

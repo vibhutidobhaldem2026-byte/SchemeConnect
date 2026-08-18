@@ -84,6 +84,7 @@ router.get('/', async (req, res) => {
   res.send(layout({
     title: 'Government scholarships you actually qualify for',
     bodyClass: 'landing',
+    head: `<meta name="description" content="SchemeConnect helps Indian school and college students find the government scholarships they actually qualify for. Six questions, matched schemes with the reason for every rule, and a link to apply on the official government portal.">`,
     body: html`
       <header class="landing-header">
         ${raw(logoMark())}
@@ -99,10 +100,11 @@ router.get('/', async (req, res) => {
           <p class="landing-eyebrow">For school and college students in India</p>
           <h1>Find the government scholarships you actually qualify for.</h1>
           <p class="landing-lede">
-            There are hundreds of central and state scholarships, spread across dozens of government sites, each
-            with its own eligibility rules. Answer six questions and SchemeConnect tells you which ones you match
-            — and shows you the government sentence behind every rule. Minutes, instead of working through the
-            National Scholarship Portal's full registration flow just to find out you were never eligible.
+            Scholarships are scattered across central ministries and state departments, each with its own site,
+            its own eligibility rules and its own registration. Answer six questions and SchemeConnect tells you
+            which ones you match — and shows you the government sentence behind every rule. Minutes, instead of
+            working through the National Scholarship Portal's full registration flow only to find out you were
+            never eligible.
           </p>
           <div class="landing-cta-row">
             <a class="landing-cta" href="/start">Check my eligibility</a>
@@ -181,8 +183,9 @@ router.get('/', async (req, res) => {
           <ul class="honesty-list">
             ${raw(coverage ? html`
               <li>
-                <b>${coverage.coveredCount} of ${coverage.totalStates} states and union territories</b> have at least
-                one state scheme in the catalogue. ${raw(coverage.uncoveredCount > 0
+                <b>${coverage.coveredCount} of ${coverage.totalStates} states and union territories</b>
+                ${coverage.coveredCount === 1 ? 'has' : 'have'} at least one state scheme in the
+                catalogue. ${raw(coverage.uncoveredCount > 0
                   ? html`For the other ${coverage.uncoveredCount}, we can only show you central schemes — and we say so
                          in your results rather than pretending there was nothing to find.`
                   : '')}
