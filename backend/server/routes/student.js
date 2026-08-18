@@ -234,10 +234,11 @@ router.get('/dashboard', async (req, res) => {
 
           ${raw(matches.length
             ? matches.map((m) => schemeCard(m.scheme, m)).join('')
-            : emptyState('🔍', 'No matches yet',
+            : emptyState('search', 'No matches yet',
                 completeness.missing.length
                   ? 'Answer the remaining questions and we can assess more schemes for you.'
-                  : `Your profile did not meet the stated criteria of any of the ${assessable.length} schemes we can currently assess. That is not the same as being ineligible everywhere — our catalogue is partial. Browse <a href="/schemes">all schemes</a> and check the National Scholarship Portal directly.`))}
+                  : `Your profile did not meet the stated criteria of any of the ${assessable.length} schemes we can currently assess. That is not the same as being ineligible everywhere — our catalogue is partial. Browse <a href="/schemes">all schemes</a> and check the National Scholarship Portal directly.`,
+                'researching'))}
 
           ${raw(nearMisses.length ? html`
             <div class="section-label">So close — blocked by one criterion</div>
@@ -458,8 +459,8 @@ router.get('/saved', async (req, res) => {
           <div class="greeting-sub">Schemes you've kept to come back to.</div>
           ${raw(schemes.length
             ? schemes.map((s) => schemeCard(s)).join('')
-            : emptyState('☆', 'Nothing saved yet',
-                'Open a scheme and tap “Save this scheme” to keep it here.'))}
+            : emptyState('bookmark', 'Nothing saved yet',
+                'Open a scheme and tap “Save this scheme” to keep it here.', 'certificate'))}
         </main>
       </div>`,
   }));
@@ -493,8 +494,9 @@ router.get('/applied', async (req, res) => {
                   </tr>`;
                 }).join(''))}
               </table>
-            </div>` : emptyState('📄', 'Nothing marked as applied',
-                'When you open a scheme\'s official application page, we mark it here so you can keep track.'))}
+            </div>` : emptyState('document', 'Nothing marked as applied',
+                'When you open a scheme\'s official application page, we mark it here so you can keep track.',
+                'certificate'))}
         </main>
       </div>`,
   }));

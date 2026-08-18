@@ -107,7 +107,7 @@ router.get('/', async (req, res) => {
                   </tr>`;
                 }).join(''))}
               </table>
-            </div>` : emptyState('📊', 'No batches yet',
+            </div>` : emptyState('batches', 'No batches yet',
               'Upload a CSV of your students and we will match every one of them against the scheme catalogue.'))}
 
           <div class="section-label">Next step</div>
@@ -424,7 +424,7 @@ router.get('/students', async (req, res) => {
               <span>${total} student${total === 1 ? '' : 's'}${q ? ` matching “${q}”` : ''} · page ${page} of ${pages}</span>
               ${raw(page > 1 ? html`<a href="/institute/students?page=${page - 1}${q ? `&q=${encodeURIComponent(q)}` : ''}">← Previous</a>` : '')}
               ${raw(page < pages ? html`<a href="/institute/students?page=${page + 1}${q ? `&q=${encodeURIComponent(q)}` : ''}">Next →</a>` : '')}
-            </div>` : emptyState('👥', q ? 'No students match that search' : 'No students yet',
+            </div>` : emptyState('students', q ? 'No students match that search' : 'No students yet',
               q ? 'Try a different name or student ID.'
                 : 'Upload a batch and every student in it will appear here with their details and match count.'))}
         </main>
@@ -499,7 +499,7 @@ router.get('/students/:studentId', async (req, res, next) => {
                 </div>
               </a>`).join(''))}` : html`
             <div class="section-label">Matched schemes</div>
-            ${raw(emptyState('🔍', 'No matches yet',
+            ${raw(emptyState('search', 'No matches yet',
               `Nothing in the catalogue matched ${firstName}'s details. Check the near-misses below — often a single missing column is the cause.`))}`)}
 
           ${raw(student.nearMisses?.length ? html`

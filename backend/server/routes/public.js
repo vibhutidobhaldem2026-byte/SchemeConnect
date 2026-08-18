@@ -7,7 +7,7 @@
 import express from 'express';
 import {
   html, raw, layout, logoMark, navIcon, schemeCard, notice, emptyState, catalogBanner, studentNav, publicNav,
-  formatDate,
+  formatDate, illustration, spotArt,
 } from '../render.js';
 import { matchableSchemes, searchSchemes, catalogMeta, catalogAgeDays } from '../catalog.js';
 import { TERMS_SECTIONS, TERMS_UPDATED, TERMS_VERSION } from '../terms.js';
@@ -22,17 +22,20 @@ export const router = express.Router();
  */
 const HOW_IT_WORKS = [
   {
+    art: 'step-ask',
     title: 'Answer six questions',
     body: `Your state, what you are studying, your category, your family income band, your gender and whether
            you have a disability. One question per screen, saved as you go. No password, no documents, no
            registration number.`,
   },
   {
+    art: 'step-check',
     title: 'See what you match, and why',
     body: `Every scheme comes back with its eligibility rules laid out one by one — which ones you meet, which
            ones you do not, and which ones we could not read from the government page. Nothing is a black box.`,
   },
   {
+    art: 'step-apply',
     title: 'Apply on the official portal',
     body: `We are not a middleman. When you are ready, we hand you the official government link, the deadline
            and the document checklist, and you apply on the government's own site. We never take a fee.`,
@@ -96,6 +99,7 @@ router.get('/', async (req, res) => {
 
       <main>
         <section class="landing-hero">
+          <div class="lh-copy">
           <p class="landing-eyebrow">For school and college students in India</p>
           <h1>Find the government scholarships you actually qualify for.</h1>
           <p class="landing-lede">
@@ -113,6 +117,8 @@ router.get('/', async (req, res) => {
             Free, and always will be. No password — we send a one-time code. You can browse the whole
             catalogue without an account.
           </p>
+          </div>
+          <div class="lh-art">${raw(illustration('hero', { lazy: false }))}</div>
         </section>
 
         ${raw(empty ? '' : html`
@@ -130,7 +136,10 @@ router.get('/', async (req, res) => {
           <ol class="how-grid">
             ${raw(HOW_IT_WORKS.map((s, i) => html`
               <li class="how-card">
-                <span class="how-num">${i + 1}</span>
+                <div class="how-head">
+                  <span class="how-num">${i + 1}</span>
+                  ${raw(spotArt(s.art, 'spot how-art'))}
+                </div>
                 <h3>${s.title}</h3>
                 <p>${s.body}</p>
               </li>`).join(''))}
@@ -138,11 +147,16 @@ router.get('/', async (req, res) => {
         </section>
 
         <section class="landing-section landing-section-alt">
-          <h2 class="landing-h2">Why you can check our work</h2>
-          <p class="landing-sub">
-            A scholarship you were never eligible for costs a student a day of paperwork. So the product is built
-            to be auditable rather than confident.
-          </p>
+          <div class="ls-head">
+            <div class="ls-head-copy">
+              <h2 class="landing-h2">Why you can check our work</h2>
+              <p class="landing-sub">
+                A scholarship you were never eligible for costs a student a day of paperwork. So the product is built
+                to be auditable rather than confident.
+              </p>
+            </div>
+            ${raw(illustration('verified', { cls: 'ls-head-art' }))}
+          </div>
           <div class="trust-grid">
             ${raw(TRUST_POINTS.map((t) => html`
               <div class="trust-card">
@@ -344,8 +358,9 @@ router.get('/schemes', async (req, res) => {
 
           ${raw(shown.length
             ? shown.map((s) => schemeCard(s)).join('')
-            : emptyState('🔍', 'Nothing found',
-                'No scheme in the catalogue matches that search. Try a broader term, or check the National Scholarship Portal directly.'))}
+            : emptyState('search', 'Nothing found',
+                'No scheme in the catalogue matches that search. Try a broader term, or check the National Scholarship Portal directly.',
+                'researching'))}
 
           ${raw(total > shown.length
             ? html`<p class="foot-note">Showing the first ${shown.length} of ${total}. Narrow your search to see more.</p>`

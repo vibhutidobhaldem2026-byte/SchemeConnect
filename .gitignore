@@ -31,3 +31,6 @@ Thumbs.db
 
 # Scraper run log — regenerated on every crawl.
 backend/scrape.log
+
+# unDraw source files — the recoloured, stripped copies in frontend/img are what ships.
+svgs/

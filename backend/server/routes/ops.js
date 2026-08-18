@@ -164,7 +164,7 @@ router.get('/coverage', async (req, res) => {
           </div>
 
           ${raw(!coverage
-            ? emptyState('🗺️', 'No coverage data', 'Run <span class="mono">npm run scrape</span> to generate it.')
+            ? emptyState('map', 'No coverage data', 'Run <span class="mono">npm run scrape</span> to generate it.')
             : html`
             <div class="ops-grid">
               <div class="stat-card"><div class="stat-num">${coverage.centralSchemes}</div>
@@ -273,7 +273,7 @@ router.get('/runs', async (req, res) => {
           <div class="greeting-sub">History of the last ${runs.length} runs, newest first.</div>
 
           ${raw(!runs.length
-            ? emptyState('⏱️', 'No runs recorded', 'Run <span class="mono">npm run scrape</span>.')
+            ? emptyState('clock', 'No runs recorded', 'Run <span class="mono">npm run scrape</span>.')
             : html`
             <div class="table-wrap" style="margin-bottom:24px">
               <table>

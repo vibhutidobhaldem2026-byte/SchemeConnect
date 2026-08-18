@@ -299,10 +299,19 @@ export function statedCriteria(scheme) {
     </ul>`;
 }
 
-export function emptyState(icon, title, sub) {
+/**
+ * `art` names a full illustration (see ILLUSTRATIONS) and wins when given.
+ * Otherwise `icon` is a key into SPOT_ART; an unknown key — including the
+ * emoji these call sites used to pass — still renders, escaped, so no caller
+ * can break by naming a drawing that does not exist.
+ */
+export function emptyState(icon, title, sub, art = null) {
+  const mark = art && ILLUSTRATIONS[art]
+    ? html`<div class="es-illus">${raw(illustration(art))}</div>`
+    : html`<div class="es-icon">${raw(spotArt(icon) || h(icon))}</div>`;
   return html`
     <div class="empty-state">
-      <div class="es-icon">${icon}</div>
+      ${raw(mark)}
       <div class="es-title">${title}</div>
       <div class="es-sub">${raw(sub)}</div>
     </div>`;
@@ -323,4 +332,82 @@ export function catalogBanner(meta, ageDays) {
       <span class="mono">npm run scrape</span> to refresh.`);
   }
   return '';
+}
+
+/* ======================================================== illustration =====
+ *
+ * Original line-art drawn for this product. The rules it follows:
+ *
+ *  - Inline SVG only. The CSP is `script-src 'self'` / `img-src 'self' data:`,
+ *    and the PRD targets a 2GB Android over 2G — so no icon font, no CDN, no
+ *    second request. Inlining also means the art inherits the page's colours.
+ *  - Geometry, not character. This is a government-adjacent product; strokes,
+ *    rectangles and arcs read as credible where a mascot would not.
+ *  - Colour lives in CSS, not in the path data. Shapes carry semantic classes
+ *    (`sa-tint`, `sa-accent`) that app.css maps onto the existing custom
+ *    properties, so the palette is changed in one place.
+ *  - Every drawing is decorative unless it is the only thing carrying its
+ *    meaning, so all of these are `aria-hidden` — the heading beside them is
+ *    what a screen reader should read. The hero is the exception and carries a
+ *    <title>.
+ */
+
+/**
+ * 48x48 spot drawings: empty states, and the "how it works" steps.
+ * Kept on one grid so a single wrapper can render all of them.
+ */
+const SPOT_ART = {
+  // --- empty states ---
+  search: '<circle class="sa-tint" cx="21" cy="21" r="13"/><path d="M16 21h10"/><path class="sa-accent" d="m30.8 30.8 10.2 10.2" stroke-width="2.6"/>',
+  bookmark: '<path class="sa-tint" d="M14 7h20a2 2 0 0 1 2 2v32l-12-8.4L12 41V9a2 2 0 0 1 2-2z"/>',
+  document: '<path class="sa-tint" d="M13 6h13.5L35 14.5V40a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M26.5 6v8.5H35"/><path d="M17 25h12M17 32h8"/>',
+  students: '<circle class="sa-accent" cx="33" cy="16" r="5.5"/><path class="sa-accent" d="M24.5 39.5a8.5 8.5 0 0 1 17 0"/><circle class="sa-tint sa-solid" cx="18" cy="17" r="7"/><path class="sa-tint sa-solid" d="M6 40.5a12 12 0 0 1 24 0z"/>',
+  batches: '<path class="sa-tint" d="m24 6 17 8.5L24 23 7 14.5z"/><path d="m7 23.5 17 8.5 17-8.5"/><path class="sa-accent" d="m7 32.5 17 8.5 17-8.5"/>',
+  map: '<path class="sa-tint" d="M17 8l14 5 10-5v27l-10 5-14-5-9 5V13z"/><path d="M17 8v27M31 13v27"/>',
+  clock: '<circle class="sa-tint" cx="24" cy="24" r="16"/><path class="sa-accent" d="M24 14v10l7 4"/>',
+
+  // --- "how it works" steps ---
+  // 1. six questions, one per screen — a form with one answer chosen.
+  'step-ask': '<rect class="sa-tint" x="8" y="6" width="32" height="36" rx="4"/><circle cx="16" cy="17" r="3"/><path d="M23 17h11"/><circle class="sa-dot" cx="16" cy="26" r="3"/><path d="M23 26h11"/><circle cx="16" cy="35" r="3"/><path d="M23 35h8"/>',
+  // 2. rules laid out one by one: met, not met, could not read.
+  'step-check': '<rect class="sa-tint" x="6" y="7" width="36" height="34" rx="4"/><path class="sa-accent" d="m10.8 16 2.6 2.6L18 13.6"/><path d="M23 16h14"/><path d="m11.2 23.2 4.4 4.4m0-4.4-4.4 4.4"/><path d="M23 25.4h11"/><circle cx="13.4" cy="34.4" r="2.6"/><path d="M23 34.4h13"/>',
+  // 3. you leave for the government's own portal.
+  'step-apply': '<path d="M6 41h36"/><path class="sa-tint" d="M24 13 41 23H7z"/><path d="M9.5 37h29"/><path d="M13 26v11M20 26v11M28 26v11M35 26v11"/><path class="sa-accent" d="M32 3h9v9M41 3l-8.5 8.5"/>',
+};
+
+/**
+ * One 48x48 spot drawing. Returns '' for an unknown name so callers can fall
+ * back rather than render an empty box.
+ */
+export function spotArt(name, cls = 'spot') {
+  const body = SPOT_ART[name];
+  if (!body) return '';
+  return `<svg class="${cls}" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+}
+
+/**
+ * The full illustrations, held as files rather than inlined: they are an order
+ * of magnitude larger than the spot drawings above, so they belong in the HTTP
+ * cache where a repeat visit costs nothing, not re-sent inside every page.
+ *
+ * `w`/`h` are the file's intrinsic size. They are on the tag purely so the
+ * browser can reserve the right box before the file arrives — CSS decides the
+ * size that is actually drawn. Without them a slow connection reflows the page
+ * under the reader, which is exactly the connection the PRD targets.
+ *
+ * All four are decorative: the heading beside each one already says what it
+ * says, so they are aria-hidden with an empty alt.
+ */
+export const ILLUSTRATIONS = {
+  hero: { src: '/img/education_3vwh.svg', w: 744, h: 539 },
+  verified: { src: '/img/certification_oqiz.svg', w: 429, h: 567 },
+  certificate: { src: '/img/certificate_cqps.svg', w: 466, h: 757 },
+  researching: { src: '/img/researching_49yy.svg', w: 800, h: 521 },
+};
+
+export function illustration(name, { cls = '', lazy = true } = {}) {
+  const a = ILLUSTRATIONS[name];
+  if (!a) return '';
+  return `<img class="illus ${cls}" src="${a.src}" alt="" aria-hidden="true"`
+    + ` width="${a.w}" height="${a.h}" decoding="async"${lazy ? ' loading="lazy"' : ''}>`;
 }
