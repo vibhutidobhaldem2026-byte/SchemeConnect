@@ -152,6 +152,9 @@ export async function sendEmail({ to, subject, html, text }) {
  */
 let transporter = null;
 
+/** Bounded wait for the whole send, in case the transport ignores its own. */
+const SMTP_TIMEOUT_MS = Number(process.env.SMTP_TIMEOUT_MS || 8000);
+
 async function sendViaSmtp({ to, subject, html, text }) {
   const port = Number(process.env.SMTP_PORT || 587);
   try {
@@ -163,17 +166,30 @@ async function sendViaSmtp({ to, subject, html, text }) {
         // 465 is implicit TLS; 587 upgrades with STARTTLS.
         secure: port === 465,
         auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        // Without these the socket waits indefinitely, and so does the student
+        // staring at the sign-in button. Render's free instances block outbound
+        // SMTP entirely (ports 25/465/587), so the connection never even
+        // refuses — it hangs. A mail problem must degrade to "we couldn't send
+        // the code", never to a request that never returns.
+        connectionTimeout: SMTP_TIMEOUT_MS,
+        greetingTimeout: SMTP_TIMEOUT_MS,
+        socketTimeout: SMTP_TIMEOUT_MS,
       });
     }
 
-    const info = await transporter.sendMail({
-      from: senderAddress(),
-      to,
-      subject,
-      html,
-      text,
-      ...(replyToAddress() ? { replyTo: replyToAddress() } : {}),
-    });
+    const info = await withTimeout(
+      transporter.sendMail({
+        from: senderAddress(),
+        to,
+        subject,
+        html,
+        text,
+        ...(replyToAddress() ? { replyTo: replyToAddress() } : {}),
+      }),
+      SMTP_TIMEOUT_MS + 2000,
+      `no response from ${process.env.SMTP_HOST} within ${(SMTP_TIMEOUT_MS + 2000) / 1000}s. `
+        + 'Some hosts block outbound SMTP — Render blocks ports 25, 465 and 587 on free instances.'
+    );
 
     return { ok: true, id: info.messageId, from: senderAddress(), usedFallback: false };
   } catch (err) {
@@ -187,6 +203,17 @@ async function sendViaSmtp({ to, subject, html, text }) {
       usedFallback: false,
     };
   }
+}
+
+/** Rejects if `promise` has not settled within `ms`. */
+function withTimeout(promise, ms, message) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      const t = setTimeout(() => reject(new Error(message)), ms);
+      t.unref?.();
+    }),
+  ]);
 }
 
 /** Plain-text fallback for clients that don't render HTML. */
