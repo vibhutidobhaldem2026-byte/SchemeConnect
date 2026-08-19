@@ -246,6 +246,39 @@ export function looksEducational(scheme) {
   return EDUCATION_SIGNAL.test(haystack);
 }
 
+/**
+ * Page furniture and notice-board items that read like scheme names.
+ *
+ * A government scholarship page carries navigation ("Apply For Scholarship",
+ * "Scholarship Eligibility", "Nodal Officers") and a rolling notice board
+ * ("List of provisionally selected candidates", "Ministry invites online
+ * applications for..."). Both satisfy every other test — the words are right,
+ * the domain is right, the page is real — so they entered the catalogue as
+ * schemes. Every one of them was later found to have a dead or meaningless
+ * link, which is the symptom rather than the problem: an announcement about a
+ * scheme is not a scheme, and a student clicking it has been sent to a notice.
+ */
+const NOT_A_SCHEME = new RegExp([
+  // Notices and result lists
+  '^(amended\\s+)?list of\\b',
+  '\\bprovisionally selected\\b',
+  '\\bselected candidates?\\b',
+  '^ministry invites\\b',
+  '\\bonline applications? (are )?invited\\b',
+  '^online application invited\\b',
+  '\\bapplicants processed\\b',
+  '\\bmerit list\\b',
+  '\\bcorrigendum\\b',
+  '\\bnotice\\b.*\\bdated\\b',
+  // Navigation and portal chrome
+  '^(apply|login|register|sign in)\\b',
+  '^scholarship (portal|eligibility|dashboard|status)$',
+  '^(nodal|state nodal|district nodal) officers?\\b',
+  '\\bhelp\\s?desk\\b',
+  '^(faq|faqs|user manual|guidelines?)$',
+  '^(click here|read more|view all|know more)$',
+].join('|'), 'i');
+
 export function validateScheme(scheme) {
   const problems = [];
   const isListing = scheme.detailLevel === 'listing';
@@ -280,6 +313,9 @@ export function validateScheme(scheme) {
   // student is worse than showing nothing.
   if (!looksEducational(scheme)) {
     problems.push('not a student scheme — no educational signal in name or summary');
+  }
+  if (NOT_A_SCHEME.test(String(scheme.name ?? '').trim())) {
+    problems.push('a notice or a navigation link, not a scheme');
   }
   if (/^sl\.?\s|\bdesignation\b|\btelephone\b|\be-?mail\b|\bcontact\s*no\b/i.test(scheme.name || '')) {
     problems.push('name looks like a flattened table header row');

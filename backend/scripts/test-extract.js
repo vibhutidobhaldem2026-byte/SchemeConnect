@@ -14,7 +14,7 @@ import {
   extractIncomeCeiling, extractCategories, extractGender, extractCourseLevels,
   extractMinMarks, extractDeadline, extractDocuments, parseIndianAmount, extractBenefit,
 } from '../scraper/lib/extract.js';
-import { looksEducational } from '../scraper/lib/normalize.js';
+import { looksEducational, validateScheme } from '../scraper/lib/normalize.js';
 
 let pass = 0, fail = 0;
 function t(name, actual, expected) {
@@ -153,6 +153,35 @@ t('opaque name, educational evidence',
   looksEducational({ name: 'PM-DAKSH Yojana',
     criteriaEvidence: [{ field: 'categories', text: 'For non-residential training programmes, trainees will be paid a stipend.' }] }),
   true);
+
+
+console.log('\n--- notices and navigation are not schemes ---');
+// Each of these was live in the catalogue as a scheme. They pass every other
+// test — right words, right domain, real page — and one was even matchable, so
+// a results list was being offered to students as something to qualify for.
+const notScheme = (name) =>
+  validateScheme({ name, source: { url: 'https://x.gov.in/a' }, eligibility: {}, detailLevel: 'listing' })
+    .problems.some((p) => p.includes('notice or a navigation'));
+
+for (const name of [
+  'List of provisionally selected candidates for the year 2026',
+  'Amended list of provisionally selected candidates',
+  'Ministry invites online applications for National Overseas Scholarship',
+  'Online application invited for National Fellowship',
+  'List of Applicants Processed for Scholarships',
+  'List of the selected students under AICTE Saraswati Scholarship',
+  'Apply For Scholarship',
+  'Nodal Officers (Scheme-wise)',
+  'Scholarship Eligibility',
+]) t('rejected: ' + name.slice(0, 40), notScheme(name), true);
+
+console.log('\n--- real scheme names still pass that filter ---');
+for (const name of [
+  'Post-Matric Scholarship for SC students',
+  'National Overseas Scholarship for Scheduled Caste Candidates',
+  'Pre-Matric Scholarship Scheme for ST students',
+  'AICTE Pragati Scholarship Scheme for Girl Students',
+]) t('kept: ' + name.slice(0, 40), notScheme(name), false);
 
 console.log(`\n=== ${pass} passed, ${fail} failed ===\n`);
 process.exitCode = fail ? 1 : 0;
