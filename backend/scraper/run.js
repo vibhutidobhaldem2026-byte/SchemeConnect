@@ -196,9 +196,13 @@ async function main() {
   log.blank();
 
   // Static allowlist check before any network activity.
-  // --source names an explicit source and may target a disabled one on purpose.
-  const sources = args.source
-    ? SOURCES.filter((s) => s.id === args.source)
+  // --source names explicit sources and may target a disabled one on purpose.
+  // A comma-separated list keeps a re-crawl of a few new sources from costing
+  // a full run: the expensive part is rendering myScheme's several hundred
+  // pages, and there is no reason to repeat it to pick up one added state.
+  const wanted = args.source ? args.source.split(',').map((s) => s.trim()).filter(Boolean) : null;
+  const sources = wanted
+    ? SOURCES.filter((s) => wanted.includes(s.id))
     : ENABLED_SOURCES;
   if (!sources.length) {
     log.error(`no source matched "${args.source}"`);

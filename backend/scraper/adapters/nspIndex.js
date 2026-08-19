@@ -19,7 +19,8 @@ import { STATES } from '../lib/extract.js';
 import { checkUrl } from '../lib/allowlist.js';
 import { htmlToText } from '../lib/html.js';
 import { extractAll } from '../lib/extract.js';
-import { toScheme } from '../lib/normalize.js';
+import { pdfToText, isPdfToTextAvailable } from '../lib/pdf.js';
+import { toScheme, toListingScheme } from '../lib/normalize.js';
 import { log } from '../lib/log.js';
 
 export const id = 'nsp-index';
@@ -249,6 +250,38 @@ export async function discover(source) {
   };
 }
 
+let pdftotext = null;
+
+/**
+ * Reads the guideline PDF the directory row links to.
+ *
+ * The row itself is a name, an owner and a set of dates. The eligibility — the
+ * income ceiling, the castes, the marks, the course levels — is in the PDF
+ * beside it, which is the document the scheme is actually administered from.
+ * Without it a third of NSP's schemes could only be listed, not matched, and
+ * a scheme a student cannot be matched to is one they will not be shown.
+ *
+ * A failure here is not an error. The row already stands on its own, so a PDF
+ * that is missing, scanned, or slow simply leaves the scheme where it was.
+ */
+async function criteriaFromGuidelines(url) {
+  if (!url || !/\.pdf($|\?)/i.test(url)) return null;
+  pdftotext ??= await isPdfToTextAvailable();
+  if (!pdftotext) return null;
+
+  try {
+    const res = await govFetch(url, { binary: true, accept: 'application/pdf,*/*' });
+    if (!res.ok) return null;
+    const { text, error } = await pdfToText(res.body);
+    // Under a few hundred characters it is a scan, and running the extractors
+    // over the handful of words OCR-free parsing found would invent criteria.
+    if (error || !text || text.length < 400) return null;
+    return { text, extracted: extractAll(text) };
+  } catch {
+    return null;
+  }
+}
+
 export async function extract(candidate) {
   const block = candidate.block;
   if (!block) return { scheme: null, error: 'no index row for this candidate' };
@@ -256,8 +289,22 @@ export async function extract(candidate) {
   const opensAt = toIsoDate(/Open\s*from\s*:?\s*([\d-]+)/i.exec(block.body)?.[1]);
   const closesAt = toIsoDate(/Open\s*till\s*:?\s*([\d-]+)/i.exec(block.body)?.[1]);
 
-  const text = `${block.name}. ${block.body}`;
-  const extracted = extractAll(text);
+  let text = `${block.name}. ${block.body}`;
+  let extracted = extractAll(text);
+
+  /**
+   * The row's dates outrank the PDF's.
+   *
+   * A guideline document is written once and often names the year it was
+   * drafted; the portal's own window is the operational date, updated every
+   * season. So the PDF supplies eligibility and the row keeps the deadline.
+   */
+  const guidelines = await criteriaFromGuidelines(candidate.applyUrl);
+  if (guidelines) {
+    text = `${block.name}. ${guidelines.text}`;
+    extracted = guidelines.extracted;
+    log.debug(`    read guidelines for ${block.name.slice(0, 48)}`);
+  }
 
   // The window stated on the index beats anything a heuristic reads out of
   // prose: it is the portal's own operational date, not a sentence about one.
@@ -267,6 +314,48 @@ export async function extract(candidate) {
       ...(extracted.criteriaEvidence ?? []).filter((e) => e.field !== 'deadline'),
       { field: 'deadline', text: `National Scholarship Portal states this scheme is open till ${closesAt}.` },
     ];
+  }
+
+  /**
+   * A directory row is not a scheme page.
+   *
+   * NSP states a name, an owner, a state and an application window — but the
+   * eligibility lives in a guideline PDF behind it, so there is rarely enough
+   * text here to read a criterion from. Held to the standard for a full record
+   * that fails on length, and 137 of 160 schemes were thrown away: every state
+   * scheme NSP has, with its real deadline, discarded for not being something
+   * it never claimed to be.
+   *
+   * So a row with criteria becomes a full record, and one without becomes a
+   * listing — the tier that already exists for exactly this, a scheme we can
+   * name and link but not match on. The window comes with it either way.
+   */
+  const eligible = extracted.eligibility ?? extracted;
+  const hasCriteria = Boolean(
+    eligible.maxFamilyIncome
+    || eligible.categories?.length
+    || eligible.gender?.length
+    || eligible.courseLevels?.length
+    || eligible.minMarksPercent
+    || eligible.disabilityRequired
+  );
+
+  if (!hasCriteria) {
+    const listing = toListingScheme({
+      name: block.name,
+      summary: `Listed on the National Scholarship Portal${block.ministry ? `, run by ${block.ministry}` : ''}.`,
+      officialUrl: candidate.applyUrl,
+      sourceUrl: candidate.url,
+      adapter: id,
+      level: candidate.level,
+      state: candidate.state,
+      ministry: block.ministry,
+      deadline: closesAt ?? null,
+      criteriaEvidence: closesAt ? extracted.criteriaEvidence ?? [] : [],
+      fetchedAt: candidate.fetchedAt,
+    });
+    if (opensAt) listing.opensAt = opensAt;
+    return { scheme: listing, error: null };
   }
 
   const scheme = toScheme({
@@ -281,6 +370,8 @@ export async function extract(candidate) {
     level: candidate.level,
     state: candidate.state,
     ministry: block.ministry,
+    // A directory row, not a page of prose — see validateScheme.
+    structured: true,
     fetchedAt: candidate.fetchedAt,
   });
 

@@ -70,7 +70,21 @@ export async function checkLink(url) {
           signal: AbortSignal.timeout(TIMEOUT_MS),
         });
 
-        if (res.status === 405 || res.status === 501) continue; // method refused
+        /**
+         * A failed HEAD proves nothing.
+         *
+         * HEAD is only an optimisation — it asks the same question without
+         * transferring the page. Servers that do not implement it are supposed
+         * to answer 405, and we used to treat every other 4xx as proof the
+         * page was gone. NSP answers HEAD with 404 for files it serves
+         * perfectly well on GET: the whole National Scholarship Portal, 159
+         * schemes, was about to be retired as dead links, when every one of
+         * them opens fine in a browser.
+         *
+         * So only a GET may conclude anything. If HEAD does not clearly
+         * succeed, we ask properly before saying a student's scheme is gone.
+         */
+        if (method === 'HEAD' && !res.ok) continue;
 
         if (res.status === 403) return { status: 'forbidden', detail: 'HTTP 403' };
         if (res.status >= 400 && res.status < 500) {

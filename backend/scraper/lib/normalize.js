@@ -98,6 +98,10 @@ export function toScheme(input) {
       fetchedAt: input.fetchedAt,
       contentHash: contentHash(input.rawText || ''),
       textLength: (input.rawText || '').length,
+      // Set when the fields came from a directory's own labelled columns
+      // rather than from reading prose. See the length check in
+      // validateScheme for why that distinction earns an exemption.
+      structured: input.structured === true,
     },
 
     lastVerified: input.fetchedAt,
@@ -149,9 +153,18 @@ export function toListingScheme(input) {
       states: input.state ? [input.state] : [],
     },
 
-    criteriaEvidence: [],
+    criteriaEvidence: input.criteriaEvidence ?? [],
     documents: [],
-    deadline: null,
+
+    /**
+     * A listing normally has no dates, because it is a name on a page and
+     * nothing more. NSP is the exception: its directory states the application
+     * window as a labelled field beside each scheme. That is published data,
+     * not a date a heuristic thought it recognised in prose, so it is worth as
+     * much here as on a full record — and a scheme whose window we can show is
+     * considerably more use than one we can only name.
+     */
+    deadline: input.deadline ?? null,
     applyUrl: input.officialUrl || input.sourceUrl,
 
     source: {
@@ -260,6 +273,11 @@ export function looksEducational(scheme) {
  */
 const NOT_A_SCHEME = new RegExp([
   // Notices and result lists
+  // Section headings on a scheme page, which read as names once the page is
+  // flattened to a list of links. "About the Scheme" arrived from a ministry
+  // page as a scheme in its own right.
+  '^about the scheme\\b',
+  '^(how to apply|eligibility|objectives?|introduction|overview)$',
   '^(amended\\s+)?list of\\b',
   '\\bprovisionally selected\\b',
   '\\bselected candidates?\\b',
@@ -328,7 +346,25 @@ export function validateScheme(scheme) {
     return { valid: problems.length === 0, problems };
   }
 
-  if ((scheme.source?.textLength ?? 0) < 400) problems.push('source text too short to trust');
+  /**
+   * Too little text to trust what we read out of it.
+   *
+   * The check guards against a page that rendered badly or was never a scheme
+   * page at all: a few hundred characters of navigation will still yield an
+   * income ceiling and a caste if you run enough regexes over it, and that
+   * invented criterion then decides who gets shown the scheme.
+   *
+   * A structured directory row is the one case where short does not mean
+   * doubtful. NSP publishes each scheme as a row — name, owner, state,
+   * application window — and the criteria come from the scheme's own title,
+   * which is about the most reliable sentence on any government page. Held to
+   * the prose standard, 105 of 168 NSP schemes were discarded, and they were
+   * the better ones: the rows thin enough to have no criteria at all had
+   * already been kept as listings.
+   */
+  if (!scheme.source?.structured && (scheme.source?.textLength ?? 0) < 400) {
+    problems.push('source text too short to trust');
+  }
 
   const hasAnyCriterion =
     e.maxFamilyIncome !== null ||

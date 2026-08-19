@@ -1,227 +1,227 @@
 {
-  "generatedAt": "2026-08-18T23:25:49.823Z",
+  "generatedAt": "2026-08-19T03:49:32.447Z",
   "totalStates": 36,
   "statesWithStateSchemes": [
+    "Arunachal Pradesh",
     "Assam",
-    "Bihar",
     "Chhattisgarh",
     "Goa",
-    "Gujarat",
     "Haryana",
     "Himachal Pradesh",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
     "Maharashtra",
+    "Manipur",
+    "Meghalaya",
     "Mizoram",
     "Nagaland",
-    "Odisha",
-    "Rajasthan",
-    "Tamil Nadu",
-    "Telangana",
+    "Punjab",
+    "Sikkim",
     "Tripura",
-    "Uttar Pradesh",
     "Uttarakhand",
     "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
     "Dadra and Nagar Haveli and Daman and Diu",
     "Delhi",
+    "Jammu and Kashmir",
+    "Ladakh",
+    "Lakshadweep",
     "Puducherry"
   ],
   "statesWithoutStateSchemes": [
     "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Manipur",
-    "Meghalaya",
-    "Punjab",
-    "Sikkim",
-    "Andaman and Nicobar Islands",
-    "Chandigarh",
-    "Jammu and Kashmir",
-    "Ladakh",
-    "Lakshadweep"
+    "Bihar",
+    "Gujarat",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Odisha",
+    "Rajasthan",
+    "Tamil Nadu",
+    "Telangana",
+    "Uttar Pradesh"
   ],
-  "centralSchemes": 116,
+  "centralSchemes": 31,
   "perState": [
     {
       "state": "Andhra Pradesh",
       "schemes": 0,
-      "central": 116
+      "central": 31
     },
     {
       "state": "Arunachal Pradesh",
-      "schemes": 0,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Assam",
-      "schemes": 1,
-      "central": 116
+      "schemes": 7,
+      "central": 31
     },
     {
       "state": "Bihar",
-      "schemes": 3,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Chhattisgarh",
-      "schemes": 1,
-      "central": 116
+      "schemes": 3,
+      "central": 31
     },
     {
       "state": "Goa",
-      "schemes": 7,
-      "central": 116
+      "schemes": 5,
+      "central": 31
     },
     {
       "state": "Gujarat",
-      "schemes": 10,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Haryana",
-      "schemes": 5,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Himachal Pradesh",
-      "schemes": 3,
-      "central": 116
+      "schemes": 19,
+      "central": 31
     },
     {
       "state": "Jharkhand",
-      "schemes": 6,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Karnataka",
-      "schemes": 1,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Kerala",
-      "schemes": 3,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Madhya Pradesh",
-      "schemes": 7,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Maharashtra",
-      "schemes": 3,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Manipur",
-      "schemes": 0,
-      "central": 116
+      "schemes": 9,
+      "central": 31
     },
     {
       "state": "Meghalaya",
-      "schemes": 0,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Mizoram",
-      "schemes": 3,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Nagaland",
-      "schemes": 3,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Odisha",
-      "schemes": 1,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Punjab",
-      "schemes": 0,
-      "central": 116
+      "schemes": 3,
+      "central": 31
     },
     {
       "state": "Rajasthan",
-      "schemes": 8,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Sikkim",
-      "schemes": 0,
-      "central": 116
+      "schemes": 7,
+      "central": 31
     },
     {
       "state": "Tamil Nadu",
-      "schemes": 10,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Telangana",
-      "schemes": 1,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Tripura",
-      "schemes": 1,
-      "central": 116
+      "schemes": 8,
+      "central": 31
     },
     {
       "state": "Uttar Pradesh",
-      "schemes": 3,
-      "central": 116
+      "schemes": 0,
+      "central": 31
     },
     {
       "state": "Uttarakhand",
-      "schemes": 3,
-      "central": 116
+      "schemes": 11,
+      "central": 31
     },
     {
       "state": "West Bengal",
-      "schemes": 2,
-      "central": 116
+      "schemes": 3,
+      "central": 31
     },
     {
       "state": "Andaman and Nicobar Islands",
-      "schemes": 0,
-      "central": 116
+      "schemes": 7,
+      "central": 31
     },
     {
       "state": "Chandigarh",
-      "schemes": 0,
-      "central": 116
+      "schemes": 5,
+      "central": 31
     },
     {
       "state": "Dadra and Nagar Haveli and Daman and Diu",
-      "schemes": 1,
-      "central": 116
+      "schemes": 8,
+      "central": 31
     },
     {
       "state": "Delhi",
       "schemes": 4,
-      "central": 116
+      "central": 31
     },
     {
       "state": "Jammu and Kashmir",
-      "schemes": 0,
-      "central": 116
+      "schemes": 4,
+      "central": 31
     },
     {
       "state": "Ladakh",
-      "schemes": 0,
-      "central": 116
+      "schemes": 2,
+      "central": 31
     },
     {
       "state": "Lakshadweep",
-      "schemes": 0,
-      "central": 116
+      "schemes": 1,
+      "central": 31
     },
     {
       "state": "Puducherry",
-      "schemes": 2,
-      "central": 116
+      "schemes": 10,
+      "central": 31
     }
   ],
   "coveredCount": 36,
