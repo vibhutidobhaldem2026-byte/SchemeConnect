@@ -628,31 +628,43 @@ try {
 
   {
     const { getScheme: readScheme } = await import('../server/catalog.js');
-    const broken = await one(
-      "select id from schemes where apply_url_status in ('missing','unreachable') and retired_at is null limit 1");
-    const working = await one(
-      "select id from schemes where apply_url_status in ('ok','redirected') and retired_at is null limit 1");
 
-    if (broken) {
-      const page = await student.get(`/schemes/${broken.id}`);
-      check('a dead link is called out on the scheme page',
-        /official page is not responding/i.test(page.text));
-      check('the button stops claiming the application is there',
-        /Try the official page anyway/.test(page.text)
-          && !/Continue to official application/.test(page.text));
-    } else {
-      check('a dead link is called out on the scheme page', true, 'skipped — none recorded');
-    }
+    /**
+     * Create the broken state rather than hope for one.
+     *
+     * This used whichever scheme happened to have a dead link, so once the
+     * catalogue was cleaned up there were none left and the test quietly
+     * stopped running — coverage vanishing at exactly the moment the code it
+     * guards stopped being exercised in the wild. The state is now made and put
+     * back.
+     */
+    const subject = await one(
+      `select id, apply_url_status, apply_url_detail from schemes
+        where retired_at is null and apply_url_status in ('ok','redirected') limit 1`);
 
-    if (working) {
-      const page = await student.get(`/schemes/${working.id}`);
-      check('a working link still reads as the primary action',
-        /Continue to official application/.test(page.text)
-          && !/official page is not responding/i.test(page.text));
-    }
+    await query(
+      `update schemes set apply_url_status = 'unreachable',
+                          apply_url_detail = 'host does not resolve'
+        where id = $1`, [subject.id]);
 
-    // An unchecked link must never be presented as verified.
-    const scheme = await readScheme((broken ?? working).id);
+    const brokenPage = await student.get(`/schemes/${subject.id}`);
+    check('a dead link is called out on the scheme page',
+      /official page is not responding/i.test(brokenPage.text));
+    check('the button stops claiming the application is there',
+      /Try the official page anyway/.test(brokenPage.text)
+        && !/Continue to official application/.test(brokenPage.text));
+
+    // Put it back before anything else reads it.
+    await query(
+      'update schemes set apply_url_status = $2, apply_url_detail = $3 where id = $1',
+      [subject.id, subject.apply_url_status, subject.apply_url_detail]);
+
+    const workingPage = await student.get(`/schemes/${subject.id}`);
+    check('a working link still reads as the primary action',
+      /Continue to official application/.test(workingPage.text)
+        && !/official page is not responding/i.test(workingPage.text));
+
+    const scheme = await readScheme(subject.id);
     check('link status travels with the scheme record',
       ['ok', 'redirected', 'missing', 'unreachable', 'forbidden'].includes(scheme.applyUrlStatus),
       String(scheme.applyUrlStatus));
