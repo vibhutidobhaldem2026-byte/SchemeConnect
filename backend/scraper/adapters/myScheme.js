@@ -43,6 +43,18 @@ const USER_AGENT =
 const MIN_GAP_MS = 1500;
 const NAV_TIMEOUT_MS = 45000;
 
+/**
+ * The site's own categories, which beat guessing at words. Education first;
+ * skills and employment carries training and apprenticeship schemes, and women
+ * and child carries girl-child scholarships filed nowhere else.
+ */
+const CATEGORY_FILTERS = [
+  'Education & Learning',
+  'Skills & Employment',
+  'Women and Child',
+  'Social welfare & Empowerment',
+];
+
 /** Terms that surface schemes a student could actually use. */
 const DISCOVERY_QUERIES = [
   'scholarship', 'fellowship', 'stipend', 'education',
@@ -107,7 +119,7 @@ export async function discover(source) {
   const check = checkUrl(ORIGIN);
   if (!check.ok) return { candidates: [], error: `source blocked: ${check.reason}` };
 
-  const maxLinks = source.maxLinks ?? 120;
+  const maxLinks = source.maxLinks ?? 300;
   const slugs = new Set();
 
   const readSlugs = async (page) => {
@@ -121,43 +133,93 @@ export async function discover(source) {
     return added;
   };
 
+  /** Results load on scroll; keep going until a pass adds nothing new. */
+  const exhaust = async (page, label) => {
+    await pause(2500);
+    await readSlugs(page);
+    for (let step = 0; step < 40 && slugs.size < maxLinks; step++) {
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      await pause(1600);
+      if ((await readSlugs(page)) === 0) break;
+    }
+    log.info(`    ${label} — ${slugs.size} scheme(s) so far`);
+  };
+
   try {
     await withPage(async (page) => {
-      for (const query of DISCOVERY_QUERIES) {
+      /**
+       * Use the site's own category filter rather than guessing keywords.
+       *
+       * myScheme carries 4,772 schemes across fifteen categories, and searching
+       * for words like "scholarship" only ever surfaces the ones that happen to
+       * say so. "Education & Learning" is the question we actually mean, and
+       * "Skills & Employment" carries the training and apprenticeship schemes a
+       * student can also use.
+       */
+      for (const category of CATEGORY_FILTERS) {
         if (slugs.size >= maxLinks) break;
 
         await page.goto(`${ORIGIN}/search`, { waitUntil: 'networkidle' });
-        await pause(1500);
+        await pause(2200);
 
-        // The search box does not read from the URL, so it has to be typed
-        // into. The placeholder is the only stable handle: the inputs carry no
-        // id or name and the classes are utility soup.
+        // Click the checkbox that belongs to this category, found by walking
+        // up from its label text. Clicking the text alone hit whichever element
+        // happened to match first and toggled nothing.
+        const applied = await page.evaluate((name) => {
+          const wanted = name.toLowerCase().slice(0, 18);
+          for (const box of document.querySelectorAll('input[type=checkbox]')) {
+            const label =
+              box.closest('label')?.innerText
+              || box.parentElement?.innerText
+              || box.getAttribute('aria-label')
+              || '';
+            if (label.toLowerCase().includes(wanted)) {
+              if (!box.checked) box.click();
+              return true;
+            }
+          }
+          return false;
+        }, category);
+
+        if (!applied) {
+          log.debug(`      no filter control found for "${category}"`);
+          continue;
+        }
+
+        await exhaust(page, category);
+        await pause(MIN_GAP_MS);
+      }
+
+      // Keyword passes still run, because the categories are assigned by the
+      // site and a scholarship filed under "Social Welfare" would otherwise be
+      // invisible to us.
+      for (const query of DISCOVERY_QUERIES) {
+        if (slugs.size >= maxLinks) break;
+        await page.goto(`${ORIGIN}/search`, { waitUntil: 'networkidle' });
+        await pause(1500);
         try {
           const box = page.getByPlaceholder('Search', { exact: false }).first();
           await box.fill(query, { timeout: 8000 });
           await box.press('Enter');
-        } catch {
-          continue; // search box not where we expect; try the next query
-        }
-        await pause(2500);
-        await readSlugs(page);
-        log.info(`    "${query}" — ${slugs.size} scheme(s) found so far`);
-
-        // Results load on scroll — there is no pager anywhere in the DOM. Keep
-        // scrolling until a pass adds nothing, which means the list is spent.
-        for (let step = 0; step < 12 && slugs.size < maxLinks; step++) {
-          await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-          await pause(1800);
-          const added = await readSlugs(page);
-          if (added === 0) break;
-          log.debug(`      +${added} on scroll ${step + 1} (${slugs.size} total)`);
-        }
-
+        } catch { continue; }
+        await exhaust(page, `"${query}"`);
         await pause(MIN_GAP_MS);
       }
     });
   } catch (err) {
-    return { candidates: [], error: `browser discovery failed: ${err.message}` };
+    /**
+     * Keep what we already have.
+     *
+     * A dropped connection late in discovery used to throw away every slug
+     * found before it — fifty schemes discarded because the fifty-first request
+     * failed. Whatever was collected is still valid; the run simply covered
+     * less ground than intended.
+     */
+    if (slugs.size === 0) {
+      return { candidates: [], error: `browser discovery failed: ${err.message}` };
+    }
+    log.warn(`  discovery stopped early (${err.message.split('\n')[0].slice(0, 60)})`);
+    log.warn(`  keeping the ${slugs.size} scheme(s) found before it failed.`);
   }
 
   const candidates = [...slugs].slice(0, maxLinks).map((slug) => ({
@@ -169,7 +231,7 @@ export async function discover(source) {
     sourceId: source.id,
   }));
 
-  log.info(`  ${candidates.length} scheme page(s) found across ${DISCOVERY_QUERIES.length} searches`);
+  log.info(`  ${candidates.length} scheme page(s) found`);
   return { candidates, listings: [], pageTitle: 'myScheme', fetchedAt: new Date().toISOString() };
 }
 

@@ -13,7 +13,7 @@
 import path from 'node:path';
 import { ROOT } from '../config/paths.js';
 import { checkCatalogueLinks } from '../scraper/linkcheck.js';
-import { close, one } from '../server/db.js';
+import { close, one, query } from '../server/db.js';
 import { closeBrowser, browserWasUsed } from '../scraper/lib/browser.js';
 import { log } from '../scraper/lib/log.js';
 
@@ -54,12 +54,31 @@ try {
     log.info(`  ${String(n).padStart(4)}  ${LABEL[status] ?? status}`);
   }
 
+  /**
+   * Retire what no longer resolves.
+   *
+   * A scheme whose official page is gone cannot be applied for, and leaving it
+   * browsable means a student finds it, reads it, and hits a dead end — the
+   * late-stage failure the research called the most severe symptom of all. It
+   * is retired rather than deleted: someone may have saved it, stored batch
+   * matches reference it by foreign key, and if the ministry puts the page back
+   * the next crawl un-retires it automatically.
+   *
+   * Only 4xx and unreachable count. A 403 means a server refused a bot, which
+   * says nothing about whether a person can open the page.
+   */
+  const { rowCount: retired } = await query(
+    `update schemes set retired_at = now()
+      where retired_at is null and apply_url_status in ('missing', 'unreachable')`);
+  if (retired) {
+    log.blank();
+    log.warn(`${retired} scheme(s) retired — their official page no longer resolves.`);
+    log.warn('Retired, not deleted: a page that comes back is picked up by the next crawl.');
+  }
+
   const broken = (counts.missing ?? 0) + (counts.unreachable ?? 0);
   if (broken) {
-    log.blank();
-    log.warn(`${broken} of ${checked} links do not resolve.`);
-    log.warn('Those schemes stay browsable, but the site no longer presents their');
-    log.warn('link as working. See /ops/export.json for the full picture.');
+    log.info(`${broken} of ${checked} links did not resolve on this pass.`);
   }
 
   const unchecked = await one(
