@@ -513,6 +513,17 @@ router.get('/profile', async (req, res) => {
 
   const row = (k, v) => html`<div class="info-row"><span class="k">${k}</span><span class="v">${v || '—'}</span></div>`;
 
+  /**
+   * Name the login field after what it actually holds.
+   *
+   * An account is opened with either a mobile number or an email address, and
+   * whichever it was becomes the login. Labelling it "Mobile / login" regardless
+   * meant an account opened with an email showed that email under "Mobile", and
+   * then again on an Email row directly beneath it — reading, reasonably, as a
+   * bug in whether we know their number at all.
+   */
+  const loginLabel = /@/.test(req.user.identifier ?? '') ? 'Email / login' : 'Mobile / login';
+
   res.send(layout({
     title: 'My profile',
     body: html`
@@ -538,8 +549,10 @@ router.get('/profile', async (req, res) => {
 
           <div class="info-card">
             <h3>Contact details</h3>
-            ${raw(row('Mobile / login', html`${req.user.identifier} <span class="tag tag-verified" style="padding:3px 8px;">✓ Verified</span>`))}
-            ${raw(row('Email', req.user.email))}
+            ${raw(row(loginLabel, raw(html`${req.user.identifier} <span class="tag tag-verified" style="padding:3px 8px;">✓ Verified</span>`)))}
+            ${req.user.email && req.user.email !== req.user.identifier
+              ? raw(row('Email', req.user.email))
+              : ''}
           </div>
 
           <div class="info-card">
