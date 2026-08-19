@@ -1,5 +1,1991 @@
 [
   {
+    "startedAt": "2026-08-19T03:43:11.024Z",
+    "finishedAt": "2026-08-19T03:49:32.447Z",
+    "durationSec": 381,
+    "sourcesCrawled": [
+      "nsp-directory"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 168,
+    "schemesKept": 159,
+    "rejectedCount": 0,
+    "rejected": [],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T03:43:11.275Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-19T03:05:00.246Z",
+    "finishedAt": "2026-08-19T03:05:51.434Z",
+    "durationSec": 51,
+    "sourcesCrawled": [
+      "nsp-directory"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 168,
+    "schemesKept": 159,
+    "rejectedCount": 0,
+    "rejected": [],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T03:05:00.510Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-19T03:01:39.210Z",
+    "finishedAt": "2026-08-19T03:02:28.407Z",
+    "durationSec": 49,
+    "sourcesCrawled": [
+      "nsp-directory"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 168,
+    "schemesKept": 63,
+    "rejectedCount": 105,
+    "rejected": [
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "AICTE - Pragati Scholarship Scheme For Girl Students ( Technical Diploma) (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "AICTE - Saksham Scholarship Scheme For Specially Abled Student ( Technical Diploma) (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "AICTE - Swanath Scholarship Scheme (Technical Diploma) (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "National Scholarship For Post Graduate Studies (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Central Sector Scheme Of Top Class Education In College For OBC, EBC And DNT Students (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Icar Post Graduate Scholarship(Pgs) (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Central Sector Scholarship Of Top Class Education For SC Students (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship For Students With Disabilities (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For Students With Disabilities (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Umbrella Scheme For Education Of ST Students-Pre Matric Scholarship (Class Ix & X) For ST Students Arunachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For SC Students (Class Ix And X) - Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship To OBC Students (Class 9 And Class 10) -Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship To ST Students - Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For SC Students - Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship To OBC Students - Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship To ST Students (Class Ix And X) - Assam (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "State Scholarship Schemes For Divyangjan (Class 11 And 12 )- Chattisgarh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For SC Students Studying In Classes Ix And X -Delhi (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC EBC And DNT - Delhi (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC EBC And DNT - Delhi (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For Needy ST Students (Class Ix & X) -Goa (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Prematric Scholarship For SC Students Studying In Classes Ix And X -Goa (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For SC - Goa (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For ST Students-Goa (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC EBC And DNT - Haryana (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Technical Education Scholarship Scheme For Diploma Level-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scholarship Scheme For ST Students-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Pre Matric Scholarship Scheme For SC Students-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Dr.Ambedkar Medhavi Chatravriti Yojana For OBC Students-Himachal Pradesh (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scholarship Scheme For SC Students-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Dr.Ambedkar Medhavi Chatravriti Yojana For SC Students-Himachal Pradesh (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship For OBC,EBC And DNT Students-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Pre Matric Scholarship Scheme For ST Students-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC ,EBC And DNT Students (Class Ix And X)-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For SC Students Of Parents Or Guardians Engaged In Unclean Occupation(Class 1-10)-Himachal Pradesh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC EBC And DNT - Maharashtra (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC Students (Class Ix And X) Manipur (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship For OBC Students Manipur (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Pre Matric Scholarship For SC Students Studying In Class Ix And X -Manipur (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For ST Students (For Class Ix And X)-Manipur (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Merit Scholarship Scheme For Class X And Xii-Manipur (Merit Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For ST Students-Manipur (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For SC Students-Meghalaya (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For SC Students (Class Ix & X) -Meghalaya (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Umbrella Scheme For Education Of ST Studets - Pre Matric Scholarship (Class Ix & X) For ST Students-Meghalaya (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship To ST Students (Class Ix And X) - Mizoram (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship Scheme For ST Students-Nagaland (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC EBC And DNT - Punjab (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scheme For SC Students-Punjab (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship To The Children Of Those Engaged In Occupations Involving Cleaning And Prone To Health Hazards - Punjab (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For SC Students (Class Ix & X)-Punjab (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship For SC Students Studying In Class Ix And X-Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship For OBC,EBC And DNT Students-Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarships For Children Of Parents Or Guardians Engaged In Unclean Occupation(Class 1-10)-Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarships For ST Students Class Ix And Class X-Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scholarship For SC Students - Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship Scheme For ST Students-Sikkim (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For OBC Students - Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Postmatric Scholarship For OBC Students - Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Umbrella Scheme For Education Of ST Childern - Post Matric Scholarship (PMS) For ST Students-Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For SC Students Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Dr.Ambedkar Post Matric Scholarship For Economically Backward Classes (EBC) -Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric SC (Class Ix And X)-Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Umbrella Scheme For Education Of ST Students - Pre Matric Scholarship (Class Ix & X) For ST Students-Tripura (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For SC Students (Center Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Disability Scholarship (State Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For ST Students (Center Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For ST Students (State Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship For SC Students (State Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre-Matric Scholarship Scheme For Minority (100 Percent State Sector)-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post-Matric Scholarship For OBC Students-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post-Matric Scholarship For SC Students-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post-Matric Scholarship For ST Students-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship For EBC Students-Uttarakhand (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Pre Matric Scholarship Scheme For SC (Class 9 & 10)- West Bengal (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Grant Of Additional Scholarship To ST Students For Pursuing Higher Studies -Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC Students - Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Grant Of Additional Scholarship To OBC Students For Pursuing Higher Studies After Class X(Except Class Xi & Xii)-Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Prematric Scholarship Scheme For ST Students(Class Ix,X)-Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scholarship Scheme For ST Students-Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Dr Ambedkar Post Matric Scholarship For Economically Backward Class Students-Andaman And Nicobar (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship Scheme For Transgender Students-Chandigarh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Post Matric Scholarship Scheme For SC - Chandigarh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC,EBC And DNT Students-Chandigarh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC,EBC,DNT Students (Class Ix And X)-Chandigarh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For SC Students (Class Ix & X) -Jammu And Kashmir (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Post Matric Scholarship To ST Students -Jammu And Kashmir (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Post Matric Scholarship Scheme For OBC EBC And DNT - Jammu And Kashmir (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC EBC And DNT - Jammu And Kashmir (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For SC Students-Jammu And Kashmir (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For ST Students-Ladakh (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship For SC Students (Class Ix & X) -Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship For SC Students (Class 6 To Class 10)-Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship To OBC Studetnts -Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For SC Students-Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Post Matric Scholarship For ST Students-Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Grant Of Adhoc Merit Grant To SC Students-Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Centrally Sponsored Scheme Of Pre Matric Scholarship To OBC Studetnts(Class I To Class V) - Puducherry (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "Pre Matric Scholarship To ST Students-DNHDD (Welfare Based Scheme)"
+      },
+      {
+        "url": "https://scholarships.gov.in/All-Scholarships",
+        "reason": "source text too short to trust",
+        "name": "PM YASASVI Pre Matric Scholarship Scheme For OBC Students (Class Ix And X)-DNHDD (Welfare Based Scheme)"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T03:01:39.483Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-19T02:45:45.941Z",
+    "finishedAt": "2026-08-19T02:58:20.464Z",
+    "durationSec": 755,
+    "sourcesCrawled": [
+      "meghalaya-schemes",
+      "maharashtra-sjsa",
+      "goa-schemes",
+      "nagaland-scholarships",
+      "jk-socialwelfare",
+      "haryana-schemes",
+      "uttarakhand-socialwelfare",
+      "goa-highered",
+      "sikkim-schemes",
+      "chhattisgarh-postmatric",
+      "dbt-bharat",
+      "nsp-directory"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 430,
+    "schemesKept": 113,
+    "rejectedCount": 462,
+    "rejected": [
+      {
+        "url": "https://meghalaya.gov.in/schemes",
+        "name": "Chief Minister's Regional Transport Scheme 2025",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes",
+        "name": "Chief Minister's Youth Development Scheme (CMYDS) Guidelines",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=1",
+        "name": "Deen dayal upadhyaya grameen kaushalya yojana (ddu-gky)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=1",
+        "name": "Greater Ampati Water Supply Scheme Date Released: 30 Mar 2013",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=1",
+        "name": "Guru Shishya Parampara Scheme",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=1",
+        "name": "Indira Gandhi Matritva Sahyog Yojana (IGMSY) Conditional Maternity Benefit Scheme Date Released: 08 Nov 2010",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=2",
+        "name": "Integrated Schemes for Development of Eri Silk Industry in Ri-Bhoi District Date Released: 01 Jan 2019",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=2",
+        "name": "Jan Suraksha Schemes Date Released: 08 Oct 2021",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=2",
+        "name": "Meghalaya Industrial & Investment Promotion Scheme, 2016 (MIIPS) Date Released: 21 Dec 2012",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=2",
+        "name": "Meghalaya Tourism Development & Investment Promotion Scheme 2012.",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=2",
+        "name": "Mid Day Meal Scheme Date Released: 01 Jan 2002",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Normal C.D. schemes",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "North East Industrial Development Scheme (NEIDS) Date Released: 21 Mar 2018",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "One Time Settlement (OTS) Scheme Date Released: 08 Jun 2026",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Pradhan Mantri Awaas Yojana Gramin (PMAY-G) Date Released: 01 Jan 2016",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Pradhan Mantri Awaas Yojana-Gramin (PMAY-G)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY) - Corpus Fund On Crop Insurance (RKBY)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY) Har Khet Ko Pani (HKKP)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Rashtriya Krishi Vikas Yojana Remunerative Approaches for Agriculture and Allied sector Rejuvenation (RKVY-RAFTAAR)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=3",
+        "name": "Rashtriya Krishi Vikash Yojana-Remunerative Approaches for Agriculture and Allied Sector Rejuvenation (RKVY- RAFTAAR)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Rural Housing Scheme (RHS)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Sansad Adarsh Gram Yojana (SAGY)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Scheme for Adolescent Girls (SAG) Date Released: 01 Apr 2011",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Scheme for Prevention of Alcoholism and Substance (Drug) Abuse Date Released: 01 Apr 2007",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Schemes of the NEC",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Schemes under North East Zone Cultural Centre",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=4",
+        "name": "Soil Health Card Scheme (SHC)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=5",
+        "name": "Sub-Scheme Reclamation Of Problem Soil Under RKVY",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=5",
+        "name": "Swadhar Greh - A Scheme for women in difficult circumstances",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=5",
+        "name": "The Meghalaya Street Vendors (Protection of Livelihood and Regulation of Street Vending) Scheme, 2023",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=5",
+        "name": "The Meghalaya Victim Compensation Scheme, 2022",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes?page=5",
+        "name": "Watershed Development Component (WDC) Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) erstwhile (IWMP)",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/45829",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Chief Minister's Youth Development Scheme (CMYDS) Guidelines"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37395",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Guidelines for recognition as approved tour operator."
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/15654",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Indira Gandhi Matritva Sahyog Yojana (IGMSY) Conditional Maternity Benefit Scheme"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37593",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Primary School Scholarship and Upper Primary Scholarship"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37489",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Border Areas Scholarship"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37323",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Deen dayal upadhyaya grameen kaushalya yojana (ddu-gky)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37601",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Awaas Yojana Gramin (PMAY-G)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37328",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Awaas Yojana-Gramin (PMAY-G)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35903",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY) - Corpus Fund On Crop Insurance (RKBY)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37890",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY) Har Khet Ko Pani (HKKP)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35889",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37892",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Rashtriya Krishi Vikas Yojana Remunerative Approaches for Agriculture and Allied sector Rejuvenation (RKVY-RAFTAAR)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/36271",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Rashtriya Krishi Vikash Yojana-Remunerative Approaches for Agriculture and Allied Sector Rejuvenation (RKVY- RAFTAAR)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37329",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Sansad Adarsh Gram Yojana (SAGY)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/15645",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarship to Physically Disabled Students"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/37889",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Watershed Development Component (WDC) Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) erstwhile (IWMP)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Primary tabs"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/49046",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Chief Minister's Regional Transport Scheme 2025"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Primary tabs"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37665",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Greater Ampati Water Supply Scheme"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37562",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Guru Shishya Parampara Scheme"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/37596",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Integrated Schemes for Development of Eri Silk Industry in Ri-Bhoi District"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/40862",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Jan Suraksha Schemes"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/37479",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Meghalaya Industrial & Investment Promotion Scheme, 2016 (MIIPS)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/37396",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Meghalaya Tourism Development & Investment Promotion Scheme 2012."
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/37522",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Mid Day Meal Scheme"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37327",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Normal C.D. schemes"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37478",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "North East Industrial Development Scheme (NEIDS)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/51020",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "One Time Settlement (OTS) Scheme"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37226",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Rural Housing Scheme (RHS)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/15655",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Scheme for Adolescent Girls (SAG)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/15650",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Scheme for Prevention of Alcoholism and Substance (Drug) Abuse"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/37487",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Schemes of the NEC"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/38109",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Schemes under North East Zone Cultural Centre"
+      },
+      {
+        "url": "https://meghalaya.gov.in/index.php/schemes/content/35892",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Soil Health Card Scheme (SHC)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/35887",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Sub-Scheme Reclamation Of Problem Soil Under RKVY"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/20428",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Swadhar Greh - A Scheme for women in difficult circumstances"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/47231",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "The Meghalaya Payment of Arrears under the Meghalaya (Sales of petroleum and Petroleum products including motor spirit) Taxation Act Installments Scheme, 2024"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/45431",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "The Meghalaya Street Vendors (Protection of Livelihood and Regulation of Street Vending) Scheme, 2023"
+      },
+      {
+        "url": "https://meghalaya.gov.in/meghalaya/index.php/schemes/content/43944",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "The Meghalaya Victim Compensation Scheme, 2022"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/dept",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Department/Office Wise"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/beneficiary",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Beneficiary"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37229",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Chief Minister Housing Assistance Programme."
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35910",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Agriculture Academic Studies"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/36273",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Agriculture Census"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35875",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Agriculture Engineering (Mechanical)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/22185",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Agriculture Information Unit"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35902",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Agriculture Research Stations And Laboratories"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/15652",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Anganwadi Services (ICDS)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37590",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Award for Meritorious Students of Meghalaya in the HSSLC Examination (Science Stream)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/35877",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Basic Agriculture Training Centre"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/24058",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Bio Control Laboratory and Pesticides Testing Laboratory"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37481",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Border Area Development Programme (BADP)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37322",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Chief Ministers Special Rural Development Fund (CMSRDF)"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37223",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Community fishery development project"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/15657",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Construction of Anganwadi buildings"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37224",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Construction of community ponds"
+      },
+      {
+        "url": "https://meghalaya.gov.in/schemes/content/37225",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Construction of individual ponds"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/",
+        "name": "Corporation Schemes • Mahatma Phule Backward Class Development Corporation Ltd.",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/",
+        "name": "Prime Minister’s Model Village Scheme (PMAGY) Publish Date: 28/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/",
+        "name": "Scheme for Providing Financial Assistance to Family Members of Scheduled Castes and Scheduled Tribes Victims of Atrocities Publish Date: 28/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/",
+        "name": "Ramai Housing Scheme (Rural and Urban) Publish Date: 28/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/",
+        "name": "Scheme for Financial Assistance to Industrial Cooperative Societies of Scheduled Castes Publish Date: 16/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/page/2/",
+        "name": "Corporation Schemes • Mahatma Phule Backward Class Development Corporation Ltd.",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/page/2/",
+        "name": "Karmaveer Dadasaheb Gaikwad Empowerment and Self-Respect Scheme Publish Date: 16/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/page/2/",
+        "name": "Scheme to Provide Iron Sheet Stalls to Cobbler Workers Publish Date: 16/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      },
+      {
+        "url": "https://sjsa.maharashtra.gov.in/en/schemes-programmes/page/2/",
+        "name": "Provision of Margin Money for Scheduled Caste and Neo-Buddhist Entrepreneurs under the Central Government’s Stand Up India Scheme Publish Date: 16/04/2025 Details",
+        "reason": "listing: not a student scheme — no educational signal in name or summary"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://meghalaya.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:45:46.268Z"
+      },
+      {
+        "origin": "https://sjsa.maharashtra.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:47:59.149Z"
+      },
+      {
+        "origin": "https://www.goa.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:50:20.985Z"
+      },
+      {
+        "origin": "https://scholarship.nagaland.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:53:43.332Z"
+      },
+      {
+        "origin": "https://socialwelfare.jk.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:54:00.865Z"
+      },
+      {
+        "origin": "https://www.haryana.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:54:32.987Z"
+      },
+      {
+        "origin": "https://socialwelfare.uk.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:54:59.303Z"
+      },
+      {
+        "origin": "https://dhe.goa.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:55:24.195Z"
+      },
+      {
+        "origin": "https://guidelines.india.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:55:28.401Z"
+      },
+      {
+        "origin": "https://postmatric-scholarship.cg.nic.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:55:28.746Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:56:08.216Z"
+      },
+      {
+        "origin": "https://education.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:56:39.748Z"
+      },
+      {
+        "origin": "https://iasri.icar.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:56:39.842Z"
+      },
+      {
+        "origin": "https://www.rrcat.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:56:40.017Z"
+      },
+      {
+        "origin": "https://actrec.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:56:40.397Z"
+      },
+      {
+        "origin": "https://main.icmr.nic.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:56:40.976Z"
+      },
+      {
+        "origin": "https://www.education.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:56:41.028Z"
+      },
+      {
+        "origin": "https://pmposhan.education.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:56:43.143Z"
+      },
+      {
+        "origin": "https://samagra.education.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:57:07.935Z"
+      },
+      {
+        "origin": "https://labour.gov.in",
+        "status": 403,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:57:08.244Z"
+      },
+      {
+        "origin": "https://msmedi.dcmsme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:57:20.949Z"
+      },
+      {
+        "origin": "https://ati.msme.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:57:31.473Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
+    "startedAt": "2026-08-19T01:24:20.224Z",
+    "finishedAt": "2026-08-19T02:44:40.291Z",
+    "durationSec": 4820,
+    "sourcesCrawled": [
+      "myscheme",
+      "tribal-schemes-gov",
+      "aicte-schemes",
+      "depwd-schemes",
+      "nsp-home",
+      "socialjustice-schemes",
+      "ugc-schemes",
+      "hp-epass-state",
+      "hp-epass-central",
+      "assam-state-schemes",
+      "tn-bcmbcmw",
+      "rajasthan-sje-scholarship",
+      "kerala-egrantz",
+      "wb-svmcm",
+      "tribal-schemes",
+      "minorityaffairs-schemes",
+      "dst-inspire",
+      "up-scholarship"
+    ],
+    "sourcesDisabled": [
+      {
+        "id": "dbt-central-schemes",
+        "label": "DBT Bharat — central scheme list",
+        "reason": "An index of all 320 central DBT schemes across 56 ministries, most of them nothing to do with students, and its links are not maintained. Of the schemes it produced, 9 in 123 carried readable criteria and only 15 links still resolved — 28 returned 4xx and 28 pointed at hosts that no longer answer, one having lost its DNS record entirely. myScheme covers the same central schemes from a directory somebody maintains: every page it gave us had criteria, and every link worked."
+      },
+      {
+        "id": "assam-schemes",
+        "label": "Assam — Directorate of Higher Education",
+        "reason": "Returns exactly one scheme link, unchanged since 2018. Assam is a named pilot state in the PRD, so its coverage now comes from assam.gov.in/schemes-list-page instead."
+      },
+      {
+        "id": "kerala-swd",
+        "label": "Kerala — Social Welfare Department",
+        "reason": "TLS: ERR_TLS_CERT_ALTNAME_INVALID (certificate does not cover this hostname)"
+      },
+      {
+        "id": "education-schemes",
+        "label": "Ministry of Education — scholarships",
+        "reason": "HTTP 403 — verified with a real headless Chrome sending a genuine Chrome user-agent: still refused. The block is not on the user-agent, so it is a WAF, geo or datacentre-IP rule. Nothing we can honestly do reaches it."
+      },
+      {
+        "id": "dsel-schemes",
+        "label": "Dept. of School Education & Literacy — schemes",
+        "reason": "HTTP 403 — same as education-schemes: refused to a real browser with a real Chrome UA, so not a user-agent block."
+      }
+    ],
+    "candidatesExamined": 561,
+    "schemesKept": 250,
+    "rejectedCount": 415,
+    "rejected": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rgisfm",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ip-mea",
+        "reason": "name does not look like a scheme",
+        "name": "Internship Programme By The Ministry Of External Affairs"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/wbkanyashree",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Kanyashree Prakalpa"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/orjcvsrva",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Opening And Running Junior Colleges For VJNT Students Run By Voluntary Agencies"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ombgh",
+        "reason": "name does not look like a scheme",
+        "name": "Opening and Maintenance of Boys and Girls Hostels"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tascs12s",
+        "reason": "name does not look like a scheme",
+        "name": "Tablet Assistance to Scheduled Caste Students of 12th Standard"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hfsaed",
+        "reason": "name does not look like a scheme",
+        "name": "Hostel Facility for Students Availing Education in Delhi"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/oecp-mea",
+        "reason": "name does not look like a scheme",
+        "name": "OEC Pre-matric Educational Assistance"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bcfsss",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsscpecp",
+        "reason": "name does not look like a scheme",
+        "name": "Additional Financial Assistance for the Children of Persons Engaged in the Cleaning Profession"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/bcebcgrhs",
+        "reason": "name does not look like a scheme",
+        "name": "BC & EBC Girls Residential +2 High School"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fsl",
+        "reason": "name does not look like a scheme",
+        "name": "Foreign Study Loan"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/svucy",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Swami Vivekananda Utkrisht Chhatravriti Yojana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gkb",
+        "reason": "name does not look like a scheme",
+        "name": "Gaon Ki Beti"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pm-vikas",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/spsvsgs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Savitribai Phule Scholarship For V.J.N.T. And S.B.C. Girl Students Studying In 5th To 7th Standard"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ppma",
+        "reason": "name does not look like a scheme",
+        "name": "Padho Pardesh"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fbdsvgac",
+        "reason": "name does not look like a scheme",
+        "name": "Free Bicycle Distribution to Students of Vimukt, Ghumantu and Ardhghumantu Communities"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/caapbandocwwb",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Cash Award (APB&OCWWB)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/imspeksyrc",
+        "reason": "name does not look like a scheme",
+        "name": "Indira Mahila Shakti Prashikshan Evam Kaushal Sanvardhan Yojna -RS-CIT"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tuk-chterts",
+        "reason": "name does not look like a scheme",
+        "name": "Transgender Utthan Kosh - College/Higher/Technical Educational Fees Refund for Transgender Students"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/giftmrc",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sgssds",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Sikkim Grant of Scholarship to Students with Disabilities Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/facvv-nfch",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Financial Assistance To The Child Victims Of Violence Under TheNational Foundation For Communal Harmony"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vs-eacdp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Vidyakiranam Scheme-Educational Assistance To Children Of Disabled Parents"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/eacp",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Educational Assistance To Children Of Prisoners"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nssfp",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/kbpyy",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Krishak Bakri Palan Yojna"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tce-swd",
+        "reason": "name does not look like a scheme",
+        "name": "Top Class Education For Students With Disabilities"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rmewf-education",
+        "reason": "name does not look like a scheme",
+        "name": "RMEWF-Financial Assistance For Education Of Children & Widows Of Ex-Servicemen"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/freeship-ug-students-only",
+        "reason": "name does not look like a scheme",
+        "name": "Freeship less than ₹1,00,000 (UG students only)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tssad",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "The Scheme Of State Award For Disabled"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/uas",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Unemployment Allowance Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/isdane",
+        "reason": "name does not look like a scheme",
+        "name": "Industrial Skill Development Allowance To The New Employees Employed In Industries In H.p"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/atihcdohs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "\"Advanced Training in Handicrafts\" Component of the \"Development of Handicrafts\" Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ticcotdocs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "“Training in Coir” Component of the \"Development of Coir\" Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/rgsaip",
+        "reason": "name does not look like a scheme",
+        "name": "Rashtriya Gram Swaraj Abhiyan - Internship Program"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/msdsrp",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Mukhyamantri Sports Development Scheme - Retired Person"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mmppy",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Mukhyamantri Prakhand Parivahan Yojana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mkym",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Mahila Kisan Yojana (Maharashtra)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/blifrsa",
+        "reason": "name does not look like a scheme",
+        "name": "Block Level Institute for Rural Skill Acquisition (BIRSA)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/estsccicttitkc",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Empower ST/SC Communities using ICT Tools through IT Knowledge Centre (ITKC)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sessct",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Self-Employment Scheme for Scheduled Castes and Tribes"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/estsccictt",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Empowering Schedule Tribe/Schedule Caste Communities Using Information And Communication Technology Tools"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sdtk",
+        "reason": "name does not look like a scheme",
+        "name": "Skill Development Training Karnataka"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nkcj",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Nursing Kaushal College Jharkhand"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sgsscst",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Shilpi Gram Scheme (Scheduled Caste / Scheduled Tribe)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aspie",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Afforestation Schemes Providing Incentives And Employment To Tribals In Forest"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tdp-mdtlhv",
+        "reason": "name does not look like a scheme",
+        "name": "Tribals Development Plan: Motor Driving Training [Light & Heavy Vehicles]"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gtegp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Goa Tribal's Employment Generation Programme Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/flftcp",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/doits",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mmpveapvkvpy",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Mukhyamantri Pichhda Varg Evam Ati Pichhda Varg Kaushal Vikas Prashikshan Yojana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/atpm",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Assistance to Traditional Pottery Makers"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tkgthe",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Tool Kit Grant for Traditional Handicrafts Experts"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ag",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Advocate Grant"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/lopsd",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Livelihood Opportunity Promotion Scheme (Disabled)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/msesu",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Self-Employment Scheme for Unemployed Minority Communities"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vpls",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Vrutti Protsaha Loan Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/seloanwomen",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Self-Employment loan scheme for Minority Widows, Divorcees / Abandoned Women"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssshgm",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Subsidy Scheme for Self-help Groups of Minorities"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/avn",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/scds",
+        "reason": "not a student scheme — no educational signal in name or summary",
+        "name": "Sikhligar’s Community Development Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmkvy-sp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Pradhan Mantri Kaushal Vikas Yojana 4.0- Special Projects"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sogateakia",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Scheme of Giving Awards to Eminent Artists - Kalai Ilamani Award"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/atfy",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Adventure Training for Youth"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/siswtbottm",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Special Incentive Scheme for Women of Tharu, Boksa and Other Tribes (For Training and Marketing)"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/eicccpsrtcctd",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Early Intervention Centre for Children with Cerebral Palsy in SRTC, Chennai and Tiruchirapalli Districts"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mtbwodap",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Multimedia Training - Tamil Nadu"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/eicca",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Early Intervention Centres for Children with Autism"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/fadse",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Financial Assistance To Disabled For Self Employment"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sevtgi",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Special Education And Vocational Training Through Government Institutions"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ftthip",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Fitter Training to Hearing Impaired Persons"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/slafpwd",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "State Level Awards for Divyang Persons"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/eicfiaycwhi",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Early Intervention Centre for Infants and Young Children with Hearing Impairment"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dalit-bandhu",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Dalit Bandhu"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/gsgos",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary",
+        "name": "Group Supply Of Goats And Sheep"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/faanmgnmtc",
+        "reason": "name does not look like a scheme",
+        "name": "Financial Assistance for ANM/GNM/Technical Courses"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/suatfa",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Scholarship to Undergo Advanced Training in the Field of Art"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/safaew-bcew",
+        "reason": "name does not look like a scheme",
+        "name": "Financial Assistance for Education to the Wards of Beedi/Cine/IOMC/LSDM Workers – Pre & Post-Matric"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mhvs-hte",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Mukhyamantri Hunar Vikas Yojana- Higher Education/Technical Education"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/vep",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Vocational Education Programme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mmkssy-assam",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Mukhya Mantri Krishi Sa Sajuli Yozana - Assam"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/madilu",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/cctofp",
+        "reason": "name does not look like a scheme; no eligibility criterion could be extracted",
+        "name": "Community Canning & Training On Fruit Preservation"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/uppy",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Uttam Pashu Puraskar Yojana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssieemaf",
+        "reason": "not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Scheme For Subsidy On Interest For Establishment Of 1 To 20 Milch Animal Farm"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mmsagy",
+        "reason": "name does not look like a scheme; not a student scheme — no educational signal in name or summary; no eligibility criterion could be extracted",
+        "name": "Mukhya Mantri Shahri Ajeevika Guarantee Yojna"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jmsy",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Jharkhand Mukhyamantri Shramik Yojana"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/dssmp",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Divyangjan Scholarship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ef",
+        "reason": "no scheme name on the rendered page"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/serbpowerf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "SERB - POWER Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ai-rtf",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "ASEAN-India Research Training Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/jcbs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "J.C. Bose Fellowship"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/tgarfs",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "The Goa Archaeological Research Fellowship Scheme"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/ssst-pts",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Scheduled Tribes - Poultry Training Stipend"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/hssm",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Handicapped Students Stipend Mizoram"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/steu",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend to Educated Unemployed"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/sspftsc",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Stipend Scheme For Poultry Farming Training For Schedule Caste"
+      },
+      {
+        "url": "https://www.myscheme.gov.in/schemes/aaelss",
+        "reason": "no eligibility criterion could be extracted",
+        "name": "Assam Abhinandan Education Loan Subsidy Scheme"
+      }
+    ],
+    "sourceErrors": [],
+    "robots": [
+      {
+        "origin": "https://tribal.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:17:33.146Z"
+      },
+      {
+        "origin": "https://www.aicte.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:23:54.591Z"
+      },
+      {
+        "origin": "https://scholarships.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:24:06.781Z"
+      },
+      {
+        "origin": "https://bcmbcmw.tn.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:24:55.741Z"
+      },
+      {
+        "origin": "https://egrantz.kerala.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:27:27.408Z"
+      },
+      {
+        "origin": "https://svmcm.wb.gov.in",
+        "status": 200,
+        "hasRules": true,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:27:39.251Z"
+      },
+      {
+        "origin": "https://wbhed.gov.in",
+        "status": 0,
+        "hasRules": false,
+        "error": "robots.txt fetch failed: fetch failed",
+        "fetchedAt": "2026-08-19T02:28:04.521Z"
+      },
+      {
+        "origin": "https://tribal.nic.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:28:06.567Z"
+      },
+      {
+        "origin": "https://online-inspire.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:35:38.542Z"
+      },
+      {
+        "origin": "https://scholarship.up.gov.in",
+        "status": 404,
+        "hasRules": false,
+        "error": null,
+        "fetchedAt": "2026-08-19T02:39:29.878Z"
+      }
+    ],
+    "dryRun": false,
+    "outcome": "written"
+  },
+  {
     "startedAt": "2026-08-18T22:33:51.410Z",
     "finishedAt": "2026-08-18T23:25:49.823Z",
     "durationSec": 3118,
