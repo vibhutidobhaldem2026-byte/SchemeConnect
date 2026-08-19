@@ -127,8 +127,19 @@ export async function publish({ runId, schemes, sources = [] }) {
            detail_level, confidence, last_verified, content_hash,
            first_seen_run, last_seen_run)
          values ${text}
-         on conflict (id) do update set
-           slug = excluded.slug, name = excluded.name, summary = excluded.summary,
+         /**
+          * The slug is what identifies a scheme, not the id.
+          *
+          * An id is the name plus a hash of the source URL, so finding the same
+          * scholarship on a better source produces a new id for something that
+          * is plainly the same scheme — and the unique slug then rejected the
+          * whole import. Conflicting on the slug updates the existing row and
+          * leaves its id alone, which is what preserves a student's saved
+          * schemes and an institute's stored match reasoning: both reference
+          * that id by foreign key.
+          */
+         on conflict (slug) do update set
+           name = excluded.name, summary = excluded.summary,
            ministry = excluded.ministry, level = excluded.level, state = excluded.state,
            benefit = excluded.benefit, benefit_text = excluded.benefit_text,
            eligibility = excluded.eligibility, documents = excluded.documents,
@@ -145,8 +156,24 @@ export async function publish({ runId, schemes, sources = [] }) {
       );
     }
 
+    /**
+     * Resolve the ids the rows actually have.
+     *
+     * Conflicting on the slug means a scheme found on a better source keeps the
+     * id it already had, so the id in this crawl may not be the id in the table.
+     * Everything below references schemes by foreign key, so it has to use the
+     * stored id rather than the one we arrived with.
+     */
+    const stored = new Map();
+    for (const group of chunk(schemes.map((s) => s.slug), 500)) {
+      const { rows: found } = await client.query(
+        'select id, slug from schemes where slug = any($1)', [group]);
+      for (const r of found) stored.set(r.slug, r.id);
+    }
+    const idFor = (s) => stored.get(s.slug) ?? s.id;
+
     // Evidence is replaced wholesale: it describes this reading of the source.
-    const ids = schemes.map((s) => s.id);
+    const ids = schemes.map(idFor);
     for (const group of chunk(ids, 500)) {
       await client.query(
         'delete from scheme_criteria_evidence where scheme_id = any($1)', [group]);
@@ -160,7 +187,7 @@ export async function publish({ runId, schemes, sources = [] }) {
         // reading of the same field would otherwise collide.
         if (seen.has(e.field)) continue;
         seen.add(e.field);
-        evidenceRows.push([s.id, e.field, e.text]);
+        evidenceRows.push([idFor(s), e.field, e.text]);
       }
     }
     for (const group of chunk(evidenceRows, 1000)) {

@@ -16,6 +16,7 @@
  */
 
 import { checkUrl } from './lib/allowlist.js';
+import { renderPage, worthRetryingInBrowser } from './lib/browser.js';
 import { query, rows } from '../server/db.js';
 
 const USER_AGENT =
@@ -87,6 +88,23 @@ export async function checkLink(url) {
         const code = err.cause?.code || err.name || err.message;
         // A refused HEAD sometimes surfaces as a socket error; let GET decide.
         if (method === 'HEAD') continue;
+
+        /**
+         * A TLS chain Node cannot build is not a dead link.
+         *
+         * Several ministries omit their intermediate certificate. The crawler
+         * already reads those sites through a browser, which resolves the chain
+         * the way any visitor's browser does — but this checker did not, so it
+         * marked 32 perfectly good links dead and the site told students their
+         * scheme's page was not responding. Ask the browser before saying so.
+         */
+        if (worthRetryingInBrowser(err)) {
+          const rendered = await renderPage(target.href, { timeoutMs: 20000 });
+          if (rendered.ok) {
+            return { status: 'ok', detail: `HTTP ${rendered.status} (verified in a browser: TLS chain incomplete for Node)` };
+          }
+        }
+
         return {
           status: 'unreachable',
           detail: code === 'ENOTFOUND' ? 'host does not resolve' : String(code),

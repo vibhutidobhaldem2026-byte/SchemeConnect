@@ -288,16 +288,28 @@ try {
   }
 
   {
-    // The document checklist was decorative — no name, no form.
-    const detail = await student.get(`/schemes/${savedSchemeId}`);
+    /**
+     * Pick a scheme that actually lists documents.
+     *
+     * This used whatever the dashboard happened to show first, which is not
+     * guaranteed to have a documents section — so the test passed or failed
+     * depending on catalogue ordering. A test that is only sometimes right is
+     * worse than no test: it trains you to re-run rather than to look.
+     */
+    const withDocs = await one(
+      `select id from schemes
+        where retired_at is null and array_length(documents, 1) > 0
+        order by id limit 1`);
+    const checklistScheme = withDocs?.id ?? savedSchemeId;
+    const detail = await student.get(`/schemes/${checklistScheme}`);
     const label = detail.text.match(/name="have" value="([^"]+)"/)?.[1];
     if (label) {
       const token = detail.text.match(/name="_csrf" value="([^"]+)"/)[1];
-      await student.post(`/schemes/${savedSchemeId}/checklist`, { _csrf: token, have: label });
+      await student.post(`/schemes/${checklistScheme}/checklist`, { _csrf: token, have: label });
       const ticked = await one(
         `select have_it from document_checklist
           where user_id = (select id from users where identifier = 'ananya@e2e.test')
-            and scheme_id = $1`, [savedSchemeId]);
+            and scheme_id = $1`, [checklistScheme]);
       check('the document checklist persists a tick', ticked?.have_it === true);
     } else {
       check('the document checklist persists a tick', true, 'skipped — scheme lists no documents');

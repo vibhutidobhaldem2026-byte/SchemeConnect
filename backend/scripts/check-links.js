@@ -14,6 +14,7 @@ import path from 'node:path';
 import { ROOT } from '../config/paths.js';
 import { checkCatalogueLinks } from '../scraper/linkcheck.js';
 import { close, one } from '../server/db.js';
+import { closeBrowser, browserWasUsed } from '../scraper/lib/browser.js';
 import { log } from '../scraper/lib/log.js';
 
 try {
@@ -73,5 +74,6 @@ try {
   log.error(err.stack || err.message);
   process.exitCode = 1;
 } finally {
+  if (browserWasUsed()) await closeBrowser();
   await close();
 }
