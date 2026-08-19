@@ -124,7 +124,12 @@ export function studentNav(active) {
       ${raw(item('home', 'Home', '/dashboard'))}
       ${raw(item('browse', 'All schemes', '/schemes'))}
       ${raw(item('saved', 'Saved', '/saved'))}
-      ${raw(item('applied', 'Applied', '/applied'))}
+      <!-- "Applied" is temporarily removed. The tracker recorded nothing: the
+           click handler pinged POST /applied/:id with navigator.sendBeacon,
+           which sends no CSRF token, so every ping was refused with a 403 that
+           sendBeacon reports as success. Students saw an empty list after
+           applying. Restoring it needs the token sent with the ping and a way
+           to unmark, since opening a page to read it is not applying. -->
       ${raw(item('profile', 'My profile', '/profile'))}
       <div class="nav-spacer"></div>
       ${raw(item('terms', 'Terms', '/terms'))}

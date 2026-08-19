@@ -52,7 +52,7 @@ const LINK_LABEL = {
  * the matcher exists to make explicit.
  */
 const STUDENT_ONLY = [
-  '/onboarding', '/dashboard', '/saved', '/applied', '/profile',
+  '/onboarding', '/dashboard', '/saved', '/applied', '/profile',  // /applied only redirects now
   '/verify-documents', '/schemes',
 ];
 
@@ -282,9 +282,7 @@ router.get('/schemes/:id', async (req, res, next) => {
   const isStudent = Boolean(req.user && req.user.role === 'student');
   const profile = isStudent ? await store.getProfile(req.user.id) : {};
   const saved = isStudent ? await store.getSaved(req.user.id) : [];
-  const applied = isStudent ? await store.getApplied(req.user.id) : [];
   const isSaved = saved.includes(scheme.id);
-  const isApplied = applied.some((a) => a.schemeId === scheme.id);
   const checklist = isStudent ? await store.getChecklist(req.user.id, scheme.id) : {};
   const evaluation = isStudent && scheme.detailLevel === 'full' ? evaluateScheme(scheme, profile) : null;
   const days = daysUntil(scheme.deadline);
@@ -394,8 +392,7 @@ router.get('/schemes/:id', async (req, res, next) => {
 
           <div class="cta-row">
             <a class="btn-primary btn-inline ${LINK_BROKEN.has(scheme.applyUrlStatus) ? 'btn-muted' : ''}"
-               href="${scheme.applyUrl}" target="_blank" rel="noopener noreferrer"
-               data-mark-applied="${isStudent ? scheme.id : ''}">
+               href="${scheme.applyUrl}" target="_blank" rel="noopener noreferrer">
               ${LINK_BROKEN.has(scheme.applyUrlStatus)
                 ? 'Try the official page anyway ↗'
                 : 'Continue to official application ↗'}</a>
@@ -408,7 +405,6 @@ router.get('/schemes/:id', async (req, res, next) => {
           </div>
           <div class="apply-note">
             You'll complete and submit your application on the official government portal.
-            ${raw(isApplied ? '<br>You marked this as applied.' : '')}
           </div>
         </main>
       </div>`,
@@ -440,11 +436,6 @@ router.post('/saved/:id', async (req, res) => {
   res.redirect(req.get('referer') || '/saved');
 });
 
-router.post('/applied/:id', async (req, res) => {
-  await store.markApplied(req.user.id, req.params.id);
-  res.status(204).end();
-});
-
 router.get('/saved', async (req, res) => {
   const ids = await store.getSaved(req.user.id);
   const schemes = await getSchemes(ids);
@@ -466,41 +457,21 @@ router.get('/saved', async (req, res) => {
   }));
 });
 
-router.get('/applied', async (req, res) => {
-  const applied = await store.getApplied(req.user.id);
-  const all = await getSchemes(applied.map((a) => a.schemeId));
-
-  res.send(layout({
-    title: 'Applied',
-    body: html`
-      <div class="app-shell">
-        ${raw(studentNav('applied'))}
-        <main class="main-area">
-          <div class="greeting">Applied</div>
-          <div class="greeting-sub">
-            Schemes you told us you applied for. We cannot see your application status — that lives on the
-            government portal you applied through.
-          </div>
-          ${raw(applied.length ? html`
-            <div class="table-wrap">
-              <table>
-                <tr><th>Scheme</th><th>Marked on</th><th>Status</th></tr>
-                ${raw(applied.map((a) => {
-                  const s = all.find((x) => x.id === a.schemeId);
-                  return html`<tr>
-                    <td class="b">${s ? s.name : a.schemeId}</td>
-                    <td>${formatDate(a.markedAt)}</td>
-                    <td><span class="pill pill-pending">On government portal</span></td>
-                  </tr>`;
-                }).join(''))}
-              </table>
-            </div>` : emptyState('document', 'Nothing marked as applied',
-                'When you open a scheme\'s official application page, we mark it here so you can keep track.',
-                'certificate'))}
-        </main>
-      </div>`,
-  }));
-});
+/**
+ * The applied tracker is withdrawn for now.
+ *
+ * It never recorded anything. Opening a scheme's official page pinged this
+ * route with navigator.sendBeacon, which sends neither a body nor a CSRF
+ * header, so the CSRF check refused every ping with a 403 — and sendBeacon
+ * reports a queued request as success, so nothing surfaced anywhere. A student
+ * who applied to six schemes came back to an empty list.
+ *
+ * The redirect keeps old links and bookmarks working rather than 404ing them.
+ * Nothing is dropped from the database: the applications table and its store
+ * functions are untouched, so anything already recorded returns intact when the
+ * feature does.
+ */
+router.get('/applied', (req, res) => res.redirect('/saved'));
 
 // ------------------------------------------------------------- profile -----
 

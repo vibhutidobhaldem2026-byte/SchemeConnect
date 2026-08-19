@@ -308,17 +308,10 @@
     });
   }
 
-  // ------------------------------------------------- mark-applied ping ----
-  // Opening the official application marks the scheme as applied, so the
-  // student's "Applied" list reflects what they actually acted on.
-  var applyLink = document.querySelector('[data-mark-applied]');
-  if (applyLink && applyLink.getAttribute('data-mark-applied')) {
-    applyLink.addEventListener('click', function () {
-      var id = this.getAttribute('data-mark-applied');
-      if (navigator.sendBeacon) navigator.sendBeacon('/applied/' + id);
-      else fetch('/applied/' + id, { method: 'POST', keepalive: true });
-    });
-  }
+  // The mark-applied ping is removed with the Applied page. It never worked:
+  // sendBeacon sends no CSRF token, so the server refused every ping with a
+  // 403 — and sendBeacon reports a queued request as success, so the failure
+  // was invisible from the page and from the student.
 
   // ------------------------------------------ guided form: auto-advance ----
   // Selecting a radio on a single-question step moves straight on, which is
