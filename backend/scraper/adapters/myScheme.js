@@ -51,8 +51,24 @@ const NAV_TIMEOUT_MS = 45000;
 const CATEGORY_FILTERS = [
   'Education & Learning',
   'Skills & Employment',
-  'Women and Child',
-  'Social welfare & Empowerment',
+];
+
+/**
+ * Facets to combine with each category.
+ *
+ * The result list shows ten schemes and has no pager, so a filter is not a way
+ * to browse 1,110 education schemes — it is a way to cut them into slices small
+ * enough to read. Crossing the two categories with these gives a few dozen
+ * slices, and between them they reach far more of the catalogue than guessing
+ * at search words ever did. They are also the axes eligibility actually turns
+ * on, so each slice is a group of students we can serve.
+ */
+const CROSS_FILTERS = [
+  'Scheduled Caste (SC)', 'Scheduled Tribe (ST)', 'Other Backward Class (OBC)',
+  'General', 'Minority', 'Particularly Vulnerable Tribal Group',
+  'Female', 'Male', 'Transgender',
+  'Differently Abled', 'Below Poverty Line', 'Student',
+  'Rural', 'Urban',
 ];
 
 /** Terms that surface schemes a student could actually use. */
@@ -137,7 +153,9 @@ export async function discover(source) {
   const exhaust = async (page, label) => {
     await pause(2500);
     await readSlugs(page);
-    for (let step = 0; step < 40 && slugs.size < maxLinks; step++) {
+    // Two passes is enough: the list holds ten and has no pager, so anything
+    // beyond that is waiting for results that are not coming.
+    for (let step = 0; step < 2 && slugs.size < maxLinks; step++) {
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       await pause(1600);
       if ((await readSlugs(page)) === 0) break;
@@ -156,38 +174,53 @@ export async function discover(source) {
        * "Skills & Employment" carries the training and apprenticeship schemes a
        * student can also use.
        */
+      /**
+       * Tick one option by walking up from its label. Clicking the text alone
+       * hit whichever element matched first and toggled nothing.
+       */
+      const tick = (page, name) => page.evaluate((wanted) => {
+        const want = wanted.toLowerCase().slice(0, 18);
+        for (const box of document.querySelectorAll('input[type=checkbox]')) {
+          const label =
+            box.closest('label')?.innerText
+            || box.parentElement?.innerText
+            || box.getAttribute('aria-label')
+            || '';
+          if (label.toLowerCase().includes(want)) {
+            if (!box.checked) box.click();
+            return true;
+          }
+        }
+        return false;
+      }, name);
+
+      /** Wait for the list itself. networkidle never settles on this page. */
+      const openSearch = async (page) => {
+        await page.goto(`${ORIGIN}/search`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(
+          () => document.querySelectorAll('a[href*="/schemes/"]').length > 0,
+          { timeout: 30000 });
+        await pause(1200);
+      };
+
       for (const category of CATEGORY_FILTERS) {
         if (slugs.size >= maxLinks) break;
 
-        await page.goto(`${ORIGIN}/search`, { waitUntil: 'networkidle' });
-        await pause(2200);
-
-        // Click the checkbox that belongs to this category, found by walking
-        // up from its label text. Clicking the text alone hit whichever element
-        // happened to match first and toggled nothing.
-        const applied = await page.evaluate((name) => {
-          const wanted = name.toLowerCase().slice(0, 18);
-          for (const box of document.querySelectorAll('input[type=checkbox]')) {
-            const label =
-              box.closest('label')?.innerText
-              || box.parentElement?.innerText
-              || box.getAttribute('aria-label')
-              || '';
-            if (label.toLowerCase().includes(wanted)) {
-              if (!box.checked) box.click();
-              return true;
-            }
+        // The category on its own first, then crossed with each facet.
+        for (const cross of [null, ...CROSS_FILTERS]) {
+          if (slugs.size >= maxLinks) break;
+          try {
+            await openSearch(page);
+            if (!(await tick(page, category))) continue;
+            await pause(1500);
+            if (cross && !(await tick(page, cross))) continue;
+            await pause(2200);
+            await exhaust(page, `${category}${cross ? ' + ' + cross : ''}`);
+          } catch (err) {
+            log.debug(`      slice failed: ${String(err.message).split('\n')[0].slice(0, 50)}`);
           }
-          return false;
-        }, category);
-
-        if (!applied) {
-          log.debug(`      no filter control found for "${category}"`);
-          continue;
+          await pause(MIN_GAP_MS);
         }
-
-        await exhaust(page, category);
-        await pause(MIN_GAP_MS);
       }
 
       // Keyword passes still run, because the categories are assigned by the

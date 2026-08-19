@@ -136,6 +136,30 @@ To wire it up:
 from the blueprint. A service created through the dashboard ignores it, which is
 why pushes appeared to do nothing.
 
+### Keeping it awake
+
+A free Render service spins down after 15 minutes of no traffic and takes 30-60
+seconds to answer the next request. `.github/workflows/keep-awake.yml` pings
+`/healthz` every ten minutes during waking hours.
+
+It cannot be done from inside the app: a pinger in the same process spins down
+with it, so it would only ever ping a service that was already up. The request
+has to originate somewhere else.
+
+Waking hours rather than round the clock, because the budget is tight. A Render
+workspace gets 750 instance hours a calendar month and a 31-day month is 744, so
+staying up constantly leaves six hours of headroom and only works if nothing
+else free lives in that workspace. 04:00-19:00 UTC is 09:30-00:30 IST, costs
+about 496 hours, and covers every hour a student is plausibly awake.
+
+Set `PING_URL` under Settings → Secrets and variables → Actions → Variables.
+
+**Caveat worth knowing.** GitHub's scheduled workflows are best effort and get
+delayed under load — sometimes past the 15-minute idle window, which lets the
+service sleep anyway. An external monitor (UptimeRobot's free tier does five
+minute checks) fires on time and is the more reliable option; this workflow is
+the version that needs no third-party account.
+
 ### Migrations
 
 Plain `.sql` files in `migrations/`, applied in filename order, each in its own
