@@ -405,7 +405,7 @@ export async function extract(candidate) {
   // text is listing coverage, which makes it central.
   const state = !callsItselfNational && named.length === 1 ? named[0] : null;
 
-  const extracted = extractAll(rawText);
+  const extracted = extractAll(rawText, { name: data.name });
 
   const scheme = toScheme({
     name: data.name,

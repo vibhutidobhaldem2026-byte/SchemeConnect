@@ -329,7 +329,7 @@ export async function extract(candidate) {
     ? candidate.title
     : headings.find((h) => h.level <= 2 && h.text.length > 10)?.text || getTitle(res.body);
 
-  const extracted = extractAll(text);
+  const extracted = extractAll(text, { name: candidate.title || getTitle(res.body) });
   const summary = getMetaDescription(res.body)
     || extracted.evidence.find((e) => e.field === 'benefit')?.text
     || fullText.slice(0, 300);

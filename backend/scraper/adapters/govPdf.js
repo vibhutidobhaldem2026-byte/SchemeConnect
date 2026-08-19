@@ -63,8 +63,10 @@ export async function extract(candidate) {
     return { scheme: null, error: `PDF text too short (${text.length} chars) — likely a scanned image` };
   }
 
-  const extracted = extractAll(text);
+  // The name has to be worked out before extraction, because a title stating
+  // the scheme is for disabled students is itself the eligibility rule.
   const name = nameFromText(text, candidate.title);
+  const extracted = extractAll(text, { name });
 
   const scheme = toScheme({
     name,

@@ -13,6 +13,7 @@
 import {
   extractIncomeCeiling, extractCategories, extractGender, extractCourseLevels,
   extractMinMarks, extractDeadline, extractDocuments, parseIndianAmount, extractBenefit,
+  extractDisability,
 } from '../scraper/lib/extract.js';
 import { looksEducational, validateScheme } from '../scraper/lib/normalize.js';
 import { stateFromLabel } from '../scraper/adapters/nspIndex.js';
@@ -202,6 +203,45 @@ console.log('\n--- NSP writes state names its own way ---');
 
   // A label we cannot place must not be guessed at.
   t('an unknown domicile is left unset', stateFromLabel('State of Atlantis'), null);
+}
+
+console.log('\n--- a scheme title states who it is for ---');
+{
+  // Seventeen of twenty disability schemes and fourteen of twenty girl-only
+  // schemes were being shown to every student, because the restriction was
+  // stated in the title and only the body was ever read.
+  const disab = (text, name) => Boolean(extractDisability(text, name)?.disabilityRequired);
+  for (const n of [
+    'AICTE - Saksham Scholarship Scheme For Specially Abled Student',
+    'Post Matric Scholarship for Students with Disabilities',
+    'Coaching Scheme for Divyang Students',
+    'State Scholarship Schemes For Divyangjan (Class 11 And 12)',
+    'Scholarship to Disabled Students',
+  ]) t(`disability: ${n.slice(0, 42)}`, disab('', n), true);
+
+  for (const n of [
+    'AICTE Pragati Scholarship Scheme for Girl Students',
+    'Post-Matric Scholarship for SC Students',
+  ]) t(`not disability: ${n.slice(0, 38)}`, disab('', n), false);
+
+  // A mention in a list of reserved categories is not a restriction. Reading it
+  // as one hides the scheme from everyone else, which is the worse error.
+  t('a PwD quota mention is not a requirement',
+    disab('Reservation is provided for SC, ST, OBC and PwD students as per norms.',
+      'Some Scholarship Scheme'), false);
+  t('but an exclusive statement in prose still counts',
+    disab('This scholarship is meant for students with disabilities only.',
+      'Some Scholarship Scheme'), true);
+
+  const gender = (n) => extractGender('', n)?.gender?.[0] ?? null;
+  for (const [n, want] of [
+    ['Special scholarship for Girls', 'Female'],
+    ['Kanya Saksharta Protsahan Yojana', 'Female'],          // kanya = girl
+    ['Mukhya Mantri Mahila Sashaktikaran Yojana', 'Female'], // mahila = woman
+    ['Post-Matric Scholarship for SC Students', null],
+    ['Scholarship for boys and girls of the district', null],
+    ['Beti Bachao Beti Padhao awareness programme', null],
+  ]) t(`gender: ${n.slice(0, 42)}`, gender(n), want);
 }
 
 console.log(`\n=== ${pass} passed, ${fail} failed ===\n`);

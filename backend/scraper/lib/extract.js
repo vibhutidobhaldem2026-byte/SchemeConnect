@@ -119,7 +119,30 @@ const EXCLUSIVITY =
 
 const MIXED_GENDER = /\bboth\b|\bboys?\s+and\s+girls?\b|\bgirls?\s+and\s+boys?\b|\bmale\s+and\s+female\b|\bfemale\s+and\s+male\b|\ball\s+genders?\b/i;
 
-export function extractGender(text) {
+/**
+ * Gender stated in the scheme's own title.
+ *
+ * The English words are unambiguous in a name — "Special Scholarship for
+ * Girls" is not a quota sentence, it is the scheme saying who it is for. The
+ * Hindi ones are the ones that were being missed entirely: kanya, balika,
+ * chhatra and kishori all mean a girl, mahila means a woman, and a great many
+ * state schemes are named that way and nothing else. Fourteen of twenty
+ * girl-only schemes were being offered to male students because the title was
+ * the only place it said so.
+ *
+ * "Nari" and "beti" are deliberately absent — beti appears in Beti Bachao Beti
+ * Padhao, an awareness programme whose scholarship components are not
+ * girl-only, and a wrong flag here hides a scheme from half its applicants.
+ */
+const FEMALE_NAME =
+  /\b(girls?|female|women|woman|kanya|balika|kishori|mahila|chhatra|chatra|vidhwa|widow)\b/i;
+const MALE_NAME = /\b(boys?|male|men)\b/i;
+
+export function extractGender(text, name = '') {
+  if (name && !MIXED_GENDER.test(name)) {
+    if (FEMALE_NAME.test(name)) return { gender: ['Female'], evidence: name };
+    if (MALE_NAME.test(name)) return { gender: ['Male'], evidence: name };
+  }
   for (const s of sentences(text)) {
     if (QUOTA_LANGUAGE.test(s)) continue; // a quota is not a restriction
     if (MIXED_GENDER.test(s)) continue;
@@ -135,10 +158,52 @@ export function extractGender(text) {
   return null;
 }
 
-/** Whether the scheme is specifically for students with disabilities. */
-export function extractDisability(text) {
+/**
+ * Ways a government scheme says "disabled".
+ *
+ * The list was half this length and missing the phrasing the schemes actually
+ * use: it knew "differently abled" but not "specially abled", which is how
+ * AICTE names Saksham, and did not recognise "students with disabilities" at
+ * all, which is how the whole post-matric family is titled.
+ */
+const DISABILITY_WORDS = new RegExp([
+  'persons?\\s+with\\s+disabilit',
+  'students?\\s+with\\s+disabilit',
+  'specially[\\s-]abled',
+  'differently[\\s-]abled',
+  'divyang(jan)?',
+  'disabled\\s+(students?|persons?|candidates?|children)',
+  // "State Post-metric Scholarship For Disabled" — no noun after it.
+  'for\\s+(the\\s+)?disabled\\b',
+  'handicapped',
+  'benchmark\\s+disabilit',
+  'pwd\\s+students?',
+  'visually\\s+impaired',
+  'hearing\\s+impaired',
+].join('|'), 'i');
+
+/**
+ * Whether the scheme is specifically for students with disabilities.
+ *
+ * Two different questions, answered differently.
+ *
+ * In the body of a page, a mention of disability usually is not a restriction —
+ * it is one entry in a list of reserved categories, and treating it as a
+ * requirement would hide the scheme from everyone else. So prose still has to
+ * say so exclusively.
+ *
+ * A name is not prose. "Post Matric Scholarship for Students with Disabilities"
+ * is the scheme describing who it is for, and needs no further qualifier. That
+ * distinction is the whole fix: seventeen of twenty disability schemes carried
+ * no flag and were being offered to every student, because the restriction was
+ * stated in the title and we only ever read the body.
+ */
+export function extractDisability(text, name = '') {
+  if (name && DISABILITY_WORDS.test(name)) {
+    return { disabilityRequired: true, evidence: name };
+  }
   for (const s of sentences(text)) {
-    if (/\b(persons?\s+with\s+disabilit|divyang|differently[\s-]abled|pwd\s+students?|visually\s+impaired|hearing\s+impaired)\b/i.test(s)) {
+    if (DISABILITY_WORDS.test(s)) {
       if (/\bonly\b|\bexclusively\b|\bmeant\s+for\b|\bfor\s+students?\s+with\b/i.test(s)) {
         return { disabilityRequired: true, evidence: s };
       }
@@ -311,7 +376,7 @@ export function extractMinistry(text) {
  * Runs every extractor and returns structured eligibility plus the evidence
  * sentences and a confidence score based on how much we actually recognised.
  */
-export function extractAll(text) {
+export function extractAll(text, { name = '' } = {}) {
   const evidence = [];
   const record = (result, key) => {
     if (result?.evidence) evidence.push({ field: key, text: result.evidence });
@@ -320,8 +385,8 @@ export function extractAll(text) {
 
   const income = record(extractIncomeCeiling(text), 'maxFamilyIncome');
   const categories = record(extractCategories(text), 'categories');
-  const gender = record(extractGender(text), 'gender');
-  const disability = record(extractDisability(text), 'disabilityRequired');
+  const gender = record(extractGender(text, name), 'gender');
+  const disability = record(extractDisability(text, name), 'disabilityRequired');
   const levels = record(extractCourseLevels(text), 'courseLevels');
   const marks = record(extractMinMarks(text), 'minMarksPercent');
   const states = record(extractStates(text), 'states');

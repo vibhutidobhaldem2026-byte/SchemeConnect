@@ -264,7 +264,7 @@ let pdftotext = null;
  * A failure here is not an error. The row already stands on its own, so a PDF
  * that is missing, scanned, or slow simply leaves the scheme where it was.
  */
-async function criteriaFromGuidelines(url) {
+async function criteriaFromGuidelines(url, name = '') {
   if (!url || !/\.pdf($|\?)/i.test(url)) return null;
   pdftotext ??= await isPdfToTextAvailable();
   if (!pdftotext) return null;
@@ -276,7 +276,7 @@ async function criteriaFromGuidelines(url) {
     // Under a few hundred characters it is a scan, and running the extractors
     // over the handful of words OCR-free parsing found would invent criteria.
     if (error || !text || text.length < 400) return null;
-    return { text, extracted: extractAll(text) };
+    return { text, extracted: extractAll(text, { name }) };
   } catch {
     return null;
   }
@@ -290,7 +290,7 @@ export async function extract(candidate) {
   const closesAt = toIsoDate(/Open\s*till\s*:?\s*([\d-]+)/i.exec(block.body)?.[1]);
 
   let text = `${block.name}. ${block.body}`;
-  let extracted = extractAll(text);
+  let extracted = extractAll(text, { name: block.name });
 
   /**
    * The row's dates outrank the PDF's.
@@ -299,7 +299,7 @@ export async function extract(candidate) {
    * drafted; the portal's own window is the operational date, updated every
    * season. So the PDF supplies eligibility and the row keeps the deadline.
    */
-  const guidelines = await criteriaFromGuidelines(candidate.applyUrl);
+  const guidelines = await criteriaFromGuidelines(candidate.applyUrl, block.name);
   if (guidelines) {
     text = `${block.name}. ${guidelines.text}`;
     extracted = guidelines.extracted;
