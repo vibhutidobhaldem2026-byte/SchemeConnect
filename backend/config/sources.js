@@ -20,7 +20,7 @@ export const SOURCES = [
     url: 'https://www.myscheme.gov.in/search',
     label: 'myScheme — Government of India scheme directory',
     level: 'central',
-    maxLinks: 220,
+    maxLinks: 400,
     enabled: true,
     // The ministry sites publish a scheme once and let the page rot; of 123
     // links harvested that way only 17 still resolved. This directory is
@@ -77,6 +77,33 @@ export const SOURCES = [
     enabled: true,
     // Replaces disabilityaffairs.gov.in, whose certificate has expired. This is
     // the same department, and its robots.txt permits everything but /wp-admin.
+  },
+  {
+    id: 'dbt-bharat',
+    adapter: 'dbt-bharat',
+    url: 'https://dbtbharat.gov.in/central-scheme/list',
+    label: 'DBT Bharat — central scheme register',
+    level: 'central',
+    maxLinks: 120,
+    enabled: true,
+    // A register rather than a department site: it names the scheme and links
+    // the page the owning ministry publishes it on, which is how we reach
+    // research-council domains no scholarship directory lists.
+  },
+  {
+    id: 'nsp-directory',
+    adapter: 'nsp-index',
+    url: 'https://scholarships.gov.in/All-Scholarships',
+    label: 'National Scholarship Portal — full scheme directory',
+    level: 'central',
+    // Roughly 300 rows across 13 departments and 24 states, and dedupe takes
+    // out a good share of that. Set high enough not to be the thing that
+    // decides what we carry.
+    maxLinks: 400,
+    enabled: true,
+    // The only source that states an application window, and the only one that
+    // enumerates state schemes at all — they sit behind a form, on no
+    // crawlable URL, which is why the catalogue was almost entirely central.
   },
   {
     id: 'nsp-home',

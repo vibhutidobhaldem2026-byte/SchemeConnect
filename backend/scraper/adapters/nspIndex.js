@@ -15,6 +15,7 @@
  */
 
 import { govFetch } from '../lib/httpClient.js';
+import { STATES } from '../lib/extract.js';
 import { checkUrl } from '../lib/allowlist.js';
 import { htmlToText } from '../lib/html.js';
 import { extractAll } from '../lib/extract.js';
@@ -71,6 +72,84 @@ function splitBlocks(html) {
 
 const SCHEME_NAME = /scholarship|fellowship|scheme|stipend|yojana|vriti/i;
 
+/**
+ * The three form endpoints that hold the rest of the catalogue.
+ *
+ * The landing page shows a sample. The full directory is only reachable by
+ * submitting its own filters, so there is no URL to crawl: the department and
+ * domicile forms ARE the index. Posting them is how a visitor sees the list,
+ * which is why it is worth doing — and it is where every state scheme lives.
+ */
+const FORMS = [
+  { path: '/allschemesdepartment', field: 'ministryiddept', kind: 'central' },
+  { path: '/allschemesdomicile', field: 'stateidschems', kind: 'state' },
+];
+
+/**
+ * Reads the filter options the page itself offers.
+ *
+ * Hardcoding the ids would rot the moment NSP onboards a state — and it does,
+ * every year. The page lists them, so we read them.
+ *
+ * @returns {{value: string, label: string, isState: boolean}[]}
+ */
+function formOptions(html) {
+  const out = new Map();
+  const re = /<option[^>]*value="(\d+)"[^>]*>([^<]{2,80})<\/option>/gi;
+  let m;
+  while ((m = re.exec(html))) {
+    const label = htmlToText(m[2]).replace(/\s+/g, ' ').trim();
+    if (!label || /choose|select/i.test(label)) continue;
+    out.set(m[1], { value: m[1], label, isState: /^(State of|UT of)\b/i.test(label) });
+  }
+  return [...out.values()];
+}
+
+/**
+ * Turns NSP's own label into a state we actually recognise.
+ *
+ * Their spellings are not ours — "State of Chattisgarh" is missing an h, and
+ * the Daman and Diu merger is written the long way round. A label we cannot
+ * place returns null rather than a guess, because a scheme filed under the
+ * wrong state is worse than one filed under none: it would be offered to
+ * students who cannot apply for it.
+ */
+export function stateFromLabel(label) {
+  const bare = String(label).replace(/^(State of|UT of)\s+/i, '').trim();
+
+  // Compare on words, not on the raw string. NSP writes the merged UT as
+  // "The Dadra Nagar Haveli and Daman and Diu" where we write "Dadra and
+  // Nagar Haveli and Daman and Diu" — the same place, one "and" apart. Joining
+  // the letters would also have to drop "and" from "Andaman", so the filler
+  // words are dropped as whole tokens or not at all.
+  const norm = (v) => String(v).toLowerCase().split(/[^a-z]+/i)
+    .filter((w) => w && w !== 'and' && w !== 'the').join('');
+
+  const target = norm(bare);
+  const exact = STATES.find((s) => norm(s) === target);
+  if (exact) return exact;
+
+  // "Chattisgarh" for "Chhattisgarh": theirs is simply misspelt, and an h is
+  // the only difference, so ignoring h alone settles it without loosening the
+  // comparison enough to confuse two real states.
+  const loose = STATES.find((s) => norm(s).replace(/h/g, '') === target.replace(/h/g, ''));
+  return loose ?? null;
+}
+
+/** Submits one filter and returns the scheme blocks it answers with. */
+async function postForm(baseUrl, form, option, cookie) {
+  const url = new URL(form.path, baseUrl).href;
+  const res = await govFetch(url, {
+    method: 'POST',
+    form: { [form.field]: option.value },
+    cookie,
+    useCache: false,
+    minDelayMs: 1200,
+  });
+  if (!res.ok) return [];
+  return splitBlocks(res.body).filter((b) => SCHEME_NAME.test(b.name));
+}
+
 export async function discover(source) {
   const check = checkUrl(source.url);
   if (!check.ok) return { candidates: [], error: `source blocked: ${check.reason}` };
@@ -83,13 +162,56 @@ export async function discover(source) {
   }
   if (!res.ok) return { candidates: [], error: `HTTP ${res.status}` };
 
-  const blocks = splitBlocks(res.body).filter((b) => SCHEME_NAME.test(b.name));
+  const indexBlocks = splitBlocks(res.body).filter((b) => SCHEME_NAME.test(b.name));
+
+  /**
+   * Walk the filters as well as the page.
+   *
+   * The landing page is a shop window — a few dozen schemes out of a directory
+   * of several hundred. Every state scheme on NSP sits behind the domicile
+   * filter and appears on no crawlable URL at all, which is why the catalogue
+   * had one state in it for so long. One request per option, paced like any
+   * other host, buys the rest.
+   */
+  const cookie = (res.setCookie ?? []).map((c) => c.split(';')[0]).join('; ') || null;
+  const options = formOptions(res.body);
+  const found = [{ blocks: indexBlocks, level: source.level ?? 'central', state: source.state ?? null }];
+
+  for (const form of FORMS) {
+    const wanted = options.filter((o) => o.isState === (form.kind === 'state'));
+    for (const option of wanted) {
+      let blocks;
+      try {
+        blocks = await postForm(res.url, form, option, cookie);
+      } catch (err) {
+        log.warn(`  ${option.label}: ${err.message}`);
+        continue;
+      }
+      if (form.kind === 'state') {
+        const state = stateFromLabel(option.label);
+        if (!state) {
+          // Better to skip than to file it under a state we invented.
+          log.warn(`  no match for "${option.label}" in our state list — skipped`);
+          continue;
+        }
+        found.push({ blocks, level: 'state', state });
+        log.debug(`  ${state}: ${blocks.length} scheme(s)`);
+      } else {
+        found.push({ blocks, level: 'central', state: null });
+        log.debug(`  ${option.label}: ${blocks.length} scheme(s)`);
+      }
+    }
+  }
+
+  const total = found.reduce((n, f) => n + f.blocks.length, 0);
+  log.info(`  read ${options.length} filter(s) on NSP's own form — ${total} row(s) before dedupe`);
 
   // Each block becomes a scheme in its own right. The href is kept so the
   // guideline PDF can be linked, but the row is what carries the dates.
   const seen = new Set();
   const candidates = [];
-  for (const block of blocks) {
+  for (const group of found) {
+   for (const block of group.blocks) {
     const key = block.name.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
@@ -106,8 +228,8 @@ export async function discover(source) {
       url: source.url,
       title: block.name,
       isPdf: false,
-      level: source.level ?? 'central',
-      state: source.state ?? null,
+      level: group.level,
+      state: group.state,
       sourceId: source.id,
       // Everything this adapter needs is already in hand; extract() does no
       // further fetching, which is why the whole index costs one request.
@@ -115,9 +237,10 @@ export async function discover(source) {
       applyUrl,
       fetchedAt: res.fetchedAt,
     });
+   }
   }
 
-  log.info(`  ${candidates.length} scheme row(s) on the index, with application windows`);
+  log.info(`  ${candidates.length} distinct scheme row(s), with application windows`);
   return {
     candidates: candidates.slice(0, source.maxLinks ?? 60),
     listings: [],

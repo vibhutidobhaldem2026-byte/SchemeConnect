@@ -67,12 +67,32 @@ export async function govFetch(rawUrl, options = {}) {
     useCache = true,
     cacheTtlMs = 1000 * 60 * 60 * 12,
     accept = binary ? 'application/pdf,*/*' : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    method = 'GET',
+    form = null,
+    cookie = null,
   } = options;
+
+  /**
+   * A few portals only answer a POST.
+   *
+   * NSP's scheme directory is one: the whole catalogue sits behind three form
+   * endpoints and there is no URL that lists it. Routing that through here
+   * rather than a bare fetch in the adapter is deliberate — this function is
+   * the one place that checks the host is a government domain, honours
+   * robots.txt and paces requests, and a source that skipped it would quietly
+   * skip all three.
+   *
+   * The response is never cached. The cache is keyed by URL alone, so two
+   * POSTs to the same endpoint with different bodies would read each other's
+   * answers — every ministry returning whichever one ran first.
+   */
+  const isPost = method.toUpperCase() === 'POST';
+  const cacheable = useCache && !isPost;
 
   const url = assertAllowed(rawUrl); // hard boundary — throws on non-gov hosts
   const host = url.hostname;
 
-  if (useCache) {
+  if (cacheable) {
     const cached = await readCache(url.href, { binary, maxAgeMs: cacheTtlMs });
     if (cached) {
       return { ...cached, fromCache: true, ok: true, url: url.href };
@@ -95,13 +115,17 @@ export async function govFetch(rawUrl, options = {}) {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeoutMs);
       try {
-        log.debug(`GET ${url.href}${attempt > 1 ? ` (attempt ${attempt})` : ''}`);
+        log.debug(`${method} ${url.href}${attempt > 1 ? ` (attempt ${attempt})` : ''}`);
         const res = await fetch(url.href, {
+          method,
           headers: {
             'user-agent': USER_AGENT,
             accept,
             'accept-language': 'en-IN,en;q=0.9,hi;q=0.8',
+            ...(form ? { 'content-type': 'application/x-www-form-urlencoded' } : {}),
+            ...(cookie ? { cookie } : {}),
           },
+          body: form ? new URLSearchParams(form).toString() : undefined,
           signal: controller.signal,
           redirect: 'follow',
         });
@@ -130,8 +154,9 @@ export async function govFetch(rawUrl, options = {}) {
           ? Buffer.from(await res.arrayBuffer())
           : await res.text();
 
-        const result = { ok: true, status: res.status, url: res.url || url.href, body, contentType, fromCache: false, fetchedAt };
-        if (useCache) await writeCache(url.href, result, { binary });
+        const setCookie = res.headers.getSetCookie?.() ?? [];
+        const result = { ok: true, status: res.status, url: res.url || url.href, body, contentType, fromCache: false, fetchedAt, setCookie };
+        if (cacheable) await writeCache(url.href, result, { binary });
         return result;
       } catch (err) {
         clearTimeout(timer);

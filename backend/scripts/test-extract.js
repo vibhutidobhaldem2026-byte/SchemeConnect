@@ -15,6 +15,7 @@ import {
   extractMinMarks, extractDeadline, extractDocuments, parseIndianAmount, extractBenefit,
 } from '../scraper/lib/extract.js';
 import { looksEducational, validateScheme } from '../scraper/lib/normalize.js';
+import { stateFromLabel } from '../scraper/adapters/nspIndex.js';
 
 let pass = 0, fail = 0;
 function t(name, actual, expected) {
@@ -182,6 +183,26 @@ for (const name of [
   'Pre-Matric Scholarship Scheme for ST students',
   'AICTE Pragati Scholarship Scheme for Girl Students',
 ]) t('kept: ' + name.slice(0, 40), notScheme(name), false);
+
+console.log('\n--- NSP writes state names its own way ---');
+{
+  // NSP labels its domicile filter differently from our canonical list, and
+  // getting this wrong is not cosmetic: a scheme filed under the wrong state
+  // is offered to students who cannot apply for it. The Andaman case is the
+  // trap — dropping the letters "and" to reconcile the Dadra/Daman spelling
+  // would also eat the start of "Andaman".
+  for (const [label, expected] of [
+    ['State of Tripura', 'Tripura'],
+    ['State of Chattisgarh', 'Chhattisgarh'],              // theirs is misspelt
+    ['UT of The Dadra Nagar Haveli and Daman and Diu', 'Dadra and Nagar Haveli and Daman and Diu'],
+    ['UT of Andaman and Nicobar Islands', 'Andaman and Nicobar Islands'],
+    ['UT of Jammu and Kashmir', 'Jammu and Kashmir'],
+    ['State of West Bengal', 'West Bengal'],
+  ]) t(`${label.slice(0, 40)} -> ${expected.slice(0, 24)}`, stateFromLabel(label), expected);
+
+  // A label we cannot place must not be guessed at.
+  t('an unknown domicile is left unset', stateFromLabel('State of Atlantis'), null);
+}
 
 console.log(`\n=== ${pass} passed, ${fail} failed ===\n`);
 process.exitCode = fail ? 1 : 0;
