@@ -714,7 +714,7 @@ export async function importBatch(batchId, { mapping, students, runId }) {
 }
 
 /** One page of a batch's students, searched in SQL rather than in memory. */
-export async function listBatchStudents(instituteId, { q = '', limit = 100, offset = 0 } = {}) {
+export async function listBatchStudents(instituteId, { q = '', batchId = null, limit = 100, offset = 0 } = {}) {
   const term = q.trim();
   return toCamelAll(await rows(
     `select bs.id, bs.batch_id, bs.name, bs.external_id, bs.match_count,
@@ -724,19 +724,25 @@ export async function listBatchStudents(instituteId, { q = '', limit = 100, offs
        join batches b on b.id = bs.batch_id
       where b.institute_id = $1 and b.status = 'imported'
         and ($2 = '' or bs.name ilike '%' || $2 || '%')
+        -- Compared as text on purpose. The id arrives from a query string, and
+        -- casting the parameter to uuid would turn "?batch=nonsense" into a
+        -- 500 rather than an empty list. The institute is still matched above,
+        -- so naming another institute's batch finds nothing either way.
+        and ($5::text is null or b.id::text = $5)
       order by bs.match_count desc nulls last, bs.name
       limit $3 offset $4`,
-    [instituteId, term, limit, offset]
+    [instituteId, term, limit, offset, batchId]
   ));
 }
 
-export async function countBatchStudents(instituteId, { q = '' } = {}) {
+export async function countBatchStudents(instituteId, { q = '', batchId = null } = {}) {
   const row = await one(
     `select count(*)::int as n
        from batch_students bs join batches b on b.id = bs.batch_id
       where b.institute_id = $1 and b.status = 'imported'
-        and ($2 = '' or bs.name ilike '%' || $2 || '%')`,
-    [instituteId, q.trim()]
+        and ($2 = '' or bs.name ilike '%' || $2 || '%')
+        and ($3::text is null or b.id::text = $3)`,
+    [instituteId, q.trim(), batchId]
   );
   return row.n;
 }

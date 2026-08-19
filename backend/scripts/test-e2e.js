@@ -460,6 +460,36 @@ try {
   }
 
   {
+    // The Batches tab used to redirect to the overview, so it appeared to do
+    // nothing and never highlighted. Nothing covered it, which is why nobody
+    // noticed until a coordinator tried to open a batch.
+    const batches = await institute.get('/institute/batches');
+    check('the batches tab renders its own page',
+      batches.status === 200 && !batches.text.includes('Back to batches'), `status ${batches.status}`);
+    check('the batches page lists the uploaded batch', batches.text.includes('batch.csv')
+      || /<td class="b">/.test(batches.text), 'no batch row');
+
+    const href = batches.text.match(/\/institute\/students\?batch=([0-9a-f-]{36})/)?.[1];
+    check('each batch row links to that batch', Boolean(href), 'no batch link');
+
+    if (href) {
+      const scoped = await institute.get(`/institute/students?batch=${href}`);
+      check('opening a batch shows its students',
+        scoped.status === 200 && scoped.text.includes('Priya Das'));
+
+      const scopedSearch = await institute.get(`/institute/students?batch=${href}&q=Arun`);
+      check('search still narrows inside a batch',
+        scopedSearch.text.includes('Arun Bora') && !scopedSearch.text.includes('Priya Das'));
+    }
+
+    // The id comes off a query string, so it has to survive nonsense without a
+    // 500 — and must never widen the list to every batch.
+    const junk = await institute.get('/institute/students?batch=not-a-uuid');
+    check('a malformed batch id shows nothing rather than everything',
+      junk.status === 200 && !junk.text.includes('Priya Das'), `status ${junk.status}`);
+  }
+
+  {
     // The privacy wall the terms promise.
     const list = await institute.get('/institute/students');
     check('the coordinator view does not leak a raw income figure',

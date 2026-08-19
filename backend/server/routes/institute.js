@@ -98,8 +98,9 @@ router.get('/', async (req, res) => {
                 ${raw(batches.map((b) => {
                   const n = b.studentCount;
                   const m = b.matchedCount;
-                  return html`<tr class="clickable" data-href="/institute/students">
-                    <td class="b"><a class="row-link" href="/institute/students">${b.label}</a></td>
+                  const href = `/institute/students?batch=${encodeURIComponent(b.id)}`;
+                  return html`<tr class="clickable" data-href="${href}">
+                    <td class="b"><a class="row-link" href="${href}">${b.label}</a></td>
                     <td>${n}</td>
                     <td>${n ? Math.round((m / n) * 100) : 0}%</td>
                     <td>${formatDate(b.createdAt)}</td>
@@ -368,17 +369,29 @@ const PAGE_SIZE = 100;
 router.get('/students', async (req, res) => {
   const inst = await institute(req);
   const q = String(req.query.q || '').trim();
+  const batchId = String(req.query.batch || '').trim() || null;
   const page = Math.max(1, Number(req.query.page) || 1);
   const offset = (page - 1) * PAGE_SIZE;
+
+  // Named so the heading can say which batch is being shown. A batch id that is
+  // not this institute's simply finds nothing, because the lookup is scoped to
+  // them — the same reason the student query is.
+  const batches = await store.batchSummaries(inst.id);
+  const batch = batchId ? batches.find((b) => b.id === batchId) ?? null : null;
 
   // Searched and paged in SQL. This used to flatten every batch into memory and
   // filter the array, which meant loading every student to show a hundred.
   const [students, total, stale] = await Promise.all([
-    store.listBatchStudents(inst.id, { q, limit: PAGE_SIZE, offset }),
-    store.countBatchStudents(inst.id, { q }),
+    store.listBatchStudents(inst.id, { q, batchId, limit: PAGE_SIZE, offset }),
+    store.countBatchStudents(inst.id, { q, batchId }),
     store.staleBatchCount(inst.id),
   ]);
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  // Carried on the paging links. Without the batch, page two of one batch
+  // quietly showed every student the institute has.
+  const keep = (q ? `&q=${encodeURIComponent(q)}` : '')
+    + (batchId ? `&batch=${encodeURIComponent(batchId)}` : '');
 
   res.send(layout({
     title: 'Students',
@@ -386,15 +399,24 @@ router.get('/students', async (req, res) => {
       <div class="app-shell">
         ${raw(instituteNav('students'))}
         <main class="main-area">
-          <a class="link-back" href="/institute">← Back to overview</a>
-          <div class="greeting" style="font-size:22px;">Students</div>
+          <a class="link-back" href="${batch ? '/institute/batches' : '/institute'}">
+            ← Back to ${batch ? 'batches' : 'overview'}</a>
+          <div class="greeting" style="font-size:22px;">${batch ? batch.label : 'Students'}</div>
           <div class="greeting-sub">
-            Everyone from your uploaded batches, with the details you supplied and what each of them matched.
-            Open a student to see the schemes and the reasons.
+            ${batch
+              ? html`The ${total} student${total === 1 ? '' : 's'} in this batch, with the details you supplied
+                     and what each of them matched. Open a student to see the schemes and the reasons.`
+              : html`Everyone from your uploaded batches, with the details you supplied and what each of them
+                     matched. Open a student to see the schemes and the reasons.`}
           </div>
+
+          ${raw(batch ? html`<div style="margin:10px 0 2px;">
+            <a class="btn-outline-sm" href="/institute/students">Show every batch</a>
+          </div>` : '')}
 
           <form class="search-bar" method="get" action="/institute/students">
             ${raw(navIcon('browse'))}
+            ${raw(batchId ? html`<input type="hidden" name="batch" value="${batchId}">` : '')}
             <input name="q" value="${q}" placeholder="Search by name or student ID">
             <button type="submit">Search</button>
           </form>
@@ -422,8 +444,8 @@ router.get('/students', async (req, res) => {
             </div>
             <div class="foot-note" style="display:flex;gap:14px;align-items:center;margin-top:14px">
               <span>${total} student${total === 1 ? '' : 's'}${q ? ` matching “${q}”` : ''} · page ${page} of ${pages}</span>
-              ${raw(page > 1 ? html`<a href="/institute/students?page=${page - 1}${q ? `&q=${encodeURIComponent(q)}` : ''}">← Previous</a>` : '')}
-              ${raw(page < pages ? html`<a href="/institute/students?page=${page + 1}${q ? `&q=${encodeURIComponent(q)}` : ''}">Next →</a>` : '')}
+              ${raw(page > 1 ? html`<a href="/institute/students?page=${page - 1}${keep}">← Previous</a>` : '')}
+              ${raw(page < pages ? html`<a href="/institute/students?page=${page + 1}${keep}">Next →</a>` : '')}
             </div>` : emptyState('students', q ? 'No students match that search' : 'No students yet',
               q ? 'Try a different name or student ID.'
                 : 'Upload a batch and every student in it will appear here with their details and match count.'))}
@@ -529,7 +551,73 @@ router.get('/students/:studentId', async (req, res, next) => {
   }));
 });
 
-router.get('/batches', (req, res) => res.redirect('/institute'));
+/**
+ * The batches list.
+ *
+ * This was a redirect back to the overview, so the Batches tab in the sidebar
+ * appeared to do nothing at all — it never even highlighted, because you were
+ * bounced off it before the page rendered. A coordinator with several intakes
+ * had no way to look at one of them.
+ */
+router.get('/batches', async (req, res) => {
+  const inst = await institute(req);
+  const batches = await store.batchSummaries(inst.id);
+  const totalStudents = batches.reduce((n, b) => n + b.studentCount, 0);
+  const matchedStudents = batches.reduce((n, b) => n + b.matchedCount, 0);
+
+  res.send(layout({
+    title: 'Batches',
+    body: html`
+      <div class="app-shell">
+        ${raw(instituteNav('batches'))}
+        <main class="main-area">
+          <a class="link-back" href="/institute">← Back to overview</a>
+          <div class="greeting" style="font-size:22px;">Batches</div>
+          <div class="greeting-sub">
+            Every student list you have uploaded. Open one to see just that batch's students
+            and what each of them matched.
+          </div>
+
+          <div class="stat-row" style="margin:18px 0 8px;">
+            <div class="stat-card"><div class="stat-num">${batches.length}</div><div class="stat-label">Batches</div></div>
+            <div class="stat-card"><div class="stat-num">${totalStudents}</div><div class="stat-label">Students</div></div>
+            <div class="stat-card">
+              <div class="stat-num">${totalStudents ? Math.round((matchedStudents / totalStudents) * 100) : 0}%</div>
+              <div class="stat-label">Matched</div>
+            </div>
+          </div>
+
+          ${raw(batches.length ? html`
+            <div class="table-wrap">
+              <table>
+                <tr><th>Batch</th><th>Students</th><th>Matched</th><th>Uploaded</th><th>Status</th></tr>
+                ${raw(batches.map((b) => {
+                  const n = b.studentCount;
+                  const href = `/institute/students?batch=${encodeURIComponent(b.id)}`;
+                  return html`<tr class="clickable" data-href="${href}">
+                    <td class="b"><a class="row-link" href="${href}">${b.label}</a></td>
+                    <td>${n}</td>
+                    <td>${n ? Math.round((b.matchedCount / n) * 100) : 0}%</td>
+                    <td>${formatDate(b.importedAt || b.createdAt)}</td>
+                    <td><span class="pill pill-active">Active</span></td>
+                  </tr>`;
+                }).join(''))}
+              </table>
+            </div>` : emptyState('batches', 'No batches yet',
+              'Upload a CSV of your students and we will match every one of them against the scheme catalogue.'))}
+
+          <div class="section-label">Next step</div>
+          <div class="scheme-card" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <div>
+              <div class="sc-name" style="margin-bottom:4px;">Upload a student batch</div>
+              <div class="sc-meta">A CSV or Excel file — we will map the columns for you.</div>
+            </div>
+            <a class="btn-primary btn-inline" href="/institute/upload">Upload ↗</a>
+          </div>
+        </main>
+      </div>`,
+  }));
+});
 
 // Superseded by /students/:studentId. Kept so an old link lands somewhere useful.
 router.get('/students/:batchId/:name', (req, res) => res.redirect('/institute/students'));
