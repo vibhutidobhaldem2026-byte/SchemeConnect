@@ -78,6 +78,130 @@ export const SOURCES = [
     // Replaces disabilityaffairs.gov.in, whose certificate has expired. This is
     // the same department, and its robots.txt permits everything but /wp-admin.
   },
+  // ---------------------------------------------------------------------
+  // States.
+  //
+  // Every one of these was reachable with our own bot user-agent and permitted
+  // by robots. They are here because a scholarship a student cannot find is
+  // the same to them as one that does not exist, and the catalogue was almost
+  // entirely central schemes — which are the ones already easiest to hear
+  // about. Several more states were tried and left out: Bihar redirects in a
+  // loop, Karnataka and Telangana serve empty shells, Odisha's welfare portal
+  // needs a login. They are absent because nothing there could be read, not
+  // because they were not looked for.
+  // ---------------------------------------------------------------------
+  {
+    id: 'meghalaya-schemes',
+    adapter: 'gov-html',
+    url: 'https://meghalaya.gov.in/schemes',
+    label: 'Meghalaya — state schemes',
+    level: 'state',
+    state: 'Meghalaya',
+    // Drupal, twenty per page, six pages.
+    paginate: { template: 'https://meghalaya.gov.in/schemes?page={n}', from: 1, to: 5 },
+    maxLinks: 60,
+    enabled: true,
+  },
+  {
+    id: 'maharashtra-sjsa',
+    adapter: 'gov-html',
+    url: 'https://sjsa.maharashtra.gov.in/en/schemes-programmes/',
+    label: 'Maharashtra — Social Justice & Special Assistance',
+    level: 'state',
+    state: 'Maharashtra',
+    paginate: { template: 'https://sjsa.maharashtra.gov.in/en/schemes-programmes/page/{n}/', from: 2, to: 8 },
+    maxLinks: 60,
+    enabled: true,
+  },
+  {
+    id: 'goa-schemes',
+    adapter: 'gov-html',
+    url: 'https://www.goa.gov.in/government/schemes/',
+    label: 'Goa — all departments',
+    level: 'state',
+    state: 'Goa',
+    // One 600 KB page listing every department's schemes. Its robots.txt
+    // answers 403, which RFC 9309 treats as no rules published, so it is
+    // permitted — the same reading our robots handler already applies.
+    maxLinks: 60,
+    enabled: true,
+  },
+  {
+    id: 'nagaland-scholarships',
+    adapter: 'gov-html',
+    url: 'https://scholarship.nagaland.gov.in/scholarships',
+    label: 'Nagaland — scholarships',
+    level: 'state',
+    state: 'Nagaland',
+    // Purely scholarships, and each card names its department and nodal
+    // officer — unusually complete for a state portal.
+    maxLinks: 40,
+    enabled: true,
+  },
+  {
+    id: 'jk-socialwelfare',
+    adapter: 'gov-html',
+    url: 'https://socialwelfare.jk.gov.in/schemes.html',
+    label: 'Jammu & Kashmir — Social Welfare',
+    level: 'state',
+    state: 'Jammu and Kashmir',
+    maxLinks: 30,
+    enabled: true,
+  },
+  {
+    id: 'haryana-schemes',
+    adapter: 'gov-html',
+    url: 'https://www.haryana.gov.in/schemes-programmes/',
+    label: 'Haryana — state schemes',
+    level: 'state',
+    state: 'Haryana',
+    maxLinks: 30,
+    enabled: true,
+  },
+  {
+    id: 'uttarakhand-socialwelfare',
+    adapter: 'gov-html',
+    url: 'https://socialwelfare.uk.gov.in/schemes/',
+    label: 'Uttarakhand — Social Welfare',
+    level: 'state',
+    state: 'Uttarakhand',
+    paginate: { template: 'https://socialwelfare.uk.gov.in/schemes/page/{n}/', from: 2, to: 3 },
+    maxLinks: 30,
+    enabled: true,
+  },
+  {
+    id: 'goa-highered',
+    adapter: 'gov-html',
+    url: 'https://dhe.goa.gov.in/resource/getSchemes/',
+    label: 'Goa — Directorate of Higher Education',
+    level: 'state',
+    state: 'Goa',
+    maxLinks: 25,
+    enabled: true,
+  },
+  {
+    id: 'sikkim-schemes',
+    adapter: 'gov-html',
+    url: 'https://www.sikkim.gov.in/scheme/schemes',
+    label: 'Sikkim — state schemes',
+    level: 'state',
+    state: 'Sikkim',
+    // No pagination declared on purpose: the page parameter is ignored and
+    // every value returns the same ten schemes.
+    maxLinks: 25,
+    enabled: true,
+  },
+  {
+    id: 'chhattisgarh-postmatric',
+    adapter: 'gov-html',
+    url: 'https://postmatric-scholarship.cg.nic.in/',
+    label: 'Chhattisgarh — post-matric scholarship',
+    level: 'state',
+    state: 'Chhattisgarh',
+    // Only three schemes, but they carry eligibility and application dates.
+    maxLinks: 15,
+    enabled: true,
+  },
   {
     id: 'dbt-bharat',
     adapter: 'dbt-bharat',

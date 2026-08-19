@@ -141,6 +141,35 @@ function extractListings(html, baseUrl, source, fetchedAt) {
     }
   }
 
+  // --- cards --------------------------------------------------------------
+  /**
+   * Newer government sites lay a listing out as cards, not a table or a list.
+   *
+   * Nagaland's scholarship portal is one: each scheme is an <article> with its
+   * name in a heading, and its department, level, funding agency and nodal
+   * officer as text underneath — richer than most state listings, and
+   * completely invisible to us, because none of it is a link and so there was
+   * nothing to follow. Reading the heading is what a visitor does.
+   *
+   * Scoped to <article> deliberately. Sweeping every h2 on a page would drag
+   * in section titles and sidebar furniture, which is how a navigation label
+   * ends up in the catalogue looking like a scheme.
+   *
+   * The length bound is generous because a card is bigger than it looks: with
+   * icons and utility classes, Nagaland's run to six thousand characters, and
+   * a tighter limit silently matched only the shortest seven of twenty-four.
+   */
+  for (const [, block] of String(html).matchAll(/<article\b[^>]*>([\s\S]{40,24000}?)<\/article>/gi)) {
+    const heading = /<h[2-4][^>]*>([\s\S]{6,200}?)<\/h[2-4]>/i.exec(block);
+    if (!heading) continue;
+    const href = /<a\b[^>]*href="([^"#]+)"/i.exec(block)?.[1];
+    let resolved = null;
+    try {
+      if (href) resolved = new URL(href, baseUrl).href;
+    } catch { /* a malformed href is no link at all */ }
+    push(htmlToText(heading[1]), resolved);
+  }
+
   // --- bulleted lists -----------------------------------------------------
   // The link on the item is the scheme's own page or guideline PDF. Without it
   // the entry pointed at whatever index page it was found on, so "Continue to
@@ -159,19 +188,58 @@ export async function discover(source) {
     return { candidates: [], error: `source blocked: ${check.reason}` };
   }
 
+  /**
+   * Some listings run to several pages.
+   *
+   * Meghalaya publishes 119 schemes twenty at a time; reading only the first
+   * page would take a sixth of the state and quietly call it the whole thing.
+   * A source declares its own page URLs because the shape differs — a query
+   * parameter on Drupal, a path segment on WordPress — and there is no reliable
+   * way to infer which from the first page.
+   */
+  const urls = [source.url];
+  if (source.paginate) {
+    const { template, from = 2, to = 5 } = source.paginate;
+    for (let n = from; n <= to; n++) urls.push(template.replace('{n}', String(n)));
+  }
+
   let res;
-  try {
-    ({ res } = await fetchPage(source.url, { forceBrowser: source.browser === true }));
-  } catch (err) {
-    return { candidates: [], error: err.message };
-  }
-  if (!res.ok) {
-    return { candidates: [], error: `HTTP ${res.status}` };
+  const listings = [];
+  const links = [];
+  const seenUrl = new Set();
+
+  for (const url of urls) {
+    let page;
+    try {
+      ({ res: page } = await fetchPage(url, { forceBrowser: source.browser === true }));
+    } catch (err) {
+      // The first page failing is a broken source; a later one failing just
+      // ends the pagination, which is what a missing page 7 looks like.
+      if (url === source.url) return { candidates: [], error: err.message };
+      break;
+    }
+    if (!page.ok) {
+      if (url === source.url) return { candidates: [], error: `HTTP ${page.status}` };
+      break;
+    }
+    res ??= page;
+
+    listings.push(...extractListings(page.body, page.url, source, page.fetchedAt));
+
+    const fresh = getLinks(page.body, page.url).filter((l) => !seenUrl.has(l.href));
+    for (const l of fresh) seenUrl.add(l.href);
+    links.push(...fresh);
+
+    /**
+     * Stop when a page adds nothing.
+     *
+     * Sikkim ignores the page parameter and serves the same ten schemes for
+     * every value of it. Without this we would ask for five identical pages
+     * and think we were being thorough.
+     */
+    if (url !== source.url && fresh.length === 0) break;
   }
 
-  const listings = extractListings(res.body, res.url, source, res.fetchedAt);
-
-  const links = getLinks(res.body, res.url);
   const candidates = [];
   const seen = new Set();
 
